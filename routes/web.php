@@ -14,3 +14,23 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/exhibit', array(
+    'as'   => 'exhibit',
+    'uses' => 'ExhibitController@index'
+));
+
+Route::post('/exhibit/store/{var}', array(
+    'as' => 'store-exhibit',
+    'uses' => 'ExhibitController@store'
+));
+
+Route::get('/exhibit/edit/{var}', array(
+    'as' => 'edit-exhibit',
+    'uses' => 'ExhibitController@edit'
+));
+
+Route::delete('exhibit/delete/{var}',array(
+    'as' => 'delete-exhibit',
+    'uses' => 'ExhibitController@delete'
+));
