@@ -7,6 +7,13 @@ use App\BaseModel;
 class Exhibit extends BaseModel
 {
     /**
+     * The primary key for the model.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'exhibit_id';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
