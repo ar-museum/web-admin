@@ -14,7 +14,7 @@ class Exposition extends Migration
     public function up()
     {
         //
-        Schema::create('exposition', function (Blueprint $table) {
+        Schema::create('expositions', function (Blueprint $table) {
             $table->increments('exposition_id');
             $table->string('title');
             $table->string('description');
@@ -34,6 +34,6 @@ class Exposition extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('exposition');
+        Schema::dropIfExists('expositions');
     }
 }
