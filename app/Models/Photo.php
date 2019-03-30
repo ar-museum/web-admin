@@ -6,7 +6,7 @@ use App\BaseModel;
 
 class Photo extends BaseModel
 {
-    protected $fillable = ['width','height'];
+    protected $fillable = ['photo_id','width','height'];
 
     protected $hidden = [];
 
