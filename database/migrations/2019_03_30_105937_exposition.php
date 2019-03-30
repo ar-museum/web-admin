@@ -22,7 +22,6 @@ class Exposition extends Migration
             $table->foreign('staff_id')
                   ->references('staff_id')->on('staff')
                   ->onDelete('cascade');
-            $table->unique('staff_id');
 
         });
     }
