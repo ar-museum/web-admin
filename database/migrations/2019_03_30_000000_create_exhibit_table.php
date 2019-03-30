@@ -26,7 +26,7 @@ class Exposition extends Migration
                 ->onDelete('cascade');
             $table->string('size', 50);
             $table->foreign('exposition_id')
-                ->references('exposition_id')->on('exposition')
+                ->references('exposition_id')->on('expositions')
                 ->onDelete('cascade');
             $table->string('location', 50);
             $table->foreign('staff_id')
