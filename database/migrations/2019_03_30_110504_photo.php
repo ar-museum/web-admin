@@ -17,8 +17,15 @@ class Photo extends Migration
             $table->increments('photo_id');
             $table->integer('width');
             $table->integer('height');
-            $table->foreign('photo_id')->references('media_id')->on('media');
-            $table->foreign('photo_id')->references('staff')->on('photo_id');
+            $table->foreign('photo_id')
+                ->references('media_id')
+                ->on('media')
+                ->onDelete('cascade');
+
+            /*$table->foreign('photo_id')
+                ->references('photo_id')
+                ->on('staff')
+                ->onDelete('cascade');*/
             $table->timestamps();
         });
     }

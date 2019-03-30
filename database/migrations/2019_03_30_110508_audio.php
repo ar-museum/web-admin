@@ -14,11 +14,14 @@ class Audio extends Migration
     public function up()
     {
         Schema::create('audio', function (Blueprint $table) {
-        $table->increments('audio_id');
-        $table->double('length');
-        $table->foreign('audio_id')->references('media_id')->on('media');
+            $table->increments('audio_id');
+            $table->double('length');
+            $table->foreign('audio_id')
+                ->references('media_id')
+                ->on('media')
+                ->onDelete('cascade');
             $table->timestamps();
-    });
+        });
     }
 
     /**
