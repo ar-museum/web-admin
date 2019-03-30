@@ -53,6 +53,6 @@ class Exhibit extends BaseModel
     }
 
     public function category(){
-        return $this->belongsToMany(Category::class);``
+        return $this->belongsToMany(Category::class);
     }
 }
