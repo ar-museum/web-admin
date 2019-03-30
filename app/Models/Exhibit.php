@@ -33,7 +33,7 @@ class Exhibit extends BaseModel
 
     /** Relationship methods */
     public function staff(){
-        return $this->hasOne(Staff::class);
+        return $this->belongsTo(Staff::class);
     }
 
     public function author(){
@@ -41,10 +41,18 @@ class Exhibit extends BaseModel
     }
 
     public function exposition(){
-        return $this->hasOne(Exposition::class);
+        return $this->belongsTo(Exposition::class);
     }
 
     public function guest(){
-        return $this->belongsToMany(Guest::class);
+        return $this->belongsTo(Guest::class);
+    }
+
+    public function tag(){
+        return $this->belongsToMany(Tag::class);
+    }
+
+    public function category(){
+        return $this->belongsToMany(Category::class);``
     }
 }
