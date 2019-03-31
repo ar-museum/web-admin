@@ -35,7 +35,7 @@ Route::group([
         'uses'       => 'LoginController@logout',
     ]);
 
-    /*Route::get('/profil', [
+    Route::get('/profil', [
         'as'         => 'profile',
         'middleware' => ['auth'],
         'uses'       => 'LoginController@profile',
@@ -51,7 +51,7 @@ Route::group([
         'as'         => 'settings_password',
         'middleware' => ['auth'],
         'uses'       => 'LoginController@settingsPassword',
-    ]);*/
+    ]);
 
     Route::post('/parola', [
         'as'   => 'reset_pass',
