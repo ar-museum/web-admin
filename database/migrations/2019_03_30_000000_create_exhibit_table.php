@@ -15,6 +15,9 @@ class CreateExhibitTable extends Migration
     {
         //
         Schema::create('exhibit', function (Blueprint $table) {
+            $table->unsignedInteger('exposition_id');
+            $table->unsignedInteger('author_id');
+            $table->unsignedInteger('staff_id');
             $table->increments('exhibit_id');
             $table->string('title')->unique();
             $table->string('short_description', 500);
