@@ -1,4 +1,5 @@
 <?php
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,23 +35,23 @@ Route::group([
         'uses'       => 'LoginController@logout',
     ]);
 
-    Route::get('/profil', [
+    /*Route::get('/profil', [
         'as'         => 'profile',
         'middleware' => ['auth'],
-        'uses'       => 'AuthController@profile',
+        'uses'       => 'LoginController@profile',
     ]);
 
     Route::any('/setari', [
         'as'         => 'settings',
         'middleware' => ['auth'],
-        'uses'       => 'AuthController@settings',
+        'uses'       => 'LoginController@settings',
     ]);
 
     Route::post('/setari/schimba-parola', [
         'as'         => 'settings_password',
         'middleware' => ['auth'],
-        'uses'       => 'AuthController@settingsPassword',
-    ]);
+        'uses'       => 'LoginController@settingsPassword',
+    ]);*/
 
     Route::post('/parola', [
         'as'   => 'reset_pass',
@@ -66,4 +67,44 @@ Route::group([
         'as'   => 'reset_pass',
         'uses' => 'ResetPasswordController@reset',
     ]);
+
+    Route::get('/exhibit', array(
+        'as'   => 'exhibit',
+        'uses' => 'ExhibitController@index'
+    ));
+
+    Route::post('/exhibit/store/{var}', array(
+        'as' => 'store-exhibit',
+        'uses' => 'ExhibitController@store'
+    ));
+
+    Route::get('/exhibit/edit/{var}', array(
+        'as' => 'edit-exhibit',
+        'uses' => 'ExhibitController@edit'
+    ));
+
+    Route::delete('exhibit/delete/{var}',array(
+        'as' => 'delete-exhibit',
+        'uses' => 'ExhibitController@destroy'
+    ));
+
+    Route::get('/author', array(
+        'as'   => 'author',
+        'uses' => 'AuthorController@index'
+    ));
+
+    Route::post('/author/store/{var}', array(
+        'as' => 'store-author',
+        'uses' => 'AuthorController@store'
+    ));
+
+    Route::get('/author/edit/{var}', array(
+        'as' => 'edit-author',
+        'uses' => 'AuthorController@edit'
+    ));
+
+    Route::delete('author/destroy/{var}',array(
+        'as' => 'delete-author',
+        'uses' => 'AuthorController@destroy'
+    ));
 });
