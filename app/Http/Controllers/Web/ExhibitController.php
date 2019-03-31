@@ -18,7 +18,7 @@ class ExhibitController extends Controller
 
     }
 
-    public function delete($var){
+    public function destroy($var){
 
     }
 }
