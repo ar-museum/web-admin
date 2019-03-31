@@ -28,7 +28,7 @@ class Author extends BaseModel
      * @var array
      */
     protected $hidden = [
-
+        'photo_id'
     ];
 
     /** Relationship methods */
