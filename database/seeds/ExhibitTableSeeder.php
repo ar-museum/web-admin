@@ -15,7 +15,7 @@ class ExhibitTableSeeder extends Seeder
             'title' => 'Floarea albastra',
             'short_description' => 'So deep!',
             'description' => 'Cea mai splendida poezie ever!',
-            'start_year' => '2014',
+            'start_year' => '1873',
             'end_year' => '2019',
             'size' => '20x30cm',
             'location' => 'Iasi',

@@ -32,5 +32,5 @@ Route::get('/exhibit/edit/{var}', array(
 
 Route::delete('exhibit/delete/{var}',array(
     'as' => 'delete-exhibit',
-    'uses' => 'ExhibitController@delete'
+    'uses' => 'ExhibitController@destroy'
 ));
