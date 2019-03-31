@@ -1,5 +1,6 @@
 /node_modules
 /public/storage
+/vendor/composer
 /storage/*.key
 /.idea
 Homestead.json
