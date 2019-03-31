@@ -2,28 +2,74 @@
 
 namespace App\Models;
 
-#use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Staff extends Authenticatable
 {
-    #use Notifiable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable
+        = [
+            'first_name',
+            'last_name',
+            'email',
+            'password',
+        ];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden
+        = [
+            'password', 'remember_token',
+        ];
+
+    /**
+     * The primary key for the model.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'staff_id';
+
+    /**
+     * Get complete name of staff.
+     *
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /**
+     * Get the expositions added by staff.
+     */
+    public function expositions()
+    {
+        return $this->hasMany(Exposition::class, 'staff_id');
+    }
+
+    /**
+     * Get the exhibits added by staff.
+     */
+    public function exhibits()
+    {
+        return $this->hasMany(Exhibit::class, 'staff_id');
+    }
+
+    /**
+     * Get the categories added by staff.
+     */
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'staff_id');
+    }
 }

@@ -14,6 +14,8 @@ class CreateStaffTable extends Migration
     public function up()
     {
         Schema::create('staff', function (Blueprint $table) {
+            $table->collation = 'utf8_general_ci';
+
             $table->increments('staff_id');
             $table->string('first_name');
             $table->string('last_name');
@@ -31,6 +33,6 @@ class CreateStaffTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('staff');
     }
 }
