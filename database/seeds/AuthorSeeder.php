@@ -16,7 +16,7 @@ class AuthorSeeder extends Seeder
             'born_year' => '1850',
             'died_year' => '1889',
             'location' => 'Ipotesti',
-            'photo_id' => 10,
+            'photo_id' => 1072,
             'staff_id' =>5
         ]);
 
