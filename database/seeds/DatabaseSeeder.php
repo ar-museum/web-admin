@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AuthorSeeder::class);
         $this->call(ExpositionSeeder::class);
         $this->call(ExhibitTableSeeder::class);
-        $this->call(Category::class);
-        $this->call(Tag::class);
+        $this->call(CategoryTableSeeder::class);
+        $this->call(TagTableSeeder::class);
 
         Model::reguard();
     }

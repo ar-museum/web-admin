@@ -18,8 +18,10 @@ class CreateTagTable extends Migration
             $table->string('name');
             $table->unsignedInteger('staff_id');
             $table->foreign('staff_id')
-                ->references('staff_id')->on('exhibit') // @TODO: Fix referenced table
+                ->references('staff_id')->on('staff')
                 ->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 
