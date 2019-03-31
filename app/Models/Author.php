@@ -19,7 +19,7 @@ class Author extends BaseModel
      * @var array
      */
     protected $fillable = [
-       'full_name', 'born_year', 'died_year',  'location'
+       'full_name', 'born_year', 'died_year',  'location',   'photo_id'
     ];
 
     /**
@@ -28,7 +28,6 @@ class Author extends BaseModel
      * @var array
      */
     protected $hidden = [
-        'photo_id'
     ];
 
     /** Relationship methods */
