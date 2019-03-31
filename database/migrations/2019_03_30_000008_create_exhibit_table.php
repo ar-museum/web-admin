@@ -24,14 +24,17 @@ class CreateExhibitTable extends Migration
             $table->string('description', 2000);
             $table->integer('start_year');
             $table->integer('end_year');
+
             $table->foreign('author_id')
                 ->references('author_id')->on('author')
                 ->onDelete('cascade');
             $table->string('size', 50);
+
             $table->foreign('exposition_id')
                 ->references('exposition_id')->on('expositions')
                 ->onDelete('cascade');
             $table->string('location', 50);
+
             $table->foreign('staff_id')
                 ->references('staff_id')->on('staff')
                 ->onDelete('cascade');

@@ -18,7 +18,7 @@ class CreateTagTable extends Migration
             $table->string('name');
             $table->unsignedInteger('staff_id');
             $table->foreign('staff_id')
-                ->references('staff_id')->on('exhibit')
+                ->references('staff_id')->on('exhibit') // @TODO: Fix referenced table
                 ->onDelete('cascade');
         });
     }

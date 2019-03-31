@@ -17,6 +17,7 @@ class Photo extends Migration
             $table->increments('photo_id');
             $table->integer('width');
             $table->integer('height');
+
             $table->foreign('photo_id')
                 ->references('media_id')
                 ->on('media')

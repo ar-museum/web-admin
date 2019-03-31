@@ -20,10 +20,13 @@ class CreateAuthorTable extends Migration
             $table->integer('died_year');
             $table->string('location');
             $table->unsignedInteger('photo_id');
+
             $table->foreign('photo_id')
                 ->references('photo_id')->on('photo')
                 ->onDelete('cascade');
+
             $table->unsignedInteger('staff_id');
+
             $table->foreign('staff_id')
                 ->references('staff_id')->on('staff')
                 ->onDelete('cascade');

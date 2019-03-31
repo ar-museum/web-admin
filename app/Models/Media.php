@@ -15,7 +15,7 @@ class Media extends BaseModel
         return $this->hasOne(Exhibit::class);
     }
 
-    public function exhibition(){
-        return $this->hasOne(Exhibition::class);
+    public function exposition(){
+        return $this->hasOne(Exposition::class);
     }
 }

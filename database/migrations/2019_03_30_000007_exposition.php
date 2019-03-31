@@ -19,10 +19,10 @@ class Exposition extends Migration
             $table->string('title');
             $table->string('description');
             $table->unsignedInteger('staff_id');
+
             $table->foreign('staff_id')
                   ->references('staff_id')->on('staff')
                   ->onDelete('cascade');
-
         });
     }
 
