@@ -16,6 +16,7 @@ class CreateCategoryTable extends Migration
         Schema::create('category', function (Blueprint $table) {
             $table->increments('category_id');
             $table->string('name');
+            $table->unsignedInteger('staff_id');
             $table->foreign('staff_id')
                 ->references('staff_id')->on('exhibit')
                 ->onDelete('cascade');
