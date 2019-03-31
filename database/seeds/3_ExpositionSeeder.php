@@ -13,8 +13,8 @@ class ExpositionSeeder extends Seeder
     {        //insert data
 
         DB::table('expositions')->insert([
-            'title' => 'str_random(10)',
-            'description' => '@gmail.com',
+            'title' => 'Carti Mihai Eminescu',
+            'description' => 'Cea mai veche carte',
             'staff_id' => 1
         ]);
     	
