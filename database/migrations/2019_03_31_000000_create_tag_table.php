@@ -16,6 +16,7 @@ class CreateTagTable extends Migration
         Schema::create('tag', function (Blueprint $table) {
             $table->increments('tag_id');
             $table->string('name');
+            $table->unsignedInteger('staff_id');
             $table->foreign('staff_id')
                   ->references('staff_id')->on('exhibit')
                   ->onDelete('cascade');
