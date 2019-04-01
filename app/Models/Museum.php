@@ -11,7 +11,7 @@ class Museum extends BaseModel
         'name', 'address', 'opening_hour', 'closing_hour'
     ];
     // @TODO: Add missing id column
-    
+
     public function exposition()
     {
         return $this->hasMany(Exposition::class);

@@ -286,7 +286,7 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
     public static $classMap = array (
         'Audio' => __DIR__ . '/../..' . '/database/migrations/2019_03_30_000004_audio.php',
         'AuthorSeeder' => __DIR__ . '/../..' . '/database/seeds/AuthorSeeder.php',
-        'Category' => __DIR__ . '/../..' . '/database/seeds/Category.php',
+        'CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoryTableSeeder.php',
         'CreateAuthorTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_30_000006_create_author_table.php',
         'CreateCategoryTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_31_000000_create_category_table.php',
         'CreateExhibitTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_30_000008_create_exhibit_table.php',
@@ -835,7 +835,7 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'StaffTableSeeder' => __DIR__ . '/../..' . '/database/seeds/StaffTableSeeder.php',
-        'Tag' => __DIR__ . '/../..' . '/database/seeds/Tag.php',
+        'TagTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TagTableSeeder.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'Video' => __DIR__ . '/../..' . '/database/migrations/2019_03_30_000005_video.php',
