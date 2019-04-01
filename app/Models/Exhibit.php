@@ -48,11 +48,15 @@ class Exhibit extends BaseModel
         return $this->belongsTo(Guest::class);
     }
 
+    //@TODO: Fix the relationship.
     public function tag(){
         return $this->belongsToMany(Tag::class);
     }
 
+    //@TODO: Fix the relationship.
     public function category(){
         return $this->belongsToMany(Category::class);
     }
+
+    //@TODO: Missing media.
 }

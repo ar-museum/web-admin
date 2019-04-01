@@ -22,6 +22,7 @@ class Category extends BaseModel
         'name'
     ];
 
+    //@TODO: Fix the relationship with exhibit.
     public function exhibit(){
         return $this->hasMany(Exhibit::class);
     }
