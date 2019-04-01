@@ -21,6 +21,7 @@ Links:
 - [Routing docs](https://laravel.com/docs/5.3/routing)
 - [Controllers docs](https://laravel.com/docs/5.3/controllers)
 - [View & Templates docs](https://laravel.com/docs/5.3/views)
+- [Testing with Laravel & TDD](https://www.youtube.com/watch?v=okYKN1o_dIk&index=1&list=PLe30vg_FG4OTsFRc1eWppZfYwZdMlLuhE)
 
 ## License
 
