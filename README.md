@@ -11,7 +11,7 @@
 
 Links:
 
-- [Trello tasks](https://trello.com/b/TTyUT0Q5/ar-museum).
+- [Trello tasks](https://trello.com/b/TTyUT0Q5).
 
 
 ## Others
