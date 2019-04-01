@@ -8,13 +8,19 @@
 </p>
 
 ## About AR Museum WebAdmin
+Through the WebAdmin interface any museum's guide can manage the content of their own museum.
 
 Links:
 
 - [Trello tasks](https://trello.com/b/TTyUT0Q5).
 
 
-## Others
+## Tutorials
+- [Routing & Controllers video](https://www.youtube.com/watch?v=gx4q5Nnw9eY)
+- [Complete tutorial for beginners](https://www.youtube.com/watch?v=a8ZpAf_tNh0&list=PL3ZhWMazGi9IYymniZgqwnYuPFDvaEHJb)
+- [Routing docs](https://laravel.com/docs/5.3/routing)
+- [Controllers docs](https://laravel.com/docs/5.3/controllers)
+- [View & Templates docs](https://laravel.com/docs/5.3/views)
 
 ## License
 
