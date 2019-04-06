@@ -11,7 +11,6 @@ class MuseumTableSeeder extends Seeder
      */
     public function run()
     {
-        // @TODO: Add missing id column
         DB::table('museum')->insert([
             'museum_id'=>'1',
             'name' => 'AR Museum',

@@ -10,11 +10,12 @@ class Media extends BaseModel
 
     protected $hidden = [];
 
-    /* Relationship methods */
+    //@TODO: Fix the relationship.
     public function exhibit(){
         return $this->hasOne(Exhibit::class);
     }
 
+    //@TODO: Fix the relationship.
     public function exposition(){
         return $this->hasOne(Exposition::class);
     }

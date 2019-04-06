@@ -7,7 +7,7 @@
                     <i class="fa fa-camera-retro"></i>
                 </div>
                 <div class="value">
-                    <h1 class="expositions_no">5</h1>
+                    <h1 class="expositions_no">{!! $expositions_no !!}</h1>
                     <p>Expozitii</p>
                 </div>
             </section>
@@ -18,7 +18,7 @@
                     <i class="fa fa-picture-o"></i>
                 </div>
                 <div class="value">
-                    <h1 class="exhibits_no">10</h1>
+                    <h1 class="exhibits_no">{!! $exhibits_no !!}</h1>
                     <p>Exponate</p>
                 </div>
             </section>
@@ -29,7 +29,7 @@
                     <i class="fa fa-male"></i>
                 </div>
                 <div class="value">
-                    <h1 class="authors_no">20</h1>
+                    <h1 class="authors_no">{!! $authors_no !!}</h1>
                     <p>Autori</p>
                 </div>
             </section>
@@ -40,7 +40,7 @@
                     <i class="fa fa-film"></i>
                 </div>
                 <div class="value">
-                    <h1 class="media_no">30</h1>
+                    <h1 class="media_no">NaN</h1>
                     <p>Media</p>
                 </div>
             </section>

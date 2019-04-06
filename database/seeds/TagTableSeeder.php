@@ -11,8 +11,7 @@ class TagTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tag')->insert([
-            'tag_id' => 1,
+        DB::table('tags')->insert([
             'name' => 'dramatic',
             'staff_id' => 1
         ]);

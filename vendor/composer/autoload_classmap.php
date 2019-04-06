@@ -8,7 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Audio' => $baseDir . '/database/migrations/2019_03_30_000004_audio.php',
     'AuthorSeeder' => $baseDir . '/database/seeds/AuthorSeeder.php',
-    'Category' => $baseDir . '/database/seeds/Category.php',
+    'CategoryTableSeeder' => $baseDir . '/database/seeds/CategoryTableSeeder.php',
     'CreateAuthorTable' => $baseDir . '/database/migrations/2019_03_30_000006_create_author_table.php',
     'CreateCategoryTable' => $baseDir . '/database/migrations/2019_03_31_000000_create_category_table.php',
     'CreateExhibitTable' => $baseDir . '/database/migrations/2019_03_30_000008_create_exhibit_table.php',
@@ -557,7 +557,7 @@ return array(
     'SebastianBergmann\\ResourceOperations\\ResourceOperations' => $vendorDir . '/sebastian/resource-operations/src/ResourceOperations.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'StaffTableSeeder' => $baseDir . '/database/seeds/StaffTableSeeder.php',
-    'Tag' => $baseDir . '/database/seeds/Tag.php',
+    'TagTableSeeder' => $baseDir . '/database/seeds/TagTableSeeder.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'Video' => $baseDir . '/database/migrations/2019_03_30_000005_video.php',

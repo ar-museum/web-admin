@@ -10,7 +10,7 @@ class Video extends BaseModel
 
     protected $hidden = [];
 
-    /* Relationship methods */
+    //@TODO: Fix the relationship.
     public function media(){
         return $this->hasOne(Media::class);
     }

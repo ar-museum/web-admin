@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(StaffTableSeeder::class);
         $this->call(MediaTableSeeder::class);
+        $this->call(MuseumTableSeeder::class);
+
         $this->call(AuthorSeeder::class);
         $this->call(ExpositionSeeder::class);
         $this->call(ExhibitTableSeeder::class);

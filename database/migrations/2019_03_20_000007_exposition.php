@@ -13,12 +13,16 @@ class Exposition extends Migration
      */
     public function up()
     {
-        //
         Schema::create('expositions', function (Blueprint $table) {
             $table->increments('exposition_id');
             $table->string('title');
             $table->string('description');
+            $table->unsignedInteger('museum_id');
             $table->unsignedInteger('staff_id');
+            $table->timestamps();
+            $table->foreign('museum_id')
+                  ->references('museum_id')->on('museum')
+                  ->onDelete('cascade');
 
             $table->foreign('staff_id')
                   ->references('staff_id')->on('staff')

@@ -11,19 +11,19 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('category')->insert([
+        DB::table('categories')->insert([
             'category_id' => 1,
             'name' => 'Poezie',
             'staff_id' => 1
         ]);
 
-        DB::table('category')->insert([
+        DB::table('categories')->insert([
             'category_id' => 2,
             'name' => 'Roman',
             'staff_id' => 2
         ]);
 
-        DB::table('category')->insert([
+        DB::table('categories')->insert([
             'category_id' => 3,
             'name' => 'Balada',
             'staff_id' => 3
