@@ -11,7 +11,7 @@ class AuthorSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('author')->insert([
+        DB::table('authors')->insert([
            'full_name' => 'Mihai Eminescu',
             'born_year' => '1850',
             'died_year' => '1889',

@@ -11,7 +11,7 @@ class ExhibitTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('exhibit')->insert([
+        DB::table('exhibits')->insert([
             'title' => 'Floarea albastra',
             'short_description' => 'So deep!',
             'description' => 'Cea mai splendida poezie ever!',

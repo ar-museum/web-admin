@@ -13,8 +13,8 @@ class CreateMuseumTable extends Migration
      */
     public function up()
     {
-        // @TODO: Add missing id column
         Schema::create('museum', function (Blueprint $table) {
+            $table->increments('museum_id');
             $table->string('name')->unique();
             $table->string('address');
             $table->time('opening_hour');

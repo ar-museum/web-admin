@@ -15,6 +15,7 @@ class ExpositionSeeder extends Seeder
         DB::table('expositions')->insert([
             'title' => 'Carti Mihai Eminescu',
             'description' => 'Cea mai veche carte',
+            'museum_id' => 1,
             'staff_id' => 1
         ]);
     	

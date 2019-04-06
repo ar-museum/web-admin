@@ -13,7 +13,7 @@ class CreateAuthorTable extends Migration
      */
     public function up()
     {
-        Schema::create('author', function (Blueprint $table) {
+        Schema::create('authors', function (Blueprint $table) {
             $table->increments('author_id');
             $table->string('full_name')->unique();
             $table->integer('born_year');
@@ -41,6 +41,6 @@ class CreateAuthorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('author');
+        Schema::dropIfExists('authors');
     }
 }

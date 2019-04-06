@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call(StaffTableSeeder::class);
-        $this->call(MuseumTableSeeder::class);
         $this->call(MediaTableSeeder::class);
+        $this->call(MuseumTableSeeder::class);
+
         $this->call(AuthorSeeder::class);
         $this->call(ExpositionSeeder::class);
         $this->call(ExhibitTableSeeder::class);
