@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Exposition;
 use Illuminate\Database\Seeder;
 
 class ExpositionSeeder extends Seeder
@@ -12,12 +13,7 @@ class ExpositionSeeder extends Seeder
     public function run()
     {        //insert data
 
-        DB::table('expositions')->insert([
-            'title' => 'Carti Mihai Eminescu',
-            'description' => 'Cea mai veche carte',
-            'museum_id' => 1,
-            'staff_id' => 1
-        ]);
+        factory(App\Models\Exposition::class, 2)->create();
     	
     }
 }

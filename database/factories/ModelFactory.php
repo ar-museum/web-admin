@@ -13,6 +13,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Models\Staff;
+use Faker\Generator;
 use Faker\Provider\Internet;
 
 $factory->define(App\Models\Staff::class, function (Faker\Generator $faker) {
@@ -25,5 +27,19 @@ $factory->define(App\Models\Staff::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->freeEmail,
         'password' => $password ?: $password = bcrypt('parola'),
         'remember_token' => str_random(10),
+    ];
+});
+
+
+$factory->define(App\Models\Exposition::class, function (Faker\Generator $faker) {
+    static $password;
+    Internet::$freeEmailDomain = array('museum.lc');
+
+    return [
+
+            'title' => 'Carti Mihai Eminescu',
+            'description' => 'Cea mai veche carte',
+            'museum_id' => 1,
+            'staff_id' => 1,
     ];
 });
