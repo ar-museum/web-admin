@@ -8,7 +8,7 @@ class Museum extends BaseModel
 {
     protected $primaryKey = 'name';
     protected $fillable = [
-        'name', 'address', 'opening_hour', 'closing_hour'
+        'museum_id','name', 'address', 'opening_hour', 'closing_hour'
     ];
     // @TODO: Add missing id column
 

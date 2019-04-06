@@ -12,6 +12,7 @@ class MuseumTableSeeder extends Seeder
     public function run()
     {
         DB::table('museum')->insert([
+            'museum_id'=>'1',
             'name' => 'AR Museum',
             'address' => 'Parcul Copou, Iași, județul Iași',
             'opening_hour' => '08:00:00',
