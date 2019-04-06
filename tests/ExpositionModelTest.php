@@ -17,11 +17,20 @@ class ExpositionModelTest extends TestCase
         $exposition = factory(App\Models\Exposition::class)->make([
             'title' => 'Mihai Eminescu',
             'description' => 'Popescu',
-            'museum_id' => 1,
+            'museum_id' => 2,
             'staff_id' => 2,
         ]);
         $this->assertGreaterThan(3,strlen($exposition->title));
         $this->assertGreaterThan(4,strlen($exposition->description));
+        $this->assertTrue(true,ctype_digit ( $exposition->museum_id));
 
+
+
+    }
+
+    public function testFailure(){
+        $this->assertFileExists('app/Models/Exposition.php');
+
+        $this->assertInstanceOf(\App\Models\Exhibit::class, new Exposition);
     }
 }
