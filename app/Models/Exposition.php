@@ -37,7 +37,10 @@ class Exposition extends BaseModel
     }
 
     /**
-     * Scope a query to find last 5 students.
+     * Scope a query to find last 5 expositions.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query_obj
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeLastFive($query_obj)
     {

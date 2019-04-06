@@ -59,4 +59,16 @@ class Exhibit extends BaseModel
     }
 
     //@TODO: Missing media.
+
+    /**
+     * Scope a query to find last 5 expositions.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query_obj
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeLastFive($query_obj)
+    {
+        return $query_obj->orderBy('exhibit_id', 'desc')
+                         ->take(5);
+    }
 }

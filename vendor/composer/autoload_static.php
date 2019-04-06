@@ -284,19 +284,19 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
     );
 
     public static $classMap = array (
-        'Audio' => __DIR__ . '/../..' . '/database/migrations/2019_03_30_000004_audio.php',
+        'Audio' => __DIR__ . '/../..' . '/database/migrations/2019_02_30_000004_audio.php',
         'AuthorSeeder' => __DIR__ . '/../..' . '/database/seeds/AuthorSeeder.php',
         'CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoryTableSeeder.php',
-        'CreateAuthorTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_30_000006_create_author_table.php',
+        'CreateAuthorTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_20_000006_create_author_table.php',
         'CreateCategoryTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_31_000000_create_category_table.php',
-        'CreateExhibitTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_30_000008_create_exhibit_table.php',
-        'CreateMuseumTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_31_195027_create_museum_table.php',
+        'CreateExhibitTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_20_000008_create_exhibit_table.php',
+        'CreateMuseumTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_11_195027_create_museum_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000001_create_password_resets_table.php',
         'CreateStaffTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_staff_table.php',
         'CreateTagTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_31_000001_create_tag_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'ExhibitTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ExhibitTableSeeder.php',
-        'Exposition' => __DIR__ . '/../..' . '/database/migrations/2019_03_30_000007_exposition.php',
+        'Exposition' => __DIR__ . '/../..' . '/database/migrations/2019_03_20_000007_exposition.php',
         'ExpositionSeeder' => __DIR__ . '/../..' . '/database/seeds/ExpositionSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
@@ -369,7 +369,7 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
-        'Media' => __DIR__ . '/../..' . '/database/migrations/2019_03_30_000002_media.php',
+        'Media' => __DIR__ . '/../..' . '/database/migrations/2019_02_30_000002_media.php',
         'MediaTableSeeder' => __DIR__ . '/../..' . '/database/seeds/MediaTableSeeder.php',
         'MuseumTableSeeder' => __DIR__ . '/../..' . '/database/seeds/MuseumTableSeeder.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
@@ -754,7 +754,7 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
-        'Photo' => __DIR__ . '/../..' . '/database/migrations/2019_03_30_000003_photo.php',
+        'Photo' => __DIR__ . '/../..' . '/database/migrations/2019_02_30_000003_photo.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -838,7 +838,7 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
         'TagTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TagTableSeeder.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
-        'Video' => __DIR__ . '/../..' . '/database/migrations/2019_03_30_000005_video.php',
+        'Video' => __DIR__ . '/../..' . '/database/migrations/2019_02_30_000005_video.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

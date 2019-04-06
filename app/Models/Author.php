@@ -39,4 +39,16 @@ class Author extends BaseModel
     public function exhibit(){
         return $this->hasMany( Exhibit::class);
     }
+
+    /**
+     * Scope a query to find last 5 expositions.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query_obj
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeLastFive($query_obj)
+    {
+        return $query_obj->orderBy('author_id', 'desc')
+                         ->take(5);
+    }
 }

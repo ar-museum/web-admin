@@ -93,12 +93,12 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-film"></i> <span>Media</span>
+                            <i class="fa fa-tags"></i> <span>Etichete</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-tags"></i> <span>Etichete</span>
+                            <i class="fa fa-film"></i> <span>Media</span>
                         </a>
                     </li>
                     <li>
