@@ -20,6 +20,7 @@ class Staff extends Authenticatable
             'last_name',
             'email',
             'password',
+            'photo_id',
         ];
 
     /**
@@ -71,5 +72,21 @@ class Staff extends Authenticatable
     public function categories()
     {
         return $this->hasMany(Category::class, 'staff_id');
+    }
+
+    /**
+     * Get the tags added by staff.
+     */
+    public function tags()
+    {
+        return $this->hasMany(Tag::class, 'staff_id');
+    }
+
+    /**
+     * Get the authors added by staff.
+     */
+    public function authors()
+    {
+        return $this->hasMany(Author::class, 'staff_id');
     }
 }

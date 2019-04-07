@@ -21,6 +21,13 @@ class CreateStaffTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
+
+            $table->unsignedInteger('photo_id');
+
+            $table->foreign('photo_id')
+                  ->references('photo_id')->on('photo')
+                  ->onDelete('cascade');
+
             $table->rememberToken();
             $table->timestamps();
         });

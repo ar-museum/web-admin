@@ -33,45 +33,46 @@ $factory->define(App\Models\Staff::class, function (Faker\Generator $faker) {
         'last_name'      => 'Popescu',
         'email'          => 'gigel@museum.lc',
         'password'       => bcrypt('parola'),
+        'photo_id'       => 1,
         'remember_token' => str_random(10),
     ];
 });
 
 $factory->define(App\Models\Media::class, function (Faker\Generator $faker, $params) {
     return [
-        'path' => $params['path']
+        'path' => $params['path'],
     ];
-        /*
-        //insert first element
-        $id = DB::table('media')->insertGetId([
-            'path' => '/resources/Media/Photo/photo1.jpg'
-        ]),
+    /*
+    //insert first element
+    $id = DB::table('media')->insertGetId([
+        'path' => '/resources/Media/Photo/photo1.jpg'
+    ]),
 
-        DB::table('photo')->insert([
-            'photo_id' => $id,
-            'width' => '10',
-            'height' => '20',
-        ]),
+    DB::table('photo')->insert([
+        'photo_id' => $id,
+        'width' => '10',
+        'height' => '20',
+    ]),
 
-        //insert second element
-        $id = DB::table('media')->insertGetId([
-            'path' => '/resources/Media/Audio/audio1.mp3'
-        ]),
+    //insert second element
+    $id = DB::table('media')->insertGetId([
+        'path' => '/resources/Media/Audio/audio1.mp3'
+    ]),
 
-        DB::table('audio')->insert([
-            'audio_id' => $id,
-            'length' => '2.5'
-        ]),
+    DB::table('audio')->insert([
+        'audio_id' => $id,
+        'length' => '2.5'
+    ]),
 
-        //insert third element
-        $id = DB::table('media')->insertGetId([
-            'path' => '/resources/Media/Video/video1.mp4'
-        ]),
+    //insert third element
+    $id = DB::table('media')->insertGetId([
+        'path' => '/resources/Media/Video/video1.mp4'
+    ]),
 
-        DB::table('video')->insert([
-            'video_id' => $id,
-            'length' => '5.2'
-        ])*/
+    DB::table('video')->insert([
+        'video_id' => $id,
+        'length' => '5.2'
+    ])*/
 
 });
 
@@ -80,8 +81,8 @@ $factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
         'photo_id' => function () {
             return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Photo/photo1.jpg'])->media_id;
         },
-        'width' => $faker->randomNumber($nbDigits=3),
-        'height' => $faker->randomNumber($nbDigits=2)
+        'width'    => $faker->randomNumber($nbDigits = 3),
+        'height'   => $faker->randomNumber($nbDigits = 2),
     ];
 });
 
@@ -90,7 +91,7 @@ $factory->define(App\Models\Audio::class, function (Faker\Generator $faker) {
         'audio_id' => function () {
             return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Audio/audio1.mp3'])->media_id;
         },
-        'length' => $faker->randomFloat(2,1,5)
+        'length'   => $faker->randomFloat(2, 1, 5),
     ];
 });
 
@@ -99,7 +100,7 @@ $factory->define(App\Models\Video::class, function (Faker\Generator $faker) {
         'video_id' => function () {
             return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Video/video1.mp4'])->media_id;
         },
-        'length' => $faker->randomFloat(2,1,5)
+        'length'   => $faker->randomFloat(2, 1, 5),
     ];
 });
 
@@ -177,8 +178,8 @@ $factory->define(App\Models\ExhibitTag::class, function (Faker\Generator $faker)
 
 $factory->define(App\Models\ExhibitCategory::class, function (Faker\Generator $faker) {
     return [
-        'exhibit_id' => 1,
-        'category_id'     => function () {
+        'exhibit_id'  => 1,
+        'category_id' => function () {
             return factory(App\Models\Category::class)->create()->category_id;
         },
     ];

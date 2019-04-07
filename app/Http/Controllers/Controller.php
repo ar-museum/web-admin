@@ -25,6 +25,7 @@ class Controller extends BaseController
             $this->staff = Auth::user();
 
             view()->share('staff', $this->staff);
+            view()->share('route', request()->route());
 
             return $next($request);
         });

@@ -67,7 +67,7 @@
                 <!-- sidebar menu start -->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <li>
-                        <a href="{!! route('dashboard') !!}">
+                        <a href="{!! route('dashboard') !!}" @if (in_array($route->getName(), ['dashboard', 'settings_view', 'profile'])) class="active" @endif>
                             <i class="fa fa-bar-chart-o"></i> <span>Acasa</span>
                         </a>
                     </li>

@@ -45,10 +45,16 @@ Route::group([
         'uses'       => 'AuthController@profile',
     ]);
 
-    Route::any('/setari', [
+    Route::get('/setari', [
+        'as'         => 'settings_view',
+        'middleware' => ['auth'],
+        'uses'       => 'AuthController@viewSettings',
+    ]);
+
+    Route::post('/setari', [
         'as'         => 'settings',
         'middleware' => ['auth'],
-        'uses'       => 'AuthController@settings',
+        'uses'       => 'AuthController@updateSettings',
     ]);
 
     Route::post('/setari/schimba-parola', [
