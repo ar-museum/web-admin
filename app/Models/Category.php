@@ -22,9 +22,12 @@ class Category extends BaseModel
         'name'
     ];
 
-    //@TODO: Fix the relationship with exhibit.
-    public function exhibit(){
-        return $this->hasMany(Exhibit::class);
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function exhibit()
+    {
+        return $this->hasManyThrough(ExhibitCategory::class,Category::class , 'category_id', 'exhibit_id', 'category_id');
     }
 
     /**

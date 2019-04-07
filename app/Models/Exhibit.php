@@ -54,14 +54,20 @@ class Exhibit extends BaseModel
         return $this->belongsTo(Guest::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
     public function tag()
     {
         return $this->hasManyThrough(Tag::class, ExhibitTag::class, 'exhibit_id', 'tag_id', 'exhibit_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
     public function category()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasManyThrough(Category::class, ExhibitCategory::class, 'exhibit_id', 'category_id', 'exhibit_id');
     }
 
     public function media()
