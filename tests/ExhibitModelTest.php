@@ -12,7 +12,8 @@ class ExhibitModelTest extends TestCase
      *
      * @return void
      */
-    public function testExhibitModel() {
+    public function testExhibitModel()
+    {
         $exhibit = factory(App\Models\Exhibit::class)->make([
             'title' => 'Floare albastra',
             'short_description' => 'So deep!',
@@ -24,7 +25,9 @@ class ExhibitModelTest extends TestCase
             'author_id' => 1,
             'exposition_id' => 1,
             'staff_id' => 1,
-            'media_id' => 1
+            'audio_id' => 1,
+            'photo_id' => 1,
+            'video_id' => 1,
         ]);
 
         /**
@@ -40,7 +43,9 @@ class ExhibitModelTest extends TestCase
         $this->assertObjectHasAttribute($exhibit->author_id, new Exhibit);
         $this->assertTrue(true, is_int($exhibit->exposition_id));
         $this->assertFalse(false, is_int($exhibit->exposition_id));
-        $this->assertTrue(true, is_int($exhibit->media_id));
+        $this->assertTrue(true, is_int($exhibit->photo_id));
+        $this->assertStringStartsWith('3', $exhibit->audio_id);
+        $this->assertStringStartsNotWith('2', $exhibit->video_id);
 
         /**
          * Model creation

@@ -61,7 +61,9 @@ $factory->define(App\Models\Exhibit::class, function (Faker\Generator $faker) {
         'author_id'         => 1,
         'exposition_id'     => 1,
         'staff_id'          => 1,
-        #'media_id'          => 1,
+        'audio_id'          => 1,
+        'photo_id'          => 1,
+        'video_id'          => 1,
     ];
 });
 
