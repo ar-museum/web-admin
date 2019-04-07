@@ -5,6 +5,7 @@ namespace Illuminate\Auth\Middleware;
 use Closure;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Contracts\Auth\Factory as Auth;
+use App\Models\Staff;
 
 class Authenticate
 {
@@ -38,7 +39,7 @@ class Authenticate
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        $this->authenticate($guards);
+        $this->authenticate($request, $guards);
 
         return $next($request);
     }
@@ -51,10 +52,19 @@ class Authenticate
      *
      * @throws \Illuminate\Auth\AuthenticationException
      */
-    protected function authenticate(array $guards)
+    protected function authenticate(&$request, array $guards)
     {
         if (empty($guards)) {
-            return $this->auth->authenticate();
+            $user = $this->auth->authenticate();
+
+            if (!$user instanceof Staff)
+            {
+                return $this->redirect($request->ajax());
+            }
+
+            $request->attributes->user = $user;
+
+            return;
         }
 
         foreach ($guards as $guard) {
@@ -64,5 +74,25 @@ class Authenticate
         }
 
         throw new AuthenticationException('Unauthenticated.', $guards);
+    }
+
+    /**
+     * @param       $isAjax
+     * @param array $message
+     *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    private function redirect($isAjax, $message = array())
+    {
+        if ($isAjax) {
+            return response('Unauthorized.', 401);
+        }
+        else {
+            if (!empty($message)) {
+                return redirect()->route('login')->withErrors($message)->withInput();
+            }
+
+            return redirect()->route('login');
+        }
     }
 }
