@@ -14,10 +14,10 @@ class CreateExhibitTagTable extends Migration
     public function up()
     {
         Schema::create('exhibit_tags', function (Blueprint $table) {
-            $table->increments('exhibit_tag_id');
-
             $table->unsignedInteger('exhibit_id');
             $table->unsignedInteger('tag_id');
+
+            $table->primary(['exhibit_id', 'tag_id']);
 
             $table->timestamps();
         });

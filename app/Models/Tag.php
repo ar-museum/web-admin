@@ -22,9 +22,9 @@ class Tag extends BaseModel
         'name'
     ];
 
-    //@TODO: Fix the relationship.
-    public function exhibit(){
-        return $this->hasMany(ExhibitTag::class, 'tag_id', 'tag_id');
+    public function exhibit()
+    {
+        return $this->hasManyThrough(ExhibitTag::class,Tag::class , 'tag_id', 'exhibit_id', 'tag_id');
     }
 
     /**

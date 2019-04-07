@@ -11,9 +11,6 @@ class TagTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tags')->insert([
-            'name' => 'dramatic',
-            'staff_id' => 1
-        ]);
+        factory(App\Models\Tag::class, 3)->create();
     }
 }

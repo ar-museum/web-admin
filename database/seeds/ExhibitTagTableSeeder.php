@@ -12,6 +12,6 @@ class ExhibitTagTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\ExhibitTag::class, 1)->create();
+        factory(App\Models\ExhibitTag::class, 3)->create();
     }
 }
