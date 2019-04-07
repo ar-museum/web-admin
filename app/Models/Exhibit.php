@@ -28,7 +28,7 @@ class Exhibit extends BaseModel
      * @var array
      */
     protected $hidden = [
-        'author_id'
+        'author_id', 'media_id'
     ];
 
     /** Relationship methods */

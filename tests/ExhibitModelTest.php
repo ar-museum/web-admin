@@ -23,7 +23,8 @@ class ExhibitModelTest extends TestCase
             'location' => 'Iasi',
             'author_id' => 1,
             'exposition_id' => 1,
-            'staff_id' => 1
+            'staff_id' => 1,
+            'media_id' => 1
         ]);
 
         /**
@@ -39,6 +40,7 @@ class ExhibitModelTest extends TestCase
         $this->assertObjectHasAttribute($exhibit->author_id, new Exhibit);
         $this->assertTrue(true, is_int($exhibit->exposition_id));
         $this->assertFalse(false, is_int($exhibit->exposition_id));
+        $this->assertTrue(true, is_int($exhibit->media_id));
 
         /**
          * Model creation
