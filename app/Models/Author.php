@@ -17,7 +17,7 @@ class Author extends BaseModel
      * The attributes that are mass assignable.
      *
      * @var array
-     */
+     */ 
     protected $fillable = [
        'full_name', 'born_year', 'died_year',  'location'
     ];
@@ -32,7 +32,7 @@ class Author extends BaseModel
 
     /** Relationship methods */
     public function staff(){
-        return $this->belongsTo(Staff::class);
+        return $this->belongsTo(Staff::class,'staff_id', 'staff_id');
     }
 
 
@@ -40,6 +40,10 @@ class Author extends BaseModel
         return $this->hasMany( Exhibit::class);
     }
 
+    public function photo(){
+        return $this->hasOne(Photo::class, 'photo_id', 'photo_id');
+
+    }
     /**
      * Scope a query to find last 5 expositions.
      *
