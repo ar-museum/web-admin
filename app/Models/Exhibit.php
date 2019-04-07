@@ -28,7 +28,7 @@ class Exhibit extends BaseModel
      * @var array
      */
     protected $hidden = [
-        'author_id'
+        'author_id', 'media_id'
     ];
 
     /** Relationship methods */
@@ -37,7 +37,7 @@ class Exhibit extends BaseModel
     }
 
     public function author(){
-        return $this->hasOne(Author::class);
+        return $this->belongsTo(Author::class);
     }
 
     public function exposition(){
@@ -48,17 +48,17 @@ class Exhibit extends BaseModel
         return $this->belongsTo(Guest::class);
     }
 
-    //@TODO: Fix the relationship.
     public function tag(){
-        return $this->belongsToMany(Tag::class);
+        return $this->hasMany(Tag::class);
     }
 
-    //@TODO: Fix the relationship.
     public function category(){
-        return $this->belongsToMany(Category::class);
+        return $this->hasMany(Category::class);
     }
 
-    //@TODO: Missing media.
+    public function media(){
+        return $this->hasOne(Media::class);
+    }
 
     /**
      * Scope a query to find last 5 expositions.

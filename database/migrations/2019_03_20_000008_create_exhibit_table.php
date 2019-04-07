@@ -40,6 +40,11 @@ class CreateExhibitTable extends Migration
             $table->foreign('staff_id')
                 ->references('staff_id')->on('staff')
                 ->onDelete('cascade');
+
+            $table->foreign('media_id')
+                ->references('media_id')->on('media')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
