@@ -78,3 +78,13 @@ $factory->define(App\Models\Museum::class, function (Faker\Generator $faker) {
         'closing_hour' => '21:00:00',
     ];
 });
+$factory->define(App\Models\Author::class, function (Faker\Generator $faker){
+    return [
+        'full_name' => 'Mihai Eminescu',
+        'born_year' => '1850',
+        'died_year' => '1889',
+        'location' => 'Ipotesti',
+        'photo_id' => 1,
+        'staff_id' =>1
+    ];
+});
