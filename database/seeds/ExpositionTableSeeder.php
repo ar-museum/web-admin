@@ -11,9 +11,7 @@ class ExpositionTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {        //insert data
-
-        factory(App\Models\Exposition::class, 2)->create();
-    	
+    {
+        factory(App\Models\Exposition::class, 1)->create();
     }
 }

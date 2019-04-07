@@ -56,8 +56,7 @@ class Exhibit extends BaseModel
 
     public function tag()
     {
-        return $this->hasManyThrough(Tag::class, ExhibitTag::class, 'tag_id', 'exhibit_id');
-        #return $this->hasMany(ExhibitTag::class, 'exhibit_id', 'exhibit_id');
+        return $this->hasManyThrough(Tag::class, ExhibitTag::class, 'exhibit_id', 'tag_id', 'exhibit_id');
     }
 
     public function category()

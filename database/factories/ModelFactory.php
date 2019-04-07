@@ -13,8 +13,6 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Exposition;
-use App\Models\Staff;
 use Faker\Generator;
 use Faker\Provider\Internet;
 
@@ -41,13 +39,16 @@ $factory->define(App\Models\Exposition::class, function (Faker\Generator $faker)
     ];
 });
 
-$factory->define(App\Models\ExhibitTag::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Author::class, function (Faker\Generator $faker) {
     return [
-        'exhibit_id' => 1,
-        'tag_id'     => 1,
+        'full_name' => 'Mihai Eminescu',
+        'born_year' => '1850',
+        'died_year' => '1889',
+        'location'  => 'Ipotesti',
+        'photo_id'  => 1,
+        'staff_id'  => 1,
     ];
 });
-
 
 $factory->define(App\Models\Exhibit::class, function (Faker\Generator $faker) {
     return [
@@ -78,20 +79,18 @@ $factory->define(App\Models\Museum::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\Author::class, function (Faker\Generator $faker){
+$factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
     return [
-        'full_name' => 'Mihai Eminescu',
-        'born_year' => '1850',
-        'died_year' => '1889',
-        'location' => 'Ipotesti',
-        'photo_id' => 1,
-        'staff_id' =>1
+        'name'     => $faker->words[0],
+        'staff_id' => 1,
     ];
 });
 
 $factory->define(App\Models\ExhibitTag::class, function (Faker\Generator $faker) {
     return [
         'exhibit_id' => 1,
-        'tag_id'     => 1,
+        'tag_id'     => function () {
+            return factory(App\Models\Tag::class)->create()->tag_id;
+        },
     ];
 });

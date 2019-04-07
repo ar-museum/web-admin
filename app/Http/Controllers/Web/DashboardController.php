@@ -15,6 +15,9 @@ class DashboardController extends Controller
     public function index()
     {
         #$dd = $this->staff->can("delete", []);
+        #$exhibits = Exhibit::with('tag')->get();
+        #$tags = Tag::with('exhibit')->get();
+
         return view('dashboard.index', [
             'expositions_no' => Exposition::all()->count(),
             'exhibits_no' => Exhibit::all()->count(),
