@@ -62,9 +62,9 @@ $factory->define(App\Models\Exhibit::class, function (Faker\Generator $faker) {
         'author_id'         => 1,
         'exposition_id'     => 1,
         'staff_id'          => 1,
-        'audio_id'          => 1,
+        'audio_id'          => 2,
         'photo_id'          => 1,
-        'video_id'          => 1,
+        'video_id'          => 3,
     ];
 });
 
@@ -86,11 +86,27 @@ $factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name'     => $faker->words[0],
+        'staff_id' => 1,
+    ];
+});
+
 $factory->define(App\Models\ExhibitTag::class, function (Faker\Generator $faker) {
     return [
         'exhibit_id' => 1,
         'tag_id'     => function () {
             return factory(App\Models\Tag::class)->create()->tag_id;
+        },
+    ];
+});
+
+$factory->define(App\Models\ExhibitCategory::class, function (Faker\Generator $faker) {
+    return [
+        'exhibit_id' => 1,
+        'category_id'     => function () {
+            return factory(App\Models\Category::class)->create()->category_id;
         },
     ];
 });
