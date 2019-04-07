@@ -35,7 +35,7 @@ class Author extends BaseModel
         return $this->belongsTo(Staff::class);
     }
 
-    //@TODO: Fix the relationship with exhibit.
+
     public function exhibit(){
         return $this->hasMany( Exhibit::class);
     }

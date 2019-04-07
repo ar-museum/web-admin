@@ -76,6 +76,17 @@ $factory->define(App\Models\Museum::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Author::class, function (Faker\Generator $faker){
+    return [
+        'full_name' => 'Mihai Eminescu',
+        'born_year' => '1850',
+        'died_year' => '1889',
+        'location' => 'Ipotesti',
+        'photo_id' => 1,
+        'staff_id' =>1
+    ];
+});
+
 $factory->define(App\Models\ExhibitTag::class, function (Faker\Generator $faker) {
     return [
         'exhibit_id' => 1,
