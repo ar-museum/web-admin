@@ -52,23 +52,23 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);">
-                            <i class="fa fa-camera-retro"></i> Expozitii create <span class="label label-primary pull-right r-activity">11</span></a>
+                            <i class="fa fa-camera-retro"></i> Expozitii <span class="label label-primary pull-right r-activity">11</span></a>
                     </li>
                     <li>
                         <a href="javascript:void(0);">
-                            <i class="fa fa-picture-o"></i> Exponate create <span class="label label-danger pull-right r-activity">11</span></a>
+                            <i class="fa fa-picture-o"></i> Exponate <span class="label label-danger pull-right r-activity">11</span></a>
                     </li>
                     <li>
                         <a href="javascript:void(0);">
-                            <i class="fa fa-male"></i> Autori creati <span class="label label-warning pull-right r-activity">11</span></a>
+                            <i class="fa fa-male"></i> &nbsp;&nbsp;Autori <span class="label label-warning pull-right r-activity">11</span></a>
                     </li>
                     <li>
                         <a href="javascript:void(0);">
-                            <i class="fa fa-tasks"></i> Categorii create <span class="label label-default pull-right r-activity">11</span></a>
+                            <i class="fa fa-tasks"></i> Categorii <span class="label label-default pull-right r-activity">11</span></a>
                     </li>
                     <li>
                         <a href="javascript:void(0);">
-                            <i class="fa fa-tags"></i> Etichete create <span class="label label-inverse pull-right r-activity">11</span></a>
+                            <i class="fa fa-tags"></i> Etichete <span class="label label-inverse pull-right r-activity">11</span></a>
                     </li>
                 </ul>
             </section>
