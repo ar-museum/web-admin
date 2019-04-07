@@ -20,7 +20,7 @@ class Exhibit extends BaseModel
      */
     protected $fillable
         = [
-            'title', 'short_description', 'description', 'start_year', 'end_year', 'size', 'location', 'author_id'
+            'title', 'short_description', 'description', 'start_year', 'end_year', 'size', 'location',
         ];
 
     /**
@@ -30,7 +30,7 @@ class Exhibit extends BaseModel
      */
     protected $hidden
         = [
-
+            'author_id', 'photo_id', 'audio_id', 'video_id',
         ];
 
     /** Relationship methods */

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Audio extends Migration
+class CreateExhibitCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class Audio extends Migration
      */
     public function up()
     {
-        Schema::create('audio', function (Blueprint $table) {
-            $table->increments('audio_id');
-            $table->double('length');
+        Schema::create('exhibit_categories', function (Blueprint $table) {
+            $table->unsignedInteger('exhibit_id');
+            $table->unsignedInteger('category_id');
+
+            $table->primary(['exhibit_id', 'category_id']);
+
             $table->timestamps();
-            $table->foreign('audio_id')
-                ->references('media_id')
-                ->on('media')
-                ->onDelete('cascade');
         });
     }
 
@@ -31,6 +30,6 @@ class Audio extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('audio');
+        Schema::dropIfExists('exhibit_categories');
     }
 }

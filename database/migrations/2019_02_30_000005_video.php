@@ -16,11 +16,11 @@ class Video extends Migration
         Schema::create('video', function (Blueprint $table) {
             $table->increments('video_id');
             $table->double('length');
+            $table->timestamps();
             $table->foreign('video_id')
                 ->references('media_id')
                 ->on('media')
                 ->onDelete('cascade');
-            $table->timestamps();
         });
     }
     /**

@@ -289,6 +289,7 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
         'CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoryTableSeeder.php',
         'CreateAuthorTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_20_000006_create_author_table.php',
         'CreateCategoryTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_31_000000_create_category_table.php',
+        'CreateExhibitCategoryTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_20_000010_create_exhibit_category_table.php',
         'CreateExhibitTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_20_000009_create_exhibit_table.php',
         'CreateExhibitTagTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_20_000009_create_exhibit_tag_table.php',
         'CreateMuseumTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_11_195027_create_museum_table.php',

@@ -11,6 +11,7 @@ return array(
     'CategoryTableSeeder' => $baseDir . '/database/seeds/CategoryTableSeeder.php',
     'CreateAuthorTable' => $baseDir . '/database/migrations/2019_03_20_000006_create_author_table.php',
     'CreateCategoryTable' => $baseDir . '/database/migrations/2019_03_31_000000_create_category_table.php',
+    'CreateExhibitCategoryTable' => $baseDir . '/database/migrations/2019_03_20_000010_create_exhibit_category_table.php',
     'CreateExhibitTable' => $baseDir . '/database/migrations/2019_03_20_000009_create_exhibit_table.php',
     'CreateExhibitTagTable' => $baseDir . '/database/migrations/2019_03_20_000009_create_exhibit_tag_table.php',
     'CreateMuseumTable' => $baseDir . '/database/migrations/2019_03_11_195027_create_museum_table.php',

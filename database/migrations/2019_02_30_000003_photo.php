@@ -23,10 +23,6 @@ class Photo extends Migration
                 ->on('media')
                 ->onDelete('cascade');
 
-            /*$table->foreign('photo_id')
-                ->references('photo_id')
-                ->on('staff')
-                ->onDelete('cascade');*/
             $table->timestamps();
         });
     }
