@@ -42,19 +42,19 @@ Route::group([
     Route::get('/profil', [
         'as'         => 'profile',
         'middleware' => ['auth'],
-        'uses'       => 'LoginController@profile',
+        'uses'       => 'AuthController@profile',
     ]);
 
     Route::any('/setari', [
         'as'         => 'settings',
         'middleware' => ['auth'],
-        'uses'       => 'LoginController@settings',
+        'uses'       => 'AuthController@settings',
     ]);
 
     Route::post('/setari/schimba-parola', [
         'as'         => 'settings_password',
         'middleware' => ['auth'],
-        'uses'       => 'LoginController@settingsPassword',
+        'uses'       => 'AuthController@settingsPassword',
     ]);
 
     Route::post('/parola', [
