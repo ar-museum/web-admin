@@ -6,14 +6,16 @@ use App\BaseModel;
 
 class Museum extends BaseModel
 {
-    protected $primaryKey = 'name';
+    protected $table = 'museum';
+
+    protected $primaryKey = 'museum_id';
+
     protected $fillable = [
         'museum_id','name', 'address', 'opening_hour', 'closing_hour'
     ];
-    // @TODO: Add missing id column
 
     public function exposition()
     {
-        return $this->hasMany(Exposition::class);
+        return $this->hasMany(Exposition::class, 'museum_id', 'museum_id');
     }
 }

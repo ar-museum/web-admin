@@ -88,7 +88,7 @@
                                         <a href="#">{{ $exposition->title }}</a>
                                     </td>
                                     <td>{{ $exposition->description }}</td>
-                                    <td class="hidden-phone">{{ $exposition->museum_id }}</td>
+                                    <td class="hidden-phone">{{ $exposition->museum->name }}</td>
                                     <td>-</td>
                                 </tr>
                             @endforeach

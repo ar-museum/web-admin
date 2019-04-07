@@ -19,7 +19,7 @@ class DashboardController extends Controller
             'expositions_no' => Exposition::all()->count(),
             'exhibits_no' => Exhibit::all()->count(),
             'authors_no' => Author::all()->count(),
-            'expositions' => Exposition::lastFive()->get(),
+            'expositions' => Exposition::with('museum')->lastFive()->get(),
             'exhibits' => Exhibit::lastFive()->get(),
             'authors' => Author::lastFive()->get(),
             'media' => Media::lastFive()->get(),

@@ -18,7 +18,7 @@ class Exposition extends BaseModel
 
     public function museum()
     {
-        return $this->belongsTo(Museum::class);
+        return $this->belongsTo(Museum::class, 'museum_id', 'exposition_id');
     }
 
     public function staff()
