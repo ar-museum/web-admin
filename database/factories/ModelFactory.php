@@ -13,6 +13,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Models\Exposition;
 use App\Models\Staff;
 use Faker\Generator;
 use Faker\Provider\Internet;
@@ -44,17 +45,18 @@ $factory->define(App\Models\Exposition::class, function (Faker\Generator $faker)
     ];
 });
 
-$factory->define(App\Models\Exhibit::class, function (Faker\Generator $faker){
+
+$factory->define(App\Models\Museum::class, function (Faker\Generator $faker) {
+    static $password;
+    Internet::$freeEmailDomain = array('museum.lc');
+
     return [
-        'title' => 'Floare albastra',
-        'short_description' => 'So deep!',
-        'description' => 'Cea mai splendida poezie ever!',
-        'start_year' => '1873',
-        'end_year' => '2019',
-        'size' => '20x30cm',
-        'location' => 'Iasi',
-        'author_id' => 1,
-        'exposition_id' => 1,
-        'staff_id' => 1
+
+        'museum_id' => 1,
+        'name' => 'Mihai Eminescu Museum',
+        'museum_id' => 1,
+        'address' => 'Copou Iasi',
+        'opening_hour' => '08:00:00',
+        'closing_hour' => '21:00:00',
     ];
 });
