@@ -11,7 +11,7 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
+        /*DB::table('categories')->insert([
             'category_id' => 1,
             'name' => 'Poezie',
             'staff_id' => 1
@@ -27,6 +27,7 @@ class CategoryTableSeeder extends Seeder
             'category_id' => 3,
             'name' => 'Balada',
             'staff_id' => 3
-        ]);
+        ]);*/
+        factory(App\Models\Category::class, 3)->create();
     }
 }
