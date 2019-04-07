@@ -18,11 +18,13 @@ class DatabaseSeeder extends Seeder
         $this->call(MediaTableSeeder::class);
         $this->call(MuseumTableSeeder::class);
 
-        $this->call(AuthorSeeder::class);
-        $this->call(ExpositionSeeder::class);
-        $this->call(ExhibitTableSeeder::class);
-        $this->call(CategoryTableSeeder::class);
+        $this->call(AuthorTableSeeder::class);
+        $this->call(ExpositionTableSeeder::class);
+
         $this->call(TagTableSeeder::class);
+        $this->call(ExhibitTableSeeder::class);
+        $this->call(ExhibitTagTableSeeder::class);
+        $this->call(CategoryTableSeeder::class);
 
         Model::reguard();
     }

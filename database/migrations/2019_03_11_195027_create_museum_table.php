@@ -20,6 +20,8 @@ class CreateMuseumTable extends Migration
             $table->string('address');
             $table->time('opening_hour');
             $table->time('closing_hour');
+
+            $table->timestamps();
         });
     }
 

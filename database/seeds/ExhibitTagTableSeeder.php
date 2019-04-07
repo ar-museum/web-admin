@@ -3,7 +3,7 @@
 use App\Models\Exposition;
 use Illuminate\Database\Seeder;
 
-class ExpositionSeeder extends Seeder
+class ExhibitTagTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,7 @@ class ExpositionSeeder extends Seeder
      * @return void
      */
     public function run()
-    {        //insert data
-
-        factory(App\Models\Exposition::class, 2)->create();
-    	
+    {
+        factory(App\Models\ExhibitTag::class, 1)->create();
     }
 }

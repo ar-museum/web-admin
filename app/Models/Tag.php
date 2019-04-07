@@ -24,7 +24,7 @@ class Tag extends BaseModel
 
     //@TODO: Fix the relationship.
     public function exhibit(){
-        return $this->hasMany(Exhibit::class);
+        return $this->hasMany(ExhibitTag::class, 'tag_id', 'tag_id');
     }
 
     /**

@@ -23,58 +23,62 @@ $factory->define(App\Models\Staff::class, function (Faker\Generator $faker) {
     Internet::$freeEmailDomain = array('museum.lc');
 
     return [
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
-        'email' => $faker->unique()->freeEmail,
-        'password' => $password ?: $password = bcrypt('parola'),
+        'first_name'     => $faker->firstName,
+        'last_name'      => $faker->lastName,
+        'email'          => $faker->unique()->freeEmail,
+        'password'       => $password ?: $password = bcrypt('parola'),
         'remember_token' => str_random(10),
     ];
 });
 
 
 $factory->define(App\Models\Exposition::class, function (Faker\Generator $faker) {
-    static $password;
-    Internet::$freeEmailDomain = array('museum.lc');
-
     return [
+        'title'       => 'Carti Mihai Eminescu',
+        'description' => 'Cea mai veche carte',
+        'museum_id'   => 1,
+        'staff_id'    => 1,
+    ];
+});
 
-            'title' => 'Carti Mihai Eminescu',
-            'description' => 'Cea mai veche carte',
-            'museum_id' => 1,
-            'staff_id' => 1,
+$factory->define(App\Models\ExhibitTag::class, function (Faker\Generator $faker) {
+    return [
+        'exhibit_id' => 1,
+        'tag_id'     => 1,
     ];
 });
 
 
 $factory->define(App\Models\Exhibit::class, function (Faker\Generator $faker) {
-
     return [
-        'title' => 'Floare albastra',
+        'title'             => 'Floare albastra',
         'short_description' => 'So deep!',
-        'description' => 'Cea mai splendida poezie ever!',
-        'start_year' => '1873',
-        'end_year' => '2019',
-        'size' => '20x30cm',
-        'location' => 'Iasi',
-        'author_id' => 1,
-        'exposition_id' => 1,
-        'staff_id' => 1,
-        'media_id' => 1
+        'description'       => 'Cea mai splendida poezie ever!',
+        'start_year'        => '1873',
+        'end_year'          => '2019',
+        'size'              => '20x30cm',
+        'location'          => 'Iasi',
+        'author_id'         => 1,
+        'exposition_id'     => 1,
+        'staff_id'          => 1,
+        #'media_id'          => 1,
     ];
 });
 
 
 $factory->define(App\Models\Museum::class, function (Faker\Generator $faker) {
-    static $password;
-    Internet::$freeEmailDomain = array('museum.lc');
-
     return [
-
-        'museum_id' => 1,
-        'name' => 'Mihai Eminescu Museum',
-        'museum_id' => 1,
-        'address' => 'Copou Iasi',
+        'museum_id'    => 1,
+        'name'         => 'Mihai Eminescu Museum',
+        'address'      => 'Copou Iasi',
         'opening_hour' => '08:00:00',
         'closing_hour' => '21:00:00',
+    ];
+});
+
+$factory->define(App\Models\ExhibitTag::class, function (Faker\Generator $faker) {
+    return [
+        'exhibit_id' => 1,
+        'tag_id'     => 1,
     ];
 });

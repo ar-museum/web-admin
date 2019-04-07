@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Database\Seeder;
 
-class AuthorSeeder extends Seeder
+class AuthorTableSeeder extends Seeder
 {
 
     /**

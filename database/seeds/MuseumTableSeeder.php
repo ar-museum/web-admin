@@ -11,6 +11,6 @@ class MuseumTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Museum::class, 5)->create();
+        factory(App\Models\Museum::class, 1)->create();
     }
 }

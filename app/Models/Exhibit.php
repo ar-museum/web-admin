@@ -18,45 +18,55 @@ class Exhibit extends BaseModel
      *
      * @var array
      */
-    protected $fillable = [
-        'title', 'short_description', 'description', 'start_year', 'end_year', 'size', 'location',
-    ];
+    protected $fillable
+        = [
+            'title', 'short_description', 'description', 'start_year', 'end_year', 'size', 'location',
+        ];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'author_id', 'media_id'
-    ];
+    protected $hidden
+        = [
+            'author_id', 'media_id',
+        ];
 
     /** Relationship methods */
-    public function staff(){
+    public function staff()
+    {
         return $this->belongsTo(Staff::class);
     }
 
-    public function author(){
+    public function author()
+    {
         return $this->belongsTo(Author::class);
     }
 
-    public function exposition(){
+    public function exposition()
+    {
         return $this->belongsTo(Exposition::class);
     }
 
-    public function guest(){
+    public function guest()
+    {
         return $this->belongsTo(Guest::class);
     }
 
-    public function tag(){
-        return $this->hasMany(Tag::class);
+    public function tag()
+    {
+        return $this->hasManyThrough(Tag::class, ExhibitTag::class, 'tag_id', 'exhibit_id');
+        #return $this->hasMany(ExhibitTag::class, 'exhibit_id', 'exhibit_id');
     }
 
-    public function category(){
+    public function category()
+    {
         return $this->hasMany(Category::class);
     }
 
-    public function media(){
+    public function media()
+    {
         return $this->hasOne(Media::class);
     }
 
@@ -64,6 +74,7 @@ class Exhibit extends BaseModel
      * Scope a query to find last 5 expositions.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query_obj
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeLastFive($query_obj)

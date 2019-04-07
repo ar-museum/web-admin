@@ -89,7 +89,7 @@
                                     </td>
                                     <td>{{ $exposition->description }}</td>
                                     <td class="hidden-phone">{{ $exposition->museum->name }}</td>
-                                    <td>-</td>
+                                    <td>{!! $exposition->created_at !!}</td>
                                 </tr>
                             @endforeach
                             </tbody>
