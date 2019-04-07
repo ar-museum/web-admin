@@ -17,7 +17,7 @@ use Faker\Generator;
 use Faker\Provider\Internet;
 
 $factory->define(App\Models\Staff::class, function (Faker\Generator $faker) {
-    static $password;
+    /*static $password;
     Internet::$freeEmailDomain = array('museum.lc');
 
     return [
@@ -25,6 +25,13 @@ $factory->define(App\Models\Staff::class, function (Faker\Generator $faker) {
         'last_name'      => $faker->lastName,
         'email'          => $faker->unique()->freeEmail,
         'password'       => $password ?: $password = bcrypt('parola'),
+        'remember_token' => str_random(10),
+    ];*/
+    return [
+        'first_name'     => 'Gigel',
+        'last_name'      => 'Popescu',
+        'email'          => 'gigel@museum.lc',
+        'password'       => bcrypt('parola'),
         'remember_token' => str_random(10),
     ];
 });

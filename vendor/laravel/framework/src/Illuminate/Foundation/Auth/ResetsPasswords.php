@@ -23,7 +23,7 @@ trait ResetsPasswords
      */
     public function showResetForm($token)
     {
-        return view('auth.change-pass', [
+        return view('login.change-pass', [
             'token' => $token,
         ]);
     }

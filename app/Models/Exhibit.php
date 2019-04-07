@@ -72,7 +72,7 @@ class Exhibit extends BaseModel
 
     public function photo()
     {
-        return $this->hasOne(Photo::class, 'photo_id', 'photo_id');
+        return $this->hasManyThrough(Photo::class, Media::class,'media_id', 'photo_id', 'photo_id');
     }
 
     public function video()
