@@ -22,6 +22,9 @@ class Tag extends BaseModel
         'name'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
     public function exhibit()
     {
         return $this->hasManyThrough(ExhibitTag::class,Tag::class , 'tag_id', 'exhibit_id', 'tag_id');
