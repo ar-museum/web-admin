@@ -16,11 +16,11 @@ class Audio extends Migration
         Schema::create('audio', function (Blueprint $table) {
             $table->increments('audio_id');
             $table->double('length');
+            $table->timestamps();
             $table->foreign('audio_id')
                 ->references('media_id')
                 ->on('media')
                 ->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

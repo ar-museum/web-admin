@@ -6,18 +6,32 @@ use App\BaseModel;
 
 class Media extends BaseModel
 {
+    protected $table = 'media';
+
+    protected $primaryKey = 'media_id';
+
     protected $fillable = ['path'];
 
     protected $hidden = [];
 
-    //@TODO: Fix the relationship.
     public function exhibit(){
-        return $this->hasOne(Exhibit::class);
+        return $this->belongsToMany(Exhibit::class);
     }
 
-    //@TODO: Fix the relationship.
     public function exposition(){
-        return $this->hasOne(Exposition::class);
+        return $this->belongsToMany(Exposition::class);
+    }
+
+    public function photo(){
+        return $this->hasMany(Photo::class);
+    }
+
+    public function audio(){
+        return $this->hasMany(Audio::class);
+    }
+
+    public function video(){
+        return $this->hasMany(Video::class);
     }
 
     /**

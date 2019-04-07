@@ -6,12 +6,18 @@ use App\BaseModel;
 
 class Audio extends BaseModel
 {
-    protected $fillable = ['length'];
+    protected $table = 'audio';
+
+    protected $fillable = ['audio_id','length'];
 
     protected $hidden = [];
 
-    //@TODO: Fix the relationship.
+    /* Relationship methods */
     public function media(){
-        return $this->hasOne(Media::class);
+        return $this->belongsTo(Media::class);
+    }
+
+    public function exhibit(){
+        return $this->belongsTo(Exhibit::class, 'audio_id', 'audio_id');
     }
 }

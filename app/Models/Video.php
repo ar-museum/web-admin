@@ -6,12 +6,18 @@ use App\BaseModel;
 
 class Video extends BaseModel
 {
-    protected $fillable = ['length'];
+    protected $table = 'video';
+
+    protected $fillable = ['video_id','length'];
 
     protected $hidden = [];
 
-    //@TODO: Fix the relationship.
+    /* Relationship methods */
     public function media(){
-        return $this->hasOne(Media::class);
+        return $this->belongsTo(Media::class);
+    }
+
+    public function exhibit(){
+        return $this->belongsTo(Exhibit::class, 'video_id', 'video_id');
     }
 }
