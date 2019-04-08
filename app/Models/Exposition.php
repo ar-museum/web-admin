@@ -23,18 +23,25 @@ class Exposition extends BaseModel
 
     public function staff()
     {
-        return $this->belongsTo(Staff::class);
+        return $this->belongsTo(Staff::class,'staff_id','staff_id');
     }
 
     public function exhibit()
     {
-        return $this->hasMany(Exhibit::class);
+        return $this->hasMany(Exhibit::class,'exhibit_id','exhibit_id');
     }
 
-    public function media()
+/*    public function media()
     {
         return $this->hasOne(Media::class);
+    }*/
+
+
+    public function photo()
+    {
+        return $this->hasManyThrough(Photo::class, Media::class,'media_id', 'photo_id', 'photo_id');
     }
+
 
     /**
      * Scope a query to find last 5 expositions.

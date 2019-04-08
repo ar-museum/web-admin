@@ -19,14 +19,20 @@ class Exposition extends Migration
             $table->string('description');
             $table->unsignedInteger('museum_id');
             $table->unsignedInteger('staff_id');
+            $table->unsignedInteger('photo_id');
+
             $table->timestamps();
             $table->foreign('museum_id')
-                  ->references('museum_id')->on('museum')
-                  ->onDelete('cascade');
+                ->references('museum_id')->on('museum')
+                ->onDelete('cascade');
 
             $table->foreign('staff_id')
-                  ->references('staff_id')->on('staff')
-                  ->onDelete('cascade');
+                ->references('staff_id')->on('staff')
+                ->onDelete('cascade');
+
+            $table->foreign('photo_id')
+                ->references('photo_id')->on('photo')
+                ->onDelete('cascade');
         });
     }
 

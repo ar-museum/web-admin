@@ -110,6 +110,7 @@ $factory->define(App\Models\Exposition::class, function (Faker\Generator $faker)
         'description' => 'Cea mai veche carte',
         'museum_id'   => 1,
         'staff_id'    => 1,
+        'photo_id'    => 1,
     ];
 });
 
