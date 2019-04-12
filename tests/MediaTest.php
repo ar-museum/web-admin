@@ -30,17 +30,17 @@ class MediaTest extends TestCase
 
         /** photo */
         $photo = factory(App\Models\Photo::class)->make([
-            'width' => '10',
-            'height' => '20'
+            'width' => 10,
+            'height' => 20
         ]);
         $this->assertLessThan(10000000000, $photo->width);
         $this->assertLessThan(10000000000, $photo->height);
         $this->assertNotEmpty($photo->width);
         $this->assertNotEquals('', $photo->width);
-        $this->assertEquals('10', $photo->width);
+        $this->assertEquals(10, $photo->width);
         $this->assertNotEmpty($photo->height);
-        $this->assertNotEquals('', $photo->height);
-        $this->assertEquals('20', $photo->height);
+        $this->assertNotEquals(null, $photo->height);
+        $this->assertEquals(20, $photo->height);
         /** Model creation Photo*/
         $this->assertFileExists('App/Models/Photo.php');
         $this->assertInstanceOf(Photo::class, new Photo);
@@ -48,9 +48,9 @@ class MediaTest extends TestCase
 
         /** audio */
         $audio = factory(App\Models\Audio::class)->make([
-            'length' => '2.5'
+            'length' => 2.5
         ]);
-        $this->assertEquals('2.5', $audio->length);
+        $this->assertEquals(2.5, $audio->length);
         $this->assertNotEmpty($audio->length);
         /** Model creation Audio*/
         $this->assertFileExists('App/Models/Audio.php');
@@ -59,9 +59,9 @@ class MediaTest extends TestCase
 
         /** video */
         $video = factory(App\Models\Video::class)->make([
-            'length' => '3.47'
+            'length' => 3.47
         ]);
-        $this->assertEquals('3.47', $video->length);
+        $this->assertEquals(3.47, $video->length);
         $this->assertNotEmpty($video->length);
         /** Model creation Video*/
         $this->assertFileExists('App/Models/Video.php');

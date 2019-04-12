@@ -89,4 +89,12 @@ class Staff extends Authenticatable
     {
         return $this->hasMany(Author::class, 'staff_id');
     }
+
+    /**
+     * Get the photos added by staff.
+     */
+    public function photo()
+    {
+        return $this->hasManyThrough(Photo::class, Media::class,'media_id', 'photo_id', 'photo_id');
+    }
 }
