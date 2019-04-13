@@ -20,6 +20,13 @@ Route::get('/', [
     'uses'       => 'Web\DashboardController@index',
 ]);
 
+Route::get('/report', [
+    'as'         => 'report',
+    'uses'       => function() {
+        return File::get(public_path() . '/report/index.html');
+    },
+]);
+
 Route::group([
                  'namespace' => 'Auth',
              ], function () {

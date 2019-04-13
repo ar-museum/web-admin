@@ -21,6 +21,7 @@ class Exhibit extends BaseModel
     protected $fillable
         = [
             'title', 'short_description', 'description', 'start_year', 'end_year', 'size', 'location',
+            'exposition_id', 'author_id', 'photo_id', 'audio_id', 'video_id'
         ];
 
     /**
@@ -72,7 +73,7 @@ class Exhibit extends BaseModel
 
     public function photo()
     {
-        return $this->hasManyThrough(Photo::class, Media::class,'media_id', 'photo_id', 'photo_id');
+        return $this->hasManyThrough(Photo::class, Media::class, 'media_id', 'photo_id', 'photo_id');
     }
 
     public function video()
@@ -95,6 +96,6 @@ class Exhibit extends BaseModel
     public function scopeLastFive($query_obj)
     {
         return $query_obj->orderBy('exhibit_id', 'desc')
-            ->take(5);
+                         ->take(5);
     }
 }

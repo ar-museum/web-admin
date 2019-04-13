@@ -121,8 +121,8 @@
         <!-- footer start -->
         <footer class="site-footer">
             <div class="text-center">
-                AR Museun CRM &copy; 2019
-                <a href="javascript:;" class="go-top">
+                AR Museum WebAdmin &copy; 2019
+                <a href="javascript:void(0);" class="go-top">
                     <i class="fa fa-angle-up"></i>
                 </a>
             </div>
@@ -134,7 +134,7 @@
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="{!! asset('/js/core/jquery.min.js') !!}"></script>
 <script src="{!! asset('/js/core/bootstrap.min.js') !!}"></script>
-<script class="include" src="{!! asset('/js/core/jquery.dcjqaccordion.2.7.min.js') !!}"></script>
+<script src="{!! asset('/js/core/jquery.dcjqaccordion.2.7.min.js') !!}"></script>
 <script src="{!! asset('/js/core/jquery.scrollTo.min.js') !!}"></script>
 <script src="{!! asset('/js/core/jquery.nicescroll.min.js') !!}"></script>
 <script src="{!! asset('/js/core/respond.min.js') !!}"></script>
