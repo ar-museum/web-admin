@@ -95,19 +95,19 @@ $factory->define(App\Models\Author::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\Exhibit::class, function (Faker\Generator $faker) {
     return [
-        'title'             => 'Floare albastra',
-        'short_description' => 'So deep!',
-        'description'       => 'Cea mai splendida poezie ever!',
-        'start_year'        => '1873',
-        'end_year'          => '2019',
-        'size'              => '20x30cm',
-        'location'          => 'Iasi',
-        'author_id'         => 1,
-        'exposition_id'     => 1,
-        'staff_id'          => 1,
-        'audio_id'          => 2,
-        'photo_id'          => 1,
-        'video_id'          => 3,
+        'title'             => $params['title'] ?? 'Floare Albastra',
+        'short_description' => $params['short_description'] ?? 'So deep!',
+        'description'       => $params['description'] ?? 'Cea mai splendida poezie ever!',
+        'start_year'        => $params['start_year'] ?? '1873',
+        'end_year'          => $params['end_year'] ?? '2019',
+        'size'              => $params['size'] ?? '20x30cm',
+        'location'          => $params['location'] ?? 'Iasi',
+        'author_id'         => $params['author_id'] ?? 1,
+        'exposition_id'     => $params['exposition_id'] ?? 1,
+        'staff_id'          => $params['staff_id'] ?? 1,
+        'audio_id'          => $params['audio_id'] ?? 2,
+        'photo_id'          => $params['photo_id'] ?? 1,
+        'video_id'          => $params['video_id'] ?? 3,
     ];
 });
 
