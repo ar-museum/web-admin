@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use App\BaseModel;
+use Illuminate\Notifications\Notifiable;
 
 class Exhibit extends BaseModel
 {
+    use Notifiable;
+
+
     /**
      * The primary key for the model.
      *
@@ -40,25 +44,25 @@ class Exhibit extends BaseModel
         return $this->belongsTo(Staff::class, 'staff_id', 'staff_id');
     }
 
-    public function author()
+    public function authors()
     {
         return $this->belongsTo(Author::class, 'author_id', 'author_id');
     }
 
-    public function exposition()
+    public function expositions()
     {
         return $this->belongsTo(Exposition::class, 'exposition_id', 'exposition_id');
     }
 
-    public function guest()
+    /* public function guest()
     {
         return $this->belongsTo(Guest::class);
-    }
+    } */
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function tag()
+    public function tags()
     {
         return $this->hasManyThrough(Tag::class, ExhibitTag::class, 'exhibit_id', 'tag_id', 'exhibit_id');
     }
@@ -66,7 +70,7 @@ class Exhibit extends BaseModel
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function category()
+    public function categories()
     {
         return $this->hasManyThrough(Category::class, ExhibitCategory::class, 'exhibit_id', 'category_id', 'exhibit_id');
     }

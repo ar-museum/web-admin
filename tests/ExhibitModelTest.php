@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ExhibitModelTest extends TestCase
 {
+    use DatabaseTransactions;
 
     private $tempExhibit;
 
@@ -37,9 +38,7 @@ class ExhibitModelTest extends TestCase
         ];
     }
 
-    /**
-     * Rows validation
-     */
+
 
     public function testCreatingModel()
     {
@@ -95,7 +94,7 @@ class ExhibitModelTest extends TestCase
 
         $this->assertNull($tempExhibit->expositions()->first());
 
-        $exhibit = \App\Models\Exhibit::find(1);
+        $exhibit = Exhibit::find(1);
 
         $exposition = new \App\Models\Exposition([
             'title'       => 'Literatura contemporana',
@@ -117,11 +116,11 @@ class ExhibitModelTest extends TestCase
     {
         $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
 
-        $this->assertNull($tempExhibit->exhibits()->first());
+        $this->assertNull($tempExhibit->categories()->first());
 
-        $exhibit = \App\Models\Exhibit::find(1);
+        $exhibit = Exhibit::find(1);
 
-        $category = new \App\Models\Category(['name' => 'Litaraturi']);
+        $category = new App\Models\Category(['name' => 'Litaraturi']);
 
         $exhibit->categories()->save($category);
 
@@ -137,11 +136,11 @@ class ExhibitModelTest extends TestCase
     {
         $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
 
-        $this->assertNull($tempExhibit->exhibits()->first());
+        $this->assertNull($tempExhibit->tags()->first());
 
-        $exhibit = \App\Models\Exhibit::find(1);
+        $exhibit = Exhibit::find(1);
 
-        $tag = new \App\Models\Tag(['name' => 'Poezii']);
+        $tag = new App\Models\Tag(['name' => 'Poezii']);
 
         $exhibit->tags()->save($tag);
 
@@ -157,7 +156,7 @@ class ExhibitModelTest extends TestCase
     {
         $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
 
-        $this->assertNull($tempExhibit->exhibits()->first());
+        $this->assertNull($tempExhibit->authors()->first());
 
         $exhibit = \App\Models\Exhibit::find(1);
 
@@ -183,11 +182,11 @@ class ExhibitModelTest extends TestCase
     {
         $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
 
-        $this->assertNull($tempExhibit->exhibits()->first());
+        $this->assertNull($tempExhibit->staff()->first());
 
-        $exhibit = \App\Models\Exhibit::find(1);
+        $exhibit = Exhibit::find(1);
 
-        $staff = new \App\Models\Staff([
+        $staff = new App\Models\Staff([
             'first_name'     => 'Vasile',
             'last_name'      => 'Popescu',
             'email'          => 'gigel@museum.lc',
@@ -203,6 +202,73 @@ class ExhibitModelTest extends TestCase
         $this->assertCount(2, $staff->toArray());
 
         $this->assertEquals($staff->toArray(), $exhibit->staff()->orderBy('staff_id', 'desc')->first()->toArray());
+    }
+
+    public function testPhotoRelationships()
+    {
+        $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
+
+        $this->assertNull($tempExhibit->photo()->first());
+
+        $exhibit = Exhibit::find(1);
+
+        $photo = new App\Models\Photo([
+            'width'   => 30,
+            'height'  => 50,
+        ]);
+
+        $exhibit->photo()->save($photo);
+
+        $photo = $exhibit->photo()->get();
+
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exhibit->photo()->get());
+        $this->assertCount(2, $photo->toArray());
+
+        $this->assertEquals($photo->toArray(), $exhibit->photo()->orderBy('staff_id', 'desc')->first()->toArray());
+    }
+
+    public function testAudioRelationships()
+    {
+        $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
+
+        $this->assertNull($tempExhibit->audio()->first());
+
+        $exhibit = Exhibit::find(1);
+
+        $audio = new App\Models\Audio([
+            'length' => 50,
+        ]);
+
+        $exhibit->audio()->save($audio);
+
+        $audio = $exhibit->audio()->get();
+
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exhibit->audio()->get());
+        $this->assertCount(2, $audio->toArray());
+
+        $this->assertEquals($audio->toArray(), $exhibit->audio()->orderBy('staff_id', 'desc')->first()->toArray());
+    }
+
+    public function testVideoRelationships()
+    {
+        $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
+
+        $this->assertNull($tempExhibit->video()->first());
+
+        $exhibit = Exhibit::find(1);
+
+        $video = new App\Models\Video([
+            'length' => 80,
+        ]);
+
+        $exhibit->video()->save($video);
+
+        $video = $exhibit->video()->get();
+
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exhibit->video()->get());
+        $this->assertCount(2, $video->toArray());
+
+        $this->assertEquals($video->toArray(), $exhibit->video()->orderBy('staff_id', 'desc')->first()->toArray());
     }
 
 }
