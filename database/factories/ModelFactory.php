@@ -42,38 +42,6 @@ $factory->define(App\Models\Media::class, function (Faker\Generator $faker, $par
     return [
         'path' => $params['path'],
     ];
-    /*
-    //insert first element
-    $id = DB::table('media')->insertGetId([
-        'path' => '/resources/Media/Photo/photo1.jpg'
-    ]),
-
-    DB::table('photo')->insert([
-        'photo_id' => $id,
-        'width' => '10',
-        'height' => '20',
-    ]),
-
-    //insert second element
-    $id = DB::table('media')->insertGetId([
-        'path' => '/resources/Media/Audio/audio1.mp3'
-    ]),
-
-    DB::table('audio')->insert([
-        'audio_id' => $id,
-        'length' => '2.5'
-    ]),
-
-    //insert third element
-    $id = DB::table('media')->insertGetId([
-        'path' => '/resources/Media/Video/video1.mp4'
-    ]),
-
-    DB::table('video')->insert([
-        'video_id' => $id,
-        'length' => '5.2'
-    ])*/
-
 });
 
 $factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
@@ -110,6 +78,7 @@ $factory->define(App\Models\Exposition::class, function (Faker\Generator $faker)
         'description' => 'Cea mai veche carte',
         'museum_id'   => 1,
         'staff_id'    => 1,
+        'photo_id'    => 1,
     ];
 });
 

@@ -78,12 +78,12 @@ class Exhibit extends BaseModel
 
     public function video()
     {
-        return $this->hasOne(Video::class, 'video_id', 'video_id');
+        return $this->hasManyThrough(Video::class, Media::class,'media_id', 'video_id', 'video_id');
     }
 
     public function audio()
     {
-        return $this->hasOne(Audio::class, 'audio_id', 'audio_id');
+        return $this->hasManyThrough(Audio::class, Media::class,'media_id', 'audio_id', 'audio_id');
     }
 
     /**

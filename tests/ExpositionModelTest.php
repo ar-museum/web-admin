@@ -19,18 +19,22 @@ class ExpositionModelTest extends TestCase
             'description' => 'Popescu',
             'museum_id' => 2,
             'staff_id' => 2,
+            'photo_id' => 'id',
         ]);
-        $this->assertGreaterThan(3,strlen($exposition->title));
-        $this->assertGreaterThan(4,strlen($exposition->description));
-        $this->assertTrue(true,ctype_digit ( $exposition->museum_id));
-
+        $this->assertGreaterThan(3, strlen($exposition->title));
+        $this->assertGreaterThan(4, strlen($exposition->description));
+        $this->assertTrue(true, is_int($exposition->museum_id));
+        $this->assertTrue(true, is_int($exposition->staff_id));
+        $this->assertTrue(true, is_int($exposition->photo_id));
+        $this->assertEmpty($exposition->description);
 
 
     }
 
-    public function testFailure(){
+    public function testFailure()
+    {
         $this->assertFileExists('app/Models/Exposition.php');
 
-        $this->assertInstanceOf(\App\Models\Exhibit::class, new Exposition);
+        $this->assertInstanceOf(\App\Models\Exposition::class, new Exposition);
     }
 }

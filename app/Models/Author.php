@@ -40,9 +40,9 @@ class Author extends BaseModel
         return $this->hasMany( Exhibit::class);
     }
 
-    public function photo(){
-        return $this->hasOne(Photo::class, 'photo_id', 'photo_id');
-
+    public function photo()
+    {
+        return $this->hasManyThrough(Photo::class, Media::class,'media_id', 'photo_id', 'photo_id');
     }
     /**
      * Scope a query to find last 5 expositions.
