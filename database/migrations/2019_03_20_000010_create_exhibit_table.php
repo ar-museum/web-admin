@@ -23,7 +23,7 @@ class CreateExhibitTable extends Migration
             $table->unsignedInteger('audio_id');
             $table->unsignedInteger('video_id');
 
-            $table->string('title');
+            $table->string('title')->unique();
             $table->string('short_description', 500);
             $table->string('description', 2000);
             $table->integer('start_year');

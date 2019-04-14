@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Exhibit;
+use App\Models\Exposition;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -22,29 +24,20 @@ class ExhibitModelTest extends TestCase
         parent::setUp();
 
         $this->tempExhibit = [
-            'title' => 'Floarea albastra',
             'short_description' => 'So deeeeep!',
             'description' => 'Cea maiiii splendida poezie ever!',
             'start_year' => '1878',
             'end_year' => '2010',
             'size' => '20x35cm',
             'location' => 'Galati',
-            'author_id' => 1,
-            'exposition_id' => 1,
-            'staff_id' => 1,
-            'audio_id' => 2,
-            'photo_id' => 1,
-            'video_id' => 3,
         ];
     }
-
 
 
     public function testCreatingModel()
     {
         $exhibit = factory(App\Models\Exhibit::class)->make($this->tempExhibit);
 
-        $this->assertLessThan(20, strlen($exhibit->title));
         $this->assertGreaterThan(4, strlen($exhibit->short_description));
         $this->assertNotEmpty($exhibit->description);
         $this->assertEquals($this->tempExhibit['start_year'], $exhibit->start_year);
@@ -81,101 +74,81 @@ class ExhibitModelTest extends TestCase
 
     public function testSavedRowDatabase()
     {
+        $this->tempExhibit['title'] = 'Ala bala';
         factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
 
         $this->seeInDatabase('exhibits', [
             'title' => $this->tempExhibit['title'],
         ]);
+
+        unset($this->tempExhibit['title']);
     }
 
     public function testExpositionsRelationships()
     {
+        $exposition = factory(App\Models\Exposition::class, 1)->create(['title' => 'Carti Mihai Eminescu',
+            'description' => 'Cea mai veche carte',
+            'museum_id' => 1,
+            'photo_id' => 1,
+            'staff_id' => 1,]);
+
+        $this->tempExhibit['exposition_id'] = $exposition->exposition_id;
+
         $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
 
-        $this->assertNull($tempExhibit->expositions()->first());
+        $this->assertNotNull($tempExhibit->expositions()->first());
 
-        $exhibit = Exhibit::find(1);
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $tempExhibit->expositions()->get());;
 
-        $exposition = new \App\Models\Exposition([
-            'title'       => 'Literatura contemporana',
-            'description' => 'Scriitorii secolului XX',
-            'museum_id'   => 1,
-        ]);
-
-        $exhibit->expositions()->save($exposition);
-
-        $expositions = $exhibit->expositions()->get();
-
-        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exhibit->expositions()->get());
-        $this->assertCount(2, $expositions->toArray());
-
-        $this->assertEquals($exposition->toArray(), $exhibit->expositions()->orderBy('exposition_id', 'desc')->first()->toArray());
+        $this->assertEquals($exposition->toArray(), $tempExhibit->expositions()->orderBy('exposition_id', 'desc')->first()->toArray());
     }
 
     public function testCategoriesRelationships()
     {
+        $category = factory(App\Models\Category::class, 1)->create(['name' => 'Literaturi']);
+
         $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
 
         $this->assertNull($tempExhibit->categories()->first());
 
-        $exhibit = Exhibit::find(1);
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $tempExhibit->categories()->get());
 
-        $category = new App\Models\Category(['name' => 'Litaraturi']);
-
-        $exhibit->categories()->save($category);
-
-        $categories = $exhibit->categories()->get();
-
-        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exhibit->categories()->get());
-        $this->assertCount(4, $categories->toArray());
-
-        $this->assertEquals($category->toArray(), $exhibit->categories()->orderBy('category_id', 'desc')->first()->toArray());
+        $this->assertEquals($category->toArray(), $tempExhibit->categories()->orderBy('category_id', 'desc')->first()->toArray());
     }
 
     public function testTagsRelationships()
     {
+        $tag = factory(App\Models\Tag::class, 1)->create(['name' => 'Drama']);
+
         $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
 
         $this->assertNull($tempExhibit->tags()->first());
 
-        $exhibit = Exhibit::find(1);
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $tempExhibit->tags()->get());
 
-        $tag = new App\Models\Tag(['name' => 'Poezii']);
-
-        $exhibit->tags()->save($tag);
-
-        $tags = $exhibit->tags()->get();
-
-        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exhibit->tags()->get());
-        $this->assertCount(4, $tags->toArray());
-
-        $this->assertEquals($tag->toArray(), $exhibit->tags()->orderBy('tag_id', 'desc')->first()->toArray());
+        $this->assertEquals($tag->toArray(), $tempExhibit->tags()->orderBy('tag_id', 'desc')->first()->toArray());
     }
 
     public function testAuthorsRelationships()
     {
-        $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
-
-        $this->assertNull($tempExhibit->authors()->first());
-
-        $exhibit = \App\Models\Exhibit::find(1);
-
-        $author = new \App\Models\Author([
-            'full_name' => 'Ion Creanga',
+        $authors = factory(App\Models\Author::class, 1)->create([
+            'full_name' => 'Mihai Eminescu',
             'born_year' => '1850',
             'died_year' => '1889',
-            'location'  => 'Vaslui',
-            'photo_id'  => 1,
+            'location' => 'Ipotesti',
+            'photo_id' => 1,
+            'staff_id' => 1,
         ]);
 
-        $exhibit->authors()->save($author);
+        $this->tempExhibit['author_id'] = $authors->author_id;
 
-        $authors = $exhibit->authors()->get();
+        $tempExhibit = factory(App\Models\Exhibit::class, 1)->create($this->tempExhibit);
 
-        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exhibit->authors()->get());
-        $this->assertCount(2, $authors->toArray());
+        $this->assertNotNull($tempExhibit->authors()->first());
 
-        $this->assertEquals($author->toArray(), $exhibit->authors()->orderBy('author_id', 'desc')->first()->toArray());
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $tempExhibit->authors()->get());;
+
+        $this->assertEquals($authors->toArray(), $tempExhibit->authors()->orderBy('author_id', 'desc')->first()->toArray());
     }
 
     public function testStaffRelationships()
@@ -184,14 +157,15 @@ class ExhibitModelTest extends TestCase
 
         $this->assertNull($tempExhibit->staff()->first());
 
-        $exhibit = Exhibit::find(1);
+        $exhibit = \App\Models\Exhibit::find(1);
 
-        $staff = new App\Models\Staff([
-            'first_name'     => 'Vasile',
-            'last_name'      => 'Popescu',
-            'email'          => 'gigel@museum.lc',
-            'password'       => 'parola',
-            'remember_token' => '123',
+        $staff = new \App\Models\Staff ([
+            'first_name' => 'Gigel',
+            'last_name' => 'Popescu',
+            'email' => 'gigel@museum.lc',
+            'password' =>  bcrypt('parola'),
+            'photo_id' => 1,
+            'remember_token' => str_random(10),
         ]);
 
         $exhibit->staff()->save($staff);
@@ -213,8 +187,8 @@ class ExhibitModelTest extends TestCase
         $exhibit = Exhibit::find(1);
 
         $photo = new App\Models\Photo([
-            'width'   => 30,
-            'height'  => 50,
+            'width' => 30,
+            'height' => 50,
         ]);
 
         $exhibit->photo()->save($photo);
@@ -263,12 +237,31 @@ class ExhibitModelTest extends TestCase
 
         $exhibit->video()->save($video);
 
-        $video = $exhibit->video()->get();
-
         $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exhibit->video()->get());
-        $this->assertCount(2, $video->toArray());
+        $this->assertCount(1, $video->toArray());
 
         $this->assertEquals($video->toArray(), $exhibit->video()->orderBy('staff_id', 'desc')->first()->toArray());
     }
 
+
+    public function testLastFive()
+    {
+        $tempExhibits = factory(App\Models\Exhibit::class, 5)->create($this->tempExhibit)->sortByDesc('exhibit_id');
+
+        $stack = array();
+        for ($index = 4; $index >= 0; --$index)
+        {
+            array_push($stack, $tempExhibits->offsetGet($index)->toArray());
+        }
+
+        $tempExhibits = $stack;
+
+        $this->assertCount(5, $tempExhibits);
+
+        $exhibits = Exhibit::lastFive()->get();
+
+        $this->assertEquals($tempExhibits, $exhibits->toArray());
+
+
+    }
 }

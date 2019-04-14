@@ -83,7 +83,7 @@ $factory->define(App\Models\Exposition::class, function (Faker\Generator $faker,
     ];
 });
 
-$factory->define(App\Models\Author::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Author::class, function (Faker\Generator $faker, $params) {
     return [
         'full_name' => $params['full_name'] ?? 'Mihai Eminescu',
         'born_year' => $paramas['born_year'] ?? '1850',
@@ -94,9 +94,9 @@ $factory->define(App\Models\Author::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\Exhibit::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Exhibit::class, function (Faker\Generator $faker, $params) {
     return [
-        'title' => $params['title'] ?? 'Floare Albastra',
+        'title' => $params['title'] ?? str_random(10),
         'short_description' => $params['short_description'] ?? 'So deep!',
         'description' => $params['description'] ?? 'Cea mai splendida poezie ever!',
         'start_year' => $params['start_year'] ?? '1873',

@@ -77,17 +77,17 @@ class Exhibit extends BaseModel
 
     public function photo()
     {
-        return $this->hasManyThrough(Photo::class, Media::class, 'media_id', 'photo_id', 'photo_id');
+        return $this->hasManyThrough(Photo::class, Media::class, 'media_id', 'photo_id', 'exhibit_id');
     }
 
     public function video()
     {
-        return $this->hasManyThrough(Video::class, Media::class, 'media_id', 'video_id', 'video_id');
+        return $this->hasManyThrough(Video::class, Media::class, 'media_id', 'video_id', 'exhibit_id');
     }
 
     public function audio()
     {
-        return $this->hasManyThrough(Audio::class, Media::class, 'media_id', 'audio_id', 'audio_id');
+        return $this->hasManyThrough(Audio::class, Media::class, 'media_id', 'audio_id', 'exhibit_id');
     }
 
     /**
