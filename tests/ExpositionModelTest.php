@@ -80,64 +80,34 @@ class ExpositionModelTest extends TestCase
     }
 
 
-    public function testExhibitsRelationships()
+    public function testPhotoRelationships()
     {
-        $tempExposition = factory(App\Models\Exposition::class, 1)->create($this->tempExposition);
+        $exposition = factory(App\Models\Exposition::class)->make($this->tempExposition);
 
-        $this->assertNull($tempExposition->exhibits()->first());
-
-        $exposition = \App\Models\Exposition::find(1);
-
-        $exhibit = new \App\Models\Exhibit([
-            'title'             => 'Somnoroase Pasarele',
-            'short_description' => 'Pe la cuiburi',
-            'description'       => 'Cea mai splendida poezie ever!',
-            'start_year'        => '1873',
-            'end_year'          => '2019',
-            'size'              => '20x30cm',
-            'location'          => 'Iasi',
-            'author_id'         => 1,
-            'exposition_id'     => 1,
-            'audio_id'          => 2,
-            'photo_id'          => 1,
-            'video_id'          => 3,
-        ]);
-
-        $exposition->exhibits()->save($exhibit);
-
-        $exhibits = $exposition>exhibits()->get();
-
-        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exposition>exhibits()->get());
-        $this->assertCount(2, $exhibits->toArray());
-
-        $this->assertEquals($exhibit->toArray(), $exposition->exhibits()->orderBy('exhibit_id', 'desc')->first()->toArray());
+        $this->assertNull($exposition->photo()->first());
     }
 
-    public function testStaffRelationships()
+    public function testLastFive()
     {
-        $tempExposition = factory(App\Models\Exposition::class, 1)->create($this->tempExposition);
+        $tempExhibits = factory(App\Models\Exposition::class, 5)->create($this->tempExhibit)->sortByDesc('exposition_id');
 
-        $this->assertNull($tempExposition->staff()->first());
+        $stack = array();
+        for ($index = 4; $index >= 0; --$index)
+        {
+            array_push($stack, $tempExhibits->offsetGet($index)->toArray());
+        }
 
-        $exposition = \App\Models\Exposition::find(1);
+        $tempExhibits = $stack;
 
-        $staff = new \App\Models\Staff ([
-            'first_name' => 'Gigel',
-            'last_name' => 'Popescu',
-            'email' => 'gigel@museum.lc',
-            'password' =>  bcrypt('parola'),
-            'photo_id' => 1,
-            'remember_token' => str_random(10),
-        ]);
+        $this->assertCount(5, $tempExhibits);
 
-        $exposition->staff()->save($staff);
+        $exhibits = Exposition::lastFive()->get();
 
-        $staff = $exposition->staff()->get();
+        $this->assertEquals($tempExhibits, $exhibits->toArray());
 
-        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exposition->staff()->get());
-        $this->assertCount(2, $staff->toArray());
 
-        $this->assertEquals($staff->toArray(), $exposition->staff()->orderBy('staff_id', 'desc')->first()->toArray());
     }
+
+
 
 }
