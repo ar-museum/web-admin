@@ -26,7 +26,7 @@ class Exposition extends BaseModel
         return $this->belongsTo(Staff::class,'staff_id','staff_id');
     }
 
-    public function exhibit()
+    public function exhibits()
     {
         return $this->hasMany(Exhibit::class,'exhibit_id','exhibit_id');
     }
