@@ -33,12 +33,11 @@ class Tag extends BaseModel
     /**
      * Scope a query to find last 5 expositions.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query_obj
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeLastFive($query_obj)
+    public function scopeLastFive()
     {
-        return $query_obj->orderBy('tag_id', 'desc')
-                         ->take(5);
+        return Tag::orderBy('tag_id', 'desc')
+                  ->take(5);
     }
 }

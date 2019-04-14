@@ -27,7 +27,7 @@ class Category extends BaseModel
      */
     public function exhibit()
     {
-        return $this->hasManyThrough(ExhibitCategory::class,Category::class , 'category_id', 'exhibit_id', 'category_id');
+        return $this->hasManyThrough(ExhibitCategory::class,Category::class, 'category_id', 'exhibit_id', 'category_id');
     }
 
     /**
@@ -36,9 +36,9 @@ class Category extends BaseModel
      * @param \Illuminate\Database\Eloquent\Builder $query_obj
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeLastFive($query_obj)
+    public function scopeLastFive()
     {
-        return $query_obj->orderBy('category_id', 'desc')
+        return Category::orderBy('category_id', 'desc')
                          ->take(5);
     }
 }
