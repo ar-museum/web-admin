@@ -40,9 +40,9 @@ class Media extends BaseModel
      * @param \Illuminate\Database\Eloquent\Builder $query_obj
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeLastFive($query_obj)
+    public function scopeLastFive()
     {
-        return $query_obj->orderBy('media_id', 'desc')
-                         ->take(5);
+        return Media::orderBy('media_id', 'desc')
+            ->take(5);
     }
 }
