@@ -99,6 +99,25 @@ class ExpositionModelTest extends TestCase
          $authors = Exposition::lastFive()->get();
          $this->assertEquals($tempExpo, $expositions->toArray());
      }
+    
+     public function testStaffRelationships()
+    {
+        $tempExpo = factory(App\Models\Exposition::class, 1)->create($this->tempExposition);
+        $this->assertNull($tempExpo->staff()->first());
+        $exposition = Exposition::find(1);
+        $staff = new App\Models\Staff([
+            'first_name'     => 'Vasile',
+            'last_name'      => 'Popescu',
+            'email'          => 'gigel@museum.lc',
+            'password'       => 'parola',
+            'remember_token' => '321',
+        ]);
+        $exposition->staff()->save($staff);
+        $staff = $author->staff()->get();
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exposition->staff()->get());
+        $this->assertCount(2, $staff->toArray());
+        $this->assertEquals($staff->toArray(), $author->staff()->orderBy('staff_id', 'desc')->first()->toArray());
+    }
 
 
 
