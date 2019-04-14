@@ -85,12 +85,12 @@ $factory->define(App\Models\Exposition::class, function (Faker\Generator $faker,
 
 $factory->define(App\Models\Author::class, function (Faker\Generator $faker) {
     return [
-        'full_name' => 'Mihai Eminescu',
-        'born_year' => '1850',
-        'died_year' => '1889',
-        'location' => 'Ipotesti',
-        'photo_id' => 1,
-        'staff_id' => 1,
+        'full_name' => $params['full_name'] ?? 'Mihai Eminescu',
+        'born_year' => $paramas['born_year'] ?? '1850',
+        'died_year' => $params['died_year'] ??  '1889',
+        'location' => $params['location'] ??  'Ipotesti',
+        'photo_id' => $params['photo_id'] ?? 1,
+        'staff_id' =>$params['staff_id'] ??  1,
     ];
 });
 

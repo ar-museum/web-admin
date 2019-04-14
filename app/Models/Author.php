@@ -36,7 +36,7 @@ class Author extends BaseModel
     }
 
 
-    public function exhibit(){
+    public function exhibits(){
         return $this->hasMany( Exhibit::class);
     }
 
