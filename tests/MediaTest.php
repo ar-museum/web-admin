@@ -3,6 +3,7 @@
 use App\Models\Audio;
 use App\Models\Category;
 use App\Models\Exhibit;
+use App\Models\Exposition;
 use App\Models\Media;
 use App\Models\Photo;
 use App\Models\Video;
@@ -15,7 +16,7 @@ class MediaTest extends TestCase
      * @return void
      */
 
-    protected $media,$photo,$audio,$video,$exhibit;
+    //protected $media,$photo,$audio,$video,$exhibit;
 
     public function testMediaModel()
     {
@@ -55,6 +56,30 @@ class MediaTest extends TestCase
         /** Model creation Photo*/
         $this->assertFileExists('App/Models/Photo.php');
         $this->assertInstanceOf(Photo::class, new Photo);
+
+
+        /** media -> photo() */
+        $tempMedia = factory(App\Models\Media::class)->make([
+            'path' => '/resources/Media/Photo/photo1.jpg'
+        ]);
+
+        $media = Media::find(1);
+
+        $photo = new App\Models\Photo([
+            'width' => 30,
+            'height' => 50,
+            'photo_id' => 1
+        ]);
+
+        $media->photo()->save($photo);
+
+        $photo = $media->photo()->get();
+
+        $this->assertInstanceOf(Collection::class, $media->photo()->get());
+        $this->assertCount(2, $photo->toArray());
+
+        $this->assertEquals($photo->toArray(), $media->photo()->orderBy('photo_id', 'desc')->first()->toArray());
+        $this->assertNull($tempMedia->photo()->first());
     }
 
     public function testAudioRelantionships()
@@ -69,6 +94,13 @@ class MediaTest extends TestCase
         /** Model creation Audio*/
         $this->assertFileExists('App/Models/Audio.php');
         $this->assertInstanceOf(Audio::class, new Audio);
+
+        /** media */
+        $media = factory(App\Models\Media::class)->make([
+            'path' => '/resources/Media/Photo/resursa_audio.mp3',
+        ]);
+
+        $this->assertNull($media->audio()->first());
     }
 
     public function testVideoRelantionships()
@@ -83,6 +115,13 @@ class MediaTest extends TestCase
         /** Model creation Video*/
         $this->assertFileExists('App/Models/Video.php');
         $this->assertInstanceOf(Video::class, new Video);
+
+        /** media */
+        $media = factory(App\Models\Media::class)->make([
+            'path' => '/resources/Media/Photo/resursa_audio.mp3',
+        ]);
+
+        $this->assertNull($media->video()->first());
     }
 
     public function testExhibitRelationships()
@@ -122,13 +161,44 @@ class MediaTest extends TestCase
             'length' => 3.47
         ]);
         $this->assertNull($video->exhibit()->first());
+
+        /** media */
+        $media_temp = factory(App\Models\Media::class)->make([
+            'path' => '/resources/Media/Photo/resursa_temp.jpg',
+        ]);
+
+        $this->assertNull($media_temp->exhibit()->first());
+    }
+
+    public function testExpositionRelationships()
+    {
+        $exposition = factory(App\Models\Exposition::class, 1)->create(['title' => 'Carti Mihai Eminescu',
+            'description' => 'Cea mai veche carte',
+            'museum_id' => 1,
+            'photo_id' => 1,
+            'staff_id' => 1,]);
+
+        //$exp_id = $exposition->exposition_id;
+
+        //$tempMedia = factory(App\Models\Media::class, 1)->create($this->tempMedia);
+
+        $tempMedia = factory(App\Models\Media::class)->make([
+            'path' => '/resources/Media/Photo/resursa.jpg'
+        ]);
+
+        $this->assertNotNull($tempMedia->exposition()->first());
+
+        $this->assertInstanceOf(Collection::class, $tempMedia->exposition()->get());;
+
+        $this->assertEquals($exposition->toArray(), $tempMedia->exposition()->orderBy('exposition_id', 'desc')->first()->toArray());
     }
 
     public function testLastFive()
-    {/*
-        $tempMedias = factory(App\Models\Media::class)->make([
-            'path' => '/resources/Media/Photo/photo1.jpg',
+    {
+        $tempMedias = factory(App\Models\Media::class, 5)->create([
+            'path' => '/resources/Media/Photo/resursa.jpg',
         ]);
+
         $tempMedias = $tempMedias->sortByDesc('media_id');
 
         $stack = array();
@@ -142,30 +212,11 @@ class MediaTest extends TestCase
 
         $this->assertCount(5, $tempMedias);
 
-        $media_1 = new Media();
+        $media = new Media();
 
-        $medias = $media_1->scopeLastFive()->get();
-
-        $this->assertEquals($tempMedias, $medias->toArray());*/
-
-        $tempMedias = factory(App\Models\Media::class)->make([
-            'path' => '/resources/Media/Photo/photo1.jpg',
-        ])->orderBy('media_id', 'DESC');
-
-        $stack = array();
-        for ($index = 4; $index >= 0; --$index)
-        {
-            array_push($stack, $tempMedias->offsetGet($index)->toArray());
-        }
-
-        $tempMedias = $stack;
-
-        $this->assertCount(5, $tempMedias);
-
-        $medias = Media::lastFive()->get();
+        $medias = $media->scopeLastFive()->get();
 
         $this->assertEquals($tempMedias, $medias->toArray());
-
     }
 
 }
