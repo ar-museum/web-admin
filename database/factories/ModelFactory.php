@@ -46,29 +46,29 @@ $factory->define(App\Models\Media::class, function (Faker\Generator $faker, $par
 
 $factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
     return [
-        'photo_id' => function () {
-            return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Photo/photo1.jpg'])->media_id;
-        },
-        'width' => $faker->randomNumber($nbDigits = 3),
-        'height' => $faker->randomNumber($nbDigits = 2),
+        'photo_id' => $params['media_id'] ?? (function () {
+                return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Photo/photo1.jpg'])->media_id;
+            }),
+        'width' => $params['width'] ?? 400,
+        'height' => $params['width'] ?? 200,
     ];
 });
 
 $factory->define(App\Models\Audio::class, function (Faker\Generator $faker) {
     return [
-        'audio_id' => function () {
-            return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Audio/audio1.mp3'])->media_id;
-        },
-        'length' => $faker->randomFloat(2, 1, 5),
+        'audio_id' => $params['media_id'] ?? (function () {
+                return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Audio/audio1.mp3'])->media_id;
+            }),
+        'length' => $params['length'] ?? 3.4,
     ];
 });
 
 $factory->define(App\Models\Video::class, function (Faker\Generator $faker) {
     return [
-        'video_id' => function () {
-            return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Video/video1.mp4'])->media_id;
-        },
-        'length' => $faker->randomFloat(2, 1, 5),
+        'video_id' => $params['media_id'] ?? (function () {
+                return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Video/video1.mp4'])->media_id;
+            }),
+        'length' => $params['length'] ?? 1.25,
     ];
 });
 
