@@ -113,8 +113,6 @@ class ExpositionModelTest extends TestCase
         $this->assertEquals($exhibit->toArray(), $exposition->exhibits()->orderBy('exhibit_id', 'desc')->first()->toArray());
     }
 
-
-
     public function testStaffRelationships()
     {
         $tempExposition = factory(App\Models\Exposition::class, 1)->create($this->tempExposition);
