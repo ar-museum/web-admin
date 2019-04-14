@@ -87,26 +87,6 @@ class ExpositionModelTest extends TestCase
         $this->assertNull($exposition->photo()->first());
     }
 
-    public function testLastFive()
-    {
-        $tempExhibits = factory(App\Models\Exposition::class, 5)->create($this->tempExhibit)->sortByDesc('exposition_id');
-
-        $stack = array();
-        for ($index = 4; $index >= 0; --$index)
-        {
-            array_push($stack, $tempExhibits->offsetGet($index)->toArray());
-        }
-
-        $tempExhibits = $stack;
-
-        $this->assertCount(5, $tempExhibits);
-
-        $exhibits = Exposition::lastFive()->get();
-
-        $this->assertEquals($tempExhibits, $exhibits->toArray());
-
-
-    }
 
 
 
