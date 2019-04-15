@@ -113,7 +113,7 @@ class ExpositionModelTest extends TestCase
             'remember_token' => '321',
         ]);
         $exposition->staff()->save($staff);
-        $staff = $author->staff()->get();
+        $staff = $exposition->staff()->get();
         $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exposition->staff()->get());
         $this->assertCount(2, $staff->toArray());
         $this->assertEquals($staff->toArray(), $author->staff()->orderBy('staff_id', 'desc')->first()->toArray());
