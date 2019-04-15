@@ -116,7 +116,7 @@ class ExpositionModelTest extends TestCase
         $staff = $exposition->staff()->get();
         $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exposition->staff()->get());
         $this->assertCount(2, $staff->toArray());
-        $this->assertEquals($staff->toArray(), $author->staff()->orderBy('staff_id', 'desc')->first()->toArray());
+        $this->assertEquals($staff->toArray(), $exposition->staff()->orderBy('staff_id', 'desc')->first()->toArray());
     }
 
 
