@@ -39,15 +39,19 @@ class MuseumModelTest extends TestCase
         $exposition = factory(App\Models\Exposition::class, 1)->create([
             'title' => 'Tablouri mai putin cunoscute',
             'description' => 'Tablouri ale unor artisti amatori locali',
+            'museum_id' => 1
         ]);
 
-        $this->tempMuseum['museum_id'] = $exposition->museum_id;
 
-        $tempMuseum = factory(App\Models\Museum::class, 1);
+        $tempMuseum = factory(App\Models\Museum::class, 1)->create();
 
-        $this->assertNotNull($tempMuseum->expositions()->first());
+        $tempMuseum->expositions()->save($exposition);
 
-        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $tempMuseum->expositions()->get());;
+        $expositions = $tempMuseum->expositions()->get();
+
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $tempMuseum->expositions()->get());
+
+        $this->assertCount(2, $expositions->toArray());
 
         $this->assertEquals($exposition->toArray(), $tempMuseum->expositions()->orderBy('exposition_id', 'desc')->first()->toArray());
     }

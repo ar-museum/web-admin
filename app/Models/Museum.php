@@ -14,7 +14,7 @@ class Museum extends BaseModel
         'museum_id','name', 'address', 'opening_hour', 'closing_hour'
     ];
 
-    public function expositions ()
+    public function expositions()
     {
         return $this->hasMany(Exposition::class, 'museum_id', 'museum_id');
     }
