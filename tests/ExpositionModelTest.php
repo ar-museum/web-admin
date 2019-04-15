@@ -96,7 +96,7 @@ class ExpositionModelTest extends TestCase
         }
          $tempExpo = $stack;
          $this->assertCount(5, $tempExpo);
-         $expositions = Exposition::lastFive()->get();
+         $expositions = Exposition::scopeLastFive()->get();
          $this->assertEquals($tempExpo, $expositions->toArray());
      }
     

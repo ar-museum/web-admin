@@ -49,9 +49,9 @@ class Exposition extends BaseModel
      * @param \Illuminate\Database\Eloquent\Builder $query_obj
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeLastFive($query_obj)
+    public function scopeLastFive()
     {
-        return $query_obj->orderBy('exposition_id', 'desc')
+        return Exposition::orderBy('exposition_id', 'desc')
                          ->take(5);
     }
 }
