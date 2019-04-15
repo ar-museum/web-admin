@@ -1,14 +1,18 @@
 <?php
 
 use App\Models\Tag;
+use \Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class TagModelTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /**
      * Test functions.
      *
      * @return void
      */
+
     public function testCreatingModel()
     {
         define('tagId', 7);

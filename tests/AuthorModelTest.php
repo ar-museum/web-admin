@@ -150,5 +150,25 @@ class AuthorModelTest extends TestCase
 
         $this->assertEquals($exhibit->toArray(), $author->exhibits()->orderBy('exhibit_id', 'desc')->first()->toArray());
     }
-}
 
+    public function testLastFive()
+    {
+        $tempAuthor = factory(App\Models\Author::class, 5)->create($this->tempAuthor)->sortByDesc('author_id');
+
+        $stack = array();
+        for ($index = 4; $index >= 0; --$index)
+        {
+            array_push($stack, $tempAuthor->offsetGet($index)->toArray());
+        }
+
+        $tempAuthor = $stack;
+
+        $this->assertCount(5, $tempAuthor);
+
+        $authors = Author::lastFive()->get();
+
+        $this->assertEquals($tempAuthor, $authors->toArray());
+
+
+    }
+}

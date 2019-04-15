@@ -29,11 +29,11 @@ class ExpositionModelTest extends TestCase
         parent::setUp();
 
         $this->tempExposition = [
-            'title' => 'Mihai Eminescu',
-            'description' => 'Popescu',
-            'museum_id' => 2,
-            'staff_id' => 2,
-            'photo_id' => 2,
+            'title' => 'Carti Mihai Eminescu',
+            'description' => 'Cea mai veche carte',
+            'museum_id' => 1,
+            'staff_id' => 1,
+            'photo_id' => 1,
         ];
     }
 
@@ -86,7 +86,38 @@ class ExpositionModelTest extends TestCase
 
         $this->assertNull($exposition->photo()->first());
     }
-
+      public function testLastFive()
+    {
+        $tempExpo = factory(App\Models\Exposition::class, 5)->create($this->tempExposition)->sortByDesc('exposition_id');
+         $stack = array();
+        for ($index = 4; $index >= 0; --$index)
+        {
+            array_push($stack, $tempExpo->offsetGet($index)->toArray());
+        }
+         $tempExpo = $stack;
+         $this->assertCount(5, $tempExpo);
+         $expositions = Exposition::scopeLastFive()->get();
+         $this->assertEquals($tempExpo, $expositions->toArray());
+     }
+    
+     public function testStaffRelationships()
+    {
+        $tempExpo = factory(App\Models\Exposition::class, 1)->create($this->tempExposition);
+        $this->assertNull($tempExpo->staff()->first());
+        $exposition = Exposition::find(1);
+        $staff = new App\Models\Staff([
+            'first_name'     => 'Vasile',
+            'last_name'      => 'Popescu',
+            'email'          => 'gigel@museum.lc',
+            'password'       => 'parola',
+            'remember_token' => '321',
+        ]);
+        $exposition->staff()->save($staff);
+        $staff = $exposition->staff()->get();
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exposition->staff()->get());
+        $this->assertCount(2, $staff->toArray());
+        $this->assertEquals($staff->toArray(), $exposition->staff()->orderBy('staff_id', 'desc')->first()->toArray());
+    }
 
 
 

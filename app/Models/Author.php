@@ -37,7 +37,7 @@ class Author extends BaseModel
 
 
     public function exhibits(){
-        return $this->hasMany( Exhibit::class);
+        return $this->hasMany( Exhibit::class, 'exhibit_id', 'exhibit_id');
     }
 
     public function photo()
