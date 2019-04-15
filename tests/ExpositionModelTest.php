@@ -29,11 +29,11 @@ class ExpositionModelTest extends TestCase
         parent::setUp();
 
         $this->tempExposition = [
-            'title' => 'Mihai Eminescu',
-            'description' => 'Popescu',
-            'museum_id' => 2,
-            'staff_id' => 2,
-            'photo_id' => 2,
+            'title' => 'Carti Mihai Eminescu',
+            'description' => 'Cea mai veche carte',
+            'museum_id' => 1,
+            'staff_id' => 1,
+            'photo_id' => 1,
         ];
     }
 
@@ -96,7 +96,7 @@ class ExpositionModelTest extends TestCase
         }
          $tempExpo = $stack;
          $this->assertCount(5, $tempExpo);
-         $expositions = Exposition::lastFive()->get();
+         $expositions = Exposition::scopeLastFive()->get();
          $this->assertEquals($tempExpo, $expositions->toArray());
      }
     

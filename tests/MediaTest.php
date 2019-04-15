@@ -7,9 +7,11 @@ use App\Models\Exposition;
 use App\Models\Media;
 use App\Models\Photo;
 use App\Models\Video;
+use \Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class MediaTest extends TestCase
 {
+    use DatabaseTransactions;
     /**
      * A basic test example.
      *
