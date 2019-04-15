@@ -1,9 +1,12 @@
 <?php
 
 use App\Models\Category;
+use \Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CategoryModelTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /**
      * Test functions.
      *
