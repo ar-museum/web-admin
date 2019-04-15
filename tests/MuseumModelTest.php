@@ -51,7 +51,7 @@ class MuseumModelTest extends TestCase
 
         $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $tempMuseum->expositions()->get());
 
-        $this->assertCount(2, $expositions->toArray());
+        $this->assertCount(1, $expositions->toArray());
 
         $this->assertEquals($exposition->toArray(), $tempMuseum->expositions()->orderBy('exposition_id', 'desc')->first()->toArray());
     }
