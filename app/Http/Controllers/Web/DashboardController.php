@@ -9,6 +9,7 @@ use App\Models\Exhibit;
 use App\Models\Exposition;
 use App\Models\Media;
 use App\Models\Tag;
+use App\Models\Museum;
 
 class DashboardController extends Controller
 {
@@ -18,6 +19,7 @@ class DashboardController extends Controller
         #$exhibits = Exhibit::with('tag')->get();
         #$tags = Tag::with('exhibit')->get();
 
+        $museum=factory(\App\Models\Museum::class, 1)->create();
         return view('dashboard.index', [
             'expositions_no' => Exposition::all()->count(),
             'exhibits_no' => Exhibit::all()->count(),
@@ -28,6 +30,15 @@ class DashboardController extends Controller
             'media' => Media::lastFive()->get(),
             'categories' => Category::lastFive()->get(),
             'tags' => Tag::lastFive()->get(),
+            'museum_name'=>$museum->getMuseumName(),
+            'museum_address'=>$museum->getMuseumAddress(),
+            'monday_program' => $museum->getMondayProgram(),
+            'tuesday_program' => $museum->getTuesdayProgram(),
+            'wednesday_program' => $museum->getWednesdayProgram(),
+            'thursday_program' => $museum->getThursdayProgram(),
+            'friday_program' => $museum->getFridayProgram(),
+            'saturday_program' => $museum->getSaturdayProgram(),
+            'sunday_program' => $museum->getSundayProgram(),
             #'media_no' => Media::all()->count(),
         ]);
     }

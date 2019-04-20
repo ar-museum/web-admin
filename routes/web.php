@@ -135,4 +135,15 @@ Route::group([
     ));
 
 
+
+    Route::get('/museum', array(
+        'as' => 'museum',
+        'uses' => 'MuseumController@index'
+    ));
+
+    Route::post('museum/store/{var}', array(
+        'as' => 'store-museum',
+        'uses' => 'MuseumController@store'
+    ));
+
 });

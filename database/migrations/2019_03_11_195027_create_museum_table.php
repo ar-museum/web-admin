@@ -18,9 +18,20 @@ class CreateMuseumTable extends Migration
             $table->increments('museum_id')->unique();
             $table->string('name');
             $table->string('address');
-            $table->time('opening_hour');
-            $table->time('closing_hour');
-
+            $table->time('monday_opening_hour');
+            $table->time('monday_closing_hour');
+            $table->time('tuesday_opening_hour');
+            $table->time('tuesday_closing_hour');
+            $table->time('wednesday_opening_hour');
+            $table->time('wednesday_closing_hour');
+            $table->time('thursday_opening_hour');
+            $table->time('thursday_closing_hour');
+            $table->time('friday_opening_hour');
+            $table->time('friday_closing_hour');
+            $table->time('saturday_opening_hour');
+            $table->time('saturday_closing_hour');
+            $table->time('sunday_opening_hour');
+            $table->time('sunday_closing_hour');
             $table->timestamps();
         });
     }
