@@ -16,6 +16,7 @@ class Exhibit extends BaseModel
      * @var string
      */
     protected $primaryKey = 'exhibit_id';
+    protected $value = 5;
 
     /**
      * The attributes that are mass assignable.
@@ -100,6 +101,15 @@ class Exhibit extends BaseModel
     public function scopeLastFive($query_obj)
     {
         return $query_obj->orderBy('exhibit_id', 'desc')
-            ->take(5);
+            ->take($this->value);
     }
+
+    public function setValue($value){
+        $this->value = $value;
+    }
+
+    public function getValue(){
+        return $this->value;
+    }
+
 }
