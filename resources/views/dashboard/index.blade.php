@@ -52,7 +52,20 @@
                 <header class="panel-heading"><i class="fa fa-building-o"></i> Informatii muzeu</header>
                 <div class="list-group">
                     <a class="list-group-item" href="#">
-                        Nume: Mihai Eminescu
+                       <p><h4>Nume: </h4> {!!$museum_name!!}</p>
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <p><h4>Adresa: </h4> {!!$museum_address!!}</p>
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <h4>Program:</h4>
+                        <p><b>Luni</b>:  {!! $monday_program !!}</p>
+                        <p><b>Marti</b>:  {!! $tuesday_program !!}</p>
+                        <p><b>Miercuri</b>:  {!! $wednesday_program !!}</p>
+                        <p><b>Joi</b>:  {!! $thursday_program !!}</p>
+                        <p><b>Vineri</b>:  {!! $friday_program !!}</p>
+                        <p><b>Sambata</b>:  {!! $saturday_program !!}</p>
+                        <p><b>Duminica</b>:  {!! $sunday_program !!}</p>
                     </a>
                 </div>
             </section>
@@ -96,7 +109,7 @@
                         </table>
                     </div>
                     <div class="add-task-row">
-                        <a class="btn btn-primary btn-sm" href="#">Vezi toate expozitiile</a>
+                        <a class="btn btn-primary btn-sm" href="{!! route('exposition') !!}">Vezi toate expozitiile</a>
                     </div>
                     @else
                         <div class="alert alert-info fade in">

@@ -27,6 +27,15 @@ Route::get('/report', [
     },
 ]);
 
+Route::get('/exposition', array(
+    'middleware' => ['auth'],
+    'as' => 'exposition',
+    'uses' => 'Web\ExpositionController@index',
+));
+Route::post('/expositionadd', array(
+    'middleware' => ['auth'],
+    'uses' => 'Web\ExpositionController@store',
+));
 Route::group([
     'namespace' => 'Auth',
 ], function () {
@@ -117,4 +126,14 @@ Route::post('/exhibit-store','Web\ExhibitController@store');
 Route::delete('exhibit/delete/{var}', array(
     'as' => 'delete-exhibit',
     'uses' => 'Web\ExhibitController@destroy'
+));
+
+Route::get('/museum', array(
+    'as' => 'museum',
+    'uses' => 'MuseumController@index'
+));
+
+Route::post('museum/store/{var}', array(
+    'as' => 'store-museum',
+    'uses' => 'MuseumController@store'
 ));
