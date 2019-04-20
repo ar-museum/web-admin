@@ -3,26 +3,25 @@
 
     <div class="row">
         <div class="col-lg-12">
+            @if(count($errors) > 0)
+                <div class = "alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li> {{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if( \Session::has('success'))
+                <div class = "alert alert-danger">
+                    <p> {{ \Session::get('success') }}</p>
+                </div>
+            @endif
             <section class="panel">
                 <header class="panel-heading">
                     Adaugare exponat
                 </header>
                 <div class="panel-body">
-                    @if(count($errors) > 0)
-                        <div class = "alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li> {{$error}}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    @if( \Session::has('success'))
-                        <div class = "alert alert-danger">
-                            <p> {{ \Session::get('success') }}</p>
-                        </div>
-                    @endif
-
                     <form role="form" class="form-horizontal tasi-form" action = "/exhibit-store" method = "post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group has-success">
