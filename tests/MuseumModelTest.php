@@ -1,11 +1,15 @@
 <?php
 
+use App\Models\Exhibit;
+use App\Models\Exposition;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class MuseumModelTest extends TestCase
 {
+
+    use DatabaseTransactions;
     /**
      * A basic test example.
      *
@@ -22,13 +26,35 @@ class MuseumModelTest extends TestCase
 
         ]);
         $this->assertGreaterThan(3,strlen($museum->name));
-        $this->assertGreaterThan(10,strlen($museum->address));
+        $this->assertGreaterThan(6,strlen($museum->address));
         $this->assertTrue(true,ctype_digit ( $museum->museum_id));
 
 
 
     }
 
+
+    public function testExpositionsRelationships()
+    {
+        $exposition = factory(App\Models\Exposition::class, 1)->create([
+            'title' => 'Tablouri mai putin cunoscute',
+            'description' => 'Tablouri ale unor artisti amatori locali',
+            'museum_id' => 1
+        ]);
+
+
+        $tempMuseum = factory(App\Models\Museum::class, 1)->create();
+
+        $tempMuseum->expositions()->save($exposition);
+
+        $expositions = $tempMuseum->expositions()->get();
+
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $tempMuseum->expositions()->get());
+
+        $this->assertCount(1, $expositions->toArray());
+
+        $this->assertEquals($exposition->toArray(), $tempMuseum->expositions()->orderBy('exposition_id', 'desc')->first()->toArray());
+    }
 
     public function testExample()
     {

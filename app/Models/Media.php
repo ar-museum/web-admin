@@ -23,15 +23,15 @@ class Media extends BaseModel
     }
 
     public function photo(){
-        return $this->hasMany(Photo::class);
+        return $this->hasMany(Photo::class,'photo_id','photo_id');
     }
 
     public function audio(){
-        return $this->hasMany(Audio::class);
+        return $this->hasMany(Audio::class,'audio_id','audio_id');
     }
 
     public function video(){
-        return $this->hasMany(Video::class);
+        return $this->hasMany(Video::class,'video_id','video_id');
     }
 
     /**
