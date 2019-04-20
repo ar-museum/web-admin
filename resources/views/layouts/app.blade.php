@@ -72,7 +72,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('exposition') !!}">
                             <i class="fa fa-camera-retro"></i> <span>Expozitii</span>
                         </a>
                     </li>
