@@ -567,7 +567,7 @@
     });
 
     if (shouldShow === true) {
-      dialog.modal("show");
+      dialog.modal("show.blade.php");
     }
 
     return dialog;
@@ -777,7 +777,7 @@
     });
 
     if (options.show) {
-      dialog.modal("show");
+      dialog.modal("show.blade.php");
     }
 
     // @TODO should we return the raw element here or should

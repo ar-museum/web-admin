@@ -96,7 +96,7 @@
                         </table>
                     </div>
                     <div class="add-task-row">
-                        <a class="btn btn-primary btn-sm" href="#">Vezi toate expozitiile</a>
+                        <a class="btn btn-primary btn-sm" href="{!! route('exposition') !!}">Vezi toate expozitiile</a>
                     </div>
                     @else
                         <div class="alert alert-info fade in">

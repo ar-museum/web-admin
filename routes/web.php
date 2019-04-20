@@ -10,83 +10,92 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }
 
 Route::get('/', [
     'middleware' => ['auth'],
-    'as'         => 'dashboard',
-    'uses'       => 'Web\DashboardController@index',
+    'as' => 'dashboard',
+    'uses' => 'Web\DashboardController@index',
 ]);
 
 Route::get('/report', [
-    'as'         => 'report',
-    'uses'       => function() {
+    'as' => 'report',
+    'uses' => function () {
         return File::get(public_path() . '/report/index.html');
     },
 ]);
 
+Route::get('/exposition', array(
+    'middleware' => ['auth'],
+    'as' => 'exposition',
+    'uses' => 'Web\ExpositionController@index',
+));
+Route::post('/expositionadd', array(
+    'middleware' => ['auth'],
+    'uses' => 'Web\ExpositionController@store',
+));
 Route::group([
-                 'namespace' => 'Auth',
-             ], function () {
+    'namespace' => 'Auth',
+], function () {
     Route::get('/autentificare', [
-        'as'   => 'login',
+        'as' => 'login',
         'uses' => 'LoginController@showLoginForm',
     ]);
 
     Route::post('/autentificare', [
-        'as'   => 'login',
+        'as' => 'login',
         'uses' => 'LoginController@login',
     ]);
 
     Route::get('/iesire', [
-        'as'         => 'logout',
+        'as' => 'logout',
         'middleware' => ['auth'],
-        'uses'       => 'LoginController@logout',
+        'uses' => 'LoginController@logout',
     ]);
 
     Route::get('/profil', [
-        'as'         => 'profile',
+        'as' => 'profile',
         'middleware' => ['auth'],
-        'uses'       => 'AuthController@profile',
+        'uses' => 'AuthController@profile',
     ]);
 
     Route::get('/setari', [
-        'as'         => 'settings_view',
+        'as' => 'settings_view',
         'middleware' => ['auth'],
-        'uses'       => 'AuthController@viewSettings',
+        'uses' => 'AuthController@viewSettings',
     ]);
 
     Route::post('/setari', [
-        'as'         => 'settings',
+        'as' => 'settings',
         'middleware' => ['auth'],
-        'uses'       => 'AuthController@updateSettings',
+        'uses' => 'AuthController@updateSettings',
     ]);
 
     Route::post('/setari/schimba-parola', [
-        'as'         => 'settings_password',
+        'as' => 'settings_password',
         'middleware' => ['auth'],
-        'uses'       => 'AuthController@settingsPassword',
+        'uses' => 'AuthController@settingsPassword',
     ]);
 
     Route::post('/parola', [
-        'as'   => 'reset_pass',
+        'as' => 'reset_pass',
         'uses' => 'ForgotPasswordController@sendResetLinkEmail',
     ]);
 
     Route::get('/schimba-parola/{code}', [
-        'as'   => 'change_pass',
+        'as' => 'change_pass',
         'uses' => 'ResetPasswordController@showResetForm',
     ]);
 
     Route::post('/schimba-parola/{token}', [
-        'as'   => 'reset_pass',
+        'as' => 'reset_pass',
         'uses' => 'ResetPasswordController@reset',
     ]);
 
     Route::get('/exhibit', array(
-        'as'   => 'exhibit',
+        'as' => 'exhibit',
         'uses' => 'ExhibitController@index'
     ));
 
@@ -100,13 +109,13 @@ Route::group([
         'uses' => 'ExhibitController@edit'
     ));
 
-    Route::delete('exhibit/delete/{var}',array(
+    Route::delete('exhibit/delete/{var}', array(
         'as' => 'delete-exhibit',
         'uses' => 'ExhibitController@destroy'
     ));
 
     Route::get('/author', array(
-        'as'   => 'author',
+        'as' => 'author',
         'uses' => 'AuthorController@index'
     ));
 
@@ -120,8 +129,10 @@ Route::group([
         'uses' => 'AuthorController@edit'
     ));
 
-    Route::delete('author/destroy/{var}',array(
+    Route::delete('author/destroy/{var}', array(
         'as' => 'delete-author',
         'uses' => 'AuthorController@destroy'
     ));
+
+
 });
