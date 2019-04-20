@@ -25,6 +25,21 @@ class ExhibitController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'title' => 'required',
+            's_description' => 'required',
+            'description' => 'required',
+            'start_year' => 'required',
+            'end_year' => 'required',
+            'size' => 'required',
+            'location' => 'required',
+            'author_id' => 'required',
+            'exposition_id' => 'required',
+            'staff_id' => 'required',
+            'audio_id' => 'required',
+            'photo_id' => 'required',
+            'video_id' => 'required',
+        ]);
         $exhibit = new Exhibit();
         $exhibit->title = $request->get('title');
         $exhibit->short_description = $request->get('s_description');
