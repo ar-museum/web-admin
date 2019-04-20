@@ -153,18 +153,18 @@
                                             <a href="#">{{ $exhibit->title }}</a>
                                         </td>
                                         <td>{{ $exhibit->short_description }}</td>
-                                        <td>{{ $exhibit->author_id }}</td>
+                                        <td>{{ $exhibit->authors->full_name }}</td>
                                         <td>{{ $exhibit->start_year }} @if (!is_null($exhibit->end_year)) - {{ $exhibit->end_year }} @endif</td>
                                         <td>{{ $exhibit->size }}</td>
                                         <td class="hidden-phone">{{ $exhibit->location }}</td>
-                                        <td>-</td>
+                                        <td>{!! $exhibit->created_at !!}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <div class="add-task-row">
-                            <a class="btn btn-primary btn-sm" href="#">Vezi toate exponatele</a>
+                            <a class="btn btn-primary btn-sm" href= {!! route('exhibit') !!} >Vezi toate exponatele</a>
                         </div>
                     @else
                         <div class="alert alert-info fade in">

@@ -77,7 +77,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('exhibit') !!}">
                             <i class="fa fa-picture-o"></i> <span>Exponate</span>
                         </a>
                     </li>
