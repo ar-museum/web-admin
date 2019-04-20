@@ -134,4 +134,5 @@ Route::group([
         'as' => 'store-museum',
         'uses' => 'MuseumController@store'
     ));
+
 });

@@ -17,7 +17,7 @@ class MuseumController  extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store($var)
     {
         $museum=factory(\App\Models\Museum::class, 1)->create();
         $museum->name= Input::get('museum_name');
