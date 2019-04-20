@@ -11,6 +11,6 @@ class ExhibitTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Exhibit::class, 50)->create();
+        factory(App\Models\Exhibit::class, 1)->create();
     }
 }

@@ -108,19 +108,11 @@ Route::group([
 
 Route::get('/exhibit', [
     'as' => 'exhibit',
-    'middleware' => ['auth'],
     'uses' => 'Web\ExhibitController@index'
 ]);
 
-Route::post('/exhibit/store/{var}', array(
-    'as' => 'store-exhibit',
-    'uses' => 'Web\ExhibitController@store'
-));
-
-Route::get('/exhibit/edit/{var}', array(
-    'as' => 'edit-exhibit',
-    'uses' => 'Web\ExhibitController@edit'
-));
+Route::get('/create','Web\ExhibitController@create');
+Route::post('/exhibit-store','Web\ExhibitController@store');
 
 Route::delete('exhibit/delete/{var}', array(
     'as' => 'delete-exhibit',
