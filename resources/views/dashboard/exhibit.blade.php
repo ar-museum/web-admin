@@ -33,7 +33,7 @@
                         <div class="form-group has-success">
                             <label class="col-lg-2 control-label">Short description </label>
                             <div class="col-lg-10">
-                                <input type="text" placeholder="" name="s_description" class="form-control">
+                                <input type="text" placeholder="" name="short_description" class="form-control">
                             </div>
                         </div>
                         <div class="form-group has-success">

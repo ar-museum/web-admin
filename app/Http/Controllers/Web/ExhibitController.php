@@ -27,7 +27,7 @@ class ExhibitController extends Controller
     {
         $this->validate($request,[
             'title' => 'required',
-            's_description' => 'required',
+            'short_description' => 'required',
             'description' => 'required',
             'start_year' => 'required',
             'end_year' => 'required',
@@ -42,7 +42,7 @@ class ExhibitController extends Controller
         ]);
         $exhibit = new Exhibit();
         $exhibit->title = $request->get('title');
-        $exhibit->short_description = $request->get('s_description');
+        $exhibit->short_description = $request->get('short_description');
         $exhibit->description = $request->get('description');
         $exhibit->start_year = $request->get('start_year');
         $exhibit->end_year = $request->get('end_year');
