@@ -17,7 +17,34 @@
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
                 </header>
                 <div class="panel-body">
-                    Test
+                    <form class="form-horizontal" method="POST" action="museum/store" enctype="multipart/form-data" role="form">
+
+                        <div class="form-group @if ($errors->has('museum_name'))has-error @endif">
+                            <label class="col-lg-4 col-sm-4 control-label" for="first_name">Nume <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" name="museum_name" id="museum_name"
+                                       value="@if(null !== old('museum_name')){{old('museum_name')}}@else{{$museum->name}}@endif"
+                                       class="form-control" placeholder="Nume">
+                            </div>
+                        </div>
+
+                            <div class="form-group @if ($errors->has('museum_address'))has-error @endif">
+                                <label class="col-lg-4 col-sm-4 control-label" for="first_name">Adresa <span class="text-danger">*</span></label>
+                                <div class="col-lg-8">
+                                    <input type="text" name="museum_address" id="museum_address"
+                                           value="@if(null !== old('museum_address')){{old('museum_address')}}@else{{$museum->address}}@endif"
+                                           class="form-control" placeholder="Adresa">
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-md-8">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> Actualizeaza</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+
                 </div>
             </section>
         </div>
