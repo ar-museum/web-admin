@@ -40,7 +40,7 @@
                     <i class="fa fa-film"></i>
                 </div>
                 <div class="value">
-                    <h1 class="media_no">NaN</h1>
+                    <h1 class="media_no">{!! $media_no !!}</h1>
                     <p>Media</p>
                 </div>
             </section>
@@ -356,7 +356,7 @@
                             </table>
                         </div>
                         <div class="add-task-row">
-                            <a class="btn btn-primary btn-sm" href="#">Vezi toate media</a>
+                            <a class="btn btn-primary btn-sm" href="{!! route('media') !!}">Vezi toate media</a>
                         </div>
                     @else
                         <div class="alert alert-info fade in">

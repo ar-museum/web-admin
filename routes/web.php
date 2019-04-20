@@ -137,3 +137,23 @@ Route::post('museum/store/{var}', array(
     'as' => 'store-museum',
     'uses' => 'MuseumController@store'
 ));
+
+Route::get('/media', array(
+    'as'   => 'media',
+    'uses' => 'Web\MediaController@index'
+));
+
+Route::post('/media/store/{var}', array(
+    'as' => 'store-media',
+    'uses' => 'Web\MediaController@store'
+));
+
+Route::get('/media/edit/{var}', array(
+    'as' => 'edit-media',
+    'uses' => 'Web\MediaController@edit'
+));
+
+Route::delete('media/delete/{var}',array(
+    'as' => 'delete-media',
+    'uses' => 'Web\MediaController@destroy'
+));

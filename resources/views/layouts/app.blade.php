@@ -97,7 +97,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('media') !!}">
                             <i class="fa fa-film"></i> <span>Media</span>
                         </a>
                     </li>
