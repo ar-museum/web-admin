@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }
@@ -94,26 +95,20 @@ Route::group([
         'uses' => 'ResetPasswordController@reset',
     ]);
 
-    Route::get('/author', array(
-        'as' => 'author',
-        'uses' => 'AuthorController@index'
-    ));
-
-    Route::post('/author/store/{var}', array(
-        'as' => 'store-author',
-        'uses' => 'AuthorController@store'
-    ));
-
-    Route::get('/author/edit/{var}', array(
-        'as' => 'edit-author',
-        'uses' => 'AuthorController@edit'
-    ));
-
-    Route::delete('author/destroy/{var}', array(
-        'as' => 'delete-author',
-        'uses' => 'AuthorController@destroy'
-    ));
 });
+
+Route::get('/author', array(
+    'as' => 'author',
+    'uses' => 'Web\AuthorController@index'
+));
+
+Route::get('/create','Web\AuthorController@create');
+Route::post('/author-store','Web\AuthorController@store');
+
+Route::delete('author/delete/{var}', array(
+    'as' => 'delete-author',
+    'uses' => 'Web\AuthorController@destroy'
+));
 
 Route::get('/exhibit', [
     'as' => 'exhibit',
@@ -128,32 +123,18 @@ Route::delete('exhibit/delete/{var}', array(
     'uses' => 'Web\ExhibitController@destroy'
 ));
 
-Route::get('/museum', array(
-    'as' => 'museum',
-    'uses' => 'MuseumController@index'
-));
-
-Route::post('museum/store/{var}', array(
-    'as' => 'store-museum',
-    'uses' => 'MuseumController@store'
-));
+Route::get('/museum', 'Web\MuseumController@index');
+Route::post('museum/store', 'Web\MuseumController@store');
 
 Route::get('/media', array(
     'as'   => 'media',
     'uses' => 'Web\MediaController@index'
 ));
 
-Route::post('/media/store/{var}', array(
-    'as' => 'store-media',
-    'uses' => 'Web\MediaController@store'
-));
+Route::get('/create','Web\MediaController@create');
+Route::post('/store-media','Web\MediaController@store');
 
-Route::get('/media/edit/{var}', array(
-    'as' => 'edit-media',
-    'uses' => 'Web\MediaController@edit'
-));
-
-Route::delete('media/delete/{var}',array(
+Route::delete('media/delete/{var}', array(
     'as' => 'delete-media',
     'uses' => 'Web\MediaController@destroy'
 ));

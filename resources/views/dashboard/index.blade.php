@@ -52,10 +52,10 @@
                 <header class="panel-heading"><i class="fa fa-building-o"></i> Informatii muzeu</header>
                 <div class="list-group">
                     <a class="list-group-item" href="#">
-                       <p><h4>Nume: </h4> {!!$museum_name!!}</p>
+                        <h4>Nume: </h4> {!!$museum_name!!}
                     </a>
                     <a class="list-group-item" href="#">
-                        <p><h4>Adresa: </h4> {!!$museum_address!!}</p>
+                        <h4>Adresa: </h4> {!!$museum_address!!}
                     </a>
                     <a class="list-group-item" href="#">
                         <h4>Program:</h4>
@@ -208,14 +208,14 @@
                                         </td>
                                         <td>{{ $author->born_year }} @if (!is_null($author->died_year)) - {{ $author->died_year }} @endif</td>
                                         <td class="hidden-phone">{{ $author->location }}</td>
-                                        <td>-</td>
+                                        <td>{!! $author->created_at !!}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <div class="add-task-row">
-                            <a class="btn btn-primary btn-sm" href="#">Vezi toti autorii</a>
+                            <a class="btn btn-primary btn-sm" href={!! route('author') !!}>Vezi toti autorii</a>
                         </div>
                     @else
                         <div class="alert alert-info fade in">
