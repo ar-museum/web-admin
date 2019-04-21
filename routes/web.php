@@ -33,7 +33,7 @@ Route::get('/exposition', array(
     'as' => 'exposition',
     'uses' => 'Web\ExpositionController@index',
 ));
-Route::post('/expositionadd', array(
+Route::post('/exposition/add', array(
     'middleware' => ['auth'],
     'uses' => 'Web\ExpositionController@store',
 ));

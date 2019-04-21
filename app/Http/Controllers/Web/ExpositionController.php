@@ -6,32 +6,24 @@ use App\Models\Exposition;
 use App\Models\Museum;
 use App\Models\Photo;
 use App\Models\Staff;
-use Illuminate\Http\Request;
+#use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Validation\Rules\In;
 
-use DB;
 class ExpositionController extends Controller
 {
     //
     public function index()
     {
-        return view('dashboard.show', [
-            'expositions' => Exposition::with('museum')->lastFive()->get(),
-            'expositions_no' => Exposition::all()->count(),
+        return view('exposition.index', [
+            'expositions' => Exposition::all(),
+            /*'expositions_no' => Exposition::all()->count(),
             'museums' => Museum::all(),
             'photos' => Photo::all(),
-            'staffs' => Staff::all(),
+            'staffs' => Staff::all(),*/
         ]);
     }
 
-    public function create()
-    {
-        return view('dashboard.show');
-    }
-
-    public function store(Request $request)
+    /*public function store()
     {
         $this->validate($request,[
             'title-expo' => 'required',
@@ -47,7 +39,14 @@ class ExpositionController extends Controller
 
         $exposition->save();
         return redirect('/exposition')->with('success','Expozitie adaugata');
+    }*/
+
+    /*public function create()
+    {
+        return view('dashboard.show');
     }
+
+
 
     public function search(Request $request)
     {
@@ -67,6 +66,6 @@ class ExpositionController extends Controller
                 return Response($output);
             }
         }
-    }
+    }*/
 
 }

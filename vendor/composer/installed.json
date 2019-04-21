@@ -2750,8 +2750,8 @@
     },
     {
         "name": "symfony/event-dispatcher",
-        "version": "v3.4.24",
-        "version_normalized": "3.4.24.0",
+        "version": "v3.4.26",
+        "version_normalized": "3.4.26.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/event-dispatcher.git",
