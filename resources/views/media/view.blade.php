@@ -40,7 +40,7 @@
                                                 @endif
                                             @endif
                                         </td>
-                                        <td>{!! date("Y-m-d", strtotime($media->created_at)) !!}</td>
+                                        <td>{!! date("Y-m-d H:i:s", strtotime($media->created_at)) !!}</td>
                                         <td>
                                             <a class="btn btn-success btn-xs" title="Actualizeaza datele"
                                                href="{!! route('change_pass', ['code' => $media->media_id]) !!}">
@@ -148,13 +148,12 @@
                             <div class="col-lg-8">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div>
-                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 150px;">
-                                        </div>
                                         <span class="btn btn-white btn-file">
+                                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 150px;">
+                                            </div>
                                             <span class="fileinput-new"><i class="fa fa-music"></i> Alege audio</span>
-                                            <input type="file" name="audio" id="audio" value="">
+                                            <input type="file" name="audio" id="audio">
                                         </span>
-
                                         <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
                                             <i class="fa fa-trash-o"></i> Sterge
                                         </a>

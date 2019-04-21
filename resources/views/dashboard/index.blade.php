@@ -348,7 +348,19 @@
                                         <td>
                                             <a href="#">{{ $item->path }}</a>
                                         </td>
-                                        <td>-</td>
+                                        <td>
+                                            @if (strpos($item->path, '/photo/') !== false)
+                                                Photo
+                                            @else
+                                                @if (strpos($item->path, '/audio/') !== false)
+                                                    Audio
+                                                @else
+                                                    @if (strpos($item->path, '/video/') !== false)
+                                                        Video
+                                                    @endif
+                                                @endif
+                                            @endif
+                                        </td>
                                         <td>{{ $item->created_at }}</td>
                                     </tr>
                                 @endforeach

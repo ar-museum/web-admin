@@ -35,7 +35,7 @@ class MediaController extends Controller
         ]);
 
         if (request()->hasFile('photo')) {
-            $photo        = request()->file('photo');
+            $photo        = $request->file('photo');
             $new_filename = md5(time() . $photo->getClientOriginalName()) . '.' . $photo->getClientOriginalExtension();
 
             try {
@@ -64,8 +64,21 @@ class MediaController extends Controller
         $this->validate($request,[
             'audio' => 'required'
         ]);
+
+        if (request()->hasFile('audio')) {
+            $audio        = $request->file('audio');
+            $new_filename = md5(time() . $audio->getClientOriginalName()) . '.' . $audio->getClientOriginalExtension();
+
+            try {
+                $audio->move(public_path('uploads' . DIRECTORY_SEPARATOR . 'audio' .
+                    DIRECTORY_SEPARATOR), $new_filename);
+            } catch (FileException $e) {
+                return redirect()->back()->withErrors(['audio' => '* ' . $e->getMessage()])->withInput();
+            }
+        }
+
         $media = new Media();
-        $media->path = 'uploads/audio/' . request()->get('audio');
+        $media->path = 'uploads/audio/' . $new_filename;
         $media->save();
 
         $audio = new Audio();
@@ -81,8 +94,21 @@ class MediaController extends Controller
         $this->validate($request,[
             'video' => 'required'
         ]);
+
+        if (request()->hasFile('audio')) {
+            $video        = $request->file('audio');
+            $new_filename = md5(time() . $video->getClientOriginalName()) . '.' . $video->getClientOriginalExtension();
+
+            try {
+                $video->move(public_path('uploads' . DIRECTORY_SEPARATOR . 'video' .
+                    DIRECTORY_SEPARATOR), $new_filename);
+            } catch (FileException $e) {
+                return redirect()->back()->withErrors(['video' => '* ' . $e->getMessage()])->withInput();
+            }
+        }
+
         $media = new Media();
-        $media->path = 'uploads/video/' . request()->get('video');
+        $media->path = 'uploads/audio/' . $new_filename;
         $media->save();
 
         $video = new Video();
