@@ -44,7 +44,7 @@ Route::post('/exposition/editare/{id}', array(
 ));
 Route::delete('exposition/delete/{var}', array(
     'as' => 'delete-exposition',
-    'uses' => 'Web\ExpositionController@delete'
+    'uses' => 'Web\ExpositionController@destroy'
 ));
 
 Route::group([
@@ -150,4 +150,3 @@ Route::get('media/delete/{var}', array(
     'as' => 'delete-media',
     'uses' => 'Web\MediaController@destroy'
 ));
-Route::get('/exposition/search', 'Web\ExpositionController@search');
