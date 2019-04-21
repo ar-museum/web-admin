@@ -52,10 +52,10 @@
                 <header class="panel-heading"><i class="fa fa-building-o"></i> Informatii muzeu</header>
                 <div class="list-group">
                     <a class="list-group-item" href="#">
-                       <p><h4>Nume: </h4> {!!$museum_name!!}</p>
+                        <h4>Nume: </h4> {!!$museum_name!!}
                     </a>
                     <a class="list-group-item" href="#">
-                        <p><h4>Adresa: </h4> {!!$museum_address!!}</p>
+                        <h4>Adresa: </h4> {!!$museum_address!!}
                     </a>
                     <a class="list-group-item" href="#">
                         <h4>Program:</h4>

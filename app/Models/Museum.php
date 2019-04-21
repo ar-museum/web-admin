@@ -28,10 +28,20 @@ class Museum extends BaseModel
         return $this->name;
 
     }
+    public function setMuseumName($name)
+    {
+        $this->name=$name;
+
+    }
 
     public function getMuseumAddress()
     {
         return $this->address;
+    }
+
+    public function setMuseumAddress($address)
+    {
+        $this->address=$address;
     }
 
 
@@ -65,7 +75,7 @@ class Museum extends BaseModel
         $this->saturday_opening_hour = $opening;
         $this->saturday_closing_hour =$closing;
     }
-    public function  setSundayProgsram($opening, $closing)
+    public function  setSundayProgram($opening, $closing)
     {
         $this->sunday_opening_hour = $opening;
         $this->sunday_closing_hour =$closing;

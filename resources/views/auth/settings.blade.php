@@ -18,55 +18,44 @@
                 </header>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="museum/store" enctype="multipart/form-data" role="form">
-
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group @if ($errors->has('museum_name'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="first_name">Nume </label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="museum_name">Nume </label>
                             <div class="col-lg-8">
-                                <input type="text" name="museum_name" id="museum_name"
-                                       value="@if(null !== old('museum_name')){{old('museum_name')}}@else{{$museum->name}}@endif"
-                                       class="form-control" placeholder="Nume">
+                                <input type="text" name="museum_name" id="museum_name" placeholder="Nume" class="form-control" >
                             </div>
                         </div>
 
                             <div class="form-group @if ($errors->has('museum_address'))has-error @endif">
-                                <label class="col-lg-4 col-sm-4 control-label" for="first_name">Adresa </label>
+                                <label class="col-lg-4 col-sm-4 control-label" for="museum_address">Adresa </label>
                                 <div class="col-lg-8">
-                                    <input type="text" name="museum_address" id="museum_address"
-                                           value="@if(null !== old('museum_address')){{old('museum_address')}}@else{{$museum->address}}@endif"
-                                           class="form-control" placeholder="Adresa">
+                                    <input type="text" name="museum_address" id="museum_address" placeholder="Adresa" class="form-control" >
                                 </div>
                             </div>
                         <div class="form-group @if ($errors->has('day'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="first_name">Ziua pentru care doriti sa modificati programul</label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="day">Ziua pentru care doriti sa modificati programul</label>
                             <div class="col-lg-8">
-                                <input type="text" name="museum_address" id="museum_address"
-                                       value="@if(null !== old('day')){{old('day')}}@else{{null}}@endif"
-                                       class="form-control" placeholder="Ziua dorita">
+                                <input type="text" name="day" id="day" placeholder="Ziua dorita" class="form-control" >
                             </div>
                         </div>
                         <div class="form-group @if ($errors->has('new_opening'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="first_name">Noua ora de deschidere(hh:mm:ss)</label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="new_opening">Noua ora de deschidere(hh:mm:ss)</label>
                             <div class="col-lg-8">
-                                <input type="text" name="museum_address" id="museum_address"
-                                       value="@if(null !== old('new_opening')){{old('new_opening')}}@else{{null}}@endif"
-                                       class="form-control" placeholder="Ora de deschidere">
+                                <input type="text" name="new_opening" id="new_opening"  placeholder="Ora de deschidere" class="form-control" >
                             </div>
                         </div>
                         <div class="form-group @if ($errors->has('new_closing'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="first_name">Noua ora de inchidere(hh:mm:ss)</label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="new_closing">Noua ora de inchidere(hh:mm:ss)</label>
                             <div class="col-lg-8">
-                                <input type="text" name="museum_address" id="museum_address"
-                                       value="@if(null !== old('new_closing')){{old('new_closing')}}@else{{null}}@endif"
-                                       class="form-control" placeholder="Ora de inchidere">
+                                <input type="text" name="new_closing" id="new_closing" placeholder="Ora de inchidere" class="form-control" >
                             </div>
                         </div>
 
-                        <div class="form-group">
+                         <div class="form-group">
                             <div class="col-sm-offset-4 col-md-8">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> Actualizeaza</button>
                             </div>
                         </div>
-
                     </form>
 
 
