@@ -78,7 +78,7 @@ class ExhibitController extends Controller
 
 
         if (request()->getMethod() == 'GET') {
-            return redirect()->route('exhibit', ['exhibit_id' => $var]);
+            return redirect()->route('delete-exhibit', ['exhibit_id' => $var]);
         }
 
         return response()->json(['message' => 'Exponatul ' . $exhibit->title . ' a fost sters cu succes!']);

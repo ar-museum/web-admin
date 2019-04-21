@@ -9,8 +9,8 @@ function delete_exhibit(obj)
         if ('STERGE' === result)
         {
             $.ajax({
-                url: '/exhibit/' + _exhibitId  + '/delete',
-                type: 'POST',
+                url: 'exhibit/delete/' + _exhibitId,
+                type: 'DELETE',
                 success: function(r) {
                     var _pos = EXHIBITS.fnGetPosition($(obj).closest('tr').get(0));
                     EXHIBITS.fnDeleteRow(_pos);
