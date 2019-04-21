@@ -39,6 +39,25 @@ class ExpositionController extends Controller
         $exposition->save();
         return redirect('/exposition')->with('success','Expozitie adaugata');
     }
+    public function delete($exposition_id)
+    {
+        try {
+            $exposition = Student::findOrFail($exposition_id);
+            $exposition->delete();
+        } catch (\Exception $e) {
+            if (request()->getMethod() == 'GET') {
+                return redirect()->route('exposition');
+            }
 
+            return error($e->getMessage());
+        }
+
+
+        if (request()->getMethod() == 'GET') {
+            return redirect()->route('exposition', ['id' => $exposition_id]);
+        }
+
+        return response()->json(['message' => 'Expozitia ' . $exposition->title . ' a fost stearsa cu succes!']);
+    }
 
 }

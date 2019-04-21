@@ -42,6 +42,10 @@ Route::post('/exposition/editare/{id}', array(
     'as' => 'editare_expozitie',
     'uses' => 'Web\ExpositionController@update',
 ));
+Route::delete('exposition/{id}/sterge', array(
+    'uses' => 'Web\ExpositionController@delete'
+));
+
 Route::group([
     'namespace' => 'Auth',
 ], function () {
