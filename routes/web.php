@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }
@@ -128,15 +129,8 @@ Route::delete('exhibit/delete/{var}', array(
     'uses' => 'Web\ExhibitController@destroy'
 ));
 
-Route::get('/museum', array(
-    'as' => 'museum',
-    'uses' => 'MuseumController@index'
-));
-
-Route::post('museum/store/{var}', array(
-    'as' => 'store-museum',
-    'uses' => 'MuseumController@store'
-));
+Route::get('/museum', 'Web\MuseumController@index');
+Route::post('museum/store', 'Web\MuseumController@store');
 
 Route::get('/media', array(
     'as'   => 'media',
