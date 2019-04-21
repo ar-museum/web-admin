@@ -142,7 +142,7 @@
                             @foreach ($authors as $author)
                                 <tr>
                                     <td>{!! $author->author_id !!}</td>
-                                    <td>{{ $author->photos->path }} </td>
+                                    <td>{!! $author-> photo_id !!} </td>
                                     <td>
                                         <a href="#">{{ $author->full_name }}</a>
                                     </td>
