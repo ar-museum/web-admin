@@ -24,63 +24,26 @@ class MediaController extends Controller
 
     public function create()
     {
-        return view('dashboard.media.blade.php');
+        return view('dashboard.media');
     }
 
     public function store(Request $request)
     {
         $this->validate($request,[
-            'path_media' => 'required'
+            'photo' => 'required',
+            'photo_width' => 'required',
+            'photo_height' => 'required'
         ]);
         $media = new Media();
-        $media->path = $request->get('path-media');
-
+        $media->path = $request->get('photo');
         $media->save();
+
+        $photo = new Photo();
+        $photo->photo_id = $media->media_id;
+        $photo->width = $request->get('photo_width');
+        $photo->height = $request->get('photo_height');
+
+        $photo->save();
         return redirect('/media')->with('success','Media adaugata!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

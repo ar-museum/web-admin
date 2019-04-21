@@ -131,17 +131,10 @@ Route::get('/media', array(
     'uses' => 'Web\MediaController@index'
 ));
 
-Route::post('/media/store/{var}', array(
-    'as' => 'store-media',
-    'uses' => 'Web\MediaController@store'
-));
+Route::get('/create','Web\MediaController@create');
+Route::post('/store-media','Web\MediaController@store');
 
-Route::get('/media/edit/{var}', array(
-    'as' => 'edit-media',
-    'uses' => 'Web\MediaController@edit'
-));
-
-Route::delete('media/delete/{var}',array(
+Route::delete('media/delete/{var}', array(
     'as' => 'delete-media',
     'uses' => 'Web\MediaController@destroy'
 ));
