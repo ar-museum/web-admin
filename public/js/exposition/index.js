@@ -9,7 +9,7 @@ function delete_exposition(obj)
         if ('STERGE' === result)
         {
             $.ajax({
-                url: 'exposition/delete' + _expositionId,
+                url: 'exposition/delete/' + _expositionId,
                 type: 'DELETE',
                 success: function(r) {
                     var _pos = EXPOSITIONS.fnGetPosition($(obj).closest('tr').get(0));
