@@ -7,6 +7,8 @@ use App\Models\Photo;
 use App\Models\Audio;
 use App\Models\Video;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class MediaController extends Controller
 {
@@ -26,13 +28,26 @@ class MediaController extends Controller
         return view('media.view');
     }
 
-    public function store_photo()
+    public function store_photo(Request $request)
     {
-        $this->validate(request(),[
+        $this->validate($request,[
             'photo' => 'required'
         ]);
+
+        if (request()->hasFile('photo')) {
+            $photo        = request()->file('photo');
+            $new_filename = md5(time() . $photo->getClientOriginalName()) . '.' . $photo->getClientOriginalExtension();
+
+            try {
+                $photo->move(public_path('uploads' . DIRECTORY_SEPARATOR . 'photo' .
+                    DIRECTORY_SEPARATOR), $new_filename);
+            } catch (FileException $e) {
+                return redirect()->back()->withErrors(['photo' => '* ' . $e->getMessage()])->withInput();
+            }
+        }
+
         $media = new Media();
-        $media->path = '/resources/uploads/Media/Photo/' . request()->get('photo');
+        $media->path = 'uploads/photo/' . $new_filename;
         $media->save();
 
         $photo = new Photo();
@@ -44,13 +59,13 @@ class MediaController extends Controller
         return redirect('/media')->with('success','Fotografie adaugata!');
     }
 
-    public function store_audio()
+    public function store_audio(Request $request)
     {
-        $this->validate(request(),[
+        $this->validate($request,[
             'audio' => 'required'
         ]);
         $media = new Media();
-        $media->path = '/resources/uploads/Media/Audio/' . request()->get('audio');
+        $media->path = 'uploads/audio/' . request()->get('audio');
         $media->save();
 
         $audio = new Audio();
@@ -61,13 +76,13 @@ class MediaController extends Controller
         return redirect('/media')->with('success','Audio adaugat!');
     }
 
-    public function store_video()
+    public function store_video(Request $request)
     {
-        $this->validate(request(),[
+        $this->validate($request,[
             'video' => 'required'
         ]);
         $media = new Media();
-        $media->path = '/resources/uploads/Media/Video/' . request()->get('video');
+        $media->path = 'uploads/video/' . request()->get('video');
         $media->save();
 
         $video = new Video();

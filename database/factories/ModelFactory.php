@@ -47,19 +47,19 @@ $factory->define(App\Models\Media::class, function (Faker\Generator $faker, $par
 $factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
     return [
         'photo_id' => $params['media_id'] ?? (function () {
-                return factory(App\Models\Media::class)->create(['path' => '/resources/uploads/Media/Photo/photo1.jpg'])->media_id;
+                return factory(App\Models\Media::class)->create(['path' => 'uploads/photo/8a4a728eaa296a920c0674868254605b.jpg'])->media_id;
             }),
-        'width' => $params['width'] ?? 400,
-        'height' => $params['width'] ?? 200,
+        'width' => $params['width'] ?? 1920,
+        'height' => $params['width'] ?? 1080,
     ];
 });
 
 $factory->define(App\Models\Audio::class, function (Faker\Generator $faker) {
     return [
         'audio_id' => $params['media_id'] ?? (function () {
-                return factory(App\Models\Media::class)->create(['path' => '/resources/uploads/Media/Audio/audio1.mp3'])->media_id;
+                return factory(App\Models\Media::class)->create(['path' => 'uploads/audio/HDj3GaW9eOrLIT0tV5zaOSAf8cVGMEH93U9vWlIe.mp3'])->media_id;
             }),
-        'length' => $params['length'] ?? 3.4,
+        'length' => $params['length'] ?? 1.25,
     ];
 });
 
