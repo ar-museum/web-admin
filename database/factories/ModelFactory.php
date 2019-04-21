@@ -47,7 +47,7 @@ $factory->define(App\Models\Media::class, function (Faker\Generator $faker, $par
 $factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
     return [
         'photo_id' => $params['media_id'] ?? (function () {
-                return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Photo/photo1.jpg'])->media_id;
+                return factory(App\Models\Media::class)->create(['path' => '/resources/uploads/Media/Photo/photo1.jpg'])->media_id;
             }),
         'width' => $params['width'] ?? 400,
         'height' => $params['width'] ?? 200,
@@ -57,7 +57,7 @@ $factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Audio::class, function (Faker\Generator $faker) {
     return [
         'audio_id' => $params['media_id'] ?? (function () {
-                return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Audio/audio1.mp3'])->media_id;
+                return factory(App\Models\Media::class)->create(['path' => '/resources/uploads/Media/Audio/audio1.mp3'])->media_id;
             }),
         'length' => $params['length'] ?? 3.4,
     ];
@@ -66,7 +66,7 @@ $factory->define(App\Models\Audio::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Video::class, function (Faker\Generator $faker) {
     return [
         'video_id' => $params['media_id'] ?? (function () {
-                return factory(App\Models\Media::class)->create(['path' => '/resources/Media/Video/video1.mp4'])->media_id;
+                return factory(App\Models\Media::class)->create(['path' => '/resources/uploads/Media/Video/video1.mp4'])->media_id;
             }),
         'length' => $params['length'] ?? 1.25,
     ];
@@ -115,11 +115,22 @@ $factory->define(App\Models\Exhibit::class, function (Faker\Generator $faker, $p
 
 $factory->define(App\Models\Museum::class, function (Faker\Generator $faker, $params) {
     return [
-        'museum_id' => $params['museum_id'] ?? 1,
-        'name' =>$params['name'] ?? 'Mihai Eminescu Museum',
+        'name' =>$params['name'] ?? 'Muzeul Mihai Eminescu',
         'address' =>$params['address'] ?? 'Copou Iasi',
-        'opening_hour' =>$params['opening_hour'] ?? '08:00:00',
-        'closing_hour' => $params['closing_hour'] ??'21:00:00',
+        'monday_opening_hour' =>$params['monday_opening_hour'] ?? '00:00:00',
+        'monday_closing_hour' => $params['monday_closing_hour'] ??'00:00:00',
+        'tuesday_opening_hour' =>$params['tuesday_opening_hour'] ?? '10:00:00',
+        'tuesday_closing_hour' => $params['tuesday_closing_hour'] ??'17:00:00',
+        'wednesday_opening_hour' =>$params['wednesday_opening_hour'] ?? '10:00:00',
+        'wednesday_closing_hour' => $params['wednesday_closing_hour'] ??'17:00:00',
+        'thursday_opening_hour' =>$params['thursday_opening_hour'] ?? '10:00:00',
+        'thursday_closing_hour' => $params['thursday_closing_hour'] ??'17:00:00',
+        'friday_opening_hour' =>$params['friday_opening_hour'] ?? '10:00:00',
+        'friday_closing_hour' => $params['friday_closing_hour'] ??'17:00:00',
+        'saturday_opening_hour' =>$params['saturday_opening_hour'] ?? '10:00:00',
+        'saturday_closing_hour' => $params['saturday_closing_hour'] ??'17:00:00',
+        'sunday_opening_hour' =>$params['sunday_opening_hour'] ?? '10:00:00',
+        'sunday_closing_hour' => $params['sunday_closing_hour'] ??'17:00:00',
     ];
 });
 

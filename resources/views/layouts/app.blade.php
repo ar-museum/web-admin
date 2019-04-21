@@ -72,17 +72,17 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('exposition') !!}">
                             <i class="fa fa-camera-retro"></i> <span>Expozitii</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('exhibit') !!}">
                             <i class="fa fa-picture-o"></i> <span>Exponate</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('author') !!}">
                             <i class="fa fa-male"></i> <span>Autori</span>
                         </a>
                     </li>
@@ -97,7 +97,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('media') !!}">
                             <i class="fa fa-film"></i> <span>Media</span>
                         </a>
                     </li>

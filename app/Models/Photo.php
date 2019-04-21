@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\BaseModel;
+use Faker\Generator;
 
 class Photo extends BaseModel
 {

@@ -40,7 +40,7 @@
                     <i class="fa fa-film"></i>
                 </div>
                 <div class="value">
-                    <h1 class="media_no">NaN</h1>
+                    <h1 class="media_no">{!! $media_no !!}</h1>
                     <p>Media</p>
                 </div>
             </section>
@@ -52,7 +52,20 @@
                 <header class="panel-heading"><i class="fa fa-building-o"></i> Informatii muzeu</header>
                 <div class="list-group">
                     <a class="list-group-item" href="#">
-                        Nume: Mihai Eminescu
+                        <h4>Nume: </h4> {!!$museum_name!!}
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <h4>Adresa: </h4> {!!$museum_address!!}
+                    </a>
+                    <a class="list-group-item" href="#">
+                        <h4>Program:</h4>
+                        <p><b>Luni</b>:  {!! $monday_program !!}</p>
+                        <p><b>Marti</b>:  {!! $tuesday_program !!}</p>
+                        <p><b>Miercuri</b>:  {!! $wednesday_program !!}</p>
+                        <p><b>Joi</b>:  {!! $thursday_program !!}</p>
+                        <p><b>Vineri</b>:  {!! $friday_program !!}</p>
+                        <p><b>Sambata</b>:  {!! $saturday_program !!}</p>
+                        <p><b>Duminica</b>:  {!! $sunday_program !!}</p>
                     </a>
                 </div>
             </section>
@@ -96,7 +109,7 @@
                         </table>
                     </div>
                     <div class="add-task-row">
-                        <a class="btn btn-primary btn-sm" href="#">Vezi toate expozitiile</a>
+                        <a class="btn btn-primary btn-sm" href="{!! route('exposition') !!}">Vezi toate expozitiile</a>
                     </div>
                     @else
                         <div class="alert alert-info fade in">
@@ -140,18 +153,18 @@
                                             <a href="#">{{ $exhibit->title }}</a>
                                         </td>
                                         <td>{{ $exhibit->short_description }}</td>
-                                        <td>{{ $exhibit->author_id }}</td>
+                                        <td>{{ $exhibit->authors->full_name }}</td>
                                         <td>{{ $exhibit->start_year }} @if (!is_null($exhibit->end_year)) - {{ $exhibit->end_year }} @endif</td>
                                         <td>{{ $exhibit->size }}</td>
                                         <td class="hidden-phone">{{ $exhibit->location }}</td>
-                                        <td>-</td>
+                                        <td>{!! $exhibit->created_at !!}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <div class="add-task-row">
-                            <a class="btn btn-primary btn-sm" href="#">Vezi toate exponatele</a>
+                            <a class="btn btn-primary btn-sm" href= {!! route('exhibit') !!} >Vezi toate exponatele</a>
                         </div>
                     @else
                         <div class="alert alert-info fade in">
@@ -195,14 +208,14 @@
                                         </td>
                                         <td>{{ $author->born_year }} @if (!is_null($author->died_year)) - {{ $author->died_year }} @endif</td>
                                         <td class="hidden-phone">{{ $author->location }}</td>
-                                        <td>-</td>
+                                        <td>{!! $author->created_at !!}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <div class="add-task-row">
-                            <a class="btn btn-primary btn-sm" href="#">Vezi toti autorii</a>
+                            <a class="btn btn-primary btn-sm" href={!! route('author') !!}>Vezi toti autorii</a>
                         </div>
                     @else
                         <div class="alert alert-info fade in">
@@ -343,7 +356,7 @@
                             </table>
                         </div>
                         <div class="add-task-row">
-                            <a class="btn btn-primary btn-sm" href="#">Vezi toate media</a>
+                            <a class="btn btn-primary btn-sm" href="{!! route('media') !!}">Vezi toate media</a>
                         </div>
                     @else
                         <div class="alert alert-info fade in">
