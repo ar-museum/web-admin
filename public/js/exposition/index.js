@@ -2,15 +2,15 @@ var EXPOSITIONS;
 
 function delete_exposition(obj)
 {
-    var _expositionId = $(obj).data('data-action-id');
+    var _expositionId = $(obj).data('action-id');
     $(obj).prop('disabled', true);
 
     bootbox.prompt('Scrie "STERGE" pentru a confirma actiunea', function(result) {
         if ('STERGE' === result)
         {
             $.ajax({
-                url: '/exposition/' + _expositionId + '/sterge',
-                type: 'POST',
+                url: 'exposition/delete' + _expositionId,
+                type: 'DELETE',
                 success: function(r) {
                     var _pos = EXPOSITIONS.fnGetPosition($(obj).closest('tr').get(0));
                     EXPOSITIONS.fnDeleteRow(_pos);

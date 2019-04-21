@@ -39,10 +39,10 @@ class ExpositionController extends Controller
         $exposition->save();
         return redirect('/exposition')->with('success','Expozitie adaugata');
     }
-    public function delete($exposition_id)
+    public function delete($var)
     {
         try {
-            $exposition = Exposition::findOrFail($exposition_id);
+            $exposition= Exposition::findOrFail($var);
             $exposition->delete();
         } catch (\Exception $e) {
             if (request()->getMethod() == 'GET') {
@@ -54,10 +54,10 @@ class ExpositionController extends Controller
 
 
         if (request()->getMethod() == 'GET') {
-            return redirect()->route('exposition', ['id' => $exposition_id]);
+            return redirect()->route('delete-exposition', ['exposition_id' => $var]);
         }
 
-        return response()->json(['message' => 'Expozitia ' . $exposition->title . ' a fost stearsa cu succes!']);
+        return response()->json(['message' => 'Expozitia ' . $exposition->title . ' a fost sters cu succes!']);
     }
 
 }

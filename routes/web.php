@@ -42,7 +42,8 @@ Route::post('/exposition/editare/{id}', array(
     'as' => 'editare_expozitie',
     'uses' => 'Web\ExpositionController@update',
 ));
-Route::delete('exposition/{id}/sterge', array(
+Route::delete('exposition/delete/{var}', array(
+    'as' => 'delete-exposition',
     'uses' => 'Web\ExpositionController@delete'
 ));
 
