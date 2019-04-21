@@ -2,7 +2,7 @@ var EXPOSITIONS;
 
 function delete_exposition(obj)
 {
-    var _expositionId = $(obj).data('action-id');
+    var _expositionId = $(obj).data('data-action-id');
     $(obj).prop('disabled', true);
 
     bootbox.prompt('Scrie "STERGE" pentru a confirma actiunea', function(result) {

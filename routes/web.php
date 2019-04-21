@@ -37,10 +37,6 @@ Route::post('/exposition/add', array(
     'middleware' => ['auth'],
     'uses' => 'Web\ExpositionController@store',
 ));
-Route::post('/exposition/add', array(
-    'middleware' => ['auth'],
-    'uses' => 'Web\ExpositionController@store',
-));
 Route::post('/exposition/editare/{id}', array(
     'middleware' => ['auth'],
     'as' => 'editare_expozitie',
