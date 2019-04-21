@@ -35,7 +35,7 @@ class MediaController extends Controller
             'photo_height' => 'required'
         ]);
         $media = new Media();
-        $media->path = $request->get('photo');
+        $media->path = '/resources/uploads/Media/Photo/' . $request->get('photo');
         $media->save();
 
         $photo = new Photo();

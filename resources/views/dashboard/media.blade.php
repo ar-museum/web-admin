@@ -56,7 +56,7 @@
                                                 <td>
                                                     <a href="#">{{ $media->path }}</a>
                                                 </td>
-                                                <td>Nothing yet</td>
+                                                <td>-</td>
                                                 <td>{!! $media->created_at !!}</td>
                                             </tr>
                                         @endforeach
