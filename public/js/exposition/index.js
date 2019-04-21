@@ -2,7 +2,7 @@ var EXPOSITIONS;
 
 function delete_exposition(obj)
 {
-    var _expositionId = $(obj).data('action-id');
+    var _expositionId = $(obj).data('data-action-id');
     $(obj).prop('disabled', true);
 
     bootbox.prompt('Scrie "STERGE" pentru a confirma actiunea', function(result) {
@@ -36,8 +36,8 @@ $(function() {
             'sEmptyTable': 'Nu mai exista expozitii!',
             'sInfoFiltered': '(filtrat din totalul de _MAX_ intrari)'
         },
-        'aLengthMenu': [[25, 50, 100, 200, -1], [25, 50, 100, 200, 'Tot']],
-        'iDisplayLength': 25,
+        'aLengthMenu': [[5,10, 15, 20, -1], [5, 10, 15, 20, 'Tot']],
+        'iDisplayLength': 5,
         // Disable sorting on the no-sort class
         'aoColumnDefs': [{
             'bSortable': false,

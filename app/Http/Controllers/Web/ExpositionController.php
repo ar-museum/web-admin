@@ -6,8 +6,8 @@ use App\Models\Exposition;
 use App\Models\Museum;
 use App\Models\Photo;
 use App\Models\Staff;
-#use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class ExpositionController extends Controller
 {
@@ -15,57 +15,49 @@ class ExpositionController extends Controller
     public function index()
     {
         return view('exposition.index', [
-            'expositions' => Exposition::all(),
-            /*'expositions_no' => Exposition::all()->count(),
+            'expositions' => Exposition::with('exhibits','museum')->get(),
+            'expositions_no' => Exposition::all()->count(),
             'museums' => Museum::all(),
             'photos' => Photo::all(),
-            'staffs' => Staff::all(),*/
+            'staffs' => Staff::all(),
         ]);
     }
 
-    /*public function store()
+    public function store(Request $request)
     {
         $this->validate($request,[
-            'title-expo' => 'required',
-            'description-expo' => 'required',
+            'title' => 'required',
+            'description' => 'required',
         ]);
         $exposition = new Exposition();
-        $exposition->title = $request->get('title-expo');
-        $exposition->description = $request->get('description-expo');
-        $exposition->museum_id =$request->get('museum-expo');
-        $exposition->staff_id=$request->get('staff-expo');
-        $exposition->photo_id=$request->get('photo-expo');
-
+        $exposition->title = $request->get('title');
+        $exposition->description = $request->get('description');
+        $exposition->museum_id =$request->get('museum-id');
+        $exposition->staff_id=$request->get('staff-id');
+        $exposition->photo_id=$request->get('photo-id');
 
         $exposition->save();
         return redirect('/exposition')->with('success','Expozitie adaugata');
-    }*/
-
-    /*public function create()
-    {
-        return view('dashboard.show');
     }
-
-
-
-    public function search(Request $request)
+    public function delete($exposition_id)
     {
-        if($request->ajax())
-        {
-            $output="";
-            $products=DB::table('expositions')->where('title','LIKE','%'.$request->search."%")->get();
-            if($products)
-            {
-                foreach ($products as $key => $product) {
-                    $output.='<tr>'.
-                        '<td>'.$product->id.'</td>'.
-                        '<td>'.$product->title.'</td>'.
-                        '<td>'.$product->description.'</td>'.
-                        '</tr>';
-                }
-                return Response($output);
+        try {
+            $exposition = Student::findOrFail($exposition_id);
+            $exposition->delete();
+        } catch (\Exception $e) {
+            if (request()->getMethod() == 'GET') {
+                return redirect()->route('exposition');
             }
+
+            return error($e->getMessage());
         }
-    }*/
+
+
+        if (request()->getMethod() == 'GET') {
+            return redirect()->route('exposition', ['id' => $exposition_id]);
+        }
+
+        return response()->json(['message' => 'Expozitia ' . $exposition->title . ' a fost stearsa cu succes!']);
+    }
 
 }
