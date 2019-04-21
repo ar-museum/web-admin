@@ -57,7 +57,7 @@ class ExpositionController extends Controller
             return redirect()->route('delete-exposition', ['exposition_id' => $var]);
         }
 
-        return response()->json(['message' => 'Exponatul ' . $exposition->title . ' a fost sters cu succes!']);
+        return response()->json(['message' => 'Expozitia  ' . $exposition->title . ' a fost sters cu succes!']);
     }
 
 }
