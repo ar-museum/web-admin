@@ -28,13 +28,13 @@
                                         <td>{!! $media->media_id !!}</td>
                                         <td>{{ $media->path }}</td>
                                         <td>
-                                            @if (strpos($media->path, 'Media/Photo/') !== false)
+                                            @if (strpos($media->path, '/photo/') !== false)
                                                 Photo
                                             @else
-                                                @if (strpos($media->path, 'Media/Audio/') !== false)
+                                                @if (strpos($media->path, '/audio/') !== false)
                                                     Audio
                                                 @else
-                                                    @if (strpos($media->path, 'Media/Video/') !== false)
+                                                    @if (strpos($media->path, '/video/') !== false)
                                                         Video
                                                     @endif
                                                 @endif
@@ -66,6 +66,17 @@
         </div>
     </div>
 
+    <div class="row">
+        <!-- Display Validation Errors -->
+        @include('common.errors')
+        @if(\Session::has('success'))
+            <div class="alert alert-success">
+                <p>
+                    {{\Session::get('success')}}
+                </p>
+            </div>
+        @endif
+    </div>
     <!-- ADD PHOTO -->
     <div class="row">
         <div class="col-md-8">
@@ -74,8 +85,7 @@
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
                 </header>
                 <div class="panel-body">
-                    <!-- Display Validation Errors -->
-                    @include('common.errors')
+
                     <form class="form-horizontal" method="POST" action="/store_photo" enctype="multipart/form-data" role="form">
                         {!! csrf_field() !!}
                         <div class="form-group col-lg-10">
@@ -107,7 +117,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-md-8">
-                                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Adauga</button>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Adauga photo</button>
                                 <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> Reseteaza</button>
                             </div>
                         </div>
@@ -126,12 +136,11 @@
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
                 </header>
                 <div class="panel-body">
-                    <!-- Display Validation Errors -->
-                    @include('common.errors')
+
                     <form class="form-horizontal" method="POST" action="/store_audio" enctype="multipart/form-data" role="form">
                         {!! csrf_field() !!}
                         <div class="form-group col-lg-10">
-                            <label class="col-lg-4 col-sm-4 control-label" for="photo">
+                            <label class="col-lg-4 col-sm-4 control-label" for="audio">
                                 Audio
                                 <span class="text-danger">*</span>
                             </label>
@@ -156,7 +165,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-md-8">
-                                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Adauga</button>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Adauga audio</button>
                                 <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> Reseteaza</button>
                             </div>
                         </div>
@@ -175,12 +184,11 @@
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
                 </header>
                 <div class="panel-body">
-                    <!-- Display Validation Errors -->
-                    @include('common.errors')
+
                     <form class="form-horizontal" method="POST" action="/store_video" enctype="multipart/form-data" role="form">
                         {!! csrf_field() !!}
                         <div class="form-group col-lg-10">
-                            <label class="col-lg-4 col-sm-4 control-label" for="photo">
+                            <label class="col-lg-4 col-sm-4 control-label" for="video">
                                 Video
                                 <span class="text-danger">*</span>
                             </label>
@@ -204,7 +212,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-md-8">
-                                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Adauga</button>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Adauga video</button>
                                 <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> Reseteaza</button>
                             </div>
                         </div>
