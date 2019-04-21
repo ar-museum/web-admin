@@ -208,14 +208,14 @@
                                         </td>
                                         <td>{{ $author->born_year }} @if (!is_null($author->died_year)) - {{ $author->died_year }} @endif</td>
                                         <td class="hidden-phone">{{ $author->location }}</td>
-                                        <td>-</td>
+                                        <td>{!! $author->created_at !!}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <div class="add-task-row">
-                            <a class="btn btn-primary btn-sm" href="#">Vezi toti autorii</a>
+                            <a class="btn btn-primary btn-sm" href={!! route('author') !!}>Vezi toti autorii</a>
                         </div>
                     @else
                         <div class="alert alert-info fade in">

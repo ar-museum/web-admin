@@ -82,7 +82,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('author') !!}">
                             <i class="fa fa-male"></i> <span>Autori</span>
                         </a>
                     </li>

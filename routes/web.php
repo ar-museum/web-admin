@@ -94,26 +94,20 @@ Route::group([
         'uses' => 'ResetPasswordController@reset',
     ]);
 
-    Route::get('/author', array(
-        'as' => 'author',
-        'uses' => 'AuthorController@index'
-    ));
-
-    Route::post('/author/store/{var}', array(
-        'as' => 'store-author',
-        'uses' => 'AuthorController@store'
-    ));
-
-    Route::get('/author/edit/{var}', array(
-        'as' => 'edit-author',
-        'uses' => 'AuthorController@edit'
-    ));
-
-    Route::delete('author/destroy/{var}', array(
-        'as' => 'delete-author',
-        'uses' => 'AuthorController@destroy'
-    ));
 });
+
+Route::get('/author', array(
+    'as' => 'author',
+    'uses' => 'Web\AuthorController@index'
+));
+
+Route::get('/create','Web\AuthorController@create');
+Route::post('/author-store','Web\AuthorController@store');
+
+Route::delete('author/delete/{var}', array(
+    'as' => 'delete-author',
+    'uses' => 'Web\AuthorController@destroy'
+));
 
 Route::get('/exhibit', [
     'as' => 'exhibit',
