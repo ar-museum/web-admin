@@ -42,7 +42,7 @@ class ExpositionController extends Controller
     public function delete($exposition_id)
     {
         try {
-            $exposition = Student::findOrFail($exposition_id);
+            $exposition = Exposition::findOrFail($exposition_id);
             $exposition->delete();
         } catch (\Exception $e) {
             if (request()->getMethod() == 'GET') {
