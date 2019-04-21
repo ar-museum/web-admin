@@ -22,6 +22,7 @@ class StaffModelTest extends TestCase
             'email'          => 'ion@museum.lc',
             'password'       => bcrypt('parola123!a'),
             'remember_token' => 'd131',
+            'photo_id'       => 1,
         ];
     }
 
@@ -75,6 +76,7 @@ class StaffModelTest extends TestCase
                                                      'title'       => 'Literatura contemporana',
                                                      'description' => 'Scriitorii secolului XX',
                                                      'museum_id'   => 1,
+                                                     'photo_id'    => 1,
                                                  ]);
 
         $staff->expositions()->save($exposition);

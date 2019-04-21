@@ -14,7 +14,7 @@ class Exposition extends BaseModel
      */
     protected $primaryKey = 'exposition_id';
 
-    protected $fillable = ['museum_id', 'title', 'description'];
+    protected $fillable = ['museum_id', 'title', 'description', 'photo_id'];
 
     public function museum()
     {
