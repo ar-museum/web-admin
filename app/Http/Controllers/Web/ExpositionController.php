@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rules\In;
 
+use DB;
 class ExpositionController extends Controller
 {
     //
@@ -48,5 +49,24 @@ class ExpositionController extends Controller
         return redirect('/exposition')->with('success','Expozitie adaugata');
     }
 
+    public function search(Request $request)
+    {
+        if($request->ajax())
+        {
+            $output="";
+            $products=DB::table('expositions')->where('title','LIKE','%'.$request->search."%")->get();
+            if($products)
+            {
+                foreach ($products as $key => $product) {
+                    $output.='<tr>'.
+                        '<td>'.$product->id.'</td>'.
+                        '<td>'.$product->title.'</td>'.
+                        '<td>'.$product->description.'</td>'.
+                        '</tr>';
+                }
+                return Response($output);
+            }
+        }
+    }
 
 }

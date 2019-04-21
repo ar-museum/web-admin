@@ -30,9 +30,8 @@
                                                         </select> records per page</label></div>
                                             </div>
                                             <div class="span6">
-                                                <div class="dataTables_filter" id="dynamic-table_filter"><label>Search:
-                                                        <input type="text" class="form-control"
-                                                               aria-controls="dynamic-table"></label></div>
+                                                <div class="dataTables_filter" id="dynamic-table_filter"><label>Search:</label>
+                                                    <input type="text" class="form-controller" id="search" name="search"></input></div>
                                             </div>
                                         </div>
                                         <table class="display table table-hover table-bordered table-striped"
@@ -175,7 +174,24 @@
     <!-- page end-->
 
     </section>
-
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $('#search').on('keyup',function(){
+            $value=$(this).val();
+            $.ajax({
+                type : 'get',
+                url : '{{URL::to('exposition/search')}}',
+                data:{'search':$value},
+                success:function(data){
+                    $('tbody').html(data);
+                }
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+    </script>
 @endsection
 @section('js')
     <script src="{!! asset('/js/dashboard/index.js') !!}"></script>

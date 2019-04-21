@@ -157,3 +157,4 @@ Route::delete('media/delete/{var}',array(
     'as' => 'delete-media',
     'uses' => 'Web\MediaController@destroy'
 ));
+Route::get('/exposition/search','Web\ExpositionController@search');

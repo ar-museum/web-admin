@@ -8,6 +8,7 @@
     <meta name="keyword" content="CRM, driving, school">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
+    <meta name="_token" content="{{ csrf_token() }}">
     <title>AR Museum - Panou administrare</title>
 
     <!-- Bootstrap core CSS -->
