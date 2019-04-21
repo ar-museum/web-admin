@@ -37,6 +37,15 @@ Route::post('/exposition/add', array(
     'middleware' => ['auth'],
     'uses' => 'Web\ExpositionController@store',
 ));
+Route::post('/exposition/add', array(
+    'middleware' => ['auth'],
+    'uses' => 'Web\ExpositionController@store',
+));
+Route::post('/exposition/editare/{id}', array(
+    'middleware' => ['auth'],
+    'as' => 'editare_expozitie',
+    'uses' => 'Web\ExpositionController@update',
+));
 Route::group([
     'namespace' => 'Auth',
 ], function () {
@@ -102,8 +111,8 @@ Route::get('/author', array(
     'uses' => 'Web\AuthorController@index'
 ));
 
-Route::get('/create','Web\AuthorController@create');
-Route::post('/author-store','Web\AuthorController@store');
+Route::get('/create', 'Web\AuthorController@create');
+Route::post('/author-store', 'Web\AuthorController@store');
 
 Route::delete('author/delete/{var}', array(
     'as' => 'delete-author',
@@ -115,8 +124,8 @@ Route::get('/exhibit', [
     'uses' => 'Web\ExhibitController@index'
 ]);
 
-Route::get('/create','Web\ExhibitController@create');
-Route::post('/exhibit-store','Web\ExhibitController@store');
+Route::get('/create', 'Web\ExhibitController@create');
+Route::post('/exhibit-store', 'Web\ExhibitController@store');
 
 Route::delete('exhibit/delete/{var}', array(
     'as' => 'delete-exhibit',
@@ -127,15 +136,15 @@ Route::get('/museum', 'Web\MuseumController@index');
 Route::post('museum/store', 'Web\MuseumController@store');
 
 Route::get('/media', array(
-    'as'   => 'media',
+    'as' => 'media',
     'uses' => 'Web\MediaController@index'
 ));
 
-Route::get('/create','Web\MediaController@create');
-Route::post('/store-media','Web\MediaController@store');
+Route::get('/create', 'Web\MediaController@create');
+Route::post('/store-media', 'Web\MediaController@store');
 
 Route::delete('media/delete/{var}', array(
     'as' => 'delete-media',
     'uses' => 'Web\MediaController@destroy'
 ));
-Route::get('/exposition/search','Web\ExpositionController@search');
+Route::get('/exposition/search', 'Web\ExpositionController@search');

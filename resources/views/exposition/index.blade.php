@@ -9,7 +9,7 @@
                 <div class="panel-body">
                     <!-- Display Validation Errors -->
                     @include('common.errors')
-                    <form class="form-horizontal" method="POST" action="#" enctype="multipart/form-data" role="form">
+                    <form class="form-horizontal" method="POST" action="/exposition/add" enctype="multipart/form-data" role="form">
                         {!! csrf_field() !!}
                         <div class="form-group @if ($errors->has('title'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="title">Titlu <span class="text-danger">*</span></label>
@@ -24,6 +24,43 @@
                             <div class="col-lg-8">
                                 <input type="text" name="description" id="description" value="{{ old('description') }}"
                                        class="form-control" placeholder="Descriere">
+                            </div>
+                        </div>
+
+                        <div class="form-group @if ($errors->has('museum_id'))has-error @endif">
+                            <label class="col-lg-4 col-sm-4 control-label" for="class_museum_id">Muzeu <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <select name="museum-id" class="form-control" id="class_museum_id">
+                                    <option value="0">Alege un muzeu</option>
+                                    @foreach ($museums as $museum)
+                                        <option value="{!! $museum->museum_id !!}" @if (null !== old('museum_id')
+                                        && $museum->museum_id == old('museum_id')) selected @endif>{!! $museum->name !!}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group @if ($errors->has('photo_id'))has-error @endif">
+                            <label class="col-lg-4 col-sm-4 control-label" for="class_photo_id">Photo <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <select name="photo-id" class="form-control" id="class_photo_id">
+                                    <option value="0">Alege o fotografie</option>
+                                    @foreach ($photos as $photo)
+                                        <option value="{!! $photo->photo_id !!}" @if (null !== old('photo_id')
+                                        && $photo->photo_id == old('photo_id')) selected @endif>{!! $photo->photo_id !!}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group @if ($errors->has('staff_id'))has-error @endif">
+                            <label class="col-lg-4 col-sm-4 control-label" for="class_staff_id">Staff <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <select name="staff-id" class="form-control" id="class_staff_id">
+                                    <option value="0">Alege un staff</option>
+                                    @foreach ($staffs as $staff)
+                                        <option value="{!! $staff->staff_id !!}" @if (null !== old('staff_id')
+                                        && $staff->staff_id == old('staff_id')) selected @endif>{!! $staff->first_name !!} {!! $staff->last_name !!}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -75,7 +112,7 @@
                                         <td>{!! date("Y-m-d", strtotime($exposition->created_at)) !!}</td>
                                         <td>
                                             <a class="btn btn-success btn-xs" title="Actualizeaza datele"
-                                               href="{!! route('change_pass', ['code' => $exposition->exposition_id]) !!}">
+                                               href="{!! route('editare_expozitie', ['id' => $exposition->exposition_id]) !!}">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                             <button type="button" class="btn btn-danger btn-xs btn-delete"
