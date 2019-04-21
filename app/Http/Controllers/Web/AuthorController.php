@@ -10,15 +10,14 @@ use Illuminate\Http\Request;
 class AuthorController extends Controller
 {
     public function index(){
-            return view('dashboard.author',[
-                'authors'=>Author::lastFive()->get(),
-                'author_no'=> Author::all()->count(),
+            return view('author.index',[
+                'authors'=>Author::all(),
             ]);
     }
 
     public function create()
     {
-        return view('dashboard.author.blade.php');
+        return view('author.index.blade.php');
     }
     public function store(Request $request){
         $this->validate($request,[
@@ -40,11 +39,28 @@ class AuthorController extends Controller
         return redirect('/author')->with('success', 'Autor adaugat');
     }
 
-    public function edit($var){
+    public function edit($author_id){
 
     }
+    public function destroy($author_id)
+    {
+        try {
+            $author = Author::findOrFail($author_id);
+            $author->delete();
+        } catch (\Exception $e) {
+            if (request()->getMethod() == 'GET') {
+                return redirect()->route('author');
+            }
 
-    public function destroy($var){
+            return error($e->getMessage());
+        }
 
+
+        if (request()->getMethod() == 'GET') {
+            return redirect()->route('delete-author', ['author_id' => $author_id]);
+        }
+
+        return response()->json(['message' => 'Autorul ' . $author->full_name . ' a fost sters cu succes!']);
     }
+
 }

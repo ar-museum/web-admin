@@ -115,7 +115,7 @@ Route::get('/author', array(
 Route::get('/create', 'Web\AuthorController@create');
 Route::post('/author-store', 'Web\AuthorController@store');
 
-Route::delete('author/delete/{var}', array(
+Route::delete('author/delete/{author_id}', array(
     'as' => 'delete-author',
     'uses' => 'Web\AuthorController@destroy'
 ));
