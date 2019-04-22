@@ -22,10 +22,11 @@ class DatabaseSeeder extends Seeder
         $this->call(ExpositionTableSeeder::class);
 
         #$this->call(TagTableSeeder::class);
+        $this->call(CategoryTableSeeder::class);
+
         $this->call(ExhibitTableSeeder::class);
         $this->call(ExhibitTagTableSeeder::class);
         $this->call(ExhibitCategoryTableSeeder::class);
-        #$this->call(CategoryTableSeeder::class);
 
         Model::reguard();
     }

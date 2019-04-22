@@ -12,6 +12,21 @@ class ExhibitCategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\ExhibitCategory::class, 3)->create();
+        DB::table('exhibit_categories')->insert([
+            'category_id' => 1,
+            'exhibit_id' => 1,
+        ]);
+
+        DB::table('exhibit_categories')->insert([
+            'category_id' => 2,
+            'exhibit_id' => 1,
+        ]);
+
+        DB::table('exhibit_categories')->insert([
+            'category_id' => 3,
+            'exhibit_id' => 1,
+        ]);
+
+        // factory(App\Models\ExhibitCategory::class, 3)->create();
     }
 }
