@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <section class="panel">
                 <header class="panel-heading">Adauga exponat
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
