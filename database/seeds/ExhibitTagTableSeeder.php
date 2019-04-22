@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Exposition;
 use Illuminate\Database\Seeder;
 
 class ExhibitTagTableSeeder extends Seeder
@@ -12,6 +11,6 @@ class ExhibitTagTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\ExhibitTag::class, 12)->create();
+        factory(App\Models\ExhibitTag::class, 32)->create();
     }
 }
