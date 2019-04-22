@@ -150,3 +150,59 @@ Route::get('media/delete/{var}', array(
     'as' => 'delete-media',
     'uses' => 'Web\MediaController@destroy'
 ));
+
+// Category routing
+
+Route::group([
+    'namespace' => 'Web',
+], function () {
+
+    Route::get('/category', [
+        'as' => 'category',
+        'middleware' => ['auth'],
+        'uses' => 'CategoryController@index'
+    ]);
+
+    // Route::get('/category/create', 'CategoryController@create');
+
+    Route::post('/category/add', [
+        'as' => 'store-category',
+        'middleware' => ['auth'],
+        'uses' => 'CategoryController@store'
+    ]);
+
+    Route::delete('/category/delete/{category_id}', [
+        'as' => 'delete-category',
+        'middleware' => ['auth'],
+        'uses' => 'CategoryController@destroy'
+    ]);
+
+});
+
+// Tag routing
+
+Route::group([
+    'namespace' => 'Web',
+], function () {
+
+    Route::get('/tag', [
+        'as' => 'tag',
+        'middleware' => ['auth'],
+        'uses' => 'TagController@index'
+    ]);
+
+    // Route::get('/tag/create', 'TagController@create');
+
+    Route::post('/tag/add', [
+        'as' => 'store-tag',
+        'middleware' => ['auth'],
+        'uses' => 'TagController@store'
+    ]);
+
+    Route::delete('/tag/delete/{tag_id}', [
+        'as' => 'delete-tag',
+        'middleware' => ['auth'],
+        'uses' => 'TagController@destroy'
+    ]);
+
+});
