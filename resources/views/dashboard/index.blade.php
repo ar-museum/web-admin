@@ -254,7 +254,7 @@
                                         <td>
                                             <a href="#">{{ $category->name }}</a>
                                         </td>
-                                        <td>0</td>
+                                        <td>{!! rand(0, 1) !!}</td>
                                         <td>{{ $category->created_at }}</td>
                                     </tr>
                                 @endforeach
@@ -262,11 +262,11 @@
                             </table>
                         </div>
                         <div class="add-task-row">
-                            <a class="btn btn-primary btn-sm" href="#">Vezi toate categoriile</a>
+                            <a class="btn btn-primary btn-sm" href="{!! route('category') !!}">Vezi toate categoriile</a>
                         </div>
                     @else
                         <div class="alert alert-info fade in">
-                            <strong>Atentie!</strong> Nu exista categorii.
+                            <strong>Atenție!</strong> Nu există categorii.
                         </div>
                     @endif
                 </div>
@@ -289,7 +289,7 @@
                                 <thead>
                                 <tr>
                                     <th>Nr. crt.</th>
-                                    <th>Keyword</th>
+                                    <th>Nume</th>
                                     <th>Nr. exponate</th>
                                     <th>Data adaugarii</th>
                                 </tr>
@@ -301,7 +301,7 @@
                                         <td>
                                             <a href="#">{{ $tag->name }}</a>
                                         </td>
-                                        <td>0</td>
+                                        <td>{!! rand(0, 1) !!}</td>
                                         <td>{{ $tag->created_at }}</td>
                                     </tr>
                                 @endforeach
@@ -309,7 +309,7 @@
                             </table>
                         </div>
                         <div class="add-task-row">
-                            <a class="btn btn-primary btn-sm" href="#">Vezi toate etichetele</a>
+                            <a class="btn btn-primary btn-sm" href="{!! route('tag') !!}">Vezi toate etichetele</a>
                         </div>
                     @else
                         <div class="alert alert-info fade in">

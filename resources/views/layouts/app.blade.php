@@ -88,12 +88,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('category') !!}">
                             <i class="fa fa-tasks"></i> <span>Categorii</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('tag') !!}">
                             <i class="fa fa-tags"></i> <span>Etichete</span>
                         </a>
                     </li>
