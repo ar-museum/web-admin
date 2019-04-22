@@ -135,7 +135,7 @@
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="{!! asset('/js/core/jquery.min.js') !!}"></script>
 <script src="{!! asset('/js/core/bootstrap.min.js') !!}"></script>
-<script src="{!! asset('/js/core/jquery.dcjqaccordion.2.7.min.js') !!}"></script>
+<script class="include" src="{!! asset('/js/core/jquery.dcjqaccordion.2.7.min.js') !!}"></script>
 <script src="{!! asset('/js/core/jquery.scrollTo.min.js') !!}"></script>
 <script src="{!! asset('/js/core/jquery.nicescroll.min.js') !!}"></script>
 <script src="{!! asset('/js/core/respond.min.js') !!}"></script>
