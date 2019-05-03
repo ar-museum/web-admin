@@ -16,6 +16,8 @@ if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }
 
-/*Route::get('/api', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');*/
+Route::get('/api', function ($id) {
+    $authors = \App\Models\Author::find(1)->with('photo')->toArray();
+
+    return response()->json($authors);
+})->middleware('auth:api');

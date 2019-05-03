@@ -1,301 +1,346 @@
-<!DOCTYPE html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <title>Dashboard for C:\xampp\htdocs\museum\web-admin\app/Http/Controllers/Web</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../../../css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../../css/nv.d3.min.css" rel="stylesheet">
-  <link href="../../../css/style.css" rel="stylesheet">
-  <!--[if lt IE 9]>
-  <script src="../../../js/html5shiv.min.js"></script>
-  <script src="../../../js/respond.min.js"></script>
-  <![endif]-->
- </head>
- <body>
-  <header>
-   <div class="container">
-    <div class="row">
-     <div class="col-md-12">
-      <ol class="breadcrumb">
-        <li><a href="../../../index.html">C:\xampp\htdocs\museum\web-admin\app</a></li>
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\xampp\htdocs\museum\app/Http/Controllers/Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../../css/nv.d3.min.css" rel="stylesheet">
+  <link href="../../../css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="../../../js/html5shiv.min.js"></script>
+  <script src="../../../js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../../../index.html">C:\xampp\htdocs\museum\app</a></li>
         <li><a href="../../index.html">Http</a></li>
         <li><a href="../index.html">Controllers</a></li>
         <li><a href="index.html">Web</a></li>
         <li class="active">(Dashboard)</li>
-
-      </ol>
-     </div>
-    </div>
-   </div>
-  </header>
-  <div class="container">
-   <div class="row">
-    <div class="col-md-12">
-     <h2>Classes</h2>
-    </div>
-   </div>
-   <div class="row">
-    <div class="col-md-6">
-     <h3>Coverage Distribution</h3>
-     <div id="classCoverageDistribution" style="height: 300px;">
-       <svg></svg>
-     </div>
-    </div>
-    <div class="col-md-6">
-     <h3>Complexity</h3>
-     <div id="classComplexity" style="height: 300px;">
-       <svg></svg>
-     </div>
-    </div>
-   </div>
-   <div class="row">
-    <div class="col-md-6">
-     <h3>Insufficient Coverage</h3>
-     <div class="scrollbox">
-      <table class="table">
-       <thead>
-        <tr>
-         <th>Class</th>
-         <th class="text-right">Coverage</th>
-        </tr>
-       </thead>
-       <tbody>
-       <tr><td><a href="AuthorController.php.html#7">AuthorController</a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="DashboardController.php.html#13">DashboardController</a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="ExhibitController.php.html#7">ExhibitController</a></td><td class="text-right">0%</td></tr>
-
-       </tbody>
-      </table>
-     </div>
-    </div>
-    <div class="col-md-6">
-     <h3>Project Risks</h3>
-     <div class="scrollbox">
-      <table class="table">
-       <thead>
-        <tr>
-         <th>Class</th>
-         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
-        </tr>
-       </thead>
-       <tbody>
-
-       </tbody>
-      </table>
-     </div>
-    </div>
-   </div>
-   <div class="row">
-    <div class="col-md-12">
-     <h2>Methods</h2>
-    </div>
-   </div>
-   <div class="row">
-    <div class="col-md-6">
-     <h3>Coverage Distribution</h3>
-     <div id="methodCoverageDistribution" style="height: 300px;">
-       <svg></svg>
-     </div>
-    </div>
-    <div class="col-md-6">
-     <h3>Complexity</h3>
-     <div id="methodComplexity" style="height: 300px;">
-       <svg></svg>
-     </div>
-    </div>
-   </div>
-   <div class="row">
-    <div class="col-md-6">
-     <h3>Insufficient Coverage</h3>
-     <div class="scrollbox">
-      <table class="table">
-       <thead>
-        <tr>
-         <th>Method</th>
-         <th class="text-right">Coverage</th>
-        </tr>
-       </thead>
-       <tbody>
-       <tr><td><a href="AuthorController.php.html#9"><abbr title="AuthorController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="AuthorController.php.html#13"><abbr title="AuthorController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="AuthorController.php.html#17"><abbr title="AuthorController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="AuthorController.php.html#21"><abbr title="AuthorController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="DashboardController.php.html#15"><abbr title="DashboardController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="ExhibitController.php.html#9"><abbr title="ExhibitController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="ExhibitController.php.html#13"><abbr title="ExhibitController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="ExhibitController.php.html#17"><abbr title="ExhibitController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="ExhibitController.php.html#21"><abbr title="ExhibitController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
-
-       </tbody>
-      </table>
-     </div>
-    </div>
-    <div class="col-md-6">
-     <h3>Project Risks</h3>
-     <div class="scrollbox">
-      <table class="table">
-       <thead>
-        <tr>
-         <th>Method</th>
-         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
-        </tr>
-       </thead>
-       <tbody>
-
-       </tbody>
-      </table>
-     </div>
-    </div>
-   </div>
-   <footer>
-    <hr/>
-    <p>
-     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 4.0.8</a> using <a href="https://secure.php.net/" target="_top">PHP 7.2.16</a> with <a href="https://xdebug.org/">Xdebug 2.7.0rc1</a> and <a href="https://phpunit.de/">PHPUnit 5.7.27</a> at Mon Apr 15 6:16:54 UTC 2019.</small>
-    </p>
-   </footer>
-  </div>
-  <script src="../../../js/jquery.min.js" type="text/javascript"></script>
-  <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="../../../js/holder.min.js" type="text/javascript"></script>
-  <script src="../../../js/d3.min.js" type="text/javascript"></script>
-  <script src="../../../js/nv.d3.min.js" type="text/javascript"></script>
-  <script type="text/javascript">
-$(document).ready(function() {
-  nv.addGraph(function() {
-    var chart = nv.models.multiBarChart();
-    chart.tooltips(false)
-      .showControls(false)
-      .showLegend(false)
-      .reduceXTicks(false)
-      .staggerLabels(true)
-      .yAxis.tickFormat(d3.format('d'));
-
-    d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([3,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
-      .transition().duration(500).call(chart);
-
-    nv.utils.windowResize(chart.update);
-
-    return chart;
-  });
-
-  nv.addGraph(function() {
-    var chart = nv.models.multiBarChart();
-    chart.tooltips(false)
-      .showControls(false)
-      .showLegend(false)
-      .reduceXTicks(false)
-      .staggerLabels(true)
-      .yAxis.tickFormat(d3.format('d'));
-
-    d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([9,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
-      .transition().duration(500).call(chart);
-
-    nv.utils.windowResize(chart.update);
-
-    return chart;
-  });
-
-  function getCoverageDistributionData(data, label) {
-    var labels = [
-      '0%',
-      '0-10%',
-      '10-20%',
-      '20-30%',
-      '30-40%',
-      '40-50%',
-      '50-60%',
-      '60-70%',
-      '70-80%',
-      '80-90%',
-      '90-100%',
-      '100%'
-    ];
-    var values = [];
-    $.each(labels, function(key) {
-      values.push({x: labels[key], y: data[key]});
-    });
-
-    return [
-      {
-        key: label,
-        values: values,
-        color: "#4572A7"
-      }
-    ];
-  }
-  nv.addGraph(function() {
-    var chart = nv.models.scatterChart()
-      .showDistX(true)
-      .showDistY(true)
-      .showLegend(false)
-      .forceX([0, 100]);
-    chart.tooltipContent(function(graph) {
-      return '<p>' + graph.point.class + '</p>';
-    });
-
-    chart.xAxis.axisLabel('Code Coverage (in percent)');
-    chart.yAxis.axisLabel('Cyclomatic Complexity');
-
-    d3.select('#classComplexity svg')
-      .datum(getComplexityData([[0,4,"<a href=\"AuthorController.php.html#7\">AuthorController<\/a>"],[0,1,"<a href=\"DashboardController.php.html#13\">DashboardController<\/a>"],[0,4,"<a href=\"ExhibitController.php.html#7\">ExhibitController<\/a>"]], 'Class Complexity'))
-      .transition()
-      .duration(500)
-      .call(chart);
-
-    nv.utils.windowResize(chart.update);
-
-    return chart;
-  });
-
-  nv.addGraph(function() {
-    var chart = nv.models.scatterChart()
-      .showDistX(true)
-      .showDistY(true)
-      .showLegend(false)
-      .forceX([0, 100]);
-    chart.tooltipContent(function(graph) {
-      return '<p>' + graph.point.class + '</p>';
-    });
-
-    chart.xAxis.axisLabel('Code Coverage (in percent)');
-    chart.yAxis.axisLabel('Method Complexity');
-
-    d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[0,1,"<a href=\"AuthorController.php.html#9\">AuthorController::index<\/a>"],[0,1,"<a href=\"AuthorController.php.html#13\">AuthorController::store<\/a>"],[0,1,"<a href=\"AuthorController.php.html#17\">AuthorController::edit<\/a>"],[0,1,"<a href=\"AuthorController.php.html#21\">AuthorController::destroy<\/a>"],[0,1,"<a href=\"DashboardController.php.html#15\">DashboardController::index<\/a>"],[0,1,"<a href=\"ExhibitController.php.html#9\">ExhibitController::index<\/a>"],[0,1,"<a href=\"ExhibitController.php.html#13\">ExhibitController::store<\/a>"],[0,1,"<a href=\"ExhibitController.php.html#17\">ExhibitController::edit<\/a>"],[0,1,"<a href=\"ExhibitController.php.html#21\">ExhibitController::destroy<\/a>"]], 'Method Complexity'))
-      .transition()
-      .duration(500)
-      .call(chart);
-
-    nv.utils.windowResize(chart.update);
-
-    return chart;
-  });
-
-  function getComplexityData(data, label) {
-    var values = [];
-    $.each(data, function(key) {
-      var value = Math.round(data[key][0]*100) / 100;
-      values.push({
-        x: value,
-        y: data[key][1],
-        class: data[key][2],
-        size: 0.05,
-        shape: 'diamond'
-      });
-    });
-
-    return [
-      {
-        key: label,
-        values: values,
-        color: "#4572A7"
-      }
-    ];
-  }
-});
-  </script>
- </body>
-</html>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="AuthorController.php.html#10">AuthorController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CategoryController.php.html#11">CategoryController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DashboardController.php.html#15">DashboardController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExhibitController.php.html#11">ExhibitController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExpositionController.php.html#12">ExpositionController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MediaController.php.html#13">MediaController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MuseumController.php.html#14">MuseumController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TagController.php.html#11">TagController</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="MuseumController.php.html#14">MuseumController</a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="MediaController.php.html#13">MediaController</a></td><td class="text-right">240</td></tr>
+       <tr><td><a href="AuthorController.php.html#10">AuthorController</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="CategoryController.php.html#11">CategoryController</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="ExhibitController.php.html#11">ExhibitController</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="TagController.php.html#11">TagController</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="ExpositionController.php.html#12">ExpositionController</a></td><td class="text-right">42</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="AuthorController.php.html#12"><abbr title="AuthorController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExpositionController.php.html#26"><abbr title="ExpositionController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TagController.php.html#31"><abbr title="TagController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TagController.php.html#26"><abbr title="TagController::activeUser">activeUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TagController.php.html#21"><abbr title="TagController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TagController.php.html#13"><abbr title="TagController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MuseumController.php.html#23"><abbr title="MuseumController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MuseumController.php.html#17"><abbr title="MuseumController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MediaController.php.html#122"><abbr title="MediaController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MediaController.php.html#92"><abbr title="MediaController::store_video">store_video</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MediaController.php.html#62"><abbr title="MediaController::store_audio">store_audio</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MediaController.php.html#31"><abbr title="MediaController::store_photo">store_photo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MediaController.php.html#26"><abbr title="MediaController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MediaController.php.html#15"><abbr title="MediaController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExpositionController.php.html#42"><abbr title="ExpositionController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExpositionController.php.html#15"><abbr title="ExpositionController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AuthorController.php.html#18"><abbr title="AuthorController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExhibitController.php.html#66"><abbr title="ExhibitController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExhibitController.php.html#62"><abbr title="ExhibitController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExhibitController.php.html#26"><abbr title="ExhibitController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExhibitController.php.html#21"><abbr title="ExhibitController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ExhibitController.php.html#13"><abbr title="ExhibitController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DashboardController.php.html#17"><abbr title="DashboardController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CategoryController.php.html#45"><abbr title="CategoryController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CategoryController.php.html#31"><abbr title="CategoryController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CategoryController.php.html#26"><abbr title="CategoryController::activeUser">activeUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CategoryController.php.html#21"><abbr title="CategoryController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CategoryController.php.html#13"><abbr title="CategoryController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AuthorController.php.html#45"><abbr title="AuthorController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AuthorController.php.html#42"><abbr title="AuthorController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="AuthorController.php.html#22"><abbr title="AuthorController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TagController.php.html#45"><abbr title="TagController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="MuseumController.php.html#23"><abbr title="MuseumController::store">store</abbr></a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="AuthorController.php.html#45"><abbr title="AuthorController::destroy">destroy</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="CategoryController.php.html#45"><abbr title="CategoryController::destroy">destroy</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ExhibitController.php.html#66"><abbr title="ExhibitController::destroy">destroy</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ExpositionController.php.html#42"><abbr title="ExpositionController::destroy">destroy</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="MediaController.php.html#122"><abbr title="MediaController::destroy">destroy</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="TagController.php.html#45"><abbr title="TagController::destroy">destroy</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="MediaController.php.html#31"><abbr title="MediaController::store_photo">store_photo</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="MediaController.php.html#62"><abbr title="MediaController::store_audio">store_audio</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="MediaController.php.html#92"><abbr title="MediaController::store_video">store_video</abbr></a></td><td class="text-right">12</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 4.0.8</a> using <a href="https://secure.php.net/" target="_top">PHP 7.2.11</a> with <a href="https://xdebug.org/">Xdebug 2.7.0</a> and <a href="https://phpunit.de/">PHPUnit 5.7.27</a> at Mon Apr 22 5:44:17 UTC 2019.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../../../js/holder.min.js" type="text/javascript"></script>
+  <script src="../../../js/d3.min.js" type="text/javascript"></script>
+  <script src="../../../js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([8,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([32,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,8,"<a href=\"AuthorController.php.html#10\">AuthorController<\/a>"],[0,8,"<a href=\"CategoryController.php.html#11\">CategoryController<\/a>"],[0,1,"<a href=\"DashboardController.php.html#15\">DashboardController<\/a>"],[0,8,"<a href=\"ExhibitController.php.html#11\">ExhibitController<\/a>"],[0,6,"<a href=\"ExpositionController.php.html#12\">ExpositionController<\/a>"],[0,15,"<a href=\"MediaController.php.html#13\">MediaController<\/a>"],[0,18,"<a href=\"MuseumController.php.html#14\">MuseumController<\/a>"],[0,8,"<a href=\"TagController.php.html#11\">TagController<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"AuthorController.php.html#12\">AuthorController::index<\/a>"],[0,1,"<a href=\"AuthorController.php.html#18\">AuthorController::create<\/a>"],[0,1,"<a href=\"AuthorController.php.html#22\">AuthorController::store<\/a>"],[0,1,"<a href=\"AuthorController.php.html#42\">AuthorController::edit<\/a>"],[0,4,"<a href=\"AuthorController.php.html#45\">AuthorController::destroy<\/a>"],[0,1,"<a href=\"CategoryController.php.html#13\">CategoryController::index<\/a>"],[0,1,"<a href=\"CategoryController.php.html#21\">CategoryController::create<\/a>"],[0,1,"<a href=\"CategoryController.php.html#26\">CategoryController::activeUser<\/a>"],[0,1,"<a href=\"CategoryController.php.html#31\">CategoryController::store<\/a>"],[0,4,"<a href=\"CategoryController.php.html#45\">CategoryController::destroy<\/a>"],[0,1,"<a href=\"DashboardController.php.html#17\">DashboardController::index<\/a>"],[0,1,"<a href=\"ExhibitController.php.html#13\">ExhibitController::index<\/a>"],[0,1,"<a href=\"ExhibitController.php.html#21\">ExhibitController::create<\/a>"],[0,1,"<a href=\"ExhibitController.php.html#26\">ExhibitController::store<\/a>"],[0,1,"<a href=\"ExhibitController.php.html#62\">ExhibitController::edit<\/a>"],[0,4,"<a href=\"ExhibitController.php.html#66\">ExhibitController::destroy<\/a>"],[0,1,"<a href=\"ExpositionController.php.html#15\">ExpositionController::index<\/a>"],[0,1,"<a href=\"ExpositionController.php.html#26\">ExpositionController::store<\/a>"],[0,4,"<a href=\"ExpositionController.php.html#42\">ExpositionController::destroy<\/a>"],[0,1,"<a href=\"MediaController.php.html#15\">MediaController::index<\/a>"],[0,1,"<a href=\"MediaController.php.html#26\">MediaController::create<\/a>"],[0,3,"<a href=\"MediaController.php.html#31\">MediaController::store_photo<\/a>"],[0,3,"<a href=\"MediaController.php.html#62\">MediaController::store_audio<\/a>"],[0,3,"<a href=\"MediaController.php.html#92\">MediaController::store_video<\/a>"],[0,4,"<a href=\"MediaController.php.html#122\">MediaController::destroy<\/a>"],[0,1,"<a href=\"MuseumController.php.html#17\">MuseumController::index<\/a>"],[0,17,"<a href=\"MuseumController.php.html#23\">MuseumController::store<\/a>"],[0,1,"<a href=\"TagController.php.html#13\">TagController::index<\/a>"],[0,1,"<a href=\"TagController.php.html#21\">TagController::create<\/a>"],[0,1,"<a href=\"TagController.php.html#26\">TagController::activeUser<\/a>"],[0,1,"<a href=\"TagController.php.html#31\">TagController::store<\/a>"],[0,4,"<a href=\"TagController.php.html#45\">TagController::destroy<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
