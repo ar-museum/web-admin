@@ -28,7 +28,58 @@ Route::get('/author/{id}', [
     'as' => 'get_author',
     'uses' => 'Api\AuthorController@getData',
 ]);
+
 Route::get('/author/{id}/photo', [
     'as' => 'get_author_photo',
     'uses' => 'Api\AuthorController@getPhoto',
+]);
+
+Route::get('/exhibit', [
+    'as' => 'get_all_exhibits',
+    'uses' => 'Api\ExhibitController@index',
+]);
+
+Route::get('/exhibit/{id}', [
+    'as' => 'get_exhibit',
+    'uses' => 'Api\ExhibitController@getData',
+]);
+
+Route::get('/exposition', [
+    'as' => 'get_all_expositions',
+    'uses' => 'Api\ExpositionController@index',
+]);
+
+Route::get('/exposition/{id}', [
+    'as' => 'get_exposition',
+    'uses' => 'Api\ExpositionController@getData',
+]);
+
+Route::get('/tag', [
+    'as' => 'get_all_tags',
+    'uses' => 'Api\TagController@index',
+]);
+
+Route::get('/tag/{id}', [
+    'as' => 'get_tag',
+    'uses' => 'Api\TagController@getData',
+]);
+
+Route::get('/category', [
+    'as' => 'get_all_category',
+    'uses' => 'Api\CategoryController@index',
+]);
+
+Route::get('/category/{id}', [
+    'as' => 'get_category',
+    'uses' => 'Api\CategoryController@getData',
+]);
+
+Route::get('/museum', [
+    'as' => 'get_all_museums',
+    'uses' => 'Api\MuseumController@index',
+]);
+
+Route::get('/museum/{id}', [
+    'as' => 'get_museum',
+    'uses' => 'Api\MuseumController@getData',
 ]);
