@@ -10,15 +10,24 @@ class MuseumController extends Controller
 
     public function index()
     {
+        #$museums = Museum::with('expositions')->get()->toArray();
+        $museums = Museum::all()->toArray();
+
+        return response()->json($museums);
+    }
+
+    public function indexWithRelationships(){
         $museums = Museum::with('expositions')->get()->toArray();
 
         return response()->json($museums);
     }
 
     public function getData($var){
-        $museum = Museum::with('expositions')->get()->find($var);
+        #$museum = Museum::with('expositions')->get()->find($var);
 
         #$photoPath = $author->photo()->media()->path;
+
+        $museum = Museum::findOrFail($var);
 
         $museum = $museum->toArray();
 
@@ -28,4 +37,19 @@ class MuseumController extends Controller
 
         return response()->json($museum);
     }
+
+    public function getDataWithRelationships($var){
+        $museum = Museum::findOrFail($var);
+        $museum->load('expositions');
+
+        $museum = $museum->toArray();
+
+        unset($museum['photo']);
+
+        $museum['photo_path'] = 'museum.lc/uploads/';
+
+        return response()->json($museum);
+    }
+
+
 }

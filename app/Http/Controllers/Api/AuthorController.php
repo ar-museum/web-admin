@@ -12,17 +12,18 @@ class AuthorController extends Controller
     {
         $authors = Author::with('photo')->get();
 
-        foreach($authors as $author){
-            $author->toArray();
+        foreach ($authors as $authorKey =>$author) {
+            //$author = $author->toArray();
             unset($author['photo']);
-            $author['photo'] = 'museum.lc/uploads/';
+            $author['photo_path'] = 'museum.lc/uploads/';
         }
 
         return response()->json($authors);
     }
 
     public function getData($var){
-        $author = Author::with('photo')->get()->find($var);
+        $author = Author::findOrFail($var);
+        $author->load('photo');
 
         #$photoPath = $author->photo()->media()->path;
 
@@ -34,4 +35,5 @@ class AuthorController extends Controller
 
         return response()->json($author);
     }
+
 }
