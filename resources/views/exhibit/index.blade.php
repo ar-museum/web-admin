@@ -126,8 +126,9 @@
                         </div>
 
                         <div class="form-group @if ($errors->has('audio_id'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="audio_id"> Audio ID <span
+                            <label class="col-lg-4 col-sm-4 control-label" for="audio"> Audio <span
                                         class="text-danger">*</span></label>
+                            <!--
                             <div class="col-lg-8">
                                 <select name="audio_id" class="form-control" id="class_audio_id">
                                     <option value="0">Audio ID</option>
@@ -137,12 +138,27 @@
                                     @endforeach
                                 </select>
                             </div>
+                            -->
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="col-lg-8">
+                                    <span class="btn btn-white btn-file">
+                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 150px;">
+                                        </div>
+                                        <span class="fileinput-new"><i class="fa fa-music"></i> Alege audio</span>
+                                        <input type="file" name="audio" id="audio">
+                                    </span>
+                                    <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
+                                        <i class="fa fa-trash-o"></i> Sterge
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group @if ($errors->has('photo_id'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="photo_id"> Photo ID <span
+                            <label class="col-lg-4 col-sm-4 control-label" for="photo"> Photo <span
                                         class="text-danger">*</span></label>
                             <div class="col-lg-8">
+                                <!--
                                 <select name="photo_id" class="form-control" id="class_photo_id">
                                     <option value="0">Photo ID</option>
                                     @foreach ($photos as $photo)
@@ -150,15 +166,33 @@
                                         && $photo->photo_id == old('photo_id')) selected @endif>{!! $photo->photo_id !!}</option>
                                     @endforeach
                                 </select>
+                                -->
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA?text=fara+poza" alt="">
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                                    </div>
+                                    <div>
+                                    <span class="btn btn-white btn-file">
+                                        <span class="fileinput-new"><i class="fa fa-picture-o"></i> Alege poza</span>
+                                        <span class="fileinput-exists"><i class="fa fa-undo"></i> Schimba</span>
+                                        <input type="file" name="photo" id="photo" value="">
+                                    </span>
+                                        <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
+                                            <i class="fa fa-trash-o"></i> Sterge
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group @if ($errors->has('video_id'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="video_id"> Youtube link <span
+                            <label class="col-lg-4 col-sm-4 control-label" for="yt_link"> Youtube link <span
                                         class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <input type="text" name="video_id" id="video_id" value="{{ old('video_id') }}"
-                                       class="form-control" placeholder="write your link..">
+                                <input type="text" name="yt_link" id="yt_link" value="{{ old('yt_link') }}"
+                                       class="form-control" placeholder="Youtube Link">
                             </div>
                         </div>
 

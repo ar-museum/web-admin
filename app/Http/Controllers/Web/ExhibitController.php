@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Exhibit;
 use App\Models\Author;
+use App\Models\Media;
 use App\Models\Staff;
 use App\Models\Exposition;
 use App\Models\Audio;
@@ -13,6 +14,7 @@ use App\Models\Photo;
 use App\Models\Video;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class ExhibitController extends Controller
 {
@@ -50,9 +52,9 @@ class ExhibitController extends Controller
             'author_id' => 'required',
             'exposition_id' => 'required',
             'staff_id' => 'required',
-            'audio_id' => 'required',
-            'photo_id' => 'required',
-            'video_id' => 'required',
+            'audio' => 'required',
+            'photo' => 'required',
+            'yt_link' => 'required',
         ]);
         $exhibit = new Exhibit();
         $exhibit->title = $request->get('title');
@@ -65,9 +67,76 @@ class ExhibitController extends Controller
         $exhibit->author_id = $request->get('author_id');
         $exhibit->exposition_id = $request->get('exposition_id');
         $exhibit->staff_id = $request->get('staff_id');
-        $exhibit->audio_id = $request->get('audio_id');
-        $exhibit->photo_id = $request->get('photo_id');
-        $exhibit->video_id = $request->get('video_id');
+
+
+        /** upload audio */
+
+        if (request()->hasFile('audio')) {
+            $audio = $request->file('audio');
+            $new_filename = md5(time() . $audio->getClientOriginalName()) . '.' . $audio->getClientOriginalExtension();
+
+            try {
+                $audio->move(public_path('uploads' . DIRECTORY_SEPARATOR . 'audio' .
+                    DIRECTORY_SEPARATOR), $new_filename);
+            } catch (FileException $e) {
+                return redirect()->back()->withErrors(['audio' => '* ' . $e->getMessage()])->withInput();
+            }
+        }
+
+        $media = new Media();
+        $media->path = 'uploads\audio' . DIRECTORY_SEPARATOR . $new_filename;
+        $media->save();
+
+        $audio = new Audio();
+        $audio->audio_id = $media->media_id;
+        $audio->length = 0;
+        $audio->save();
+
+        $exhibit->audio_id = $audio->audio_id;
+
+        /** upload photo */
+        if (request()->hasFile('photo')) {
+            $photo        = $request->file('photo');
+            $new_filename = md5(time() . $photo->getClientOriginalName()) . '.' . $photo->getClientOriginalExtension();
+
+            try {
+                $photo->move(public_path('uploads' . DIRECTORY_SEPARATOR . 'photo' .
+                    DIRECTORY_SEPARATOR), $new_filename);
+            } catch (FileException $e) {
+                return redirect()->back()->withErrors(['photo' => '* ' . $e->getMessage()])->withInput();
+            }
+        }
+
+        $media = new Media();
+        $media->path = 'uploads' . DIRECTORY_SEPARATOR . 'photo' . DIRECTORY_SEPARATOR . $new_filename;
+
+        $full_path = public_path() . DIRECTORY_SEPARATOR . $media->path ;
+        $media->save();
+
+        $photo = new Photo();
+        $photo->photo_id = $media->media_id;
+
+        $info_image = getimagesize($full_path);
+        $photo->width = $info_image[0];
+        $photo->height = $info_image[1];
+
+        $photo->save();
+
+        $exhibit->photo_id = $photo->photo_id;
+
+        /** upload video */
+        $media = new Media();
+        $media->path = $request->get('yt_link');
+        $media->save();
+
+        $video = new Video();
+        $video->video_id = $media->media_id;
+        $video->length = 0;
+
+        $video->save();
+
+        $exhibit->video_id = $video->video_id;
+
         $exhibit->save();
         return redirect('/exhibit')->with('success', 'Exponat adaugat');
 
