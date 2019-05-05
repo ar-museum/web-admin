@@ -27,7 +27,7 @@ Route::get('/report', [
         return File::get(public_path() . '/report/index.html');
     },
 ]);
-
+// Exposition routing
 Route::get('/exposition', array(
     'middleware' => ['auth'],
     'as' => 'exposition',
@@ -37,9 +37,14 @@ Route::post('/exposition/add', array(
     'middleware' => ['auth'],
     'uses' => 'Web\ExpositionController@store',
 ));
-Route::post('/exposition/{id}/editare', array(
+Route::get('/exposition/{id}/edit', array(
     'middleware' => ['auth'],
     'as' => 'editare_expozitie',
+    'uses' => 'Web\ExpositionController@edit',
+));
+Route::post('/exposition/{id}/update', array(
+    'middleware' => ['auth'],
+    'as' => 'update_expozitie',
     'uses' => 'Web\ExpositionController@update',
 ));
 Route::delete('exposition/delete/{var}', array(
