@@ -19,7 +19,6 @@ class ExpositionController extends Controller
             'expositions_no' => Exposition::all()->count(),
             'museums' => Museum::all(),
             'photos' => Photo::all(),
-            'staffs' => Staff::all(),
         ]);
 
     }
@@ -29,10 +28,8 @@ class ExpositionController extends Controller
 
         return view('exposition.edit', [
             'exposition' => Exposition::where('exposition_id',  '=', $id)->first(),
-            'expositions_no' => Exposition::all()->count(),
             'museums' => Museum::all(),
             'photos' => Photo::all(),
-            'staffs' => Staff::all(),
         ]);
 
     }
