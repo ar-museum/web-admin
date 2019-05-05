@@ -25,13 +25,11 @@ class ExpositionController extends Controller
 
     public function edit($id)
     {
-
         return view('exposition.edit', [
             'exposition' => Exposition::where('exposition_id',  '=', $id)->first(),
             'museums' => Museum::all(),
             'photos' => Photo::all(),
         ]);
-
     }
 
     public function store(Request $request)

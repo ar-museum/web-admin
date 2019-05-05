@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Exhibit;
+use App\Models\Author;
+use App\Models\Staff;
+use App\Models\Exposition;
+use App\Models\Audio;
+use App\Models\Photo;
+use App\Models\Video;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -12,11 +18,19 @@ class ExhibitController extends Controller
 {
     public function index()
     {
+        $currentStaff = Staff::find($this->staff->staff_id)->withCount(['expositions', 'exhibits', 'categories', 'authors', 'tags'])->first();
         return view('exhibit.index', [
             'exhibits' => Exhibit::all(),
             'exhibits_no' => Exhibit::all()->count(),
+            'authors' => Author::all(),
+            'expositions' => Exposition::all(),
+            'audios' => Audio::all(),
+            'photos' => Photo::all(),
+            'currentStaff' => $currentStaff,
+
         ]);
     }
+
 
     public function create()
     {
@@ -59,8 +73,25 @@ class ExhibitController extends Controller
 
     }
 
-    public function edit($var)
+    public function edit($id)
     {
+        $currentStaff = Staff::find($this->staff->staff_id)->withCount(['expositions', 'exhibits', 'categories', 'authors', 'tags'])->first();
+        return view('exhibit.edit', [
+            'exhibit' => Exhibit::where('exhibit_id','=', $id)->first(),
+            'authors' => Author::all(),
+            'exhibits_no' => Exhibit::all()->count(),
+            'expositions' => Exposition::all(),
+            'audios' => Audio::all(),
+            'photos' => Photo::all(),
+            'video' =>Video::all(),
+            'currentStaff' => $currentStaff,
+        ]);
+    }
+
+    public function update(Request $request, $id){
+        $exhibit=Exhibit::where('exhibit_id','=', $id)->first();
+        $exhibit->update($request->all());
+        return redirect('/exhibit')->with('success', 'Exponatul a fost modificat cu succes!');
     }
 
     public function destroy($var)
@@ -75,7 +106,6 @@ class ExhibitController extends Controller
 
             return error($e->getMessage());
         }
-
 
         if (request()->getMethod() == 'GET') {
             return redirect()->route('delete-exhibit', ['exhibit_id' => $var]);

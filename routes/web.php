@@ -138,6 +138,17 @@ Route::delete('exhibit/delete/{var}', array(
     'uses' => 'Web\ExhibitController@destroy'
 ));
 
+Route::get('exhibit/edit/{id}',array(
+    'as' => 'edit-exhibit',
+    'uses' => 'Web\ExhibitController@edit'
+
+));
+
+Route::post('exhibit/update/{id}',array(
+    'as' => 'update-exhibit',
+    'uses' => 'Web\ExhibitController@update'
+));
+
 Route::get('/museum', 'Web\MuseumController@index');
 Route::post('museum/store', 'Web\MuseumController@store');
 
