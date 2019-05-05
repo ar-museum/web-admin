@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use wapmorgan\Mp3Info\Mp3Info;
+//use wapmorgan\Mp3Info\Mp3Info;
 
 class MediaTableSeeder extends Seeder
 {
@@ -36,7 +36,7 @@ class MediaTableSeeder extends Seeder
         $audios = glob($full_path_audio . DIRECTORY_SEPARATOR . "*.{mp3,wav}", GLOB_BRACE);
 
         foreach ($audios as $audio_name) {
-            $audio = new Mp3Info($audio_name);
+            //$audio = new Mp3Info($audio_name);
 
             $path_audio = 'uploads\audio' . DIRECTORY_SEPARATOR . basename($audio_name);
 
@@ -44,7 +44,7 @@ class MediaTableSeeder extends Seeder
 
             factory(App\Models\Audio::class)->create([
                 'audio_id' => $media_id,
-                'length' => round($audio->duration,1)
+                'length' => 0 //$audio->duration
             ]);
         }
 

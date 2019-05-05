@@ -9,7 +9,7 @@ use App\Models\Video;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use wapmorgan\Mp3Info\Mp3Info;
+//use wapmorgan\Mp3Info\Mp3Info;
 
 class MediaController extends Controller
 {
@@ -83,16 +83,19 @@ class MediaController extends Controller
         }
 
         $media = new Media();
-        $media->path = 'uploads/audio/' . $new_filename;
+        $media->path = 'uploads\audio' . DIRECTORY_SEPARATOR . $new_filename;
         $media->save();
 
         $audio = new Audio();
         $audio->audio_id = $media->media_id;
 
         $full_path = public_path() . DIRECTORY_SEPARATOR . $media->path ;
-        $mp3file = new MP3File($full_path);
-        $audio->length = $mp3file->getDurationEstimate();
 
+        //$mp3file = new Mp3Info($full_path);
+
+        //$audio->length = $mp3file->getDurationEstimate();
+
+        $audio->length = 0;
         $audio->save();
         return redirect('/media')->with('success','Audio adaugat!');
     }
