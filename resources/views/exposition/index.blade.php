@@ -51,18 +51,6 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group @if ($errors->has('staff_id'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="class_staff_id">Staff <span class="text-danger">*</span></label>
-                            <div class="col-lg-8">
-                                <select name="staff-id" class="form-control" id="class_staff_id">
-                                    <option value="0">Alege un staff</option>
-                                    @foreach ($staffs as $staff)
-                                        <option value="{!! $staff->staff_id !!}" @if (null !== old('staff_id')
-                                        && $staff->staff_id == old('staff_id')) selected @endif>{!! $staff->first_name !!} {!! $staff->last_name !!}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-md-8">
@@ -107,8 +95,8 @@
                                         <td>Imagine</td>
                                         <td>{{ $exposition->title }}</td>
                                         <td>{{ $exposition->description }}</td>
-                                        <td>{{ $exposition->museum_id }}</td>
-                                        <td>{{ $exposition->staff_id }}</td>
+                                        <td>{{ $exposition->museum->name }}</td>
+                                        <td>{{ $exposition->staff->first_name}} {{ $exposition->staff->last_name}}</td>
                                         <td>{!! date("Y-m-d", strtotime($exposition->created_at)) !!}</td>
                                         <td>
                                             <a class="btn btn-success btn-xs" title="Actualizeaza datele"

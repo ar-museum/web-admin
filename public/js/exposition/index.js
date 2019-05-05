@@ -1,23 +1,21 @@
 var EXPOSITIONS;
 
-function delete_exposition(obj)
-{
+function delete_exposition(obj) {
     var _expositionId = $(obj).data('action-id');
     $(obj).prop('disabled', true);
 
-    bootbox.prompt('Scrie "STERGE" pentru a confirma actiunea', function(result) {
-        if ('STERGE' === result)
-        {
+    bootbox.prompt('Scrie "STERGE" pentru a confirma actiunea', function (result) {
+        if ('STERGE' === result) {
             $.ajax({
-                url: 'exposition/delete/' + _expositionId,
+                url: 'exposition/' + _expositionId + '/delete',
                 type: 'DELETE',
-                success: function(r) {
+                success: function (r) {
                     var _pos = EXPOSITIONS.fnGetPosition($(obj).closest('tr').get(0));
                     EXPOSITIONS.fnDeleteRow(_pos);
                     EXPOSITIONS.fnDraw(false);
                     toastr['success']('', r.message);
                 },
-                error: function(r) {
+                error: function (r) {
                     handle_errors(r.responseJSON);
                 }
             });
@@ -27,7 +25,7 @@ function delete_exposition(obj)
     });
 }
 
-$(function() {
+$(function () {
     EXPOSITIONS = $('#all-expositions').dataTable({
         'aaSorting': [[0, 'desc']],
         'oLanguage': {
@@ -36,7 +34,7 @@ $(function() {
             'sEmptyTable': 'Nu mai exista expozitii!',
             'sInfoFiltered': '(filtrat din totalul de _MAX_ intrari)'
         },
-        'aLengthMenu': [[5,10, 15, 20, -1], [5, 10, 15, 20, 'Tot']],
+        'aLengthMenu': [[5, 10, 15, 20, -1], [5, 10, 15, 20, 'Tot']],
         'iDisplayLength': 5,
         // Disable sorting on the no-sort class
         'aoColumnDefs': [{

@@ -33,7 +33,7 @@ class ExpositionController extends Controller
         $exposition->title = $request->get('title');
         $exposition->description = $request->get('description');
         $exposition->museum_id =$request->get('museum-id');
-        $exposition->staff_id=$request->get('staff-id');
+        $exposition->staff_id=$this->staff->staff_id;
         $exposition->photo_id=$request->get('photo-id');
 
         $exposition->save();
