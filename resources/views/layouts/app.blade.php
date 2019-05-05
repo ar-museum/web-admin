@@ -103,6 +103,11 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{!! route('vuforia') !!}">
+                            <i class="fa fa-file"></i> <span>Vuforia</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#">
                             <i class="fa fa-users"></i> <span>Activitati vizitatori</span>
                         </a>
