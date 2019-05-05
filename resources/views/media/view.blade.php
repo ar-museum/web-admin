@@ -28,13 +28,13 @@
                                         <td>{!! $media->media_id !!}</td>
                                         <td>{{ $media->path }}</td>
                                         <td>
-                                            @if (strpos($media->path, '\photo') !== false)
+                                            @if (strpos($media->path, '\photo'. DIRECTORY_SEPARATOR) !== false)
                                                 Photo
                                             @else
-                                                @if (strpos($media->path, '\audio') !== false)
+                                                @if (strpos($media->path, '\audio'. DIRECTORY_SEPARATOR) !== false)
                                                     Audio
                                                 @else
-                                                    @if (strpos($media->path, '\video') !== false)
+                                                    @if (strpos($media->path, 'youtube') !== false || strpos($media->path, 'youtu.be') !== false)
                                                         Video
                                                     @endif
                                                 @endif
@@ -189,25 +189,11 @@
                     <form class="form-horizontal" method="POST" action="/store_video" enctype="multipart/form-data" role="form">
                         {!! csrf_field() !!}
                         <div class="form-group col-lg-10">
-                            <label class="col-lg-4 col-sm-4 control-label" for="video">
-                                Video
-                                <span class="text-danger">*</span>
-                            </label>
-
+                            <label class="col-lg-4 col-sm-4 control-label" for="yt_link"> Youtube Link <span
+                                        class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div>
-                                        <span class="btn btn-white btn-file">
-                                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 150px;">
-                                            </div>
-                                            <span class="fileinput-new"><i class="fa fa-video-camera"></i> Alege video</span>
-                                            <input type="file" name="video" id="video">
-                                        </span>
-                                        <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
-                                            <i class="fa fa-trash-o"></i> Sterge
-                                        </a>
-                                    </div>
-                                </div>
+                                <input type="text" name="yt_link" id="yt_link" value="{{ old('yt_link') }}"
+                                       class="form-control" placeholder="Youtube Link">
                             </div>
                         </div>
 

@@ -21,9 +21,9 @@ class Audio extends BaseModel
         return $this->belongsTo(Exhibit::class, 'audio_id', 'audio_id');
     }
 
-    public function getPathAttribute($mediaId)
+    public function getPathAttribute()
     {
-        $path = Media::where('media_id', $mediaId)->select('path')->get();
+        $path = Media::where('media_id', $this->audio_id)->select('path')->get();
         if(count($path) > 0)
         {
             return $path[0]->path;

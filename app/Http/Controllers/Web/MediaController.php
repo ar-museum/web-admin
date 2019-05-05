@@ -9,6 +9,7 @@ use App\Models\Video;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use wapmorgan\Mp3Info\Mp3Info;
 
 class MediaController extends Controller
 {
@@ -87,7 +88,10 @@ class MediaController extends Controller
 
         $audio = new Audio();
         $audio->audio_id = $media->media_id;
-        $audio->length = 2.3;
+
+        $full_path = public_path() . DIRECTORY_SEPARATOR . $media->path ;
+        $mp3file = new MP3File($full_path);
+        $audio->length = $mp3file->getDurationEstimate();
 
         $audio->save();
         return redirect('/media')->with('success','Audio adaugat!');
@@ -96,28 +100,16 @@ class MediaController extends Controller
     public function store_video(Request $request)
     {
         $this->validate($request,[
-            'video' => 'required'
+            'yt_link' => 'required'
         ]);
 
-        if (request()->hasFile('audio')) {
-            $video        = $request->file('audio');
-            $new_filename = md5(time() . $video->getClientOriginalName()) . '.' . $video->getClientOriginalExtension();
-
-            try {
-                $video->move(public_path('uploads' . DIRECTORY_SEPARATOR . 'video' .
-                    DIRECTORY_SEPARATOR), $new_filename);
-            } catch (FileException $e) {
-                return redirect()->back()->withErrors(['video' => '* ' . $e->getMessage()])->withInput();
-            }
-        }
-
         $media = new Media();
-        $media->path = 'uploads/audio/' . $new_filename;
+        $media->path = $request->get('yt_link');
         $media->save();
 
         $video = new Video();
-        $video->audio_id = $media->media_id;
-        $video->length = 3.5;
+        $video->video_id = $media->media_id;
+        $video->length = 0;
 
         $video->save();
         return redirect('/media')->with('success','Video adaugat!');
@@ -128,14 +120,11 @@ class MediaController extends Controller
         try {
             $media = Media::findOrFail($media_id);
             $media->delete();
-
-            /*$filename = $_GET['file']; //get the filename
-            unlink('uploads/audio/'.DIRECTORY_SEPARATOR.$filename); //delete it*/
-        } catch (Exception $e) {
+        }
+        catch (Exception $e) {
             if (request()->getMethod() == 'GET') {
                 return redirect()->route('media');
             }
-
             return error($e->getMessage());
         }
 

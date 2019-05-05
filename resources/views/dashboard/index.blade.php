@@ -355,7 +355,7 @@
                                                 @if (strpos($item->path, '\audio'. DIRECTORY_SEPARATOR) !== false)
                                                     Audio
                                                 @else
-                                                    @if (strpos($item->path, '\video'. DIRECTORY_SEPARATOR) !== false)
+                                                    @if (strpos($item->path, 'youtube') !== false || strpos($item->path, 'youtu.be') !== false)
                                                         Video
                                                     @endif
                                                 @endif

@@ -21,9 +21,9 @@ class Video extends BaseModel
         return $this->belongsTo(Exhibit::class, 'video_id', 'video_id');
     }
 
-    public function getPathAttribute($mediaId)
+    public function getPathAttribute()
     {
-        $path = Media::where('media_id', $mediaId)->select('path')->get();
+        $path = Media::where('media_id', $this->video_id)->select('path')->get();
         if(count($path) > 0)
         {
             return $path[0]->path;
