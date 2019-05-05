@@ -4,19 +4,36 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CategoryController extends Controller
 {
 
     public function index()
     {
-        $category = Category::all()->toArray();
+        try {
+            $category = Category::all()->toArray();
+        }  catch (ModelNotFoundException $ex) {
+            return response()->json(array(
+                'rezultat'    => 'eroare',
+                'cod'      =>  404,
+                'mesaj'   =>  'Nu exista categorii in baza de date.'
+            ), 404);
+        }
 
         return response()->json($category);
     }
 
     public function indexWithRelationships(){
-        $category = Category::with('exhibit')->get();
+        try {
+            $category = Category::with('exhibit')->get();
+        } catch (ModelNotFoundException $ex) {
+            return response()->json(array(
+                'rezultat'    => 'eroare',
+                'cod'      =>  404,
+                'mesaj'   =>  'Nu exista categorii in baza de date.'
+            ), 404);
+        }
 
         return response()->json($category);
     }
@@ -24,7 +41,15 @@ class CategoryController extends Controller
     public function getData($var){
         #$category = Category::with('exhibit')->get()->find($var);
 
-        $category = Category::findOrFail($var);
+        try {
+            $category = Category::findOrFail($var);
+        } catch (ModelNotFoundException $ex) {
+            return response()->json(array(
+                'rezultat'    => 'eroare',
+                'cod'      =>  404,
+                'mesaj'   =>  'Nu exista aceasta categorie in baza de date.'
+            ), 404);
+        }
 
         #$photoPath = $author->photo()->media()->path;
 
@@ -34,7 +59,16 @@ class CategoryController extends Controller
     }
 
     public function getDataWithRelationships($var){
-        $category = Category::findOrFail($var);
+        try {
+            $category = Category::findOrFail($var);
+        } catch (ModelNotFoundException $ex) {
+            return response()->json(array(
+                'rezultat'    => 'eroare',
+                'cod'      =>  404,
+                'mesaj'   =>  'Nu exista aceasta categorie in baza de date.'
+            ), 404);
+        }
+
         $category->load('exhibit');
 
         $category = $category->toArray();
