@@ -165,3 +165,17 @@ $factory->define(App\Models\ExhibitCategory::class, function (Faker\Generator $f
         },
     ];
 });
+
+$factory->define(App\Models\Vuforia::class, function (Faker\Generator $faker, $params) {
+    $enumFileType = ['XML', 'DAT'];
+
+    return [
+        'vuforia_id' => 1,
+        'museum_id' => $params['museum_id'] ?? 1,
+        'version' => '1.15',
+        'file_id' => $params['media_id'] ?? (function () {
+            return factory(App\Models\Media::class)->create(['path' => 'uploads/xml/vuforia.xml'])->media_id;
+        }),
+        'file_type' => $enumFileType[0]
+    ];
+});

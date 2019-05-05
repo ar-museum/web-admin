@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ExhibitTagTableSeeder::class);
         $this->call(ExhibitCategoryTableSeeder::class);
 
+        $this->call(VuforiaTableSeeder::class);
+
         Model::reguard();
     }
 }
