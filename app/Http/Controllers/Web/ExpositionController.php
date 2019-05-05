@@ -73,7 +73,12 @@ class ExpositionController extends Controller
     public function update(Request $request,$id)
     {
         $exposition = Exposition::where('exposition_id', '=', $id)->first();
-
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'museum_id' => 'required',
+            'photo_id' => 'required',
+        ]);
         $exposition->update($request->all());
         return redirect('/exposition')->with('success', 'Expozitie modificata');
     }
