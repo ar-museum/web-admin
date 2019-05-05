@@ -30,8 +30,8 @@
                         <div class="form-group @if ($errors->has('museum_id'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="class_museum_id">Muzeu <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <select name="museum-id" class="form-control" id="class_museum_id">
-                                    <option value="0">{{$exposition->museum->name}}</option>
+                                <select name="museum_id" class="form-control" id="class_museum_id">
+                                    <option value="{{$exposition->museum->name}}">Choose museum</option>
                                     @foreach ($museums as $museum)
                                         <option value="{!! $museum->museum_id !!}" @if (null !== old('museum_id')
                                         && $museum->museum_id == old('museum_id')) selected @endif>{!! $museum->name !!}</option>
@@ -42,8 +42,8 @@
                         <div class="form-group @if ($errors->has('photo_id'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="class_photo_id">Photo <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <select name="photo-id" class="form-control" id="class_photo_id">
-                                    <option value="0">{{$exposition->photo_id}}</option>
+                                <select name="photo_id" class="form-control" id="class_photo_id">
+                                    <option value="{{$exposition->photo_id}}">Choose photo</option>
                                     @foreach ($photos as $photo)
                                         <option value="{!! $photo->photo_id !!}" @if (null !== old('photo_id')
                                         && $photo->photo_id == old('photo_id')) selected @endif>{!! $photo->photo_id !!}</option>
