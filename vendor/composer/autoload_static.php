@@ -296,6 +296,7 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_11_000001_create_password_resets_table.php',
         'CreateStaffTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_11_000000_create_staff_table.php',
         'CreateTagTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_20_000008_create_tag_table.php',
+        'CreateVuforiaTable' => __DIR__ . '/../..' . '/database/migrations/2019_05_04_000000_create_vuforia_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'ExhibitCategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ExhibitCategoryTableSeeder.php',
         'ExhibitTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ExhibitTableSeeder.php',
@@ -843,6 +844,7 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'Video' => __DIR__ . '/../..' . '/database/migrations/2019_02_30_000005_video.php',
+        'VuforiaTableSeeder' => __DIR__ . '/../..' . '/database/seeds/VuforiaTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -18,6 +18,7 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2019_03_11_000001_create_password_resets_table.php',
     'CreateStaffTable' => $baseDir . '/database/migrations/2019_03_11_000000_create_staff_table.php',
     'CreateTagTable' => $baseDir . '/database/migrations/2019_03_20_000008_create_tag_table.php',
+    'CreateVuforiaTable' => $baseDir . '/database/migrations/2019_05_04_000000_create_vuforia_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'ExhibitCategoryTableSeeder' => $baseDir . '/database/seeds/ExhibitCategoryTableSeeder.php',
     'ExhibitTableSeeder' => $baseDir . '/database/seeds/ExhibitTableSeeder.php',
@@ -565,4 +566,5 @@ return array(
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'Video' => $baseDir . '/database/migrations/2019_02_30_000005_video.php',
+    'VuforiaTableSeeder' => $baseDir . '/database/seeds/VuforiaTableSeeder.php',
 );
