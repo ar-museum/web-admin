@@ -46,11 +46,37 @@
 
 
                         <div class="form-group @if ($errors->has('photo_id'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="photo_id"> Photo ID <span class="text-danger">*</span></label>
+                            <!--
+                            <label class="col-lg-4 col-sm-4 control-label" for="photo_id"> Photo <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
                                 <input type="text" name="photo_id" id="photo_id" value="{{ old('photo_id') }}"
                                        class="form-control" placeholder="Photo ID">
                             </div>
+                            -->
+                                <label class="col-lg-4 col-sm-4 control-label" for="photo">
+                                    Poza
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <div class="col-lg-8">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA?text=fara+poza" alt="">
+                                        </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                                        </div>
+                                        <div>
+                                        <span class="btn btn-white btn-file">
+                                            <span class="fileinput-new"><i class="fa fa-picture-o"></i> Alege poza</span>
+                                            <span class="fileinput-exists"><i class="fa fa-undo"></i> Schimba</span>
+                                            <input type="file" name="photo" id="photo" value="">
+                                        </span>
+                                            <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
+                                                <i class="fa fa-trash-o"></i> Sterge
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
 
 
@@ -102,7 +128,14 @@
                                 @foreach ($authors as $author)
                                     <tr>
                                         <td>{!! $author->author_id !!}</td>
-                                        <td>{!! $author->photo_id !!}</td>
+                                        <td>
+                                            <?php
+                                                $photo = new App\Models\Photo();
+                                                $photo->photo_id = $author->photo_id;
+                                                $path_img = $photo->getPathAttribute();
+                                                echo '<img src="'.$path_img.'" width="100" height="80" />';
+                                            ?>
+                                        </td>
                                         <td>{{ $author->full_name }}</td>
                                         <td>{{ $author->born_year }} @if (!is_null($author->died_year))
                                                 - {{ $author->died_year }} @endif </td>

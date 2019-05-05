@@ -72,7 +72,7 @@ $factory->define(App\Models\Exposition::class, function (Faker\Generator $faker,
         'title' => $params['title'] ?? 'Carti Mihai Eminescu',
         'description' => $params['description'] ?? 'Cea mai veche carte',
         'museum_id' => $params['museum_id'] ?? 1,
-        'photo_id' => $params['photo_id'] ?? 1,
+        'photo_id' => $params['photo_id'] ?? 2,
         'staff_id' => $params['staff_id'] ?? 1,
     ];
 });
@@ -100,9 +100,9 @@ $factory->define(App\Models\Exhibit::class, function (Faker\Generator $faker, $p
         'author_id' => $params['author_id'] ?? 1,
         'exposition_id' => $params['exposition_id'] ?? 1,
         'staff_id' => $params['staff_id'] ?? 1,
-        'audio_id' => $params['audio_id'] ?? 2,
-        'photo_id' => $params['photo_id'] ?? 1,
-        'video_id' => $params['video_id'] ?? 3,
+        'audio_id' => $params['audio_id'] ?? 3,
+        'photo_id' => $params['photo_id'] ?? 2,
+        'video_id' => $params['video_id'] ?? 4,
     ];
 });
 
