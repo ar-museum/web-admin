@@ -28,13 +28,13 @@
                                         <td>{!! $media->media_id !!}</td>
                                         <td>{{ $media->path }}</td>
                                         <td>
-                                            @if (strpos($media->path, '/photo/') !== false)
+                                            @if (strpos($media->path, '\photo') !== false)
                                                 Photo
                                             @else
-                                                @if (strpos($media->path, '/audio/') !== false)
+                                                @if (strpos($media->path, '\audio') !== false)
                                                     Audio
                                                 @else
-                                                    @if (strpos($media->path, '/video/') !== false)
+                                                    @if (strpos($media->path, '\video') !== false)
                                                         Video
                                                     @endif
                                                 @endif
@@ -46,10 +46,12 @@
                                                href="{!! route('change_pass', ['code' => $media->media_id]) !!}">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
-                                            <a class="btn btn-danger btn-xs btn-delete" title="Sterge"
-                                               href="{!! route('delete-media', ['var' => $media->media_id]) !!}">
+                                            <button type="button" class="btn btn-danger btn-xs btn-delete"
+                                                    data-action="delete_media" data-action-id="{!! $media->media_id !!}"
+                                                    title="Sterge">
                                                 <i class="fa fa-trash-o"></i>
-                                            </a>
+                                            </button>
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -79,9 +81,9 @@
     </div>
     <!-- ADD PHOTO -->
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <section class="panel">
-                <header class="panel-heading">Adauga photo
+                <header class="panel-heading"><b>Adauga photo</b>
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
                 </header>
                 <div class="panel-body">
@@ -130,9 +132,9 @@
 
     <!-- ADD AUDIO -->
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <section class="panel">
-                <header class="panel-heading">Adauga audio
+                <header class="panel-heading"><b>Adauga audio</b>
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
                 </header>
                 <div class="panel-body">
@@ -177,9 +179,9 @@
 
     <!-- ADD VIDEO -->
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <section class="panel">
-                <header class="panel-heading">Adauga video
+                <header class="panel-heading"><b>Adauga video</b>
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
                 </header>
                 <div class="panel-body">

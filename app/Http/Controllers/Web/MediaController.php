@@ -47,13 +47,17 @@ class MediaController extends Controller
         }
 
         $media = new Media();
-        $media->path = 'uploads/photo/' . $new_filename;
+        $media->path = 'uploads' . DIRECTORY_SEPARATOR . 'photo' . DIRECTORY_SEPARATOR . $new_filename;
+
+        $full_path = public_path() . DIRECTORY_SEPARATOR . $media->path ;
         $media->save();
 
         $photo = new Photo();
         $photo->photo_id = $media->media_id;
-        $photo->width = 0;
-        $photo->height = 0;
+
+        $info_image = getimagesize($full_path);
+        $photo->width = $info_image[0];
+        $photo->height = $info_image[1];
 
         $photo->save();
         return redirect('/media')->with('success','Fotografie adaugata!');
@@ -124,7 +128,10 @@ class MediaController extends Controller
         try {
             $media = Media::findOrFail($media_id);
             $media->delete();
-        } catch (\Exception $e) {
+
+            /*$filename = $_GET['file']; //get the filename
+            unlink('uploads/audio/'.DIRECTORY_SEPARATOR.$filename); //delete it*/
+        } catch (Exception $e) {
             if (request()->getMethod() == 'GET') {
                 return redirect()->route('media');
             }

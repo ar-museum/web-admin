@@ -44,31 +44,25 @@ $factory->define(App\Models\Media::class, function (Faker\Generator $faker, $par
     ];
 });
 
-$factory->define(App\Models\Photo::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Photo::class, function (Faker\Generator $faker, $parameters) {
     return [
-        'photo_id' => $params['media_id'] ?? (function () {
-                return factory(App\Models\Media::class)->create(['path' => 'uploads/photo/8a4a728eaa296a920c0674868254605b.jpg'])->media_id;
-            }),
-        'width' => $params['width'] ?? 1920,
-        'height' => $params['width'] ?? 1080,
+        'photo_id' => $params['photo_id'] ?? $parameters['photo_id'],
+        'width' => $params['width'] ?? $parameters['width'],
+        'height' => $params['height'] ?? $parameters['height'],
     ];
 });
 
-$factory->define(App\Models\Audio::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Audio::class, function (Faker\Generator $faker, $parameters) {
     return [
-        'audio_id' => $params['media_id'] ?? (function () {
-                return factory(App\Models\Media::class)->create(['path' => 'uploads/audio/HDj3GaW9eOrLIT0tV5zaOSAf8cVGMEH93U9vWlIe.mp3'])->media_id;
-            }),
-        'length' => $params['length'] ?? 1.25,
+        'audio_id' => $params['media_id'] ?? $parameters['audio_id'],
+        'length' => $params['length'] ?? $parameters['length'],
     ];
 });
 
-$factory->define(App\Models\Video::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Video::class, function (Faker\Generator $faker, $parameters) {
     return [
-        'video_id' => $params['media_id'] ?? (function () {
-                return factory(App\Models\Media::class)->create(['path' => 'uploads/video/video1.mp4'])->media_id;
-            }),
-        'length' => $params['length'] ?? 1.25,
+        'video_id' => $params['media_id'] ?? $parameters['video_id'],
+        'length' => $params['length'] ?? $parameters['length'],
     ];
 });
 

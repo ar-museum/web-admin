@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76599c6a3f40d49ecabfff56e9b32295",
+    "content-hash": "db70d2429090e47778cd5ceb53e840bb",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1942,6 +1942,50 @@
                 "environment"
             ],
             "time": "2019-01-29T11:11:52+00:00"
+        },
+        {
+            "name": "wapmorgan/mp3info",
+            "version": "0.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wapmorgan/Mp3Info.git",
+                "reference": "491bee5706683193b8965122755bd12c47f90560"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wapmorgan/Mp3Info/zipball/491bee5706683193b8965122755bd12c47f90560",
+                "reference": "491bee5706683193b8965122755bd12c47f90560",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*"
+            },
+            "require-dev": {
+                "wapmorgan/terminal-info": "dev-master"
+            },
+            "bin": [
+                "bin/mp3scan"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "wapmorgan\\Mp3Info\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "description": "The fastest php library to extract mp3 tags & meta information.",
+            "keywords": [
+                "audio",
+                "id3",
+                "id3v1",
+                "id3v2",
+                "mp3",
+                "mpeg"
+            ],
+            "time": "2018-12-14T21:03:35+00:00"
         }
     ],
     "packages-dev": [

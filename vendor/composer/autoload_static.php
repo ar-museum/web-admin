@@ -21,6 +21,10 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
     );
 
     public static $prefixLengthsPsr4 = array (
+        'w' => 
+        array (
+            'wapmorgan\\Mp3Info\\' => 18,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -103,6 +107,10 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
     );
 
     public static $prefixDirsPsr4 = array (
+        'wapmorgan\\Mp3Info\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wapmorgan/mp3info/src',
+        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',

@@ -1,5 +1,32 @@
 var MEDIAS;
 
+function delete_media(obj)
+{
+    var _mediaId = $(obj).data('action-id');
+    $(obj).prop('disabled', true);
+
+    bootbox.prompt('Scrie "STERGE" pentru a confirma actiunea', function(result) {
+        if ('STERGE' === result)
+        {
+            $.ajax({
+                url: 'media/delete/' + _mediaId,
+                type: 'DELETE',
+                success: function(r) {
+                    var _pos = MEDIAS.fnGetPosition($(obj).closest('tr').get(0));
+                    MEDIAS.fnDeleteRow(_pos);
+                    MEDIAS.fnDraw(false);
+                    toastr['success']('', r.message);
+                },
+                error: function(r) {
+                    handle_errors(r.responseJSON);
+                }
+            });
+        }
+
+        $(obj).prop('disabled', false);
+    });
+}
+
 $(function() {
     MEDIAS = $('#all-media').dataTable({
         'aaSorting': [[0, 'desc']],

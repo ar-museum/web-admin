@@ -21,4 +21,14 @@ class Photo extends BaseModel
     public function exhibit(){
         return $this->belongsTo(Exhibit::class, 'photo_id', 'photo_id');
     }
+
+    public function getPathAttribute($mediaId)
+    {
+        $path = Media::where('media_id', $mediaId)->select('path')->get();
+        if(count($path) > 0)
+        {
+            return $path[0]->path;
+        }
+        return ' ';
+    }
 }
