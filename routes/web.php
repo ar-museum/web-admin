@@ -206,3 +206,18 @@ Route::group([
     ]);
 
 });
+
+// Vuforia routing
+
+Route::group([
+    'namespace' => 'Web',
+], function () {
+
+    Route::get('/vuforia', [
+        'as' => 'vuforia',
+        'middleware' => ['auth'],
+        'uses' => 'VuforiaController@index'
+    ]);
+
+    // Route::get('/vuforia/create', 'VuforiaController@create');
+});
