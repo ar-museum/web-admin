@@ -39,17 +39,25 @@
                                           class="form-control" placeholder="Descriere">{{ old('description') }}</textarea>
                             </div>
                         </div>
-                    <!--
+
                         <div class="form-group @if ($errors->has('start_year'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="start_year"> Start year <span class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="start_year"> Data realizarii <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
                                 <input type="text" name="start_year" id="start_year" value="{{ old('start_year') }}"
                                        class="form-control" placeholder="Start year">
                             </div>
                         </div>
-                        -->
+
+                        <div class="form-group @if ($errors->has('end_year'))has-error @endif">
+                            <label class="col-lg-4 col-sm-4 control-label" for="end_year"> Data finalizarii<span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" name="end_year" id="end_year" value="{{ old('end_year') }}"
+                                       class="form-control" placeholder="End year">
+                            </div>
+                        </div>
+                        <!--
                         <div class="form-group @if ($errors->has('start_year'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="start_year">Data inscrierii</label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="start_year">Data realizarii</label>
                             <div class="col-lg-5">
                                 <div class="input-group date datepicker">
                                     <input type="text" id="start_year" name="start_year" readonly=""
@@ -66,10 +74,10 @@
                         <div class="form-group @if ($errors->has('end_year'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="end_year">Data finalizarii</label>
                             <div class="col-lg-5">
-                                <div class="input-group date form_datetime-component">
+                                <div  class="input-group date datepicker">
                                     <input type="text" id="end_year" name="end_year" readonly=""
                                            value="@if (old('end_year')){{ old('end_year')}}@else{!! date('Y') !!}@endif"
-                                           size="16" class="form-control">
+                                           size="16" class="form-control datepicker">
                                     <div class="input-group-btn">
                                         <button type="button" class="btn btn-primary date-set"><i
                                                     class="fa fa-calendar"></i></button>
@@ -78,7 +86,7 @@
                                 <span class="help-block">Alege data</span>
                             </div>
                         </div>
-
+                         -->
                         <div class="form-group @if ($errors->has('size'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="size"> Size <span
                                         class="text-danger">*</span></label>
@@ -204,7 +212,11 @@
                             </div>
                         </div>
                         <div class="text-danger">* Aceste campuri sunt obligatorii!</div>
-
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
                         <div class="row">
         <div class="col-md-12">
             <section class="panel">
@@ -271,6 +283,7 @@
 @section('js')
     <script src="{!! asset('/js/common/bootstrap-fileupload.min.js') !!}"></script>
     <script src="{!! asset('/js/exhibit/index.js') !!}"></script>
+    <script src="{!!asset('/js/exhibit/bootstrap-datepicker.js')!!}"></script>
 @endsection
 @section('css')
     <link href="{!! asset('/css/fileupload.css') !!}" rel="stylesheet">
