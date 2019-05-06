@@ -199,7 +199,7 @@
                             <label class="col-lg-4 col-sm-4 control-label" for="yt_link"> Youtube link <span
                                         class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <input type="text" name="yt_link" id="yt_link" value="{{ old('yt_link') }}"
+                                <input type="text" name="video_id" id="yt_link" value="{{ old('yt_link') }}"
                                        class="form-control" placeholder="Youtube Link">
                             </div>
                         </div>
