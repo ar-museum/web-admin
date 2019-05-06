@@ -28,6 +28,11 @@ class Museum extends BaseModel
         return $this->name;
 
     }
+    public function getMuseumId()
+    {
+        return $this->museum_id;
+
+    }
     public function setMuseumName($name)
     {
         $this->name=$name;

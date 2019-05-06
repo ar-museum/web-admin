@@ -46,31 +46,7 @@
             </section>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <section class="panel">
-                <header class="panel-heading"><i class="fa fa-building-o"></i> Informatii muzeu</header>
-                <div class="list-group">
-                    <a class="list-group-item" href="#">
-                        <h4>Nume: </h4> {!!$museum_name!!}
-                    </a>
-                    <a class="list-group-item" href="#">
-                        <h4>Adresa: </h4> {!!$museum_address!!}
-                    </a>
-                    <a class="list-group-item" href="#">
-                        <h4>Program:</h4>
-                        <p><b>Luni</b>:  {!! $monday_program !!}</p>
-                        <p><b>Marti</b>:  {!! $tuesday_program !!}</p>
-                        <p><b>Miercuri</b>:  {!! $wednesday_program !!}</p>
-                        <p><b>Joi</b>:  {!! $thursday_program !!}</p>
-                        <p><b>Vineri</b>:  {!! $friday_program !!}</p>
-                        <p><b>Sambata</b>:  {!! $saturday_program !!}</p>
-                        <p><b>Duminica</b>:  {!! $sunday_program !!}</p>
-                    </a>
-                </div>
-            </section>
-        </div>
-    </div>
+
     <div class="row">
         <div class="col-md-12">
             <section class="panel">
