@@ -17,7 +17,7 @@
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
                 </header>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="museum/store" enctype="multipart/form-data" role="form">
+                    <form class="form-horizontal" method="POST" action="museum/update" enctype="multipart/form-data" role="form">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group @if ($errors->has('museum_name'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="museum_name">Nume </label>

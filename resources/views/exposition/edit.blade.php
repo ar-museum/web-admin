@@ -15,7 +15,7 @@
                             <label class="col-lg-4 col-sm-4 control-label" for="title">Titlu <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
                                 <input type="text" name="title" id="title"
-                                       class="form-control" placeholder="{{$exposition->title}}">
+                                       class="form-control" value="{{$exposition->title}}">
                             </div>
                         </div>
 
@@ -23,7 +23,7 @@
                             <label class="col-lg-4 col-sm-4 control-label" for="description">Descriere <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
                                 <input type="text" name="description" id="description"
-                                       class="form-control" placeholder="{{$exposition->description}}">
+                                       class="form-control" value="{{$exposition->description}}">
                             </div>
                         </div>
 

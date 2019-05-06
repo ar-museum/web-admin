@@ -16,11 +16,14 @@ class MuseumController  extends Controller
 
     public function index()
     {
-        return view('auth.settings', [
+       $museum= DB::table('museum')->get();
+        return view('museum.index', [
+            'museum'=>$museum,
+            'museums' => Museum::with('expositions')->get(),
         ]);
     }
 
-    public function store(\Illuminate\Http\Request $request)
+    public function update(\Illuminate\Http\Request $request)
     {
 
 
@@ -43,7 +46,7 @@ class MuseumController  extends Controller
         $updateMuseum->setSaturdayProgram(substr(DB::table('museum')->pluck('tuesday_opening_hour'),2,8), substr(DB::table('museum')->pluck('saturday_closing_hour'),2,8));
         $updateMuseum->setSundayProgram(substr(DB::table('museum')->pluck('sunday_opening_hour'),2,8), substr(DB::table('museum')->pluck('sunday_closing_hour'),2,8));
 
-        DB::table('museum')->delete();
+
         $day=$request->get('day');
         $opening=$request->get('new_opening');
         $closing=$request->get('new_closing');
@@ -85,7 +88,9 @@ class MuseumController  extends Controller
         }
 
 
-        $updateMuseum->save();
+
+        DB::table('museum')->update( DB::table('museum')->first()->id,$updateMuseum->getMuseumName(),$updateMuseum->getMuseumAddress(),'
+        00:00','00:00','00:00','00:00','00:00','00:00','00:00');
         return redirect('/museum')->with('success','Actualizare realizata');
     }
 
