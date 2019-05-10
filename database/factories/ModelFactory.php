@@ -111,6 +111,8 @@ $factory->define(App\Models\Museum::class, function (Faker\Generator $faker, $pa
     return [
         'name' =>$params['name'] ?? 'Muzeul Mihai Eminescu',
         'address' =>$params['address'] ?? 'Copou Iasi',
+        'longitude'=>$params['longitude'] ?? '47.179037',
+        'latitude'=>$params['latitude'] ?? '27.567077',
         'monday_opening_hour' =>$params['monday_opening_hour'] ?? '00:00:00',
         'monday_closing_hour' => $params['monday_closing_hour'] ??'00:00:00',
         'tuesday_opening_hour' =>$params['tuesday_opening_hour'] ?? '10:00:00',

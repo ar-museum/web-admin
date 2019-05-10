@@ -150,13 +150,24 @@ Route::post('exhibit/update/{id}',array(
 ));
 
 
+Route::get('museum/edit/{id}', array(
+    'as'=>'museum-edit',
+    'uses' => 'Web\MuseumController@edit',
+));
+
+Route::post('museum/update/{id}',array(
+    'as' => 'update_museum',
+    'uses' => 'Web\MuseumController@update'
+));
+
+
 Route::get('/museum', array(
     'as' => 'museum',
     'uses' => 'Web\MuseumController@index',
 ));
-Route::post('museum/update', array(
-    'uses' => 'Web\MuseumController@update',
-));
+
+
+
 
 Route::get('/media', array(
     'as' => 'media',

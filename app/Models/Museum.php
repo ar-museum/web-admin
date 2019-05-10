@@ -13,7 +13,7 @@ class Museum extends BaseModel
     protected $primaryKey = 'museum_id';
 
     protected $fillable = [
-        'museum_id','name', 'address',
+        'museum_id','name', 'address', 'longitude','latitude',
         'monday_opening_hour', 'monday_closing_hour',
         'tuesday_opening_hour', 'tuesday_closing_hour',
         'wednesday_opening_hour', 'wednesday_closing_hour',
@@ -21,7 +21,29 @@ class Museum extends BaseModel
         'friday_opening_hour', 'friday_closing_hour',
         'saturday_opening_hour', 'saturday_closing_hour',
         'sunday_opening_hour', 'sunday_closing_hour'
+
     ];
+
+    public function getMuseumLongitude()
+    {
+        return $this->longitude;
+    }
+
+    public function setMuseumLongitude($long)
+    {
+        $this->longitude=$long;
+    }
+
+    public function getMuseumLatitude()
+    {
+        return $this->latitude;
+    }
+
+    public function setMuseumLatitude($lat)
+    {
+        $this->longitude=$lat;
+    }
+
 
     public function getMuseumName()
     {

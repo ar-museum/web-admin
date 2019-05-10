@@ -18,6 +18,8 @@ class CreateMuseumTable extends Migration
             $table->increments('museum_id')->unique();
             $table->string('name');
             $table->string('address');
+            $table->float('longitude');
+            $table->float('latitude');
             $table->time('monday_opening_hour');
             $table->time('monday_closing_hour');
             $table->time('tuesday_opening_hour');

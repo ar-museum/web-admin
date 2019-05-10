@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
+   <div class="col-md-12">
             <section class="panel">
                 <header class="panel-heading">Adauga muzeu
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
@@ -29,22 +28,24 @@
 
 
                 <div class="form-group @if ($errors->has('monday'))has-error @endif">
-                    <label class="col-lg-4 col-sm-4 control-label" for="monday">Program Luni <span class="text-danger">*</span></label>
+                    <label class="col-lg-2 col-md-3 col-sm-4 control-label" for="monday">Program Luni <span class="text-danger">*</span></label>
 
-                    <?php
-                    echo nl2br("\n\n");
-                    ?>
-                    <div class="col-lg-8">
-                        <input type="text" name="monday_opening" id="monday_opening" value="{{ old('monday_opening') }}"
-                               class="form-control" placeholder="Ora deschidere">
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3">24hr Timepicker</label>
+                        <div class="col-md-4">
+                            <div class="input-group bootstrap-timepicker">
+                                <input type="text" class="form-control timepicker-24">
+                                <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button"><i class="fa fa-clock-o"></i></button>
+                                                </span>
+                            </div>
+                        </div>
                     </div>
                     <?php
                     echo nl2br("\n\n");
                     ?>
-                    <div class="col-lg-8">
-                        <input type="text" name="monday_closing" id="monday_closing" value="{{ old('monday_closing') }}"
-                               class="form-control" placeholder="Ora inchidere">
-                    </div>
+
                 </div>
                         <div class="form-group @if ($errors->has('tuesday'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="tuesday">Program Marti <span class="text-danger">*</span></label>
@@ -174,7 +175,8 @@
                 </div>
             </section>
         </div>
-    </div>
+
+
     <div class="row">
         <div class="col-md-12">
             <section class="panel">
@@ -191,7 +193,8 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Nume</th>
-                                    <th>Locatie</th>
+                                    <th>Longitudine</th>
+                                    <th>Latitudine</th>
                                     <th>Program luni</th>
                                     <th>Program marti</th>
                                     <th>Program miercuri</th>
@@ -199,14 +202,16 @@
                                     <th>Program vineri</th>
                                     <th>Program sambata</th>
                                     <th>Program duminica</th>
+                                    <th>Actiuni</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($museums as $museum)
                                     <tr>
                                         <td>{!! $museum->getMuseumId() !!}</td>
-                                        <td>{!! $museum->getMuseumName() !!}</td>
-                                        <td>{{ $museum->getMuseumAddress() }}</td>
+                                        <td>{!! $museum->getMuseumName() !!}</td>s
+                                        <td>{{ $museum->getMuseumLongitude() }}</td>
+                                        <td>{{ $museum->getMuseumLatitude() }}</td>
                                         <td>{{ $museum->getMondayProgram() }}</td>
                                         <td>{{ $museum->getTuesdayProgram() }}</td>
                                         <td>{{ $museum->getWednesdayProgram() }}</td>
@@ -214,6 +219,12 @@
                                         <td>{{ $museum->getFridayProgram() }}</td>
                                         <td>{{ $museum->getSaturdayProgram() }}</td>
                                         <td>{{ $museum->getSundayProgram() }}</td>
+                                        <td>
+                                            <a class="btn btn-success btn-xs" title="Actualizeaza datele"
+                                               href="{!! route('museum-edit', ['id' => $museum->getMuseumId()]) !!}">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </td>
 
                                     </tr>
                                 @endforeach
@@ -231,8 +242,22 @@
     </div>
 @endsection
 @section('js')
+    <script type="text/javascript" src="{!! asset('/js/bootstrap/bootstrap-datetimepicker.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/js/bootstrap/bootstrap-timepicker.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/js/bootstrap/bootstrap-datepicker.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/js/bootstrap/bootstrap-colorpicker.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/js/bootstrap/jquery.multi-select.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/js/bootstrap/jquery.quicksearch.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/js/bootstrap/wysihtml5-0.3.0.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/js/bootstrap/spinner.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/js/bootstrap/bootstrap-wysihtml5.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/js/bootstrap/daterangepicker.js') !!}"></script>
+
+
     <script src="{!! asset('/js/common/bootstrap-fileupload.min.js') !!}"></script>
-    <script src="{!! asset('/js/exposition/index.js') !!}"></script>
+    <script src="{!! asset('/js/museum/index.js') !!}"></script>
+
+
 @endsection
 @section('css')
     <link href="{!! asset('/css/fileupload.css') !!}" rel="stylesheet">
