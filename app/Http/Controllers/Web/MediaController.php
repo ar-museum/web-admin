@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Models\Media;
 use App\Models\Photo;
 use App\Models\Audio;
+use App\Models\photoGames;
 use App\Models\Video;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -29,10 +30,12 @@ class MediaController extends Controller
         return view('media.view');
     }
 
+    //store media game
     public function store_photo(Request $request)
     {
         $this->validate($request,[
-            'photo' => 'required'
+            'photo' => 'required',
+            'title' => 'required'
         ]);
 
         if (request()->hasFile('photo')) {
@@ -40,7 +43,7 @@ class MediaController extends Controller
             $new_filename = md5(time() . $photo->getClientOriginalName()) . '.' . $photo->getClientOriginalExtension();
 
             try {
-                $photo->move(public_path('uploads' . DIRECTORY_SEPARATOR . 'photo' .
+                $photo->move(public_path('uploads' . DIRECTORY_SEPARATOR . 'photo' . DIRECTORY_SEPARATOR . 'games' .
                     DIRECTORY_SEPARATOR), $new_filename);
             } catch (FileException $e) {
                 return redirect()->back()->withErrors(['photo' => '* ' . $e->getMessage()])->withInput();
@@ -48,17 +51,18 @@ class MediaController extends Controller
         }
 
         $media = new Media();
-        $media->path = 'uploads' . DIRECTORY_SEPARATOR . 'photo' . DIRECTORY_SEPARATOR . $new_filename;
+        $media->path = 'uploads' . DIRECTORY_SEPARATOR . 'photo' . DIRECTORY_SEPARATOR . 'games' . DIRECTORY_SEPARATOR . $new_filename;
 
         $full_path = public_path() . DIRECTORY_SEPARATOR . $media->path ;
         $media->save();
 
-        $photo = new Photo();
+        $photo = new photoGames();
         $photo->photo_id = $media->media_id;
 
         $info_image = getimagesize($full_path);
         $photo->width = $info_image[0];
         $photo->height = $info_image[1];
+        $photo->title = $request->get('title');
 
         $photo->save();
         return redirect('/media')->with('success','Fotografie adaugata!');
