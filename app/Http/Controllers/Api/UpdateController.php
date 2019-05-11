@@ -1,10 +1,7 @@
 <?php
 
-
 namespace App\Http\Controllers\Api;
 use App\Models\Media;
-use App\Models\Museum;
-use App\Models\Vuforia;
 
 class UpdateController
 {
