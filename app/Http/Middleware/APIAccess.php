@@ -19,13 +19,13 @@ class APIAccess
      */
     public function handle($request, Closure $next)
     {
-        if ($request->header('Content-Type') != $this->contentType || !$request->has('deviceId') || !$request->has('token'))
+        if ($request->header('Content-Type') != $this->contentType)
         {
             return $this->restrictedAccess();
         }
 
-        $deviceId = $request->get('deviceId');
-        $token    = $request->get('token');
+        $deviceId = $request->header('UserDevice');
+        $token    = $request->header('Authorization');
 
         if ($token != $this->createToken($deviceId))
         {
