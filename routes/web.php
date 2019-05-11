@@ -166,8 +166,7 @@ Route::get('/museum', array(
     'uses' => 'Web\MuseumController@index',
 ));
 
-
-
+// Media routing
 
 Route::get('/media', array(
     'as' => 'media',

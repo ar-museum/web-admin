@@ -16,6 +16,7 @@ return array(
     'CreateExhibitTagTable' => $baseDir . '/database/migrations/2019_03_20_000012_create_exhibit_tag_table.php',
     'CreateMuseumTable' => $baseDir . '/database/migrations/2019_03_11_195027_create_museum_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2019_03_11_000001_create_password_resets_table.php',
+    'CreatePhotoGamesTable' => $baseDir . '/database/migrations/2019_05_10_205521_create_photoGames_table.php',
     'CreateStaffTable' => $baseDir . '/database/migrations/2019_03_11_000000_create_staff_table.php',
     'CreateTagTable' => $baseDir . '/database/migrations/2019_03_20_000008_create_tag_table.php',
     'CreateVuforiaTable' => $baseDir . '/database/migrations/2019_05_04_000000_create_vuforia_table.php',

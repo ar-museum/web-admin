@@ -302,6 +302,7 @@ class ComposerStaticInitc14690c9ca2e878d0009207813eec0ed
         'CreateExhibitTagTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_20_000012_create_exhibit_tag_table.php',
         'CreateMuseumTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_11_195027_create_museum_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_11_000001_create_password_resets_table.php',
+        'CreatePhotoGamesTable' => __DIR__ . '/../..' . '/database/migrations/2019_05_10_205521_create_photoGames_table.php',
         'CreateStaffTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_11_000000_create_staff_table.php',
         'CreateTagTable' => __DIR__ . '/../..' . '/database/migrations/2019_03_20_000008_create_tag_table.php',
         'CreateVuforiaTable' => __DIR__ . '/../..' . '/database/migrations/2019_05_04_000000_create_vuforia_table.php',
