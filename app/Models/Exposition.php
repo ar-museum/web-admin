@@ -28,7 +28,7 @@ class Exposition extends BaseModel
 
     public function exhibits()
     {
-        return $this->hasMany(Exhibit::class,'exhibit_id','exhibit_id');
+        return $this->hasMany(Exhibit::class);
     }
 
 /*    public function media()

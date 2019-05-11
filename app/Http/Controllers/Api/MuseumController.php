@@ -56,10 +56,6 @@ class MuseumController extends Controller
 
         $museum = $museum->toArray();
 
-        unset($museum['photo']);
-
-        $museum['photo_path'] = 'museum.lc/uploads/';
-
         return response()->json($museum);
     }
 

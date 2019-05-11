@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Exposition;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Media;
+use Photo;
 
 class ExpositionController extends Controller
 {
@@ -67,6 +69,7 @@ class ExpositionController extends Controller
 
         $exposition = $exposition->toArray();
 
+        unset($exposition['photo_id']);
         unset($exposition['photo']);
 
         $exposition['photo_path'] = 'museum.lc/uploads/';
@@ -85,7 +88,7 @@ class ExpositionController extends Controller
             ), 404);
         }
 
-        $exposition->load('museum', 'photo', 'exhibits');
+        $exposition->load('museum', 'exhibits', 'photo');
 
         #$photoPath = $author->photo()->media()->path;
 

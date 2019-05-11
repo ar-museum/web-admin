@@ -3,23 +3,44 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Author;
+use App\Models\Museum;
+use App\Models\Vuforia;
 
 class IndexController extends Controller
 {
 
     public function index()
     {
-        $author = Author::find(1)->with('photo')->get();
+        if(empty(request()->has("longitude")) || empty(request()->has("latitude"))){
+            return response()->json(array(
+                'mesage'      =>  "FORBIDDEN",
+            ), 403);
+        }
+        $latitude = 27.57;
+        $longitude = 47.18;
+        $radius = 100;
 
-        #$photoPath = $author->photo()->media()->path;
+        $museum = Museum::select(['name', 'latitude' , 'longitude'])
+            ->selectRaw('( 6335 * acos( cos( radians(?) ) * cos( radians( latitude ) )
+             * cos( radians( longitude ) - radians(?) ) + sin( radians(?) )
+             * sin( radians( latitude ) ) ) ) AS distance', [$latitude, $longitude, $latitude])
+            ->havingRaw("distance < ?", [$radius])
+            ->orderBy("distance", "ASC")
+            ->first()->toArray();
 
-        $author = $author->toArray();
+        $vuf = Vuforia::select(['version'])
+                   ->join('museum', 'museum.museum_id', '=', 'vuforia.museum_id')
+                   ->orderBy("version", "ASC")->first()->toArray();
 
-        unset($author[0]['photo']);
+        $museum['coordinates'] = $museum['longitude'].', '.$museum['latitude'];
+        $museum['version'] = $vuf['version'];
 
-        $author[0]['photo_path'] = 'museum.lc/uploads/';
+        unset($vuf['version']);
+        unset($museum['longitude']);
+        unset($museum['latitude']);
+        unset($museum['distance']);
+        //dd($museum);
 
-        return response()->json($author);
+        return response()->json($museum);
     }
 }
