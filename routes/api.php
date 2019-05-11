@@ -20,6 +20,12 @@ Route::post('/', [
     'as' => 'museum_index',
     'uses' => 'Api\IndexController@index',
 ]);
+
+Route::post('/update', [
+    'as' => 'get_version',
+    'uses' => 'Api\UpdateController@index',
+]);
+
 Route::get('/author', [
     'as' => 'get_all_authors',
     'uses' => 'Api\AuthorController@index',
@@ -134,3 +140,4 @@ Route::get('/mus/rels/{id}', [
     'as' => 'get_museums_relationships',
     'uses' => 'Api\MuseumController@getDataWithRelationships',
 ]);
+
