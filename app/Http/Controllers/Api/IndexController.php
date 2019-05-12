@@ -13,7 +13,7 @@ class IndexController extends Controller
     {
         if(empty(request()->has("longitude")) || empty(request()->has("latitude"))){
             return response()->json(array(
-                'mesage'      =>  "FORBIDDEN",
+                'message'      =>  "FORBIDDEN",
             ), 403);
         }
         $latitude = 27.57;

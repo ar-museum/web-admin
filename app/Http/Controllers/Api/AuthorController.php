@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Author;
+use App\Models\Photo;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AuthorController extends Controller
@@ -23,8 +24,15 @@ class AuthorController extends Controller
 
         foreach ($authors as $authorKey =>$author) {
             //$author = $author->toArray();
+            $photo = new Photo();
+            $photo->photo_id = $author['photo_id'];
+            $path = $photo->getPathAttribute();
+
+            $path = str_replace('\\', '/', $path);
+
             unset($author['photo']);
-            $author['photo_path'] = 'museum.lc/uploads/';
+
+            $author['photo_path'] = $path;
         }
 
         return response()->json($authors);
@@ -46,9 +54,15 @@ class AuthorController extends Controller
 
         $author = $author->toArray();
 
+        $photo = new Photo();
+        $photo->photo_id = $author['photo_id'];
+        $path = $photo->getPathAttribute();
+
+        $path = str_replace('\\', '/', $path);
+
         unset($author['photo']);
 
-        $author['photo_path'] = 'museum.lc/uploads/';
+        $author['photo_path'] = $path;
 
         return response()->json($author);
     }

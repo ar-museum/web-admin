@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <section class="panel">
-                <header class="panel-heading">Media
+                <header class="panel-heading">Media games
                     <span class="tools pull-right">
                 <a href="javascript:;" class="fa fa-chevron-down"></a>
              </span>
@@ -15,37 +15,47 @@
                             <table class="display table table-hover table-bordered table-striped" id="all-media">
                                 <thead>
                                 <tr>
-                                    <th>Nr. crt.</th>
-                                    <th>Path</th>
-                                    <th>Detalii</th>
+                                    <th>ID</th>
+                                    <th>Previzualizare</th>
+                                    <th>Cale</th>
+                                    <th>Titlu</th>
+                                    <th>Width</th>
+                                    <th>Height</th>
                                     <th>Data adaugarii</th>
                                     <th>Actiuni</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($medias as $media)
-                                    <tr>
+                                    @if (strpos($media->path, 'uploads\photo\games') !== false)
+                                        <tr>
                                         <td>{!! $media->media_id !!}</td>
-                                        <td>{{ $media->path }}</td>
                                         <td>
                                             @if (strpos($media->path, '\photo'. DIRECTORY_SEPARATOR) !== false)
-                                                Photo
-                                            @else
-                                                @if (strpos($media->path, '\audio'. DIRECTORY_SEPARATOR) !== false)
-                                                    Audio
-                                                @else
-                                                    @if (strpos($media->path, 'youtube') !== false || strpos($media->path, 'youtu.be') !== false)
-                                                        Video
-                                                    @endif
-                                                @endif
+                                                <?php
+                                                    echo '<img src="'.$media->path.'" width="100" height="80" />';
+                                                ?>
                                             @endif
+                                        </td>
+                                        <td>{{ $media->path }}</td>
+                                        <?php
+                                            $photoGame = new App\Models\photoGames();
+                                            $photoGame->photo_id = $media->media_id;
+                                            $titlePhoto = $photoGame->getTitleAttribute();
+                                            $width = $photoGame->getWidthAttribute();
+                                            $height = $photoGame->getHeightAttribute();
+                                        ?>
+                                        <td>
+                                            {{ $titlePhoto }}
+                                        </td>
+                                        <td>
+                                            {{ $width }}
+                                        </td>
+                                        <td>
+                                            {{ $height }}
                                         </td>
                                         <td>{!! date("Y-m-d H:i:s", strtotime($media->created_at)) !!}</td>
                                         <td>
-                                            <a class="btn btn-success btn-xs" title="Actualizeaza datele"
-                                               href="{!! route('change_pass', ['code' => $media->media_id]) !!}">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
                                             <button type="button" class="btn btn-danger btn-xs btn-delete"
                                                     data-action="delete_media" data-action-id="{!! $media->media_id !!}"
                                                     title="Sterge">
@@ -54,6 +64,7 @@
 
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>
@@ -83,7 +94,7 @@
     <div class="row">
         <div class="col-md-12">
             <section class="panel">
-                <header class="panel-heading"><b>Adauga photo</b>
+                <header class="panel-heading"><b>Adauga poze pentru jocuri</b>
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
                 </header>
                 <div class="panel-body">
@@ -115,11 +126,18 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <label class="col-lg-4 col-sm-4 control-label" for="title"> Titlu <span
+                                        class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" name="title" id="title" value="{{ old('title') }}"
+                                       class="form-control" placeholder="Titlu">
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-md-8">
-                                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Adauga photo</button>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Adauga poza</button>
                                 <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> Reseteaza</button>
                             </div>
                         </div>
@@ -130,7 +148,8 @@
         </div>
     </div>
 
-    <!-- ADD AUDIO -->
+    <!--
+
     <div class="row">
         <div class="col-md-12">
             <section class="panel">
@@ -177,7 +196,7 @@
         </div>
     </div>
 
-    <!-- ADD VIDEO -->
+
     <div class="row">
         <div class="col-md-12">
             <section class="panel">
@@ -209,6 +228,7 @@
             </section>
         </div>
     </div>
+    -->
 @endsection
 @section('js')
     <script src="{!! asset('/js/common/bootstrap-fileupload.min.js') !!}"></script>
