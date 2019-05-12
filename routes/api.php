@@ -26,6 +26,11 @@ Route::post('/update', [
     'uses' => 'Api\UpdateController@index',
 ]);
 
+Route::get('/update/drag/{id}', [
+    'as' => 'get_version',
+    'uses' => 'Api\UpdateController@drag',
+]);
+
 Route::get('/author', [
     'as' => 'get_all_authors',
     'uses' => 'Api\AuthorController@index',

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dragndrop;
 use App\Models\Media;
+use App\Models\Museum;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UpdateController extends Controller
 {
@@ -31,6 +34,27 @@ class UpdateController extends Controller
         else return response()->json(array(
             'message'      =>  "FORBIDDEN",
         ), 403);
+    }
 
+    public function drag($id){
+        try {
+            $test = Museum::findOrFail($id);
+        } catch (ModelNotFoundException $ex) {
+            return response()->json(array(
+                'mesaj'   =>  'Nu exista acest muzeu in baza de date.'
+            ), 404);
+        }
+
+        $museums = Dragndrop::where('museum_id', $id)->get();
+
+        foreach($museums as $var => $museum) {
+            unset($museum['museum_id']);
+            unset($museum['dragndrop_id']);
+            $museum['path'] = str_replace('\\', '/', $museum['path']);
+        }
+
+        $variable['photos'] = $museums->toArray();
+
+        return response()->json($variable);
     }
 }
