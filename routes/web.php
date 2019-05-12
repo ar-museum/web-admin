@@ -286,3 +286,28 @@ Route::group([
     ));
 
 });
+
+Route::group([
+    'namespace' => 'Web',
+], function () {
+
+    Route::get('/dragndrop', [
+        'as' => 'dragndrop',
+        'middleware' => ['auth'],
+        'uses' => 'DragndropController@index'
+    ]);
+
+
+    Route::post('dragndrop/add', [
+        'as' => 'store',
+        'middleware' => ['auth'],
+        'uses' => 'DragndropController@store'
+    ]);
+
+    Route::delete('dragndrop/delete/{id}', [
+        'as' => 'delete-dragndrop',
+        'middleware' => ['auth'],
+        'uses' => 'DragndropController@destroy'
+    ]);
+
+});

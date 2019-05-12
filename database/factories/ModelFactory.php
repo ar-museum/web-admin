@@ -182,3 +182,12 @@ $factory->define(App\Models\Trivia::class, function (Faker\Generator $faker, $pa
         'museum_id' => $params['museum_id'] ?? 1
     ];
 });
+$factory->define(App\Models\Dragndrop::class, function (Faker\Generator $faker, $params) {
+
+    return [
+        'dragndrop_id' => 1,
+        'museum_id' => $params['museum_id'] ?? 1,
+        'path' => $params['path'] ?? 'uploads\photo\dragndrop\MuzeulMihaiEminescu\270d811c951c18c3994fdcfb594c3d63.jpg'
+    ];
+});
+
