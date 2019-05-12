@@ -175,3 +175,10 @@ $factory->define(App\Models\Vuforia::class, function (Faker\Generator $faker, $p
         'file_type' => $enumFileType[0]
     ];
 });
+
+$factory->define(App\Models\Trivia::class, function (Faker\Generator $faker, $params) {
+    return [
+        'json_name' => $params['json_name'] ?? 'text.json',
+        'museum_id' => $params['museum_id'] ?? 1
+    ];
+});

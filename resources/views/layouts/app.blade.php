@@ -113,6 +113,13 @@
                             <i class="fa fa-file"></i> <span>Vuforia</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{!! route('trivia') !!}">
+                            <i class="fa fa-gamepad"></i> <span>Trivia</span>
+                        </a>
+                    </li>
+
                     <li>
                         <a href="#">
                             <i class="fa fa-users"></i> <span>Activitati vizitatori</span>

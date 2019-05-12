@@ -161,4 +161,5 @@ class Museum extends BaseModel
     {
         return $this->hasMany(Exposition::class, 'museum_id', 'museum_id');
     }
+
 }

@@ -265,3 +265,24 @@ Route::group([
 
     // Route::get('/vuforia/create', 'VuforiaController@create');
 });
+
+// Trivia routing
+
+Route::group([
+    'namespace' => 'Web',
+], function () {
+
+    Route::get('/trivia', [
+        'as' => 'trivia',
+        'uses' => 'TriviaController@index'
+    ]);
+
+    Route::get('/create', 'TriviaController@create');
+    Route::post('/trivia-store', 'TriviaController@store');
+
+    Route::delete('trivia/delete/{trivia_id}', array(
+        'as' => 'delete-trivia',
+        'uses' => 'TriviaController@destroy'
+    ));
+
+});
