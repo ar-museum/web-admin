@@ -120,6 +120,18 @@ Route::get('/author', array(
 Route::get('/create', 'Web\AuthorController@create');
 Route::post('/author-store', 'Web\AuthorController@store');
 
+
+Route::get('author/edit/{id}',array(
+    'as' => 'edit-author',
+    'uses' => 'Web\AuthorController@edit'
+
+));
+
+Route::post('author/update/{id}',array(
+    'as' => 'update-author',
+    'uses' => 'Web\AuthorController@update'
+));
+
 Route::delete('author/delete/{author_id}', array(
     'as' => 'delete-author',
     'uses' => 'Web\AuthorController@destroy'

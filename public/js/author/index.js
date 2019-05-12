@@ -48,3 +48,10 @@ $(function() {
     $('.dataTables_filter input').addClass("form-control"); // modify table search input
     $('.dataTables_length select').addClass("form-control"); // modify table per page dropdown
 });
+
+jQuery(document).ready(function ($){
+    $('.datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy',
+    });
+});

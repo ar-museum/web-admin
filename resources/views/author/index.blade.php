@@ -79,22 +79,14 @@
                                 </div>
                         </div>
 
-
-                        <div class="form-group @if ($errors->has('staff_id'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="staff_id"> Staff ID <span class="text-danger">*</span></label>
-                            <div class="col-lg-8">
-                                <input type="text" name="staff_id" id="staff_id" value="{{ old('staff_id') }}"
-                                       class="form-control" placeholder="Staff ID">
-                            </div>
-                        </div>
-
-
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-md-8">
-                                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Adauga</button>
-                                <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> Reseteaza</button>
+                                <button type="submit" name ="staff_id" value="{{$currentStaff->staff_id}}" class="btn btn-success"><i class="fa fa-plus"></i> Adauga</button>
+                                <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> Reseteaza
+                                </button>
                             </div>
                         </div>
+
                         <div class="text-danger">* Aceste campuri sunt obligatorii!</div>
                     </form>
                 </div>
@@ -143,7 +135,7 @@
                                         <td>{!! date("Y-m-d", strtotime($author->created_at)) !!}</td>
                                         <td>
                                             <a class="btn btn-success btn-xs" title="Actualizeaza datele"
-                                               href="{!! route('change_pass', ['code' => $author->author_id]) !!}">
+                                               href="{!! route('edit-author', ['id' => $author->author_id]) !!}">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                             <button type="button" class="btn btn-danger btn-xs btn-delete"
