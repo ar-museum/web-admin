@@ -81,7 +81,7 @@
                                 <tr>
                                     <th>Nr. crt.</th>
                                     <th>ID Muzeu</th>
-                                    <th>Versiune</th>
+                                    <th>Path</th>
                                     <th>ID fișier</th>
                                     <th>Ultima modificare</th>
                                     <th>Acțiune</th>
