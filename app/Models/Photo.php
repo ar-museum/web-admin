@@ -30,4 +30,24 @@ class Photo extends BaseModel
         }
         return ' ';
     }
+
+    public function getWidthAttribute()
+    {
+        $width_var = Photo::where('photo_id', $this->photo_id)->select('width')->get();
+        if(count($width_var) > 0)
+        {
+            return $width_var[0]->width;
+        }
+        return '-';
+    }
+
+    public function getHeightAttribute()
+    {
+        $height = Photo::where('photo_id', $this->photo_id)->select('height')->get();
+        if(count($height) > 0)
+        {
+            return $height[0]->height;
+        }
+        return '-';
+    }
 }
