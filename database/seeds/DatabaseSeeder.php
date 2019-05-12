@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ExhibitCategoryTableSeeder::class);
 
         $this->call(VuforiaTableSeeder::class);
-
+        $this->call(DragndropTableSeeder::class);
         Model::reguard();
     }
 }

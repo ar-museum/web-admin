@@ -113,7 +113,11 @@
                             <i class="fa fa-file"></i> <span>Vuforia</span>
                         </a>
                     </li>
-
+                    <li>
+                        <a href="{!! route('dragndrop') !!}">
+                            <i class="fa fa-arrows-alt"></i> <span>Dragndrop</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="{!! route('trivia') !!}">
                             <i class="fa fa-gamepad"></i> <span>Trivia</span>
