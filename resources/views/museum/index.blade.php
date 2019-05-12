@@ -8,7 +8,7 @@
                 <div class="panel-body">
                     <!-- Display Validation Errors -->
                     @include('common.errors')
-                    <form class="form-horizontal" method="POST" action="/exposition/add" enctype="multipart/form-data" role="form">
+                    <form class="form-horizontal" method="POST" action="/museum/add" enctype="multipart/form-data" role="form">
                         {!! csrf_field() !!}
                         <div class="form-group @if ($errors->has('museum_name'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="museum_name">Nume <span class="text-danger">*</span></label>
@@ -18,148 +18,157 @@
                             </div>
                         </div>
 
-                        <div class="form-group @if ($errors->has('museum_location'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="museum_location">Locatia <span class="text-danger">*</span></label>
+                        <div class="form-group @if ($errors->has('long'))has-error @endif">
+                            <label class="col-lg-4 col-sm-4 control-label" for="long">Longitudinea <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <input type="text" name="museum_location" id="museum_location" value="{{ old('museum_location') }}"
-                                       class="form-control" placeholder="Locatia">
+                                <input type="text" name="long" id="long" value="{{ old('long') }}"
+                                       class="form-control" placeholder="Longitudinea">
+                            </div>
+                        </div>
+
+                        <div class="form-group @if ($errors->has('lat'))has-error @endif">
+                            <label class="col-lg-4 col-sm-4 control-label" for="lat">Latitudinea <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" name="lat" id="lat" value="{{ old('lat') }}"
+                                       class="form-control" placeholder="Latitudinea">
                             </div>
                         </div>
 
 
-                <div class="form-group @if ($errors->has('monday'))has-error @endif">
-                    <label class="col-lg-2 col-md-3 col-sm-4 control-label" for="monday">Program Luni <span class="text-danger">*</span></label>
-
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3">24hr Timepicker</label>
-                        <div class="col-md-4">
-                            <div class="input-group bootstrap-timepicker">
-                                <input type="text" class="form-control timepicker-24">
-                                <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button"><i class="fa fa-clock-o"></i></button>
-                                                </span>
-                            </div>
+                        <div class="form-group @if ($errors->has('monday'))has-error @endif">
                         </div>
-                    </div>
+                        <label class="col-lg-2 col-md-3 col-sm-4 control-label" for="monday"><b>Program Luni:</b></label>
+
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
+                        <div>
+                        <label class="control-label col-md-3">Ora deschidere</label>
+                            <input type="time" name="monday_op" id="monday_op">
+                        </div>
+                        <div>
+                        <label class="control-label col-md-3">Ora inchidere</label>
+                        <input type="time" name="monday_cl" id="monday_cl">
+                        </div>
                     <?php
                     echo nl2br("\n\n");
                     ?>
 
-                </div>
                         <div class="form-group @if ($errors->has('tuesday'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="tuesday">Program Marti <span class="text-danger">*</span></label>
-
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="tuesday_opening" id="tuesday_opening" value="{{ old('tuesday_opening') }}"
-                                       class="form-control" placeholder="Ora deschidere">
-                            </div>
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="tuesday_closing" id="tuesday_closing" value="{{ old('tuesday_closing') }}"
-                                       class="form-control" placeholder="Ora inchidere">
-                            </div>
                         </div>
+                        <label class="col-lg-2 col-md-3 col-sm-4 control-label" for="tuesday"><b>Program Marti:</b></label>
+
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
+                        <div>
+                            <label class="control-label col-md-3">Ora deschidere</label>
+                            <input type="time" name="tuesday_op" id="tuesday_op">
+                        </div>
+                        <div>
+                            <label class="control-label col-md-3">Ora inchidere</label>
+                            <input type="time" name="tuesday_cl" id="tuesday_cl">
+                        </div>
+
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
+
 
                         <div class="form-group @if ($errors->has('wednesday'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="wednesday">Program Miercuri <span class="text-danger">*</span></label>
-
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="wednesday_opening" id="wednesday_opening" value="{{ old('wednesday_opening') }}"
-                                       class="form-control" placeholder="Ora deschidere">
-                            </div>
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="wednesday_closing" id="wednesday_closing" value="{{ old('wednesday_closing') }}"
-                                       class="form-control" placeholder="Ora inchidere">
-                            </div>
                         </div>
+                        <label class="col-lg-4 col-md-5 col-sm-6 control-label" for="wednesday"><b>Program Miercuri:</b></label>
+
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
+                        <div>
+                            <label class="control-label col-md-3">Ora deschidere</label>
+                            <input type="time" name="wednesday_op" id="wednesday_op">
+                        </div>
+                        <div>
+                            <label class="control-label col-md-3">Ora inchidere</label>
+                            <input type="time" name="wednesday_cl" id="wednesday_cl">
+                        </div>
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
 
                         <div class="form-group @if ($errors->has('thursday'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="thursday">Program Joi <span class="text-danger">*</span></label>
-
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="thursday_opening" id="thursday_opening" value="{{ old('thursday_opening') }}"
-                                       class="form-control" placeholder="Ora deschidere">
-                            </div>
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="thursday_closing" id="thursday_closing" value="{{ old('thursday_closing') }}"
-                                       class="form-control" placeholder="Ora inchidere">
-                            </div>
                         </div>
+                        <label class="col-lg-2 col-md-3 col-sm-4 control-label" for="thursday"><b>Program Joi:</b></label>
+
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
+                        <div>
+                            <label class="control-label col-md-3">Ora deschidere</label>
+                            <input type="time" name="thursday_op" id="thursday_op">
+                        </div>
+                        <div>
+                            <label class="control-label col-md-3">Ora inchidere</label>
+                            <input type="time" name="thursday_cl" id="thursday_cl">
+                        </div>
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
 
                         <div class="form-group @if ($errors->has('friday'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="friday">Program Vineri <span class="text-danger">*</span></label>
-
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="friday_opening" id="friday_opening" value="{{ old('friday_opening') }}"
-                                       class="form-control" placeholder="Ora deschidere">
-                            </div>
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="friday_closing" id="friday_closing" value="{{ old('friday_closing') }}"
-                                       class="form-control" placeholder="Ora inchidere">
-                            </div>
                         </div>
+                        <label class="col-lg-4 col-md-5 col-sm-6 control-label" for="friday"><b>Program Vineri:</b></label>
+
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
+                        <div>
+                            <label class="control-label col-md-3">Ora deschidere</label>
+                            <input type="time" name="friday_op" id="friday_op">
+                        </div>
+                        <div>
+                            <label class="control-label col-md-3">Ora inchidere</label>
+                            <input type="time" name="friday_cl" id="friday_cl">
+                        </div>
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
 
                         <div class="form-group @if ($errors->has('saturday'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="saturday">Program Sambata <span class="text-danger">*</span></label>
-
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="saturday_opening" id="saturday_opening" value="{{ old('saturday_opening') }}"
-                                       class="form-control" placeholder="Ora deschidere">
-                            </div>
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="saturday_closing" id="saturday_closing" value="{{ old('saturday_closing') }}"
-                                       class="form-control" placeholder="Ora inchidere">
-                            </div>
                         </div>
+                        <label class="col-lg-4 col-md-5 col-sm-6 control-label" for="saturday"><b>Program Sambata:</b></label>
+
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
+                        <div>
+                            <label class="control-label col-md-3">Ora deschidere</label>
+                            <input type="time" name="saturday_op" id="saturday_op">
+                        </div>
+                        <div>
+                            <label class="control-label col-md-3">Ora inchidere</label>
+                            <input type="time" name="saturday_cl" id="saturday_cl">
+                        </div>
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
 
                         <div class="form-group @if ($errors->has('sunday'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="sunday">Program Duminica <span class="text-danger">*</span></label>
-
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="sunday_opening" id="sunday_opening" value="{{ old('sunday_opening') }}"
-                                       class="form-control" placeholder="Ora deschidere">
-                            </div>
-                            <?php
-                            echo nl2br("\n\n");
-                            ?>
-                            <div class="col-lg-8">
-                                <input type="text" name="sunday_closing" id="sunday_closing" value="{{ old('sunday_closing') }}"
-                                       class="form-control" placeholder="Ora inchidere">
-                            </div>
                         </div>
+                        <label class="col-lg-4 col-md-5 col-sm-6 control-label" for="sunday"><b>Program Duminica:</b></label>
+
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
+                        <div>
+                            <label class="control-label col-md-3">Ora deschidere</label>
+                            <input type="time" name="sunday_op" id="sunday_op">
+                        </div>
+                        <div>
+                            <label class="control-label col-md-3">Ora inchidere</label>
+                            <input type="time" name="sunday_cl" id="sunday_cl">
+                        </div>
+                        <?php
+                        echo nl2br("\n\n");
+                        ?>
 
 
 
@@ -209,7 +218,7 @@
                                 @foreach ($museums as $museum)
                                     <tr>
                                         <td>{!! $museum->getMuseumId() !!}</td>
-                                        <td>{!! $museum->getMuseumName() !!}</td>s
+                                        <td>{!! $museum->getMuseumName() !!}</td>
                                         <td>{{ $museum->getMuseumLongitude() }}</td>
                                         <td>{{ $museum->getMuseumLatitude() }}</td>
                                         <td>{{ $museum->getMondayProgram() }}</td>

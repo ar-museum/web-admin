@@ -172,6 +172,11 @@ Route::post('museum/update/{id}',array(
     'uses' => 'Web\MuseumController@update'
 ));
 
+Route::post('/museum/add', array(
+    'middleware' => ['auth'],
+    'uses' => 'Web\MuseumController@store',
+));
+
 
 Route::get('/museum', array(
     'as' => 'museum',
