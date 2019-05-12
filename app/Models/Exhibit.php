@@ -112,4 +112,36 @@ class Exhibit extends BaseModel
         return $this->value;
     }
 
+    /** Function to get photo path by photo_id */
+    public function getPhotoPath()
+    {
+        $path = Media::where('media_id', $this->photo_id)->select('path')->get();
+        if(count($path) > 0)
+        {
+            return $path[0]->path;
+        }
+        return ' ';
+    }
+
+    /** Function to get audio path by audio_id */
+    public function getAudioPath()
+    {
+        $path = Media::where('media_id', $this->audio_id)->select('path')->get();
+        if(count($path) > 0)
+        {
+            return $path[0]->path;
+        }
+        return ' ';
+    }
+
+    /** Function to get video path by photo_id */
+    public function getVideoPath()
+    {
+        $path = Media::where('media_id', $this->video_id)->select('path')->get();
+        if(count($path) > 0)
+        {
+            return $path[0]->path;
+        }
+        return ' ';
+    }
 }

@@ -122,10 +122,8 @@
                                         <td>{!! $author->author_id !!}</td>
                                         <td>
                                             <?php
-                                                $photo = new App\Models\Photo();
-                                                $photo->photo_id = $author->photo_id;
-                                                $path_img = $photo->getPathAttribute();
-                                                echo '<img src="'.$path_img.'" width="100" height="80" />';
+                                                $path_img = $author->getPhotoPath();
+                                            echo '<img src="'.$path_img.'" width="100" height="80" />';
                                             ?>
                                         </td>
                                         <td>{{ $author->full_name }}</td>
