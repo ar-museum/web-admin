@@ -75,8 +75,8 @@
                 </header>
                 <div class="panel-body">
                     @if (count($dragndrops))
-                        <div class="adv-table">
-                            <table class="display table table-hover table-bordered table-striped" id="all-dragndrops">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped" id="all-dragndrops">
                                 <thead>
                                 <tr>
                                     <th>Nr. crt.</th>
