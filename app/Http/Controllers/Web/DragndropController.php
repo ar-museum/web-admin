@@ -59,7 +59,7 @@ class DragndropController extends Controller
 
         if (request()->hasFile('photo')) {
             $photo        = $request->file('photo');
-            $new_filename = md5(time() . $photo->getClientOriginalName()) . '.' . $photo->getClientOriginalExtension();
+            $new_filename = $photo->getClientOriginalName();
 
             try {
                 $photo->move(public_path('uploads' . DIRECTORY_SEPARATOR . 'photo' . DIRECTORY_SEPARATOR .'dragndrop'.DIRECTORY_SEPARATOR. $name_museum_folder .
