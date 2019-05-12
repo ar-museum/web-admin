@@ -269,6 +269,18 @@ Route::group([
     ]);
 
     // Route::get('/vuforia/create', 'VuforiaController@create');
+
+    Route::post('/vuforia/add', [
+        'as' => 'store-vuforia',
+        'middleware' => ['auth'],
+        'uses' => 'VuforiaController@store'
+    ]);
+
+    Route::delete('/vuforia/delete/{vuforia_id}', [
+        'as' => 'delete-vuforia',
+        'middleware' => ['auth'],
+        'uses' => 'VuforiaController@destroy'
+    ]);
 });
 
 // Trivia routing

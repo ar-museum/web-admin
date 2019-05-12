@@ -32,7 +32,7 @@ class Vuforia extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'museum_id', 'version'
+        'museum_id', 'file_id', 'version', 'file_type'
     ];
 
     /**
@@ -41,7 +41,7 @@ class Vuforia extends BaseModel
      * @var array
      */
     protected $hidden = [
-        'file_id', 'file_type', 'created_at', 'updated_at'
+        'created_at', 'updated_at'
     ];
 
     // Relationship methods
@@ -51,7 +51,8 @@ class Vuforia extends BaseModel
         return $this->belongsTo(Museum::class, 'museum_id', 'museum_id');
     }
 
-    public function media(){
-        return $this->belongsTo(Media::class, 'file_id', 'media_id');
+    public function file()
+    {
+        return $this->belongsTo(VuforiaFile::class, 'file_id', 'file_id');
     }
 }
