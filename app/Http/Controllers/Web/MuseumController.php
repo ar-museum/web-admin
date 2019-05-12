@@ -41,6 +41,8 @@ class MuseumController  extends Controller
         $museum->setMuseumName($request->get('museum_name'));
         $museum->setMuseumLatitude($request->get('lat'));
         $museum->setMuseumLongitude($request->get('long'));
+        $museum->setMuseumAddress($request->get('museum_address'));
+
 
         //Program luni
         if($request->get('monday_op')!=null and $request->get('monday_cl')!=null )
@@ -216,9 +218,15 @@ class MuseumController  extends Controller
             $sunday_c=$museum->sunday_closing_hour;
 
 
+        if($request->get('museum_address')!=null)
+            $address=$request->get('museum_address');
+        else
+            $address=$museum->address;
+
         $museum->update([
             'museum_id'=>$museum->museum_id,
-            'museum_name'=>$name,
+            'name'=>$name,
+            'address'=>$address,
             'longitude'=>$long,
             'latitude'=>$lat,
             'monday_opening_hour'=>$monday_o,

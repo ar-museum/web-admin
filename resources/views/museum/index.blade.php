@@ -18,6 +18,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group @if ($errors->has('museum_address'))has-error @endif">
+                            <label class="col-lg-4 col-sm-4 control-label" for="museum_address">Adresa <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" name="museum_address" id="museum_address" value="{{ old('museum_address') }}"
+                                       class="form-control" placeholder="Adresa">
+                            </div>
+                        </div>
+
                         <div class="form-group @if ($errors->has('long'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="long">Longitudinea <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
