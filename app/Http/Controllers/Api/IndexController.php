@@ -20,7 +20,7 @@ class IndexController extends Controller
         $longitude = 47.18;
         $radius = 100;
 
-        $museum = Museum::select(['name', 'latitude' , 'longitude'])
+        $museum = Museum::select(['name', 'latitude' , 'longitude', 'museum_id'])
             ->selectRaw('( 6335 * acos( cos( radians(?) ) * cos( radians( latitude ) )
              * cos( radians( longitude ) - radians(?) ) + sin( radians(?) )
              * sin( radians( latitude ) ) ) ) AS distance', [$latitude, $longitude, $latitude])
