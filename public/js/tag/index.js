@@ -2,19 +2,19 @@ let TAGS;
 
 deleteTag = object => {
 
-    const categoryId = $(object).data('action-id');
+    const tagId = $(object).data('action-id');
     $(object).prop('disabled', true);
 
     bootbox.prompt('Scrie "STERGE" pentru a confirma acțiunea', function(result) {
         if ('STERGE' === result)
         {
             $.ajax({
-                url: 'tag/delete/' + categoryId,
+                url: 'tag/delete/' + tagId,
                 type: 'DELETE',
                 success: function(r) {
-                    const _pos = CATEGORIES.fnGetPosition($(object).closest('tr').get(0));
-                    CATEGORIES.fnDeleteRow(_pos);
-                    CATEGORIES.fnDraw(false);
+                    const _pos = TAGS.fnGetPosition($(object).closest('tr').get(0));
+                    TAGS.fnDeleteRow(_pos);
+                    TAGS.fnDraw(false);
                     toastr['success']('', r.message);
                 },
                 error: function(r) {
@@ -28,7 +28,7 @@ deleteTag = object => {
 }
 
 $(function() {
-    CATEGORIES = $('#table-tags').dataTable({
+    TAGS = $('#table-tags').dataTable({
         'aaSorting': [[0, 'desc']],
         'oLanguage': {
             'sSearch': 'Caută:',
