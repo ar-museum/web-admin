@@ -54,7 +54,7 @@ class ExhibitController extends Controller
             'staff_id' => 'required',
             'audio' => 'required',
             'photo' => 'required',
-            'yt_link' => 'required',
+            'yt_link' => 'required'
         ]);
         $exhibit = new Exhibit();
         $exhibit->title = $request->get('title');
@@ -68,6 +68,7 @@ class ExhibitController extends Controller
         $exhibit->exposition_id = $request->get('exposition_id');
         $exhibit->staff_id = $request->get('staff_id');
 
+        $yt_link = $request->get('yt_link');
 
         /** upload audio */
 
@@ -126,7 +127,7 @@ class ExhibitController extends Controller
 
         /** upload video */
         $media = new Media();
-        $media->path = $request->get('yt_link');
+        $media->path = $yt_link;
         $media->save();
 
         $video = new Video();

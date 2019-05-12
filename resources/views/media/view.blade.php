@@ -37,7 +37,12 @@
                                                 ?>
                                             @endif
                                         </td>
-                                        <td>{{ $media->path }}</td>
+                                        <td>
+                                            <?php
+                                                $site = 'http://museum.lc/' . $media->path;
+                                                echo '<a href="' . $site .'">' . $media->path .'</a>';
+                                            ?>
+                                        </td>
                                         <?php
                                             $photoGame = new App\Models\photoGames();
                                             $photoGame->photo_id = $media->media_id;
