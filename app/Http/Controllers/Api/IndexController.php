@@ -16,8 +16,8 @@ class IndexController extends Controller
                 'message'      =>  "FORBIDDEN",
             ), 403);
         }
-        $latitude = 27.57;
-        $longitude = 47.18;
+        $latitude = request()->get('latitude');
+        $longitude = request()->get('longitude');
         $radius = 100;
 
         $museum = Museum::select(['name', 'latitude' , 'longitude', 'museum_id'])
@@ -26,7 +26,14 @@ class IndexController extends Controller
              * sin( radians( latitude ) ) ) ) AS distance', [$latitude, $longitude, $latitude])
             ->havingRaw("distance < ?", [$radius])
             ->orderBy("distance", "ASC")
-            ->first()->toArray();
+            ->first();
+
+        if(empty($museum)){
+            return response()->json(array(
+                'message'      =>  "Nu exista niciun muzeu in apropiere.",
+            ), 403);
+        }
+        else $museum = $museum->toArray();
 
         $vuf = Vuforia::select(['version'])
                    ->join('museum', 'museum.museum_id', '=', 'vuforia.museum_id')
