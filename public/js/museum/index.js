@@ -1,3 +1,44 @@
+var MUSEUMS;
+
+function delete_museum(obj) {
+    var _museumId = $(obj).data('action-id');
+    $(obj).prop('disabled', true);
+
+    bootbox.prompt('Scrie "STERGE" pentru a confirma actiunea', function (result) {
+        if ('STERGE' === result) {
+            $.ajax({
+                url: 'museum/' + _museumId + '/delete',
+                type: 'DELETE',
+                success: function (r) {
+                    var _pos = MUSEUMS.fnGetPosition($(obj).closest('tr').get(0));
+                    MUSEUMS.fnDeleteRow(_pos);
+                    MUSEUMS.fnDraw(false);
+                    toastr['success']('', r.message);
+                },
+                error: function (r) {
+                    handle_errors(r.responseJSON);
+                }
+            });
+        }
+
+        $(obj).prop('disabled', false);
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //date picker start
 
 if (top.location != location) {

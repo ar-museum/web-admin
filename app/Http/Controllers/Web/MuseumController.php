@@ -247,4 +247,24 @@ class MuseumController  extends Controller
 
     }
 
+    public function destroy($id)
+    {
+        try {
+            $museum = Exposition::findOrFail($id);
+            $museum->delete();
+        } catch (\Exception $e) {
+            if (request()->getMethod() == 'GET') {
+                return redirect()->route('/museum');
+            }
+
+            return error($e->getMessage());
+        }
+
+
+        if (request()->getMethod() == 'GET') {
+            return redirect()->route('delete_museum', ['museum_id' => $id]);
+        }
+
+        return response()->json(['message' => 'Muzeul  ' . $museum->name . ' a fost sters cu succes!']);
+    }
 }

@@ -241,6 +241,11 @@
                                                href="{!! route('museum-edit', ['id' => $museum->getMuseumId()]) !!}">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
+                                            <button type="button" class="btn btn-danger btn-xs btn-delete"
+                                                    data-action="delete_museum" data-action-id="{!! $museum->museum_id !!}"
+                                                    title="Sterge">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
                                         </td>
 
                                     </tr>
