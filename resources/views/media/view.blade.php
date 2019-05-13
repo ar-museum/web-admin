@@ -223,7 +223,7 @@
                                         <tr>
                                         <td>{!! $media->media_id !!}</td>
                                         <td>
-                                            @if (strpos($media->path, DIRECTORY_SEPARATOR . 'photo') !== false)
+                                            @if (strpos($media->path, DIRECTORY_SEPARATOR . 'games') !== false)
                                                 <?php
                                                     echo '<img src="'.$media->path.'" width="100" height="80" />';
                                                 ?>
