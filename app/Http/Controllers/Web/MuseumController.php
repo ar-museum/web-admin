@@ -250,7 +250,7 @@ class MuseumController  extends Controller
     public function destroy($id)
     {
         try {
-            $museum = Exposition::findOrFail($id);
+            $museum = Museum::findOrFail($id);
             $museum->delete();
         } catch (\Exception $e) {
             if (request()->getMethod() == 'GET') {

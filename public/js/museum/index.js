@@ -1,29 +1,32 @@
-var MUSEUMS;
+let MUSEUMS;
 
-function delete_museum(obj) {
-    var _museumId = $(obj).data('action-id');
-    $(obj).prop('disabled', true);
+delete_museum = object => {
 
-    bootbox.prompt('Scrie "STERGE" pentru a confirma actiunea', function (result) {
-        if ('STERGE' === result) {
+    const museumId = $(object).data('action-id');
+    $(object).prop('disabled', true);
+
+    bootbox.prompt('Scrie "STERGE" pentru a confirma acțiunea', function(result) {
+        if ('STERGE' === result)
+        {
             $.ajax({
-                url: 'museum/' + _museumId + '/delete',
+                url: 'museum/delete/' + museumId,
                 type: 'DELETE',
-                success: function (r) {
-                    var _pos = MUSEUMS.fnGetPosition($(obj).closest('tr').get(0));
+                success: function(r) {
+                    const _pos = MUSEUMS.fnGetPosition($(object).closest('tr').get(0));
                     MUSEUMS.fnDeleteRow(_pos);
                     MUSEUMS.fnDraw(false);
                     toastr['success']('', r.message);
                 },
-                error: function (r) {
+                error: function(r) {
                     handle_errors(r.responseJSON);
                 }
             });
         }
 
-        $(obj).prop('disabled', false);
+        $(object).prop('disabled', false);
     });
 }
+
 
 
 
