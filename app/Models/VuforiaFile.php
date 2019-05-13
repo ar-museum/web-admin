@@ -1,12 +1,11 @@
 <?php
 
-
 namespace App\Models;
 
 use App\BaseModel;
 use Illuminate\Notifications\Notifiable;
 
-class Vuforia extends BaseModel
+class VuforiaFile extends BaseModel
 {
     use Notifiable;
 
@@ -17,23 +16,21 @@ class Vuforia extends BaseModel
      *
      * @var string
      */
-    protected $table = 'vuforia';
+    protected $table = 'vuforia_files';
 
     /**
      * The primary key for the model.
      *
      * @var string
      */
-    protected $primaryKey = 'vuforia_id';
+    protected $primaryKey = 'file_id';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'museum_id', 'file_id', 'version', 'file_type'
-    ];
+    protected $fillable = ['path'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -46,13 +43,13 @@ class Vuforia extends BaseModel
 
     // Relationship methods
 
-    public function museum()
+    public function vuforia()
     {
-        return $this->belongsTo(Museum::class, 'museum_id', 'museum_id');
+        return $this->hasMany(Vuforia::class,'file_id','file_id');
     }
 
-    public function file()
+    public function scopeLastFive()
     {
-        return $this->belongsTo(VuforiaFile::class, 'file_id', 'file_id');
+        return Media::orderBy('file_id', 'desc')->take(5);
     }
 }

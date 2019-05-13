@@ -22,10 +22,8 @@ class CreateVuforiaTable extends Migration
 
             $table->unsignedInteger('file_id');
             $table->foreign('file_id')
-                  ->references('media_id')->on('media')
+                  ->references('file_id')->on('vuforia_files')
                   ->onDelete('cascade');
-
-            $table->enum('file_type', ['XML', 'DAT']);
 
             $table->timestamps();
         });

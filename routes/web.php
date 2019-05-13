@@ -276,6 +276,30 @@ Route::group([
     ]);
 
     // Route::get('/vuforia/create', 'VuforiaController@create');
+
+    Route::post('/vuforia/add', [
+        'as' => 'store-vuforia',
+        'middleware' => ['auth'],
+        'uses' => 'VuforiaController@store'
+    ]);
+
+    Route::get('/vuforia/{id}/edit', array(
+        'as' => 'edit-vuforia',
+        'middleware' => ['auth'],
+        'uses' => 'VuforiaController@edit',
+    ));
+
+    Route::post('/vuforia/{id}/update', array(
+        'as' => 'update-vuforia',
+        'middleware' => ['auth'],
+        'uses' => 'VuforiaController@update',
+    ));
+
+    Route::delete('/vuforia/delete/{vuforia_id}', [
+        'as' => 'delete-vuforia',
+        'middleware' => ['auth'],
+        'uses' => 'VuforiaController@destroy'
+    ]);
 });
 
 // Trivia routing
