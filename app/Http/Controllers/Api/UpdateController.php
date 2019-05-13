@@ -34,7 +34,7 @@ class UpdateController extends Controller
             return response()->json($var);
         }
         else return response()->json(array(
-            'message'      =>  "FORBIDDEN",
+            'message'      =>  "Nu exista versiunea.",
         ), 403);
     }
 
