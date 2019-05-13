@@ -7,7 +7,6 @@ use App\Models\Museum;
 use App\Models\Vuforia;
 use App\Models\VuforiaFile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class VuforiaController extends Controller
@@ -71,6 +70,28 @@ class VuforiaController extends Controller
         $vuforia->save();
 
         return redirect('/vuforia')->with('success', 'Fișierul "' . $filename . '" a fost adăugat cu succes!');
+    }
+
+    public function edit($vuforia_id)
+    {
+        return view('vuforia.edit', [
+            'vuforia' => Vuforia::where('vuforia_id', '=', $vuforia_id)->first(),
+            'museums' => Museum::all()
+        ]);
+    }
+
+    public function update(Request $request, $vuforia_id){
+        $vuforia = Vuforia::where('vuforia_id', '=', $vuforia_id)->first();
+
+        $this->validate($request, [
+            'museum-id' => 'required',
+            'version' => 'required',
+            'file' => 'required'
+        ]);
+
+        $vuforia->update($request->all());
+
+        return redirect('/vuforia')->with('success', 'Înregistrarea a fost modificată cu succes!');
     }
 
     public function destroy($vuforia_id)

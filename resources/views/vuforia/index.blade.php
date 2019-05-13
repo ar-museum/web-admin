@@ -47,7 +47,7 @@
                                             <input type="file" name="file" id="file" value="">
                                         </span>
                                         <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
-                                            <i class="fa fa-trash-o"></i> Sterge
+                                            <i class="fa fa-trash-o"></i> Șterge
                                         </a>
                                     </div>
                                 </div>
@@ -104,7 +104,8 @@
                                         <td>{!! date("Y-m-d H:i:s", strtotime($vuforia->created_at)) !!}</td>
                                         <td>{!! date("Y-m-d H:i:s", strtotime($vuforia->updated_at)) !!}</td>
                                         <td>
-                                            <a class="btn btn-success btn-xs" title="Actualizează rând" href="">
+                                            <a class="btn btn-success btn-xs" title="Actualizează rând"
+                                               href="{!! route('edit-vuforia', ['id' => $vuforia->vuforia_id]) !!}">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                             <a class="btn btn-danger btn-xs btn-delete" title="Șterge rând"
