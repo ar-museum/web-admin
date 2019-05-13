@@ -27,6 +27,8 @@ class UpdateController extends Controller
             ->orderBy("version", "ASC")->get()->toArray();
 
         if(count($vuf)) {
+            $vuf[0]['path'] = str_replace('\\', '/', $vuf[0]['path']);
+            $vuf[1]['path'] = str_replace('\\', '/', $vuf[1]['path']);
             $var['files'] = [$vuf[0]['path'], $vuf[1]['path']];
             unset($vuf['path']);
             return response()->json($var);
