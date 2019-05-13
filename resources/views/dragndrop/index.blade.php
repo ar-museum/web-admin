@@ -81,6 +81,7 @@
                                 <tr>
                                     <th>Nr. crt.</th>
                                     <th>ID Muzeu</th>
+                                    <th>Previzualizare</th>
                                     <th>Path</th>
                                     <th>ID fișier</th>
                                     <th>Ultima modificare</th>
@@ -91,7 +92,8 @@
                                 @foreach($dragndrops as $dragndrop)
                                     <tr>
                                         <td>{!! $dragndrop->dragndrop_id !!}</td>
-                                        <td>{!! $dragndrop->museum_id !!}</td>
+                                        <td>{!! $dragndrop->museum->name !!}</td>
+                                        <td><img src=" {!! $dragndrop->path !!}" height="200" width="200"></td>
                                         <td>{!! $dragndrop->path !!}</td>
                                         <td>{!! date("Y-m-d H:i:s", strtotime($dragndrop->created_at)) !!}</td>
                                         <td>{!! date("Y-m-d H:i:s", strtotime($dragndrop->updated_at)) !!}</td>
