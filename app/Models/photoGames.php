@@ -6,7 +6,7 @@ use App\BaseModel;
 
 class photoGames extends BaseModel
 {
-    protected $table = 'photoGames';
+    protected $table = 'photogames';
 
     protected $primaryKey = 'photo_id';
 
