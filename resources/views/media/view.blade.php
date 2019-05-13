@@ -219,7 +219,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($medias as $media)
-                                    @if (strpos($media->path, 'uploads' . DIRECTORY_SEPARATOR . 'photo ' . DIRECTORY_SEPARATOR . 'games') !== false)
+                                    @if (strpos($media->path, 'uploads' . DIRECTORY_SEPARATOR . 'photo' . DIRECTORY_SEPARATOR . 'games') !== false)
                                         <tr>
                                         <td>{!! $media->media_id !!}</td>
                                         <td>
