@@ -26,11 +26,11 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($medias as $media)
-                                    @if (strpos($media->path, 'uploads\photo') !== false)
+                                    @if (strpos($media->path, 'uploads' . DIRECTORY_SEPARATOR . 'photo') !== false)
                                         <tr>
                                             <td>{!! $media->media_id !!}</td>
                                             <td>
-                                                @if ((strpos($media->path, '\photo'. DIRECTORY_SEPARATOR) !== false) and (strpos($media->path, '\games'. DIRECTORY_SEPARATOR) == false))
+                                                @if (strpos($media->path, DIRECTORY_SEPARATOR . 'photo'. DIRECTORY_SEPARATOR) !== false)
                                                     <?php
                                                     echo '<img src="'.$media->path.'" width="100" height="80" />';
                                                     ?>
@@ -102,7 +102,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($medias as $media)
-                                    @if (strpos($media->path, 'uploads\audio') !== false)
+                                    @if (strpos($media->path, 'uploads' . DIRECTORY_SEPARATOR . 'audio') !== false)
                                         <tr>
                                             <td>{!! $media->media_id !!}</td>
                                             <td>
@@ -219,11 +219,11 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($medias as $media)
-                                    @if (strpos($media->path, 'uploads\photo\games') !== false)
+                                    @if (strpos($media->path, 'uploads' . DIRECTORY_SEPARATOR . 'photo' . DIRECTORY_SEPARATOR . 'games') !== false)
                                         <tr>
                                         <td>{!! $media->media_id !!}</td>
                                         <td>
-                                            @if (strpos($media->path, '\photo'. DIRECTORY_SEPARATOR) !== false)
+                                            @if (strpos($media->path, DIRECTORY_SEPARATOR . 'games') !== false)
                                                 <?php
                                                     echo '<img src="'.$media->path.'" width="100" height="80" />';
                                                 ?>
