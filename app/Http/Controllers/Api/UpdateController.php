@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dragndrop;
-use App\Models\Media;
 use App\Models\Museum;
+use App\Models\VuforiaFile;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UpdateController extends Controller
@@ -21,12 +21,14 @@ class UpdateController extends Controller
 
         $version = request()->get("version");
 
-        $vuf = Media::select(['path'])
-            ->join('vuforia', 'vuforia.file_id', '=', 'media.media_id')
+        $vuf = VuforiaFile::select(['path'])
+            ->join('vuforia', 'vuforia.file_id', '=', 'vuforia_files.file_id')
             ->where('vuforia.version', $version)
             ->orderBy("version", "ASC")->get()->toArray();
 
         if(count($vuf)) {
+            $vuf[0]['path'] = str_replace('\\', '/', $vuf[0]['path']);
+            $vuf[1]['path'] = str_replace('\\', '/', $vuf[1]['path']);
             $var['files'] = [$vuf[0]['path'], $vuf[1]['path']];
             unset($vuf['path']);
             return response()->json($var);
