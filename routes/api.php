@@ -27,8 +27,13 @@ Route::post('/update', [
 ]);
 
 Route::get('/update/drag/{id}', [
-    'as' => 'get_version',
+    'as' => 'get_drag',
     'uses' => 'Api\UpdateController@drag',
+]);
+
+Route::get('/update/trivia/{id}', [
+    'as' => 'get_trivia',
+    'uses' => 'Api\UpdateController@trivia',
 ]);
 
 Route::get('/author', [
