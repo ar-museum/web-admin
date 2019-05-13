@@ -16,8 +16,8 @@ class MuseumTableSeeder extends Seeder
         factory(App\Models\Museum::class, 1)->create([
             'name' => 'Muzeul de Științe Naturale',
             'address'=>'Bulevardul Independentei',
-            'longitude'=>47.166822,
-            'latitude'=>27.584079
+            'latitude'=>47.166822,
+            'longitude'=>27.584079
         ]);
     }
 }

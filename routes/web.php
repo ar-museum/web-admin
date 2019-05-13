@@ -167,6 +167,13 @@ Route::get('museum/edit/{id}', array(
     'uses' => 'Web\MuseumController@edit',
 ));
 
+
+
+Route::delete('museum/delete/{id}',array(
+    'as'=>'delete_museum',
+    'uses' => 'Web\MuseumController@destroy'
+));
+
 Route::post('museum/update/{id}',array(
     'as' => 'update_museum',
     'uses' => 'Web\MuseumController@update'
