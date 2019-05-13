@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(VuforiaTableSeeder::class);
         $this->call(DragndropTableSeeder::class);
+        $this->call(TriviaTableSeeder::class);
         Model::reguard();
     }
 }

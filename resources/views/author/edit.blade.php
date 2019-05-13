@@ -18,31 +18,41 @@
                                         class="text-danger">*</span></label>
                             <div class="col-lg-8">
                                 <input type="text" name="full_name" id="full_name"
-                                       class="form-control" placeholder="{{$author->full_name}}">
+                                       class="form-control" value="{{$author->full_name}}">
                             </div>
                         </div>
+
 
                         <div class="form-group @if ($errors->has('born_year'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="start_year"> Anul nasterii <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <input type="text" name="born_year" id="born_year" value="{{ old('born_year') }}"
-                                       class="form-control" placeholder="{{$author->born_year}}">
+                                <input type="text" name="born_year" id="born_year"
+                                       class="form-control" value="{{$author->born_year}}">
                             </div>
                         </div>
 
                         <div class="form-group @if ($errors->has('died_year'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="end_year"> Anul mortii<span class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <input type="text" name="died_year" id="died_year" value="{{ old('died_year') }}"
-                                       class="form-control" placeholder="{{$author->died_year}}">
+                                <input type="text" name="died_year" id="died_year"
+                                       class="form-control" value="{{$author->died_year}}">
                             </div>
                         </div>
                         <div class="form-group @if ($errors->has('location'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="location"> Location <span
                                         class="text-danger">*</span></label>
                             <div class="col-lg-8">
-                                <input type="text" name="location" id="location" value="{{ old('location') }}"
-                                       class="form-control" placeholder="{{$author->location}}">
+                                <input type="text" name="location" id="location"
+                                       class="form-control" value="{{$author->location}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group @if ($errors->has('description'))has-error @endif">
+                            <label class="col-lg-4 col-sm-4 control-label" for="description">Descriere <span
+                                        class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <textarea type="text" name="description" id="description"
+                                          class="form-control" value="{{$author->description}}"></textarea>
                             </div>
                         </div>
 

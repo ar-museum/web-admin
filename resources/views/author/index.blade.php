@@ -20,6 +20,7 @@
                             </div>
                         </div>
 
+
                         <div class="form-group @if ($errors->has('born_year'))has-error @endif">
                             <label class="col-lg-4 col-sm-4 control-label" for="born_year">Anul nasterii <span class="text-danger">*</span></label>
                             <div class="col-lg-8">
@@ -44,6 +45,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group @if ($errors->has('description'))has-error @endif">
+                            <label class="col-lg-4 col-sm-4 control-label" for="description">Descriere <span
+                                        class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <textarea type="text" name="description" id="description"
+                                          class="form-control" placeholder="Descriere">{{ old('description') }}</textarea>
+                            </div>
+                        </div>
 
                         <div class="form-group @if ($errors->has('photo_id'))has-error @endif">
                             <!--
@@ -113,6 +122,7 @@
                                     <th>Perioada</th>
                                     <th>Locatie</th>
                                     <th>Data adaugare</th>
+                                    <th>Descriere</th>
                                     <th>Actiuni</th>
                                 </tr>
                                 </thead>
@@ -131,6 +141,7 @@
                                                 - {{ $author->died_year }} @endif </td>
                                         <td>{{$author->location}}</td>
                                         <td>{!! date("Y-m-d", strtotime($author->created_at)) !!}</td>
+                                        <td>{{$author->description}}</td>
                                         <td>
                                             <a class="btn btn-success btn-xs" title="Actualizeaza datele"
                                                href="{!! route('edit-author', ['id' => $author->author_id]) !!}">

@@ -16,9 +16,10 @@ class CreateAuthorTable extends Migration
         Schema::create('authors', function (Blueprint $table) {
             $table->increments('author_id');
             $table->string('full_name');
-            $table->integer('born_year');
-            $table->integer('died_year');
-            $table->string('location');
+            $table->text('description', 32000)->nullable();
+            $table->integer('born_year')->nullable();
+            $table->integer('died_year')->nullable();
+            $table->string('location')->nullable();
             $table->unsignedInteger('photo_id');
 
             $table->foreign('photo_id')

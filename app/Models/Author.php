@@ -19,7 +19,7 @@ class Author extends BaseModel
      * @var array
      */ 
     protected $fillable = [
-       'full_name', 'born_year', 'died_year',  'location', 'photo_id'
+       'full_name', 'description', 'born_year', 'died_year',  'location', 'photo_id'
     ];
 
     /**

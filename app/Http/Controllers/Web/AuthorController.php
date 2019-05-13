@@ -29,17 +29,19 @@ class AuthorController extends Controller
     {
         $this->validate($request, [
             'full_name' => 'required',
-            'born_year' => 'required',
-            'died_year' => 'required',
-            'location' => 'required',
             'staff_id' => 'required',
             'photo' => 'required',
         ]);
         $author = new Author();
         $author->full_name = $request->get('full_name');
-        $author->born_year = $request->get('born_year');
-        $author->died_year = $request->get('died_year');
-        $author->location = $request->get('location');
+        if(empty($request->has('born_year'))) $author->born_year=null;
+        else $author->born_year = $request->get('born_year');
+        if(empty($request->has('died_year'))) $author->died_year=null;
+        else  $author->died_year = $request->get('died_year');
+        if(empty($request->has('location'))) $author->location=null;
+        else $author->location = $request->get('location');
+        if(empty($request->has('description')))  $author->description = null;
+        else $author->description = $request->get('description');
         $author->staff_id = $request->get('staff_id');
 
         /** upload photo */
@@ -88,7 +90,18 @@ class AuthorController extends Controller
 
     public function update(Request $request, $id){
         $author=Author::where('author_id','=', $id)->first();
-        $author->update($request->all());
+        $var['full_name'] = $request->get('full_name');
+        if($request->has('born_year')) $var['born_year']=$request->get('born_year');
+        else $var['born_year']=null;
+        if($request->has('died_year')) $var['died_year']=$request->get('died_year');
+        else $var['died_year']=null;
+        if($request->has('location')) $var['location']=$request->get('location');
+        else $var['location']=null;
+        if($request->has('description')) $var['description']=$request->get('description');
+        else $var['description']=null;
+        $var['staff_id']= $request->get('staff_id');
+       $var['photo_id']=$request->get('photo_id');
+        $author->update($var);
         return redirect('/author')->with('success', 'Autorul a fost modificat cu succes!');
     }
 
