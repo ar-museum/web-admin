@@ -80,11 +80,10 @@
                                 <thead>
                                 <tr>
                                     <th>Nr. crt.</th>
-                                    <th>ID Muzeu</th>
+                                    <th>Muzeu</th>
                                     <th>Previzualizare</th>
                                     <th>Path</th>
-                                    <th>ID fișier</th>
-                                    <th>Ultima modificare</th>
+                                    <th>Data creare</th>
                                     <th>Acțiune</th>
                                 </tr>
                                 </thead>
@@ -96,7 +95,6 @@
                                         <td><img src=" {!! $dragndrop->path !!}" height="200" width="200"></td>
                                         <td>{!! $dragndrop->path !!}</td>
                                         <td>{!! date("Y-m-d H:i:s", strtotime($dragndrop->created_at)) !!}</td>
-                                        <td>{!! date("Y-m-d H:i:s", strtotime($dragndrop->updated_at)) !!}</td>
                                         <td>
                                             <button type="button" class="btn btn-danger btn-xs btn-delete"
                                                     data-action="delete_dragndrop" data-action-id="{!! $dragndrop->dragndrop_id !!}"
