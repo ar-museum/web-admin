@@ -323,6 +323,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($media as $item)
+                                    @if($item->path != '')
                                     <tr>
                                         <td>{!! $item->media_id !!}</td>
                                         <td>
@@ -343,6 +344,7 @@
                                         </td>
                                         <td>{{ $item->created_at }}</td>
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>
