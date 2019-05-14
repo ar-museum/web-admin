@@ -85,7 +85,7 @@ class ExhibitController extends Controller
         }
 
         $media = new Media();
-        $media->path = 'uploads\audio' . DIRECTORY_SEPARATOR . $new_filename;
+        $media->path = 'uploads' . DIRECTORY_SEPARATOR . 'audio' . DIRECTORY_SEPARATOR . $new_filename;
         $media->save();
 
         $audio = new Audio();
