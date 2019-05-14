@@ -23,15 +23,15 @@ class Media extends BaseModel
     }
 
     public function photo(){
-        return $this->hasMany(Photo::class);
+        return $this->hasMany(Photo::class, 'photo_id','media_id');
     }
 
     public function audio(){
-        return $this->hasMany(Audio::class);
+        return $this->hasMany(Audio::class,'audio_id','media_id');
     }
 
     public function video(){
-        return $this->hasMany(Video::class);
+        return $this->hasMany(Video::class,'video_id','media_id');
     }
 
     /**
@@ -44,6 +44,16 @@ class Media extends BaseModel
     {
         return Media::orderBy('media_id', 'desc')
             ->take(5);
+    }
+
+    public function getWidthAttribute()
+    {
+        return $this->photo->width;
+    }
+
+    public function getHeightAttribute()
+    {
+        return $this->photo->height;
     }
 
 }

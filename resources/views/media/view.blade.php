@@ -42,17 +42,11 @@
                                                 echo '<a href="' . $site .'">' . $media->path .'</a>';
                                                 ?>
                                             </td>
-                                            <?php
-                                                $photo = new App\Models\Photo();
-                                                $photo->photo_id = $media->media_id;
-                                                $width = $photo->getWidthAttribute();
-                                                $height = $photo->getHeightAttribute();
-                                            ?>
                                             <td>
-                                                {{ $width }}
+                                                {{ $media->photo[0]->width }}
                                             </td>
                                             <td>
-                                                {{ $height }}
+                                                {{ $media->photo[0]->height }}
                                             </td>
                                             <td>{!! date("Y-m-d H:i:s", strtotime($media->created_at)) !!}</td>
                                             <td>

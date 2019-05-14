@@ -14,20 +14,15 @@ class Audio extends BaseModel
 
     /* Relationship methods */
     public function media(){
-        return $this->belongsTo(Media::class);
+        return $this->belongsTo(Media::class, 'audio_id','media_id');
     }
 
     public function exhibit(){
-        return $this->belongsTo(Exhibit::class, 'audio_id', 'audio_id');
+        return $this->belongsTo(Exhibit::class, 'audio_id', 'exhibit_id');
     }
 
     public function getPathAttribute()
     {
-        $path = Media::where('media_id', $this->audio_id)->select('path')->get();
-        if(count($path) > 0)
-        {
-            return $path[0]->path;
-        }
-        return ' ';
+        return $this->media->path;
     }
 }

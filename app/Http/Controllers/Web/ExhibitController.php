@@ -61,7 +61,7 @@ class ExhibitController extends Controller
 
         if($request->get('end_year') == '') $exhibit->end_year=null;
         else $exhibit->end_year = $request->get('end_year');
-        
+
         $exhibit->size = $request->get('size');
         $exhibit->location = $request->get('location');
         $exhibit->author_id = $request->get('author_id');

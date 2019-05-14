@@ -131,8 +131,7 @@
                                         <td>{!! $author->author_id !!}</td>
                                         <td>
                                             <?php
-                                                $path_img = $author->getPhotoPath();
-                                            echo '<img src="'.$path_img.'" width="100" height="80" />';
+                                            echo '<img src="'.$author->photo[0]->path.'" width="90" height="100" />';
                                             ?>
                                         </td>
                                         <td>{{ $author->full_name }}</td>

@@ -178,7 +178,11 @@
                                 @foreach ($authors as $author)
                                     <tr>
                                         <td>{!! $author->author_id !!}</td>
-                                        <td>{!! $author->photo_id !!}</td>
+                                        <td>
+                                            <?php
+                                            echo '<img src="'.$author->photo[0]->path.'" width="90" height="100" />';
+                                            ?>
+                                        </td>
                                         <td>
                                             <a href="#">{{ $author->full_name }}</a>
                                         </td>
