@@ -325,10 +325,10 @@
                                             <a href="#">{{ $item->path }}</a>
                                         </td>
                                         <td>
-                                            @if (strpos($item->path, '\photo' . DIRECTORY_SEPARATOR) !== false)
+                                            @if (strpos($item->path, 'photo' . DIRECTORY_SEPARATOR) !== false)
                                                 Photo
                                             @else
-                                                @if (strpos($item->path, '\audio'. DIRECTORY_SEPARATOR) !== false)
+                                                @if (strpos($item->path, 'audio'. DIRECTORY_SEPARATOR) !== false)
                                                     Audio
                                                 @else
                                                     @if (strpos($item->path, 'youtube') !== false || strpos($item->path, 'youtu.be') !== false)
