@@ -21,15 +21,15 @@ class CreateExhibitTable extends Migration
             $table->unsignedInteger('staff_id');
             $table->unsignedInteger('photo_id');
             $table->unsignedInteger('audio_id');
-            $table->unsignedInteger('video_id');
+            $table->unsignedInteger('video_id')->nullable();
 
             $table->string('title')->unique();
             $table->string('short_description', 500);
             $table->string('description', 2000);
-            $table->integer('start_year');
-            $table->integer('end_year');
-            $table->string('size', 50);
-            $table->string('location', 50);
+            $table->integer('start_year')->nullable();
+            $table->integer('end_year')->nullable();
+            $table->string('size', 50)->nullable();
+            $table->string('location', 50)->nullable();
 
             $table->foreign('author_id')
                 ->references('author_id')->on('authors')
