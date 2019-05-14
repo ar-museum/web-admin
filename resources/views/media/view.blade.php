@@ -32,7 +32,7 @@
                                             <td>
                                                 @if (strpos($media->path, DIRECTORY_SEPARATOR . 'photo'. DIRECTORY_SEPARATOR) !== false)
                                                     <?php
-                                                    echo '<img src="'. $media->path .'" width="100" height="80" />';
+                                                    echo '<img src="'. $media->path .'" width="90" height="100" />';
                                                     ?>
                                                 @endif
                                             </td>
