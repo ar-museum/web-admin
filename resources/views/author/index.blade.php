@@ -13,7 +13,7 @@
                     <form class="form-horizontal" method="POST" action= "/author-store" enctype="multipart/form-data" role="form">
                         {!! csrf_field() !!}
                         <div class="form-group @if ($errors->has('full_name'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="full_name">Nume <span class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="full_name">Nume<span class="text-danger">*</span></label>
                             <div class="col-lg-8">
                                 <input type="text" name="full_name" id="full_name" value="{{ old('full_name') }}"
                                        class="form-control" placeholder="Nume">
@@ -22,7 +22,7 @@
 
 
                         <div class="form-group @if ($errors->has('born_year'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="born_year">Anul nasterii <span class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="born_year">Anul nasterii </label>
                             <div class="col-lg-8">
                                 <input type="text" name="born_year" id="born_year" value="{{ old('born_year') }}"
                                        class="form-control" placeholder="Anul nasterii">
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group @if ($errors->has('died_year'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="died_year">Anul mortii <span class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="died_year">Anul mortii </label>
                             <div class="col-lg-8">
                                 <input type="text" name="died_year" id="died_year" value="{{ old('died_year') }}"
                                        class="form-control" placeholder="Anul mortii">
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group @if ($errors->has('location'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="location"> Locatie <span class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="location"> Locatie </label>
                             <div class="col-lg-8">
                                 <input type="text" name="location" id="location" value="{{ old('location') }}"
                                        class="form-control" placeholder="Locatie">
@@ -46,8 +46,7 @@
                         </div>
 
                         <div class="form-group @if ($errors->has('description'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="description">Descriere <span
-                                        class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="description">Descriere</label>
                             <div class="col-lg-8">
                                 <textarea type="text" name="description" id="description"
                                           class="form-control" placeholder="Descriere">{{ old('description') }}</textarea>
