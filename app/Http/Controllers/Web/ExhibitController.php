@@ -45,23 +45,23 @@ class ExhibitController extends Controller
             'title' => 'required',
             'short_description' => 'required',
             'description' => 'required',
-            'start_year' => 'required',
-            'end_year' => 'required',
-            'size' => 'required',
-            'location' => 'required',
             'author_id' => 'required',
             'exposition_id' => 'required',
             'staff_id' => 'required',
             'audio' => 'required',
-            'photo' => 'required',
-            'yt_link' => 'required'
+            'photo' => 'required'
         ]);
         $exhibit = new Exhibit();
         $exhibit->title = $request->get('title');
         $exhibit->short_description = $request->get('short_description');
         $exhibit->description = $request->get('description');
-        $exhibit->start_year = $request->get('start_year');
-        $exhibit->end_year = $request->get('end_year');
+
+        if($request->get('start_year') == '') $exhibit->start_year=null;
+        else $exhibit->start_year = $request->get('start_year');
+
+        if($request->get('end_year') == '') $exhibit->end_year=null;
+        else $exhibit->end_year = $request->get('end_year');
+
         $exhibit->size = $request->get('size');
         $exhibit->location = $request->get('location');
         $exhibit->author_id = $request->get('author_id');
@@ -85,7 +85,7 @@ class ExhibitController extends Controller
         }
 
         $media = new Media();
-        $media->path = 'uploads\audio' . DIRECTORY_SEPARATOR . $new_filename;
+        $media->path = 'uploads' . DIRECTORY_SEPARATOR . 'audio' . DIRECTORY_SEPARATOR . $new_filename;
         $media->save();
 
         $audio = new Audio();

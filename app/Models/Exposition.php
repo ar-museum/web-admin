@@ -58,11 +58,6 @@ class Exposition extends BaseModel
     /** Function to get photo path by photo_id */
     public function getPhotoPath()
     {
-        $path = Media::where('media_id', $this->photo_id)->select('path')->get();
-        if(count($path) > 0)
-        {
-            return $path[0]->path;
-        }
-        return ' ';
+        return $this->photo[0]->path;
     }
 }

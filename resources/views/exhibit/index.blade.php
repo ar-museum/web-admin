@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="form-group @if ($errors->has('start_year'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="start_year"> Data realizarii <span class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="start_year"> Data realizarii </label>
                             <div class="col-lg-8">
                                 <input type="text" name="start_year" id="start_year" value="{{ old('start_year') }}"
                                        class="form-control" placeholder="Start year">
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="form-group @if ($errors->has('end_year'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="end_year"> Data finalizarii<span class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="end_year"> Data finalizarii </label>
                             <div class="col-lg-8">
                                 <input type="text" name="end_year" id="end_year" value="{{ old('end_year') }}"
                                        class="form-control" placeholder="End year">
@@ -88,8 +88,7 @@
                         </div>
                          -->
                         <div class="form-group @if ($errors->has('size'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="size"> Size <span
-                                        class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="size"> Size </label>
                             <div class="col-lg-8">
                                 <input type="text" name="size" id="size" value="{{ old('size') }}"
                                        class="form-control" placeholder="Size">
@@ -97,8 +96,7 @@
                         </div>
 
                         <div class="form-group @if ($errors->has('location'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="location"> Locatie <span
-                                        class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="location"> Locatie </label>
                             <div class="col-lg-8">
                                 <input type="text" name="location" id="location" value="{{ old('location') }}"
                                        class="form-control" placeholder="Location">
@@ -196,8 +194,7 @@
                         </div>
 
                         <div class="form-group @if ($errors->has('yt_link'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="yt_link"> Youtube link <span
-                                        class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="yt_link"> Youtube link </label>
                             <div class="col-lg-8">
                                 <input type="text" name="yt_link" id="yt_link" value="{{ old('yt_link') }}"
                                        class="form-control" placeholder="Youtube Link">

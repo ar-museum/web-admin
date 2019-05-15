@@ -178,7 +178,11 @@
                                 @foreach ($authors as $author)
                                     <tr>
                                         <td>{!! $author->author_id !!}</td>
-                                        <td>{!! $author->photo_id !!}</td>
+                                        <td>
+                                            <?php
+                                            echo '<img src="'.$author->photo[0]->path.'" width="90" height="100" />';
+                                            ?>
+                                        </td>
                                         <td>
                                             <a href="#">{{ $author->full_name }}</a>
                                         </td>
@@ -319,16 +323,17 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($media as $item)
+                                    @if($item->path != '')
                                     <tr>
                                         <td>{!! $item->media_id !!}</td>
                                         <td>
                                             <a href="#">{{ $item->path }}</a>
                                         </td>
                                         <td>
-                                            @if (strpos($item->path, '\photo' . DIRECTORY_SEPARATOR) !== false)
+                                            @if (strpos($item->path, 'photo' . DIRECTORY_SEPARATOR) !== false)
                                                 Photo
                                             @else
-                                                @if (strpos($item->path, '\audio'. DIRECTORY_SEPARATOR) !== false)
+                                                @if (strpos($item->path, 'audio'. DIRECTORY_SEPARATOR) !== false)
                                                     Audio
                                                 @else
                                                     @if (strpos($item->path, 'youtube') !== false || strpos($item->path, 'youtu.be') !== false)
@@ -339,6 +344,7 @@
                                         </td>
                                         <td>{{ $item->created_at }}</td>
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>

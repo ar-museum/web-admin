@@ -114,10 +114,7 @@
                                         <td>{!! $exposition->exposition_id !!}</td>
                                         <td>
                                             <?php
-                                                $photo = new App\Models\Photo();
-                                                $photo->photo_id = $exposition->photo_id;
-                                                $path_img = $photo->getPathAttribute();
-                                                echo '<img src="'.$path_img.'" width="100" height="80" />';
+                                                echo '<img src="'.$exposition->photo[0]->path.'" width="100" height="80" />';
                                             ?>
                                         </td>
                                         <td>{{ $exposition->title }}</td>

@@ -5,12 +5,10 @@ namespace App\Http\Controllers\Web;
 use App\Models\Media;
 use App\Models\Photo;
 use App\Models\Audio;
-use App\Models\photoGames;
 use App\Models\Video;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-//use wapmorgan\Mp3Info\Mp3Info;
 
 class MediaController extends Controller
 {
@@ -35,7 +33,6 @@ class MediaController extends Controller
     {
         $this->validate($request,[
             'photo' => 'required',
-            'title' => 'required'
         ]);
 
         if (request()->hasFile('photo')) {
@@ -56,13 +53,12 @@ class MediaController extends Controller
         $full_path = public_path() . DIRECTORY_SEPARATOR . $media->path ;
         $media->save();
 
-        $photo = new photoGames();
+        $photo = new Photo();
         $photo->photo_id = $media->media_id;
 
         $info_image = getimagesize($full_path);
         $photo->width = $info_image[0];
         $photo->height = $info_image[1];
-        $photo->title = $request->get('title');
 
         $photo->save();
         return redirect('/media')->with('success','Fotografie adaugata!');

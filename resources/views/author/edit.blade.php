@@ -24,7 +24,7 @@
 
 
                         <div class="form-group @if ($errors->has('born_year'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="start_year"> Anul nasterii <span class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="start_year"> Anul nasterii</label>
                             <div class="col-lg-8">
                                 <input type="text" name="born_year" id="born_year"
                                        class="form-control" value="{{$author->born_year}}">
@@ -32,15 +32,14 @@
                         </div>
 
                         <div class="form-group @if ($errors->has('died_year'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="end_year"> Anul mortii<span class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="end_year"> Anul mortii</label>
                             <div class="col-lg-8">
                                 <input type="text" name="died_year" id="died_year"
                                        class="form-control" value="{{$author->died_year}}">
                             </div>
                         </div>
                         <div class="form-group @if ($errors->has('location'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="location"> Location <span
-                                        class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="location"> Location</label>
                             <div class="col-lg-8">
                                 <input type="text" name="location" id="location"
                                        class="form-control" value="{{$author->location}}">
@@ -48,8 +47,7 @@
                         </div>
 
                         <div class="form-group @if ($errors->has('description'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="description">Descriere <span
-                                        class="text-danger">*</span></label>
+                            <label class="col-lg-4 col-sm-4 control-label" for="description">Descriere</label>
                             <div class="col-lg-8">
                                 <textarea type="text" name="description" id="description"
                                           class="form-control" value="{{$author->description}}"></textarea>
