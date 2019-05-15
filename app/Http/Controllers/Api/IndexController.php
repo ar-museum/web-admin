@@ -38,7 +38,7 @@ class IndexController extends Controller
 
         $vuf = Vuforia::select(['version'])
                    ->join('museum', 'museum.museum_id', '=', 'vuforia.museum_id')
-                   ->orderBy("version", "ASC")->first()->toArray();
+                   ->orderBy("version", "DESC")->first()->toArray();
 
         $museum['coordinates'] = $museum['longitude'].', '.$museum['latitude'];
         $museum['version'] = $vuf['version'];

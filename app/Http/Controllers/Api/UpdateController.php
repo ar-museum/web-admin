@@ -26,15 +26,7 @@ class UpdateController extends Controller
             ->join('vuforia_files', 'vuforia.file_id', '=', 'vuforia_files.file_id')
             ->where('vuforia.museum_id', $museum_id)
             ->where('vuforia.version', $version)
-            ->orderBy("version", "ASC")->get()->toArray();
-
-
-        if (!count($vuf[0]['museum_id'])) {
-            return response()->json(array(
-                'message' => "Nu exista muzeul.",
-            ), 403);
-        }
-
+            ->orderBy("version", "DESC")->get()->toArray();
 
         if (count($vuf[0]['path'])) {
             $vuf[0]['path'] = str_replace('\\', '/', $vuf[0]['path']);
@@ -43,7 +35,7 @@ class UpdateController extends Controller
             unset($vuf['path']);
             return response()->json($var);
         } else return response()->json(array(
-            'message' => "Nu exista versiunea.",
+            'message' => "Nu exista nicio linie in baza de date.",
         ), 403);
     }
 
