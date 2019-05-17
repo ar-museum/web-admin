@@ -327,7 +327,7 @@
                                     <tr>
                                         <td>{!! $item->media_id !!}</td>
                                         <td>
-                                            <a href="#">{{ $item->path }}</a>
+                                            {{ $item->path }}
                                         </td>
                                         <td>
                                             @if (strpos($item->path, 'photo' . DIRECTORY_SEPARATOR) !== false)
