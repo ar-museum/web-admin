@@ -146,10 +146,8 @@ class ExhibitController extends Controller
 
         $exhibit['audio_path'] = $path_audio;
 
-        $exhibit = $exhibit->toArray();
-
         $photo = new Photo();
-        $photo->photo_id = $exhibit['photo'];
+        $photo->photo_id = $exhibit['photo_id'];
         $path = $photo->getPathAttribute();
 
         $path = str_replace('\\', '/', $path);
@@ -157,6 +155,8 @@ class ExhibitController extends Controller
         unset($exhibit['photo']);
 
         $exhibit['photo_path'] = $path;
+
+        $exhibit = $exhibit->toArray();
 
         return response()->json($exhibit);
     }
