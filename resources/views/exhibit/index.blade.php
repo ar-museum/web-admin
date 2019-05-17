@@ -235,7 +235,6 @@
                                     <th>Perioada</th>
                                     <th>Dimensiune</th>
                                     <th>Locatie</th>
-                                    <th>Data adaugarii</th>
                                     <th>Actiuni</th>
                                 </tr>
                                 </thead>
@@ -244,13 +243,12 @@
                                     <tr>
                                         <td>{!! $exhibit->exhibit_id !!}</td>
                                         <td>{{ $exhibit->title }}</td>
-                                        <td>{{ $exhibit->short_description }}</td>
+                                        <td>{{ str_limit($exhibit->short_drescription, 200) }}</td>
                                         <td>{!! $exhibit->authors->full_name !!}</td>
                                         <td>{{ $exhibit->start_year }} @if (!is_null($exhibit->end_year))
                                                 - {{ $exhibit->end_year }} @endif </td>
                                         <td>{{$exhibit->size}}</td>
                                         <td>{{$exhibit->location}}</td>
-                                        <td>{!! date("Y-m-d", strtotime($exhibit->created_at)) !!}</td>
                                         <td>
                                             <a class="btn btn-success btn-xs" title="Actualizeaza datele"
                                                href="{!! route('edit-exhibit', ['id' => $exhibit->exhibit_id]) !!}">

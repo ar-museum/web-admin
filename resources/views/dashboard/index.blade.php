@@ -118,7 +118,6 @@
                                     <th>Perioada</th>
                                     <th>Dimensiune</th>
                                     <th class="hidden-phone">Locatie</th>
-                                    <th class="hidden-phone">Data adaugarii</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -128,12 +127,11 @@
                                         <td>
                                             {{ $exhibit->title }}
                                         </td>
-                                        <td>{{ $exhibit->short_description }}</td>
+                                        <td>{{ str_limit($exhibit->short_drescription, 10) }}</td>
                                         <td>{{ $exhibit->authors->full_name }}</td>
                                         <td>{{ $exhibit->start_year }} @if (!is_null($exhibit->end_year)) - {{ $exhibit->end_year }} @endif</td>
                                         <td>{{ $exhibit->size }}</td>
                                         <td class="hidden-phone">{{ $exhibit->location }}</td>
-                                        <td>{!! $exhibit->created_at !!}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
