@@ -310,7 +310,7 @@
                 <div class="panel-body">
                     @if (!$media->isEmpty())
                         <div class="adv-table">
-                            <table class="display table table-hover table-bordered table-striped" id="all-students">
+                            <table class="display table table-hover table-bordered table-striped" id="all-media">
                                 <thead>
                                 <tr>
                                     <th>Nr. crt.</th>
