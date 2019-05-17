@@ -127,7 +127,7 @@
                                         <td>
                                             {{ $exhibit->title }}
                                         </td>
-                                        <td>{{ str_limit($exhibit->short_drescription, 10) }}</td>
+                                        <td>{{ str_limit($exhibit->short_description, 200) }}</td>
                                         <td>{{ $exhibit->authors->full_name }}</td>
                                         <td>{{ $exhibit->start_year }} @if (!is_null($exhibit->end_year)) - {{ $exhibit->end_year }} @endif</td>
                                         <td>{{ $exhibit->size }}</td>
