@@ -74,7 +74,7 @@
                                 <tr>
                                     <td>{!! $exposition->exposition_id !!}</td>
                                     <td>
-                                        <a href="#">{{ $exposition->title }}</a>
+                                        {{ $exposition->title }}
                                     </td>
                                     <td>{{ $exposition->description }}</td>
                                     <td class="hidden-phone">{{ $exposition->museum->name }}</td>
@@ -126,7 +126,7 @@
                                     <tr>
                                         <td>{!! $exhibit->exhibit_id !!}</td>
                                         <td>
-                                            <a href="#">{{ $exhibit->title }}</a>
+                                            {{ $exhibit->title }}
                                         </td>
                                         <td>{{ $exhibit->short_description }}</td>
                                         <td>{{ $exhibit->authors->full_name }}</td>
@@ -184,7 +184,7 @@
                                             ?>
                                         </td>
                                         <td>
-                                            <a href="#">{{ $author->full_name }}</a>
+                                            {{ $author->full_name }}
                                         </td>
                                         <td>{{ $author->born_year }} @if (!is_null($author->died_year)) - {{ $author->died_year }} @endif</td>
                                         <td class="hidden-phone">{{ $author->location }}</td>
@@ -232,7 +232,7 @@
                                     <tr>
                                         <td>{!! $category->category_id !!}</td>
                                         <td>
-                                            <a href="#">{{ $category->name }}</a>
+                                            {{ $category->name }}
                                         </td>
                                         <td>{!! rand(0, 1) !!}</td>
                                         <td>{{ $category->created_at }}</td>
@@ -279,7 +279,7 @@
                                     <tr>
                                         <td>{!! $tag->tag_id !!}</td>
                                         <td>
-                                            <a href="#">{{ $tag->name }}</a>
+                                            {{ $tag->name }}
                                         </td>
                                         <td>{!! rand(0, 1) !!}</td>
                                         <td>{{ $tag->created_at }}</td>
@@ -327,7 +327,7 @@
                                     <tr>
                                         <td>{!! $item->media_id !!}</td>
                                         <td>
-                                            <a href="#">{{ $item->path }}</a>
+                                            {{ $item->path }}
                                         </td>
                                         <td>
                                             @if (strpos($item->path, 'photo' . DIRECTORY_SEPARATOR) !== false)

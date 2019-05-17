@@ -124,11 +124,6 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-users"></i> <span>Activitati vizitatori</span>
-                        </a>
-                    </li>
                 </ul>
                 <!-- sidebar menu end -->
             </div>
