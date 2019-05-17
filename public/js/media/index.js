@@ -55,7 +55,7 @@ $(function() {
         'oLanguage': {
             'sInfo': 'Afiseaza _START_ pana la _END_ din _TOTAL_ intrari',
             'sSearch': 'Cauta:',
-            'sEmptyTable': 'Nu mai exista fotografii!',
+            'sEmptyTable': 'Nu mai exista fisiere audio!',
             'sInfoFiltered': '(filtrat din totalul de _MAX_ intrari)'
         },
         'aLengthMenu': [[5, 10, 20, -1], [5, 10, 20, 'Tot']],
@@ -77,7 +77,7 @@ $(function() {
         'oLanguage': {
             'sInfo': 'Afiseaza _START_ pana la _END_ din _TOTAL_ intrari',
             'sSearch': 'Cauta:',
-            'sEmptyTable': 'Nu mai exista fotografii!',
+            'sEmptyTable': 'Nu mai exista link-uri youtube!',
             'sInfoFiltered': '(filtrat din totalul de _MAX_ intrari)'
         },
         'aLengthMenu': [[5, 10, 20, -1], [5, 10, 20, 'Tot']],
