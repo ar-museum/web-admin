@@ -149,7 +149,7 @@ class ExhibitController extends Controller
         $exhibit = $exhibit->toArray();
 
         $photo = new Photo();
-        $photo->photo_id = $exhibit['photo_id'];
+        $photo->photo_id = $exhibit['photo'];
         $path = $photo->getPathAttribute();
 
         $path = str_replace('\\', '/', $path);
