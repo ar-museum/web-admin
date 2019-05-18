@@ -120,8 +120,8 @@
                                     <th>Nume</th>
                                     <th>Perioada</th>
                                     <th>Locatie</th>
-                                    <th>Data adaugare</th>
                                     <th>Descriere</th>
+                                    <th>Data adaugarii</th>
                                     <th>Actiuni</th>
                                 </tr>
                                 </thead>
@@ -138,8 +138,8 @@
                                         <td>{{ $author->born_year }} @if (!is_null($author->died_year))
                                                 - {{ $author->died_year }} @endif </td>
                                         <td>{{$author->location}}</td>
+                                        <td>{{str_limit($author->description,200)}}</td>
                                         <td>{!! date("Y-m-d", strtotime($author->created_at)) !!}</td>
-                                        <td>{{$author->description}}</td>
                                         <td>
                                             <a class="btn btn-success btn-xs" title="Actualizeaza datele"
                                                href="{!! route('edit-author', ['id' => $author->author_id]) !!}">
