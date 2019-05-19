@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Dragndrop;
 use App\Models\Museum;
 use App\Models\Vuforia;
+use App\Models\Trivia;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UpdateController extends Controller
@@ -59,6 +60,25 @@ class UpdateController extends Controller
 
         $variable['photos'] = $museums->toArray();
 
+        return response()->json($variable);
+    }
+
+    public function trivia($id){
+        try {
+            $test = Museum::findOrFail($id);
+        } catch (ModelNotFoundException $ex) {
+            return response()->json(array(
+                'mesaj'   =>  'Nu exista acest muzeu in baza de date.'
+            ), 404);
+        }
+        $museums = Trivia::where('museum_id', $id)->get();
+        foreach($museums as $var => $museum) {
+            unset($museum['museum_id']);
+            unset($museum['trivia_id']);
+            unset($museum['created_at']);
+            unset($museum['updated_at']);
+        }
+        $variable['files'] = $museums->toArray();
         return response()->json($variable);
     }
 }
