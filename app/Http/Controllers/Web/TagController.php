@@ -42,6 +42,27 @@ class TagController extends Controller
         return redirect('/tag')->with('success', 'Eticheta "' . $tag->name . '" este adăugată!');
     }
 
+    public function edit($tag_id)
+    {
+        return view('tag.edit', [
+            'tag_selected' => Tag::where('tag_id', '=', $tag_id)->first(),
+            'tags' => Tag::all()
+        ]);
+    }
+
+    public function update(Request $request, $tag_id){
+        $tag = Tag::where('tag_id', '=', $tag_id)->first();
+
+        $this->validate($request, [
+            'tag_id' => 'required',
+            'name' => 'required'
+        ]);
+
+        $tag->update($request->all());
+
+        return redirect('/tag')->with('success', 'Înregistrarea a fost modificată cu succes!');
+    }
+
     public function destroy($tag_id)
     {
         try {

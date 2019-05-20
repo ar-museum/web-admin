@@ -31,62 +31,6 @@
                 </div>
             </section>
         </div>
-
-        <!-- Modify tag -->
-        <div class="col-md-6">
-            <section class="panel">
-                <header class="panel-heading">Modifică etichetă
-                    <span class="tools pull-right">
-                            <a href="javascript:;" class="fa fa-chevron-down"></a>
-                        </span>
-                </header>
-                <div class="panel-body">
-                    @include('common.errors')
-                    <form class="form-horizontal" method="POST" action="/tag/edit" enctype="multipart/form-data" role="form">
-                        <div class="form-group col-lg-12">
-                            Alege cel puțin una dintre cele două modalități de selectare a unei etichete.
-                        </div>
-                        <div class="form-group @if ($errors->has('tag_id'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="tag_id">ID etichetă <span class="text-danger">*</span></label>
-                            <div class="col-lg-8">
-                                <select name="tag_od" class="form-control">
-                                    <option value="-1">Alege o etichetă după ID</option>
-                                    @foreach ($tags as $tag)
-                                        <option value="{!! $tag->tag_id !!}" @if (null !== old('tag_id')
-                                        && $tag->tag_id == old('tag_id')) selected @endif>{!! $tag->tag_id !!}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group @if ($errors->has('name'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="tag_id">Nume etichetă <span class="text-danger">*</span></label>
-                            <div class="col-lg-8">
-                                <select name="name" class="form-control">
-                                    <option value="-1">Alege o etichetă după Nume</option>
-                                    @foreach ($tags as $tag)
-                                        <option value="{!! $tag->name !!}" @if (null !== old('name')
-                                        && $tag->name == old('name')) selected @endif>{!! $tag->name !!}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group @if ($errors->has('name'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="name">Nume <span class="text-danger">*</span></label>
-                            <div class="col-lg-8">
-                                <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control" placeholder="Noul nume al etichetei">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12 col-sm-12 text-right">
-                                <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> Resetabiliește</button>
-                                <button type="submit" class="btn btn-success"><i class="fa fa-pencil"></i> Modifică</button>
-                            </div>
-                        </div>
-                        <div class="text-danger">* Aceste câmpuri sunt obligatorii!</div>
-                    </form>
-                </div>
-            </section>
-        </div>
     </div>
 
     <!-- All tags -->
@@ -106,7 +50,6 @@
                                     <tr>
                                         <th>Nr. crt.</th>
                                         <th>Nume</th>
-                                        <th>Dată adăugare</th>
                                         <th>Ultima modificare</th>
                                         <th>Acțiune</th>
                                     </tr>
@@ -116,10 +59,10 @@
                                     <tr>
                                         <td>{!! $tag->tag_id !!}</td>
                                         <td>{{ $tag->name }}</td>
-                                        <td>{!! date("Y-m-d H:i:s", strtotime($tag->created_at)) !!}</td>
                                         <td>{!! date("Y-m-d H:i:s", strtotime($tag->updated_at)) !!}</td>
                                         <td>
-                                            <a class="btn btn-success btn-xs" title="Actualizează rând" href="">
+                                            <a class="btn btn-success btn-xs" title="Actualizează rând"
+                                               href="{!! route('edit-tag', ['id' => $tag->tag_id]) !!}">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                             <a class="btn btn-danger btn-xs btn-delete" title="Șterge rând"
