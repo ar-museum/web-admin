@@ -42,6 +42,27 @@ class CategoryController extends Controller
         return redirect('/category')->with('success', 'Categoria "' . $category->name . '" este adăugată!');
     }
 
+    public function edit($category_id)
+    {
+        return view('category.edit', [
+            'category_selected' => Category::where('category_id', '=', $category_id)->first(),
+            'categories' => Category::all()
+        ]);
+    }
+
+    public function update(Request $request, $category_id){
+        $category = Category::where('category_id', '=', $category_id)->first();
+
+        $this->validate($request, [
+            'category_id' => 'required',
+            'name' => 'required'
+        ]);
+
+        $category->update($request->all());
+
+        return redirect('/category')->with('success', 'Înregistrarea a fost modificată cu succes!');
+    }
+
     public function destroy($category_id)
     {
         try {

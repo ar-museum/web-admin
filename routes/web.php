@@ -219,13 +219,23 @@ Route::group([
         'uses' => 'CategoryController@index'
     ]);
 
-    // Route::get('/category/create', 'CategoryController@create');
-
     Route::post('/category/add', [
         'as' => 'store-category',
         'middleware' => ['auth'],
         'uses' => 'CategoryController@store'
     ]);
+
+    Route::get('/category/{id}/edit', array(
+        'as' => 'edit-category',
+        'middleware' => ['auth'],
+        'uses' => 'CategoryController@edit',
+    ));
+
+    Route::post('/category/{id}/update', array(
+        'as' => 'update-category',
+        'middleware' => ['auth'],
+        'uses' => 'CategoryController@update',
+    ));
 
     Route::delete('/category/delete/{category_id}', [
         'as' => 'delete-category',
@@ -247,13 +257,23 @@ Route::group([
         'uses' => 'TagController@index'
     ]);
 
-    // Route::get('/tag/create', 'TagController@create');
-
     Route::post('/tag/add', [
         'as' => 'store-tag',
         'middleware' => ['auth'],
         'uses' => 'TagController@store'
     ]);
+
+    Route::get('/tag/{id}/edit', array(
+        'as' => 'edit-tag',
+        'middleware' => ['auth'],
+        'uses' => 'TagController@edit',
+    ));
+
+    Route::post('/tag/{id}/update', array(
+        'as' => 'update-tag',
+        'middleware' => ['auth'],
+        'uses' => 'TagController@update',
+    ));
 
     Route::delete('/tag/delete/{tag_id}', [
         'as' => 'delete-tag',

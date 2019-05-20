@@ -54,62 +54,6 @@
                 </div>
             </section>
         </div>
-
-        <!-- Modify category -->
-        <div class="col-md-6">
-            <section class="panel">
-                <header class="panel-heading">Modifică categorie
-                    <span class="tools pull-right">
-                            <a href="javascript:;" class="fa fa-chevron-down"></a>
-                        </span>
-                </header>
-                <div class="panel-body">
-                    @include('common.errors')
-                    <form class="form-horizontal" method="POST" action="/category/edit" enctype="multipart/form-data" role="form">
-                        <div class="form-group col-lg-12">
-                            Alege cel puțin una dintre cele două modalități de selectare a unei categorii.
-                        </div>
-                        <div class="form-group @if ($errors->has('category_id'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="category_id">ID categorie <span class="text-danger">*</span></label>
-                            <div class="col-lg-8">
-                                <select name="category_id" class="form-control">
-                                    <option value="-1">Alege o categorie după ID</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{!! $category->category_id !!}" @if (null !== old('category_id')
-                                        && $category->category_id == old('category_id')) selected @endif>{!! $category->category_id !!}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group @if ($errors->has('name'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="category_id">Nume categorie <span class="text-danger">*</span></label>
-                            <div class="col-lg-8">
-                                <select name="name" class="form-control">
-                                    <option value="-1">Alege o categorie după Nume</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{!! $category->name !!}" @if (null !== old('name')
-                                        && $category->name == old('name')) selected @endif>{!! $category->name !!}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group @if ($errors->has('name'))has-error @endif">
-                            <label class="col-lg-4 col-sm-4 control-label" for="name">Nume <span class="text-danger">*</span></label>
-                            <div class="col-lg-8">
-                                <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control" placeholder="Noul nume al categoriei">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12 col-sm-12 text-right">
-                                <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> Resetabiliește</button>
-                                <button type="submit" class="btn btn-success"><i class="fa fa-pencil"></i> Modifică</button>
-                            </div>
-                        </div>
-                        <div class="text-danger">* Aceste câmpuri sunt obligatorii!</div>
-                    </form>
-                </div>
-            </section>
-        </div>
     </div>
 
     <!-- All categories -->
@@ -127,11 +71,10 @@
                             <table id="table-categories" class="display table table-hover table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Nr. crt.</th>
+                                        <th width="80px">Nr. crt.</th>
                                         <th>Nume</th>
-                                        <th>Dată adăugare</th>
-                                        <th>Ultima modificare</th>
-                                        <th>Acțiune</th>
+                                        <th width="170px">Ultima modificare</th>
+                                        <th width="100px">Acțiune</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -139,10 +82,10 @@
                                     <tr>
                                         <td>{!! $category->category_id !!}</td>
                                         <td>{{ $category->name }}</td>
-                                        <td>{!! date("Y-m-d H:i:s", strtotime($category->created_at)) !!}</td>
                                         <td>{!! date("Y-m-d H:i:s", strtotime($category->updated_at)) !!}</td>
                                         <td>
-                                            <a class="btn btn-success btn-xs" title="Actualizează rând" href="">
+                                            <a class="btn btn-success btn-xs" title="Actualizează rând"
+                                               href="{!! route('edit-category', ['id' => $category->category_id]) !!}">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                             <a class="btn btn-danger btn-xs btn-delete" title="Șterge rând"
