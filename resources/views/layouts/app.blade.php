@@ -74,52 +74,52 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('museum') !!}">
+                        <a href="{!! route('museum') !!}" @if (in_array($route->getName(), ['museum', 'museum-edit'])) class="active" @endif>
                             <i class="fa fa-building-o"></i> <span>Muzee</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('exposition') !!}">
+                        <a href="{!! route('exposition') !!}" @if (in_array($route->getName(), ['exposition', 'editare_expozitie'])) class="active" @endif>
                             <i class="fa fa-camera-retro"></i> <span>Expozitii</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('exhibit') !!}">
+                        <a href="{!! route('exhibit') !!}" @if (in_array($route->getName(), ['exhibit', 'edit-exhibit'])) class="active" @endif>
                             <i class="fa fa-picture-o"></i> <span>Exponate</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('author') !!}">
+                        <a href="{!! route('author') !!}" @if (in_array($route->getName(), ['author', 'edit-author'])) class="active" @endif>
                             <i class="fa fa-male"></i> <span>Autori</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('category') !!}">
+                        <a href="{!! route('category') !!}" @if (in_array($route->getName(), ['category', 'category-edit'])) class="active" @endif>
                             <i class="fa fa-tasks"></i> <span>Categorii</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('tag') !!}">
+                        <a href="{!! route('tag') !!}" @if (in_array($route->getName(), ['tag', 'tag-edit'])) class="active" @endif>
                             <i class="fa fa-tags"></i> <span>Etichete</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('media') !!}">
+                        <a href="{!! route('media') !!}" @if (in_array($route->getName(), ['media', 'media-edit'])) class="active" @endif>
                             <i class="fa fa-film"></i> <span>Media</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('vuforia') !!}">
+                        <a href="{!! route('vuforia') !!}"@if (in_array($route->getName(), ['vuforia', 'edit-vuforia'])) class="active" @endif>
                             <i class="fa fa-file"></i> <span>Vuforia</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('dragndrop') !!}">
+                        <a href="{!! route('dragndrop') !!}" @if (in_array($route->getName(), ['dragndrop'])) class="active" @endif>
                             <i class="fa fa-arrows-alt"></i> <span>Dragndrop</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('trivia') !!}">
+                        <a href="{!! route('trivia') !!}" @if (in_array($route->getName(), ['trivia'])) class="active" @endif>
                             <i class="fa fa-gamepad"></i> <span>Trivia</span>
                         </a>
                     </li>
