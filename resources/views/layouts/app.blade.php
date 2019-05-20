@@ -94,12 +94,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('category') !!}" @if (in_array($route->getName(), ['category', 'category-edit'])) class="active" @endif>
+                        <a href="{!! route('category') !!}" @if (in_array($route->getName(), ['category', 'edit-category'])) class="active" @endif>
                             <i class="fa fa-tasks"></i> <span>Categorii</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{!! route('tag') !!}" @if (in_array($route->getName(), ['tag', 'tag-edit'])) class="active" @endif>
+                        <a href="{!! route('tag') !!}" @if (in_array($route->getName(), ['tag', 'edit-tag'])) class="active" @endif>
                             <i class="fa fa-tags"></i> <span>Etichete</span>
                         </a>
                     </li>
