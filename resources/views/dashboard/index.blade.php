@@ -207,6 +207,67 @@
     <div class="row">
         <div class="col-md-12">
             <section class="panel">
+                <header class="panel-heading"><i class="fa fa-list-ul"></i> Ultimile media
+                    <span class="tools pull-right">
+                        <a href="javascript:;" class="fa fa-chevron-down"></a>
+                        <a class="fa fa-times" href="javascript:;"></a>
+                    </span>
+                </header>
+                <div class="panel-body">
+                    @if (!$media->isEmpty())
+                        <div class="adv-table">
+                            <table class="display table table-hover table-bordered table-striped" id="all-media">
+                                <thead>
+                                <tr>
+                                    <th>Nr. crt.</th>
+                                    <th>Path</th>
+                                    <th>Detalii</th>
+                                    <th>Data adaugarii</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($media as $item)
+                                    @if($item->path != '')
+                                        <tr>
+                                            <td>{!! $item->media_id !!}</td>
+                                            <td>
+                                                {{ $item->path }}
+                                            </td>
+                                            <td>
+                                                @if (strpos($item->path, 'photo' . DIRECTORY_SEPARATOR) !== false)
+                                                    Photo
+                                                @else
+                                                    @if (strpos($item->path, 'audio'. DIRECTORY_SEPARATOR) !== false)
+                                                        Audio
+                                                    @else
+                                                        @if (strpos($item->path, 'youtube') !== false || strpos($item->path, 'youtu.be') !== false)
+                                                            Video
+                                                        @endif
+                                                    @endif
+                                                @endif
+                                            </td>
+                                            <td>{{ $item->created_at }}</td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="add-task-row">
+                            <a class="btn btn-primary btn-sm" href="{!! route('media') !!}">Vezi toate media</a>
+                        </div>
+                    @else
+                        <div class="alert alert-info fade in">
+                            <strong>Atentie!</strong> Nu exista media.
+                        </div>
+                    @endif
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel">
                 <header class="panel-heading"><i class="fa fa-list-ul"></i> Ultimile categorii
                     <span class="tools pull-right">
                         <a href="javascript:;" class="fa fa-chevron-down"></a>
@@ -219,10 +280,9 @@
                             <table class="display table table-hover table-bordered table-striped" id="all-students">
                                 <thead>
                                 <tr>
-                                    <th>Nr. crt.</th>
+                                    <th style="width: 80px">Nr. crt.</th>
                                     <th>Nume</th>
-                                    <th>Nr. exponate</th>
-                                    <th>Data adaugarii</th>
+                                    <th style="width: 200px">Data adaugarii</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -232,7 +292,6 @@
                                         <td>
                                             {{ $category->name }}
                                         </td>
-                                        <td>{!! rand(0, 1) !!}</td>
                                         <td>{{ $category->created_at }}</td>
                                     </tr>
                                 @endforeach
@@ -266,10 +325,9 @@
                             <table class="display table table-hover table-bordered table-striped" id="all-students">
                                 <thead>
                                 <tr>
-                                    <th>Nr. crt.</th>
+                                    <th style="width: 80px">Nr. crt.</th>
                                     <th>Nume</th>
-                                    <th>Nr. exponate</th>
-                                    <th>Data adaugarii</th>
+                                    <th style="width: 200px">Data adaugarii</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -279,7 +337,6 @@
                                         <td>
                                             {{ $tag->name }}
                                         </td>
-                                        <td>{!! rand(0, 1) !!}</td>
                                         <td>{{ $tag->created_at }}</td>
                                     </tr>
                                 @endforeach
@@ -292,67 +349,6 @@
                     @else
                         <div class="alert alert-info fade in">
                             <strong>Atentie!</strong> Nu exista etichete.
-                        </div>
-                    @endif
-                </div>
-            </section>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <section class="panel">
-                <header class="panel-heading"><i class="fa fa-list-ul"></i> Ultimile media
-                    <span class="tools pull-right">
-                        <a href="javascript:;" class="fa fa-chevron-down"></a>
-                        <a class="fa fa-times" href="javascript:;"></a>
-                    </span>
-                </header>
-                <div class="panel-body">
-                    @if (!$media->isEmpty())
-                        <div class="adv-table">
-                            <table class="display table table-hover table-bordered table-striped" id="all-media">
-                                <thead>
-                                <tr>
-                                    <th>Nr. crt.</th>
-                                    <th>Path</th>
-                                    <th>Detalii</th>
-                                    <th>Data adaugarii</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($media as $item)
-                                    @if($item->path != '')
-                                    <tr>
-                                        <td>{!! $item->media_id !!}</td>
-                                        <td>
-                                            {{ $item->path }}
-                                        </td>
-                                        <td>
-                                            @if (strpos($item->path, 'photo' . DIRECTORY_SEPARATOR) !== false)
-                                                Photo
-                                            @else
-                                                @if (strpos($item->path, 'audio'. DIRECTORY_SEPARATOR) !== false)
-                                                    Audio
-                                                @else
-                                                    @if (strpos($item->path, 'youtube') !== false || strpos($item->path, 'youtu.be') !== false)
-                                                        Video
-                                                    @endif
-                                                @endif
-                                            @endif
-                                        </td>
-                                        <td>{{ $item->created_at }}</td>
-                                    </tr>
-                                    @endif
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="add-task-row">
-                            <a class="btn btn-primary btn-sm" href="{!! route('media') !!}">Vezi toate media</a>
-                        </div>
-                    @else
-                        <div class="alert alert-info fade in">
-                            <strong>Atentie!</strong> Nu exista media.
                         </div>
                     @endif
                 </div>

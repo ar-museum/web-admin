@@ -71,10 +71,10 @@
                             <table id="table-categories" class="display table table-hover table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Nr. crt.</th>
+                                        <th width="80px">Nr. crt.</th>
                                         <th>Nume</th>
-                                        <th>Ultima modificare</th>
-                                        <th>Acțiune</th>
+                                        <th width="170px">Ultima modificare</th>
+                                        <th width="100px">Acțiune</th>
                                     </tr>
                                 </thead>
                                 <tbody>
