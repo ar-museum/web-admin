@@ -127,17 +127,26 @@ class ExpositionModelTest extends TestCase
         $this->assertNull($exposition->photo()->first());
     }
 
+
     public function testLastFive()
     {
-        $tempExpo = factory(App\Models\Exposition::class, 5)->create($this->tempExposition)->sortByDesc('exposition_id');
+        $tempExposittion = factory(App\Models\Exposition::class, 5)->create($this->tempExposition)->sortByDesc('exposition_id');
+
         $stack = array();
-        for ($index = 4; $index >= 0; --$index) {
-            array_push($stack, $tempExpo->offsetGet($index)->toArray());
+        for ($index = 4; $index >= 0; --$index)
+        {
+            array_push($stack, $tempExposittion->offsetGet($index)->toArray());
         }
-        $tempExpo = $stack;
-        $this->assertCount(5, $tempExpo);
-        $expositions = Exposition::scopeLastFive()->get();
-        $this->assertEquals($tempExpo, $expositions->toArray());
+
+        $tempExposittion = $stack;
+
+        $this->assertCount(5, $tempExposittion);
+
+        $expoos = Exposition::lastFive()->get();
+
+        $this->assertEquals($tempExposittion, $expoos->toArray());
+
+
     }
 
     public function testStaffRelationships()
@@ -158,6 +167,61 @@ class ExpositionModelTest extends TestCase
         $this->assertCount(2, $staff->toArray());
         $this->assertEquals($staff->toArray(), $exposition->staff()->orderBy('staff_id', 'desc')->first()->toArray());
     }
+
+    public function testExhibitsRelationships()
+    {
+        $tempExposition = factory(App\Models\Exposition::class, 1)->create($this->tempExposition);
+
+        $this->assertNull($tempExposition->exhibits()->first());
+
+        $exposition = \App\Models\Exposition::find(1);
+
+        $exhibit = new \App\Models\Exhibit([
+            'title'             => 'Somnoroase Pasarele',
+            'short_description' => 'Pe la cuiburi',
+            'description'       => 'Cea mai splendida poezie ever!',
+            'start_year'        => '1873',
+            'end_year'          => '2019',
+            'size'              => '20x30cm',
+            'location'          => 'Iasi',
+            'author_id'         => 1,
+            'exposition_id'     => 1,
+            'audio_id'          => 2,
+            'photo_id'          => 1,
+            'video_id'          => 3,
+        ]);
+
+        $exposition->exhibits()->save($exhibit);
+
+        $exhibits = $exposition->exhibits()->get();
+
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exposition->exhibits()->get());
+        $this->assertCount(2, $exhibits->toArray());
+
+        $this->assertEquals($exhibit->toArray(), $exposition->exhibits()->orderBy('exhibit_id', 'desc')->first()->toArray());
+    }
+
+
+    public function testMuseumRelationships()
+    {
+        $tempExpo = factory(App\Models\Exposition::class, 1)->create($this->tempExposition);
+        $this->assertNull($tempExpo->museum()->first());
+        $exposition = Exposition::find(1);
+        $museum = factory(App\Models\Museum::class)->make([
+            'museum_id' => 1,
+            'name' => 'Mihai Eminescu Museum',
+            'address' => 'Copou Iasi',
+            'opening_hour' => '08:00:00',
+            'closing_hour' => '21:00:00',
+
+        ]);
+        $exposition->museum()->save($museum);
+        $museum = $exposition->museum()->get();
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $exposition->museum()->get());
+        $this->assertCount(2, $museum->toArray());
+        $this->assertEquals($museum->toArray(), $exposition->museum()->orderBy('museum_id', 'desc')->first()->toArray());
+    }
+
 
 
 }

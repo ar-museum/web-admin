@@ -49,10 +49,10 @@ class Exposition extends BaseModel
      * @param \Illuminate\Database\Eloquent\Builder $query_obj
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeLastFive()
+    public function scopeLastFive($query_obj)
     {
-        return Exposition::orderBy('exposition_id', 'desc')
-                         ->take(5);
+        return $query_obj->orderBy('exposition_id', 'desc')
+            ->take(5);
     }
 
     /** Function to get photo path by photo_id */
