@@ -79,8 +79,21 @@ class MuseumModelTest extends TestCase
         $museum->setMuseumAddress('bd. Carol I');
         $this->assertEquals($museum->getMuseumAddress(), 'bd. Carol I');
 
+        $museum->setMondayProgram('08:00:00','17:30:00');
+        $museum->setTuesdayProgram('08:00:00','17:30:00');
+        $museum->setWednesdayProgram('08:00:00','17:30:00');
+        $museum->setThursdayProgram('08:00:00','17:30:00');
+        $museum->setFridayProgram('08:00:00','17:30:00');
+        $museum->setSaturdayProgram('10:00:00','14:00:00');
+        $museum->setSundayProgram('10:00:00','14:00:00');
 
-
+        $this->assertNotEmpty($museum->getMondayProgram());
+        $this->assertNotEmpty($museum->getTuesdayProgram());
+        $this->assertNotEmpty($museum->getWednesdayProgram());
+        $this->assertNotEmpty($museum->getThursdayProgram());
+        $this->assertNotEmpty($museum->getFridayProgram());
+        $this->assertNotEmpty($museum->getSaturdayProgram());
+        $this->assertNotEmpty($museum->getSundayProgram());
 
     }
 }
