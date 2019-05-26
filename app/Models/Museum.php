@@ -21,7 +21,6 @@ class Museum extends BaseModel
         'friday_opening_hour', 'friday_closing_hour',
         'saturday_opening_hour', 'saturday_closing_hour',
         'sunday_opening_hour', 'sunday_closing_hour'
-
     ];
 
     public function getMuseumLongitude()
@@ -110,49 +109,49 @@ class Museum extends BaseModel
 
     public function  getMondayProgram()
     {
-        if($this->monday_opening_hour=="00:00:00" and $this->monday_closing_hour=="00:00:00") return "Inchis";
+        if($this->monday_opening_hour=="00:00:00" and $this->monday_closing_hour=="00:00:00") return "Închis";
         else
             return $this->monday_opening_hour."-".$this->monday_closing_hour;
     }
 
     public function  getTuesdayProgram()
     {
-        if($this->tuesday_opening_hour=="00:00:00" and $this->tuesday_closing_hour=="00:00:00") return "Inchis";
+        if($this->tuesday_opening_hour=="00:00:00" and $this->tuesday_closing_hour=="00:00:00") return "Închis";
         else
             return $this->tuesday_opening_hour."-".$this->tuesday_closing_hour;
     }
 
     public function  getWednesdayProgram()
     {
-        if($this->wednesday_opening_hour=="00:00:00" and $this->wednesday_closing_hour=="00:00:00") return "Inchis";
+        if($this->wednesday_opening_hour=="00:00:00" and $this->wednesday_closing_hour=="00:00:00") return "Închis";
         else
             return $this->wednesday_opening_hour."-".$this->wednesday_closing_hour;
     }
 
     public function  getThursdayProgram()
     {
-        if($this->thursday_opening_hour=="00:00:00" and $this->thursday_closing_hour=="00:00:00") return "Inchis";
+        if($this->thursday_opening_hour=="00:00:00" and $this->thursday_closing_hour=="00:00:00") return "Închis";
         else
             return $this->thursday_opening_hour."-".$this->thursday_closing_hour;
     }
 
     public function  getFridayProgram()
     {
-        if($this->friday_opening_hour=="00:00:00" and $this->friday_closing_hour=="00:00:00") return "Inchis";
+        if($this->friday_opening_hour=="00:00:00" and $this->friday_closing_hour=="00:00:00") return "Închis";
         else
             return $this->friday_opening_hour."-".$this->friday_closing_hour;
     }
 
     public function  getSaturdayProgram()
     {
-        if($this->saturday_opening_hour=="00:00:00" and $this->saturday_closing_hour=="00:00:00") return "Inchis";
+        if($this->saturday_opening_hour=="00:00:00" and $this->saturday_closing_hour=="00:00:00") return "Închis";
         else
             return $this->saturday_opening_hour."-".$this->saturday_closing_hour;
     }
 
     public function  getSundayProgram()
     {
-        if($this->sunday_opening_hour=="00:00:00" and $this->sunday_closing_hour=="00:00:00") return "Inchis";
+        if($this->sunday_opening_hour=="00:00:00" and $this->sunday_closing_hour=="00:00:00") return "Închis";
         else
             return $this->sunday_opening_hour."-".$this->sunday_closing_hour;
     }

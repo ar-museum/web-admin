@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-8">
             <section class="panel">
-                <header class="panel-heading">Editeaza muzeele
+                <header class="panel-heading" style="font-weight: 400">Editează muzeu
                     <span class="tools pull-right"><a href="javascript:;" class="fa fa-chevron-down"></a></span>
                 </header>
                 <div class="panel-body">
@@ -43,145 +43,42 @@
                             </div>
                         </div>
 
-                        <div class="form-group @if ($errors->has('monday'))has-error @endif">
+                        @for($i = 0; $i < 7; $i++)
+                        <div class="form-group @if ($errors->has($week[$i]))has-error @endif">
+                            <label class="col-lg-12 control-label" for="{{ $week[$i] }}_op"><b>Program {{ $week_ro[$i] }}:</b></label>
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                    <label class="control-label col-lg-4">Ora deschidere</label>
+                                    <div class="col-lg-5">
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input type="text" class="form-control timepicker-24" name="{{ $week[$i] }}_op" id="{{ $week[$i]}}_op">
+                                            <span class="input-group-btn">
+                                            <button class="btn btn-success" type="button"><i class="fa fa-clock-o"></i></button>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                    <label class="control-label col-lg-4">Ora închidere</label>
+                                    <div class="col-lg-5">
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input type="text" class="form-control timepicker-24" name="{{ $week[$i] }}_cl" id="{{ $week[$i] }}_cl">
+                                            <span class="input-group-btn">
+                                            <button class="btn btn-danger" type="button"><i class="fa fa-clock-o"></i></button>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <label class="col-lg-4 col-md-5 col-sm-6 control-label" for="monday"><b>Program Luni:</b></label>
-
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-                        <div>
-                            <label class="control-label col-md-3">Ora deschidere</label>
-                            <input type="time" name="monday_op" id="monday_op">
-                        </div>
-                        <div>
-                            <label class="control-label col-md-3">Ora inchidere</label>
-                            <input type="time" name="monday_cl" id="monday_cl">
-                        </div>
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-
-                        <div class="form-group @if ($errors->has('tuesday'))has-error @endif">
-                        </div>
-                        <label class="col-lg-4 col-md-5 col-sm-6 control-label"  for="tuesday"><b>Program Marti:</b></label>
-
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-                        <div>
-                            <label class="control-label col-md-3">Ora deschidere</label>
-                            <input type="time" name="tuesday_op" id="tuesday_op">
-                        </div>
-                        <div>
-                            <label class="control-label col-md-3">Ora inchidere</label>
-                            <input type="time" name="tuesday_cl" id="tuesday_cl">
-                        </div>
-
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-
-
-                        <div class="form-group @if ($errors->has('wednesday'))has-error @endif">
-                        </div>
-                        <label class="col-lg-4 col-md-5 col-sm-6 control-label" for="wednesday"><b>Program Miercuri:</b></label>
-
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-                        <div>
-                            <label class="control-label col-md-3">Ora deschidere</label>
-                            <input type="time" name="wednesday_op" id="wednesday_op">
-                        </div>
-                        <div>
-                            <label class="control-label col-md-3">Ora inchidere</label>
-                            <input type="time" name="wednesday_cl" id="wednesday_cl">
-                        </div>
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-
-                        <div class="form-group @if ($errors->has('thursday'))has-error @endif">
-                        </div>
-                        <label class="col-lg-4 col-md-5 col-sm-6 control-label" for="thursday"><b>Program Joi:</b></label>
-
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-                        <div>
-                            <label class="control-label col-md-3">Ora deschidere</label>
-                            <input type="time" name="thursday_op" id="thursday_op">
-                        </div>
-                        <div>
-                            <label class="control-label col-md-3">Ora inchidere</label>
-                            <input type="time" name="thursday_cl" id="thursday_cl">
-                        </div>
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-
-                        <div class="form-group @if ($errors->has('friday'))has-error @endif">
-                        </div>
-                        <label class="col-lg-4 col-md-5 col-sm-6 control-label" for="friday"><b>Program Vineri:</b></label>
-
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-                        <div>
-                            <label class="control-label col-md-3">Ora deschidere</label>
-                            <input type="time" name="friday_op" id="friday_op">
-                        </div>
-                        <div>
-                            <label class="control-label col-md-3">Ora inchidere</label>
-                            <input type="time" name="friday_cl" id="friday_cl">
-                        </div>
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-
-                        <div class="form-group @if ($errors->has('saturday'))has-error @endif">
-                        </div>
-                        <label class="col-lg-4 col-md-5 col-sm-6 control-label" for="saturday"><b>Program Sambata:</b></label>
-
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-                        <div>
-                            <label class="control-label col-md-3">Ora deschidere</label>
-                            <input type="time" name="saturday_op" id="saturday_op">
-                        </div>
-                        <div>
-                            <label class="control-label col-md-3">Ora inchidere</label>
-                            <input type="time" name="saturday_cl" id="saturday_cl">
-                        </div>
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-
-                        <div class="form-group @if ($errors->has('sunday'))has-error @endif">
-                        </div>
-                        <label class="col-lg-4 col-md-5 col-sm-6 control-label" for="sunday"><b>Program Duminica:</b></label>
-
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
-                        <div>
-                            <label class="control-label col-md-3">Ora deschidere</label>
-                            <input type="time" name="sunday_op" id="sunday_op">
-                        </div>
-                        <div>
-                            <label class="control-label col-md-3">Ora inchidere</label>
-                            <input type="time" name="sunday_cl" id="sunday_cl">
-                        </div>
-                        <?php
-                        echo nl2br("\n\n");
-                        ?>
+                        @endfor
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-md-8">
-                                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Actualizeaza</button>
-                                <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> Reseteaza</button>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Actualizează</button>
+                                <button type="reset" class="btn btn-default"><i class="fa fa-refresh"></i> Resetează</button>
                             </div>
                         </div>
                     </form>
@@ -191,9 +88,11 @@
     </div>
 @endsection
 @section('js')
+    <script src="{!! asset('/js/bootstrap/bootstrap-timepicker.js') !!}"></script>
     <script src="{!! asset('/js/common/bootstrap-fileupload.min.js') !!}"></script>
-    <script src="{!! asset('/js/exposition/index.js') !!}"></script>
+    <script src="{!! asset('/js/museum/index.js') !!}"></script>
 @endsection
 @section('css')
+    <link href="{!! asset('/css/timepicker.css') !!}" rel="stylesheet">
     <link href="{!! asset('/css/fileupload.css') !!}" rel="stylesheet">
 @endsection

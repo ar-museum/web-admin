@@ -13,18 +13,39 @@ use Illuminate\Support\Facades\Input;
 
 class MuseumController  extends Controller
 {
-
     public function index()
     {
+        $week = [
+            'monday', 'tuesday', 'wednesday', 'thursday', 'friday',
+            'saturday', 'sunday'
+        ];
+        $week_ro = [
+            'Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri',
+            'Sâmbătă', 'Duminică'
+        ];
+
         return view('museum.index', [
             'museums' => Museum::with('expositions')->get(),
+            'week' => $week,
+            'week_ro' => $week_ro
         ]);
     }
 
     public function edit($id)
     {
+        $week = [
+            'monday', 'tuesday', 'wednesday', 'thursday', 'friday',
+            'saturday', 'sunday'
+        ];
+        $week_ro = [
+            'Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri',
+            'Sâmbătă', 'Duminică'
+        ];
+
         return view('museum.edit', [
             'museum' => Museum::where('museum_id','=', $id)->first(),
+            'week' => $week,
+            'week_ro' => $week_ro
         ]);
     }
 
