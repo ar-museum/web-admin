@@ -30,7 +30,9 @@ class VuforiaFile extends BaseModel
      *
      * @var array
      */
-    protected $fillable = ['path'];
+    protected $fillable = [
+        'path'
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -50,6 +52,6 @@ class VuforiaFile extends BaseModel
 
     public function scopeLastFive()
     {
-        return Media::orderBy('file_id', 'desc')->take(5);
+        return VuforiaFile::orderBy('file_id', 'desc')->take(5);
     }
 }

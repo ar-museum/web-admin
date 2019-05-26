@@ -38,8 +38,6 @@ class DragndropTest extends TestCase
         $dragndrop = factory(App\Models\Dragndrop::class)->make($this->tempDragndrop);
 
         $this->assertTrue(true, is_int($dragndrop->museum_id));
-
-
     }
 
     public function testMuseumRelationships()
