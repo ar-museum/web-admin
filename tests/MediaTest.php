@@ -1,9 +1,7 @@
 <?php
 
 use App\Models\Audio;
-use App\Models\Category;
 use App\Models\Exhibit;
-use App\Models\Exposition;
 use App\Models\Media;
 use App\Models\Photo;
 use App\Models\Video;
@@ -70,7 +68,7 @@ class MediaTest extends TestCase
         $photo = new App\Models\Photo([
             'width' => 30,
             'height' => 50,
-            'photo_id' => 1
+            'photo_id' => 1234
         ]);
 
         $media->photo()->save($photo);
@@ -219,6 +217,42 @@ class MediaTest extends TestCase
         $medias = $media->scopeLastFive()->get();
 
         $this->assertEquals($tempMedias, $medias->toArray());
+    }
+
+    public function testWidthAttribute()
+    {
+        $media = factory(App\Models\Media::class)->make([
+            'path' => 'uploads' . DIRECTORY_SEPARATOR . 'photo' . DIRECTORY_SEPARATOR . 'testPhoto1.jpg'
+        ]);
+        $media->save();
+
+        $photo = new Photo();
+        $photo->photo_id = $media->media_id;
+        $photo->width = 20;
+        $photo->height = 30;
+        $photo->save();
+
+        $this->assertNotEmpty($media->getWidthAttribute());
+        $this->assertEquals(20, $media->getWidthAttribute());
+        $this->assertNotEquals(20, $media->getWidthAttribute());
+    }
+
+    public function testHeightAttribute()
+    {
+        $media = factory(App\Models\Media::class)->make([
+            'path' => 'uploads' . DIRECTORY_SEPARATOR . 'photo' . DIRECTORY_SEPARATOR . 'testPhoto2.jpg'
+        ]);
+        $media->save();
+
+        $photo = new Photo();
+        $photo->photo_id = $media->media_id;
+        $photo->width = 20;
+        $photo->height = 30;
+        $photo->save();
+
+        $this->assertNotEmpty($media->getHeightAttribute());
+        $this->assertEquals(30, $media->getHeightAttribute());
+        $this->assertNotEquals(30, $media->getHeightAttribute());
     }
 
 }

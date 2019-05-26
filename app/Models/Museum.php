@@ -54,10 +54,10 @@ class Museum extends BaseModel
         return $this->museum_id;
 
     }
+
     public function setMuseumName($name)
     {
         $this->name=$name;
-
     }
 
     public function getMuseumAddress()
