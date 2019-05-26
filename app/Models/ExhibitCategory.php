@@ -57,7 +57,7 @@ class ExhibitCategory extends BaseModel
         return 'category_id';
     }
 
-    public function exhibit()
+    public function exhibits()
     {
         return $this->belongsToMany(Exhibit::class, 'exhibit_id', 'exhibit_id');
     }

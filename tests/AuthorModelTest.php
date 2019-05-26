@@ -32,6 +32,12 @@ class AuthorModelTest extends TestCase
         ];
     }
 
+    public function testStaffId()
+    {
+        $author = factory(App\Models\Author::class)->make($this->tempAuthor);
+        $this->assertTrue(true, is_int($author->staff_id));
+    }
+
     public function testCreatingModel()
     {
         $author = factory(App\Models\Author::class)->make($this->tempAuthor);
@@ -168,7 +174,5 @@ class AuthorModelTest extends TestCase
         $authors = Author::lastFive()->get();
 
         $this->assertEquals($tempAuthor, $authors->toArray());
-
-
     }
 }
