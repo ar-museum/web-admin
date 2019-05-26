@@ -37,7 +37,7 @@ class ExhibitTag extends BaseModel
      * @param  \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
-     */
+     *
     protected function setKeysForSaveQuery(Builder $query)
     {
         $query
@@ -46,6 +46,7 @@ class ExhibitTag extends BaseModel
 
         return $query;
     }
+     */
 
     /**
      * Used for primary composed key.

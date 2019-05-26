@@ -37,7 +37,7 @@ class ExhibitCategory extends BaseModel
      * @param  \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
-     */
+     *
     protected function setKeysForSaveQuery(Builder $query)
     {
         $query
@@ -46,6 +46,7 @@ class ExhibitCategory extends BaseModel
 
         return $query;
     }
+     */
 
     /**
      * Used for primary composed key.
@@ -57,7 +58,7 @@ class ExhibitCategory extends BaseModel
         return 'category_id';
     }
 
-    public function exhibits()
+    public function exhibit()
     {
         return $this->belongsToMany(Exhibit::class, 'exhibit_id', 'exhibit_id');
     }
