@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Tag;
-use \Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class TagModelTest extends TestCase
 {
@@ -19,7 +19,7 @@ class TagModelTest extends TestCase
         define('tagName', 'romantism');
         define('tagStaffId', 1);
 
-        $tag = factory(App\Models\Category::class)->make([
+        $tag = factory(Tag::class)->make([
             'tag_id' => tagId,
             'name' => tagName,
             'staff_id' => tagStaffId
@@ -73,7 +73,7 @@ class TagModelTest extends TestCase
 
     public function testExhibitRelationships()
     {
-        $tags = factory(App\Models\Tag::class)->create([
+        $tags = factory(Tag::class)->create([
             'name' => 'epigrame-noi',
             'staff_id' => 1
         ]);
@@ -83,7 +83,7 @@ class TagModelTest extends TestCase
 
     public function testLastFive()
     {
-        $tempTags = factory(App\Models\Tag::class, 5)->create([
+        $tempTags = factory(Tag::class, 5)->create([
             'name' => 'cel-mai-citit',
             'staff_id' => 1
         ]);
