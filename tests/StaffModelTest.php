@@ -187,4 +187,12 @@ class StaffModelTest extends TestCase
 
         $this->assertEquals($author->toArray(), $staff->authors()->orderBy('author_id', 'desc')->first()->toArray());
     }
+
+    public function testGetPhotoPath()
+    {
+        $tempStaff = factory(App\Models\Staff::class, 1)->create($this->tempStaff);
+
+        $this->assertNotEmpty($tempStaff->getPhotoPath());
+        $this->assertNotEquals($tempStaff->getPhotoPath(), null);
+    }
 }

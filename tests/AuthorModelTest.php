@@ -175,4 +175,12 @@ class AuthorModelTest extends TestCase
 
         $this->assertEquals($tempAuthor, $authors->toArray());
     }
+
+    public function testGetPhotoPath()
+    {
+        $tempAuthor = factory(App\Models\Author::class, 1)->create($this->tempAuthor);
+
+        $this->assertNotEmpty($tempAuthor->getPhotoPath());
+        $this->assertNotEquals($tempAuthor->getPhotoPath(), null);
+    }
 }

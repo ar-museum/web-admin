@@ -59,6 +59,6 @@ class Author extends BaseModel
     /** Function to get photo path by photo_id */
     public function getPhotoPath()
     {
-        return $this->photo->path;
+        return $this->photo[0]->path;
     }
 }
