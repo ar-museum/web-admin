@@ -3,6 +3,7 @@
 use App\Models\Category;
 use App\Models\Exhibit;
 use App\Models\Exposition;
+use App\Models\Photo;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -262,6 +263,45 @@ class ExhibitModelTest extends TestCase
 
         $this->assertEquals($tempExhibits, $exhibits->toArray());
 
+
+    }
+
+    public function testSetGetValue()
+    {
+        $exhibit = factory(App\Models\Exhibit::class)->make($this->tempExhibit);
+
+        $exhibit->setValue(10);
+
+        $this->assertNotEmpty($exhibit->getValue());
+        $this->assertEquals($exhibit->getValue(),10);
+    }
+
+    public function testGetPhotoPath()
+    {
+        $exhibit = factory(App\Models\Exhibit::class)->make($this->tempExhibit);
+        $exhibit->photo_id = 1;
+
+        $this->assertNotEmpty($exhibit->getPhotoPath());
+        $this->assertNotEquals($exhibit->getPhotoPath(), null);
+    }
+
+    public function testGetAudioPath()
+    {
+        $exhibit = factory(App\Models\Exhibit::class)->make($this->tempExhibit);
+        $exhibit->audio_id = 3;
+
+        $this->assertNotEmpty($exhibit->getAudioPath());
+        $this->assertNotEquals($exhibit->getAudioPath(), null);
+
+    }
+
+    public function testGetVideoPath()
+    {
+        $exhibit = factory(App\Models\Exhibit::class)->make($this->tempExhibit);
+        $exhibit->video_id = 4;
+
+        $this->assertNotEmpty($exhibit->getVideoPath());
+        $this->assertNotEquals($exhibit->getVideoPath(), null);
 
     }
 }

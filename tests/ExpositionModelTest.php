@@ -222,6 +222,11 @@ class ExpositionModelTest extends TestCase
         $this->assertEquals($museum->toArray(), $exposition->museum()->orderBy('museum_id', 'desc')->first()->toArray());
     }
 
+    public function testPhotoPath()
+    {
+        $exposition = factory(App\Models\Exposition::class)->make($this->tempExposition);
 
+        $this->assertNotEmpty($exposition->getPhotoPath());
+    }
 
 }
